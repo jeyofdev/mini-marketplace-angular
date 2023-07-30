@@ -1,0 +1,55 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "airbnb-typescript/base",
+        "eslint-config-prettier",
+        "plugin:prettier/recommended",
+        "plugin:import/recommended"
+      ],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": ["tsconfig.json"]
+          }
+        },
+        "import/ignore": ["node_modules"]
+      },
+      "rules": {
+        "no-console": "warn"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": { "max-len": ["error", { "code": 140 }] }
+    },
+    {
+      "files": ["*.component.ts"],
+      "extends": ["plugin:@angular-eslint/template/process-inline-templates"],
+      "rules": {
+        "lines-between-class-members": "off",
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          "always",
+          { "exceptAfterSingleLine": true }
+        ],
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "devDependencies": true }
+        ]
+      }
+    }
+  ]
+}
