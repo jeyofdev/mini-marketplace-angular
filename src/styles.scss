@@ -1,5 +1,9 @@
 @import './app/theme/theme';
 
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	height: 100%;

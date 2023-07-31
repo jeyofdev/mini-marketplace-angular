@@ -1,3 +1,72 @@
-<p>login works!</p>
+<mat-grid-list cols="2" rowHeight="100vh">
+	<mat-grid-tile>
+		<div class="img-box">
+			<img
+				mat-card-image
+				src="assets/img/auth/login.jpg"
+				class="login-auth-img"
+				alt=""
+			/>
+		</div>
+	</mat-grid-tile>
 
-<button mat-raised-button color="primary">test material</button>
+	<mat-grid-tile colspan="1" class="content-box">
+		<div class="content">
+			<div class="login-top">
+				<h1 class="login-title text-center">Log in</h1>
+				<h3 class="text-center">
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+				</h3>
+			</div>
+
+			<form class="login-form">
+				<div class="form-row">
+					<div class="form-control">
+						<mat-label> E-mail</mat-label>
+						<mat-form-field class="form-field" appearance="outline">
+							<input matInput name="email" required />
+						</mat-form-field>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-control">
+						<mat-label> Password </mat-label>
+						<mat-form-field class="form-field" appearance="outline">
+							<input matInput name="password" type="password" />
+							<button
+								mat-icon-button
+								matSuffix
+								(click)="shownPassword()"
+								[attr.aria-label]="'Hide password'"
+								[attr.aria-pressed]="hidePassword"
+							>
+								<mat-icon>{{
+									hidePassword ? 'visibility_off' : 'visibility'
+								}}</mat-icon>
+							</button>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<button mat-raised-button color="primary" type="submit">Log In</button>
+			</form>
+
+			<div class="divider">
+				<h6 class="divider-content">OR</h6>
+			</div>
+
+			<div class="social-connect-box">
+				<button mat-raised-button color="primary" type="submit">
+					<fa-icon class="social-icon" [icon]="faGoogle"></fa-icon>
+					<span class="social-label">Connect with google</span>
+				</button>
+
+				<button mat-raised-button color="primary" type="submit">
+					<fa-icon class="social-icon" [icon]="faGithub"></fa-icon>
+					<span class="social-label">Connect with Github</span>
+				</button>
+			</div>
+		</div>
+	</mat-grid-tile>
+</mat-grid-list>
