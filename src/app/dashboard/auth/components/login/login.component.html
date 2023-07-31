@@ -57,15 +57,21 @@
 			</div>
 
 			<div class="social-connect-box">
-				<button mat-raised-button color="primary" type="submit">
-					<fa-icon class="social-icon" [icon]="faGoogle"></fa-icon>
-					<span class="social-label">Connect with google</span>
-				</button>
+				<app-square-button
+					[label]="'Connect with Google'"
+					[color]="'primary'"
+					[icon]="faGoogle"
+					[size]="'250'"
+					[outline]="true"
+				></app-square-button>
 
-				<button mat-raised-button color="primary" type="submit">
-					<fa-icon class="social-icon" [icon]="faGithub"></fa-icon>
-					<span class="social-label">Connect with Github</span>
-				</button>
+				<app-square-button
+					[label]="'Connect with Github'"
+					[color]="'primary'"
+					[icon]="faGithub"
+					[size]="'250'"
+					[outline]="true"
+				></app-square-button>
 			</div>
 		</div>
 	</mat-grid-tile>
