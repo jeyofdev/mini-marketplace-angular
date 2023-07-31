@@ -57,32 +57,10 @@ app-text-field {
 	width: 100%;
 }
 
-.divider {
+app-horizontal-divider {
+	display: block;
 	margin-top: 2.5rem;
 	margin-bottom: 2.5rem;
-}
-
-.divider-content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	&::before,
-	&::after {
-		content: '';
-		display: block;
-		width: 100px;
-		height: 1px;
-		background-color: black;
-	}
-
-	&::before {
-		margin-right: 1rem;
-	}
-
-	&::after {
-		margin-left: 1rem;
-	}
 }
 
 .social-connect-box {
@@ -92,5 +70,9 @@ app-text-field {
 	align-items: center;
 	gap: 1rem;
 	text-align: center;
+	width: 100%;
+}
+
+app-square-button {
 	width: 100%;
 }

@@ -10,10 +10,10 @@ export class SquareButtonComponent {
 	@Input() label!: string;
 	@Input() color!: string;
 	@Input() icon!: IconDefinition;
-	@Input() size!: string | number;
+	@Input() size!: string;
 	@Input() outline!: boolean;
 
 	getWidth(): string {
-		return this.size + 'px';
+		return this.size;
 	}
 }
