@@ -1,5 +1,5 @@
 <button
-	*ngIf="outline"
+	*ngIf="!outline"
 	mat-raised-button
 	[color]="color"
 	type="button"
@@ -10,7 +10,7 @@
 </button>
 
 <button
-	*ngIf="!outline"
+	*ngIf="outline"
 	mat-stroked-button
 	[color]="color"
 	type="button"

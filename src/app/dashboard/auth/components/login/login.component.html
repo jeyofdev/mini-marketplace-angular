@@ -21,32 +21,22 @@
 
 			<form class="login-form">
 				<div class="form-row">
-					<div class="form-control">
-						<mat-label> E-mail</mat-label>
-						<mat-form-field class="form-field" appearance="outline">
-							<input matInput name="email" required />
-						</mat-form-field>
-					</div>
+					<app-text-field
+						appearance="outline"
+						name="email"
+						label="E-mail"
+					></app-text-field>
 				</div>
 
 				<div class="form-row">
-					<div class="form-control">
-						<mat-label> Password </mat-label>
-						<mat-form-field class="form-field" appearance="outline">
-							<input matInput name="password" type="password" />
-							<button
-								mat-icon-button
-								matSuffix
-								(click)="shownPassword()"
-								[attr.aria-label]="'Hide password'"
-								[attr.aria-pressed]="hidePassword"
-							>
-								<mat-icon>{{
-									hidePassword ? 'visibility_off' : 'visibility'
-								}}</mat-icon>
-							</button>
-						</mat-form-field>
-					</div>
+					<app-text-field
+						type="password"
+						appearance="outline"
+						name="password"
+						label="Password"
+						[hidePassword]="true"
+						[endIcon]="true"
+					></app-text-field>
 				</div>
 
 				<button mat-raised-button color="primary" type="submit">Log In</button>
@@ -62,7 +52,6 @@
 					[color]="'primary'"
 					[icon]="faGoogle"
 					[size]="'250'"
-					[outline]="true"
 				></app-square-button>
 
 				<app-square-button
@@ -70,7 +59,6 @@
 					[color]="'primary'"
 					[icon]="faGithub"
 					[size]="'250'"
-					[outline]="true"
 				></app-square-button>
 			</div>
 		</div>

@@ -53,18 +53,8 @@ mat-grid-list {
 	width: 100%;
 }
 
-.form-control {
-	display: flex;
-	flex-direction: column;
+app-text-field {
 	width: 100%;
-}
-
-::ng-deep
-	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
-	.mat-mdc-form-field-infix {
-	min-height: 48px;
-	padding-top: 0.6rem;
-	padding-bottom: 0.6rem;
 }
 
 .divider {
