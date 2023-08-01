@@ -1,5 +1,4 @@
 <div class="layout-container">
-	<!-- <ng-content></ng-content> -->
 	<mat-grid-list
 		[cols]="breakpointValue"
 		rowHeight="100%"
@@ -10,9 +9,9 @@
 			class="grid-item-1"
 		>
 			<app-image-full-height
-				src="assets/img/auth/login.jpg"
-				alt=""
-				position="top"
+				[src]="image.src"
+				[alt]="image.alt"
+				[position]="image.position"
 			></app-image-full-height>
 		</mat-grid-tile>
 
@@ -20,36 +19,16 @@
 			<div class="content-box">
 				<div class="content">
 					<div class="login-top">
-						<h1 class="login-title text-center mat-headline-3">Log in</h1>
+						<h1 class="login-title text-center mat-headline-3">
+							{{ pageTitle }}
+						</h1>
 						<h3 class="text-center">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+							{{ subtitle }}
 						</h3>
 					</div>
 
-					<form class="login-form">
-						<div class="form-row">
-							<app-text-field
-								appearance="outline"
-								name="email"
-								label="E-mail"
-							></app-text-field>
-						</div>
-
-						<div class="form-row">
-							<app-text-field
-								type="password"
-								appearance="outline"
-								name="password"
-								label="Password"
-								[hidePassword]="true"
-								[endIcon]="true"
-							></app-text-field>
-						</div>
-
-						<button mat-raised-button color="primary" type="submit">
-							Log In
-						</button>
-					</form>
+					<!-- Form in parent -->
+					<ng-content></ng-content>
 
 					<app-horizontal-divider>OR</app-horizontal-divider>
 

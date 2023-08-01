@@ -1,1 +1,30 @@
-<app-auth-layout [socialProviders]="socialProviders"></app-auth-layout>
+<app-auth-layout
+	pageTitle="Log in"
+	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+	[socialProviders]="socialProviders"
+	[image]="image"
+>
+	<form class="login-form">
+		<div class="form-row">
+			<app-text-field
+				appearance="outline"
+				name="email"
+				label="E-mail"
+			></app-text-field>
+		</div>
+
+		<div class="form-row">
+			<app-text-field
+				type="password"
+				appearance="outline"
+				name="password"
+				label="Password"
+				[endIcon]="true"
+			>
+				></app-text-field
+			>
+		</div>
+
+		<button mat-raised-button color="primary" type="submit">Log In</button>
+	</form></app-auth-layout
+>

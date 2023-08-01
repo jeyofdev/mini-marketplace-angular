@@ -1,6 +1,7 @@
 import { BreakpointState } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
 import { BreakpointEnum } from 'src/app/shared/enum/breakpoint.enum';
+import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
 import { BreakpointService } from 'src/app/shared/service/breakpoint.service';
 import { ResizeService } from 'src/app/shared/service/resize.service';
@@ -11,9 +12,10 @@ import { ResizeService } from 'src/app/shared/service/resize.service';
 	styleUrls: ['./auth-layout.component.scss'],
 })
 export class AuthLayoutComponent implements OnInit {
+	@Input() pageTitle!: string;
+	@Input() subtitle!: string;
+	@Input() image!: IImage;
 	@Input() socialProviders!: ISocialProvider[];
-
-	hidePassword!: boolean;
 
 	windowSize!: number;
 	breakpointValue!: number;
@@ -27,15 +29,10 @@ export class AuthLayoutComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.hidePassword = false;
 		this.windowSize = this.resizeService.getScreenWidth();
 		this.breakpointValue = window.innerWidth <= 960 ? 1 : 2;
 
 		this.setResizeBreakpoint();
-	}
-
-	shownPassword(): void {
-		this.hidePassword = !this.hidePassword;
 	}
 
 	detectScreenSize() {

@@ -11,8 +11,6 @@
 	overflow: scroll;
 }
 
-@import '../../../../theme/theme';
-
 mat-grid-list {
 	background-color: lighten($primary, 48);
 	width: 100%;
@@ -57,23 +55,6 @@ app-image-full-height {
 
 .text-center {
 	text-align: center;
-}
-
-.login-form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-
-.form-row {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	width: 100%;
-}
-
-app-text-field {
-	width: 100%;
 }
 
 app-horizontal-divider {
