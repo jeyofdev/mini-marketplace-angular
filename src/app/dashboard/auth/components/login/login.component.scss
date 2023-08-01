@@ -2,36 +2,43 @@
 
 mat-grid-list {
 	background-color: lighten($primary, 48);
+	width: 100%;
+	border-radius: 2rem;
+
+	@media (min-width: $lg) {
+		max-width: 1280px;
+		max-height: 700px;
+		margin: auto;
+	}
 }
 
-.img-box {
-	display: block;
-	width: 100%;
+app-image-full-height {
 	height: calc(100% - (2 * 0.6rem));
-	margin: 0.6rem;
-	border-radius: 1rem;
-	overflow: hidden;
+	width: calc(100% - (2 * 0.6rem));
 }
 
-.login-auth-img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: top;
+::ng-deep.mat-grid-tile-content {
+	overflow-y: auto;
+}
+
+@media (max-width: $md) and (max-height: 650px) {
+	::ng-deep.mat-grid-tile-content {
+		align-items: flex-start !important;
+	}
 }
 
 .content-box {
 	display: flex;
 	flex-direction: column;
+	padding: 1rem;
 }
 
 .content {
+	width: 100%;
 	max-width: 500px;
 }
 
 .login-top {
-	display: 'flex';
-	justify-content: center;
 	margin-bottom: 3rem;
 }
 
@@ -43,7 +50,6 @@ mat-grid-list {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	// gap: 1rem;
 }
 
 .form-row {

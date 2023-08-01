@@ -5,12 +5,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SquareButtonComponent } from './components/button/square-button/square-button.component';
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
 import { HorizontalDividerComponent } from './components/divider/horizontal-divider/horizontal-divider.component';
+import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
+import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
 
 @NgModule({
 	declarations: [
 		SquareButtonComponent,
 		TextFieldComponent,
 		HorizontalDividerComponent,
+		AuthLayoutComponent,
+		ImageFullHeightComponent,
 	],
 	imports: [CommonModule, MaterialModule, FontAwesomeModule],
 	exports: [
@@ -19,6 +23,8 @@ import { HorizontalDividerComponent } from './components/divider/horizontal-divi
 		SquareButtonComponent,
 		TextFieldComponent,
 		HorizontalDividerComponent,
+		AuthLayoutComponent,
+		ImageFullHeightComponent,
 	],
 })
 export class SharedModule {}
