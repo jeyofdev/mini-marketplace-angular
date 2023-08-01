@@ -1,6 +1,5 @@
 import { BreakpointState } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BreakpointEnum } from 'src/app/shared/enum/breakpoint.enum';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
@@ -17,6 +16,7 @@ export class AuthLayoutComponent implements OnInit {
 	@Input() subtitle!: string;
 	@Input() image!: IImage;
 	@Input() socialProviders!: ISocialProvider[];
+	@Input() containerMaxHeight!: string;
 
 	windowSize!: number;
 	breakpointValue!: number;
@@ -27,23 +27,29 @@ export class AuthLayoutComponent implements OnInit {
 	constructor(
 		private resizeService: ResizeService,
 		private breakpointService: BreakpointService,
-		private router: Router,
 	) {}
 
 	ngOnInit(): void {
-		this.windowSize = this.resizeService.getScreenWidth();
-		this.breakpointValue = window.innerWidth <= 960 ? 1 : 2;
-
+		this.detectScreenSize();
 		this.setResizeBreakpoint();
 	}
 
 	detectScreenSize() {
 		this.windowSize = this.resizeService.getScreenWidth();
-		this.breakpointValue = window.innerWidth <= 960 ? 1 : 2;
+		this.breakpointValue =
+			window.innerWidth < this.minValueByBreakpoint('md') ? 1 : 2;
 	}
 
 	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
 		return this.breakpointService.getMinValueByBreakpoint(Breakpoint);
+	}
+
+	getMaxHeightContainer(): string {
+		if (this.windowSize >= this.minValueByBreakpoint('md')) {
+			return this.containerMaxHeight;
+		}
+
+		return 'none';
 	}
 
 	private setResizeBreakpoint(): void {

@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit {
 				icon: faGoogle,
 				color: 'primary',
 				size: '100%',
-				outline: true,
+				outline: false,
 			},
 			{
 				label: 'Connect with Github',
 				icon: faGithub,
 				color: 'primary',
 				size: '100%',
-				outline: true,
+				outline: false,
 			},
 		];
 
