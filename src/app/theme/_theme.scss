@@ -13,7 +13,7 @@ $typography-configuration: mat-typography-config(
 	$display-2: mat-typography-level(45px, 48px, 400),
 	$display-1: mat-typography-level(34px, 40px, 400),
 	$headline: mat-typography-level(24px, 32px, 400),
-	$title: mat-typography-level(20px, 32px, 500),
+	$title: mat-typography-level(16px, 32px, 500),
 	$subheading-2: mat-typography-level(16px, 28px, 400),
 	$subheading-1: mat-typography-level(14px, 24px, 500),
 	$body-2: mat-typography-level(14px, 24px, 500),
@@ -21,6 +21,14 @@ $typography-configuration: mat-typography-config(
 	$caption: mat-typography-level(12px, 20px, 400),
 	$button: mat-typography-level(14px, inherit, 500),
 	$input: mat-typography-level(24px, 32px, 400),
+);
+
+$breakpoints: (
+	xs: 0px,
+	sm: 600px,
+	md: 960px,
+	lg: 1280px,
+	xl: 1920px,
 );
 
 $app-theme: mat.define-light-theme(
@@ -33,6 +41,28 @@ $app-theme: mat.define-light-theme(
 		typography: $typography-configuration,
 	)
 );
+
+@function get-bp($bp) {
+	@if $bp {
+		$bp: map-get($breakpoints, $bp);
+	} @else {
+		@error "Parameter #{$bp} is unknown or empty.";
+	}
+
+	@return $bp;
+}
+
+// Export theme colors
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+
+// Export theme break points
+$xs: get-bp('xs');
+$sm: get-bp('sm');
+$md: get-bp('md');
+$lg: get-bp('lg');
+$xl: get-bp('xl');
 
 @include mat.all-component-themes($app-theme);
 @include angular-material-typography($typography-configuration);

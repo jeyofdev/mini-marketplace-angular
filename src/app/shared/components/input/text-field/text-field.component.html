@@ -1,0 +1,19 @@
+<div class="form-control">
+	<mat-label>{{ label }}</mat-label>
+	<mat-form-field class="form-field" [appearance]="appearance">
+		<input
+			matInput
+			[name]="name"
+			[type]="type === 'text' || !hidePassword ? 'text' : 'password'"
+		/>
+		<button
+			*ngIf="endIcon"
+			mat-icon-button
+			matSuffix
+			type="button"
+			(click)="clickEndIcon()"
+		>
+			<mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+		</button>
+	</mat-form-field>
+</div>
