@@ -1,84 +1,84 @@
-@import '../../../../theme/theme';
+// @import '../../../../theme/theme';
 
-mat-grid-list {
-	background-color: lighten($primary, 48);
-	width: 100%;
-	border-radius: 2rem;
+// mat-grid-list {
+// 	background-color: lighten($primary, 48);
+// 	width: 100%;
+// 	border-radius: 2rem;
 
-	@media (min-width: $lg) {
-		max-width: 1280px;
-		max-height: 700px;
-		margin: auto;
-	}
-}
+// 	@media (min-width: $lg) {
+// 		max-width: 1280px;
+// 		max-height: 700px;
+// 		margin: auto;
+// 	}
+// }
 
-app-image-full-height {
-	height: calc(100% - (2 * 0.6rem));
-	width: calc(100% - (2 * 0.6rem));
-}
+// app-image-full-height {
+// 	height: calc(100% - (2 * 0.6rem));
+// 	width: calc(100% - (2 * 0.6rem));
+// }
 
-::ng-deep.mat-grid-tile-content {
-	overflow-y: auto;
-}
+// ::ng-deep.mat-grid-tile-content {
+// 	overflow-y: auto;
+// }
 
-@media (max-width: $md) and (max-height: 650px) {
-	::ng-deep.mat-grid-tile-content {
-		align-items: flex-start !important;
-	}
-}
+// @media (max-width: $md) and (max-height: 650px) {
+// 	::ng-deep.mat-grid-tile-content {
+// 		align-items: flex-start !important;
+// 	}
+// }
 
-.content-box {
-	display: flex;
-	flex-direction: column;
-	padding: 1rem;
-}
+// .content-box {
+// 	display: flex;
+// 	flex-direction: column;
+// 	padding: 1rem;
+// }
 
-.content {
-	width: 100%;
-	max-width: 500px;
-}
+// .content {
+// 	width: 100%;
+// 	max-width: 500px;
+// }
 
-.login-top {
-	margin-bottom: 3rem;
-}
+// .login-top {
+// 	margin-bottom: 3rem;
+// }
 
-.text-center {
-	text-align: center;
-}
+// .text-center {
+// 	text-align: center;
+// }
 
-.login-form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
+// .login-form {
+// 	display: flex;
+// 	flex-direction: column;
+// 	width: 100%;
+// }
 
-.form-row {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	width: 100%;
-}
+// .form-row {
+// 	display: flex;
+// 	flex-direction: row;
+// 	gap: 1rem;
+// 	width: 100%;
+// }
 
-app-text-field {
-	width: 100%;
-}
+// app-text-field {
+// 	width: 100%;
+// }
 
-app-horizontal-divider {
-	display: block;
-	margin-top: 2.5rem;
-	margin-bottom: 2.5rem;
-}
+// app-horizontal-divider {
+// 	display: block;
+// 	margin-top: 2.5rem;
+// 	margin-bottom: 2.5rem;
+// }
 
-.social-connect-box {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1rem;
-	text-align: center;
-	width: 100%;
-}
+// .social-connect-box {
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
+// 	gap: 1rem;
+// 	text-align: center;
+// 	width: 100%;
+// }
 
-app-square-button {
-	width: 100%;
-}
+// app-square-button {
+// 	width: 100%;
+// }

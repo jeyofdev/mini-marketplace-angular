@@ -1,1 +1,74 @@
-<p>register works!</p>
+<app-auth-layout>
+	<mat-grid-list
+		[cols]="breakpointValue"
+		rowHeight="100%"
+		(window:resize)="detectScreenSize()"
+	>
+		<mat-grid-tile
+			*ngIf="windowSize >= minValueByBreakpoint('md')"
+			class="grid-item-1"
+		>
+			<app-image-full-height
+				src="assets/img/auth/register.jpg"
+				alt=""
+				position="center"
+			></app-image-full-height>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="content-box">
+				<div class="content">
+					<div class="login-top">
+						<h1 class="login-title text-center mat-headline-3">Log in</h1>
+						<h3 class="text-center">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+						</h3>
+					</div>
+
+					<form class="login-form">
+						<div class="form-row">
+							<app-text-field
+								appearance="outline"
+								name="email"
+								label="E-mail"
+							></app-text-field>
+						</div>
+
+						<div class="form-row">
+							<app-text-field
+								type="password"
+								appearance="outline"
+								name="password"
+								label="Password"
+								[hidePassword]="true"
+								[endIcon]="true"
+							></app-text-field>
+						</div>
+
+						<button mat-raised-button color="primary" type="submit">
+							Log In
+						</button>
+					</form>
+
+					<app-horizontal-divider>OR</app-horizontal-divider>
+
+					<div class="social-connect-box">
+						<app-square-button
+							label="Connect with Google"
+							color="primary"
+							[icon]="faGoogle"
+							size="100%"
+						></app-square-button>
+
+						<app-square-button
+							label="Connect with Github"
+							color="primary"
+							[icon]="faGithub"
+							size="100%"
+						></app-square-button>
+					</div>
+				</div>
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</app-auth-layout>
