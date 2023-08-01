@@ -1,5 +1,6 @@
 import { BreakpointState } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BreakpointEnum } from 'src/app/shared/enum/breakpoint.enum';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
@@ -26,6 +27,7 @@ export class AuthLayoutComponent implements OnInit {
 	constructor(
 		private resizeService: ResizeService,
 		private breakpointService: BreakpointService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {

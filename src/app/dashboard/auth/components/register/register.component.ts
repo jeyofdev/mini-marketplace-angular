@@ -1,13 +1,7 @@
-import { BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import {
-	IconDefinition,
-	faGithub,
-	faGoogle,
-} from '@fortawesome/free-brands-svg-icons';
-import { BreakpointEnum } from 'src/app/shared/enum/breakpoint.enum';
-import { BreakpointService } from 'src/app/shared/service/breakpoint.service';
-import { ResizeService } from 'src/app/shared/service/resize.service';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { IImage } from 'src/app/shared/model/image.model';
+import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
 
 @Component({
 	selector: 'app-register',
@@ -15,53 +9,33 @@ import { ResizeService } from 'src/app/shared/service/resize.service';
 	styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+	socialProviders!: ISocialProvider[];
+	image!: IImage;
 	hidePassword!: boolean;
-	faGoogle: IconDefinition = faGoogle;
-	faGithub: IconDefinition = faGithub;
-
-	windowSize!: number;
-	breakpointValue!: number;
-	breakpoint!: BreakpointEnum;
-
-	currentBreakpoint!: string;
-
-	constructor(
-		private resizeService: ResizeService,
-		private breakpointService: BreakpointService,
-	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.windowSize = this.resizeService.getScreenWidth();
-		this.breakpointValue = window.innerWidth <= 960 ? 1 : 2;
+		this.socialProviders = [
+			{
+				label: 'Connect with Google',
+				icon: faGoogle,
+				color: 'primary',
+				size: '100%',
+				outline: true,
+			},
+			{
+				label: 'Connect with Github',
+				icon: faGithub,
+				color: 'primary',
+				size: '100%',
+				outline: true,
+			},
+		];
 
-		this.setResizeBreakpoint();
-	}
-
-	shownPassword(): void {
-		this.hidePassword = !this.hidePassword;
-	}
-
-	detectScreenSize() {
-		this.windowSize = this.resizeService.getScreenWidth();
-		this.breakpointValue = window.innerWidth <= 960 ? 1 : 2;
-	}
-
-	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
-		return this.breakpointService.getMinValueByBreakpoint(Breakpoint);
-	}
-
-	private setResizeBreakpoint(): void {
-		this.breakpointService
-			.getCurrentBreakpoint()
-			.subscribe((state: BreakpointState) => {
-				const currentBreakpoint =
-					this.breakpointService.getCurrentBreakpointValue(state);
-
-				if (currentBreakpoint) {
-					this.breakpoint =
-						this.breakpointService.getBreakpoint(currentBreakpoint);
-				}
-			});
+		this.image = {
+			src: 'assets/img/auth/register.jpg',
+			alt: '',
+			position: 'top',
+		};
 	}
 }
