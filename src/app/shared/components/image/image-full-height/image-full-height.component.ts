@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class ImageFullHeightComponent {
 	@Input() src!: string;
 	@Input() alt!: string;
+	@Input() position!: 'top' | 'bottom' | 'center';
 }

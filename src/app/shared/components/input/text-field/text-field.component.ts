@@ -20,7 +20,7 @@ export class TextFieldComponent implements OnInit {
 			this.type === 'text' || !this.hidePassword ? 'text' : 'password';
 	}
 
-	clickEndIcon(): void {
+	shownPassword(): void {
 		this.hidePassword = !this.hidePassword;
 	}
 }

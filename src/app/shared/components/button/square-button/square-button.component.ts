@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -8,7 +9,7 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 })
 export class SquareButtonComponent {
 	@Input() label!: string;
-	@Input() color!: string;
+	@Input() color!: ThemePalette;
 	@Input() icon!: IconDefinition;
 	@Input() size!: string;
 	@Input() outline!: boolean;

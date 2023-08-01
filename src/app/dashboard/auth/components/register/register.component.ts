@@ -4,11 +4,11 @@ import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.scss'],
+	selector: 'app-register',
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 	socialProviders!: ISocialProvider[];
 	image!: IImage;
 	hidePassword!: boolean;
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 		];
 
 		this.image = {
-			src: 'assets/img/auth/login.jpg',
+			src: 'assets/img/auth/register.jpg',
 			alt: '',
 			position: 'top',
 		};

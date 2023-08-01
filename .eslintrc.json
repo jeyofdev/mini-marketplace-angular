@@ -42,11 +42,7 @@
 			"extends": ["plugin:@angular-eslint/template/process-inline-templates"],
 			"rules": {
 				"lines-between-class-members": "off",
-				"@typescript-eslint/lines-between-class-members": [
-					"error",
-					"always",
-					{ "exceptAfterSingleLine": true }
-				],
+				"@typescript-eslint/lines-between-class-members": "off",
 				"import/no-extraneous-dependencies": "off"
 			}
 		}

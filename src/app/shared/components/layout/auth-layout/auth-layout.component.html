@@ -1,3 +1,99 @@
 <div class="layout-container">
-	<ng-content></ng-content>
+	<!-- <mat-grid-list
+		[cols]="breakpointValue"
+		rowHeight="100%"
+		(window:resize)="detectScreenSize()"
+		[style.maxHeight]="getMaxHeightContainer()"
+	>
+		<mat-grid-tile
+			*ngIf="windowSize >= minValueByBreakpoint('md')"
+			class="grid-item-1"
+		>
+			<app-image-full-height
+				[src]="image.src"
+				[alt]="image.alt"
+				[position]="image.position"
+			></app-image-full-height>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="content-box">
+				<div class="content">
+					<div class="login-top">
+						<h1 class="login-title text-center mat-headline-3">
+							{{ pageTitle }}
+						</h1>
+
+						<h3 class="text-center">
+							{{ subtitle }}
+						</h3>
+					</div>
+
+					<ng-content></ng-content>
+
+					<app-horizontal-divider>OR</app-horizontal-divider>
+
+					<div class="social-connect-box">
+						<app-square-button
+							*ngFor="let provider of socialProviders"
+							[label]="provider.label"
+							[color]="provider.color"
+							[icon]="provider.icon"
+							[size]="provider.size"
+							[outline]="provider.outline"
+						></app-square-button>
+					</div>
+				</div>
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list> -->
+
+	<div
+		class="grid"
+		[style.maxHeight]="getMaxHeightContainer()"
+		(window:resize)="detectScreenSize()"
+	>
+		<div
+			class="grid-item grid-item-1"
+			[style.maxHeight]="getMaxHeightContainer()"
+		>
+			<app-image-full-height
+				[src]="image.src"
+				[alt]="image.alt"
+				[position]="image.position"
+			></app-image-full-height>
+		</div>
+
+		<div class="grid-item grid-item-2">
+			<div class="content-box">
+				<div class="content">
+					<div class="login-top">
+						<h1 class="login-title text-center mat-headline-3">
+							{{ pageTitle }}
+						</h1>
+
+						<h3 class="text-center">
+							{{ subtitle }}
+						</h3>
+					</div>
+
+					<!-- Form in parent -->
+					<ng-content></ng-content>
+
+					<app-horizontal-divider>OR</app-horizontal-divider>
+
+					<div class="social-connect-box">
+						<app-square-button
+							*ngFor="let provider of socialProviders"
+							[label]="provider.label"
+							[color]="provider.color"
+							[icon]="provider.icon"
+							[size]="provider.size"
+							[outline]="provider.outline"
+						></app-square-button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

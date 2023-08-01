@@ -1,0 +1,63 @@
+<app-auth-layout
+	pageTitle="Register"
+	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+	[socialProviders]="socialProviders"
+	[image]="image"
+	containerMaxHeight="850px"
+>
+	<form class="login-form">
+		<div class="form-row">
+			<app-text-field
+				appearance="outline"
+				name="firstname"
+				label="Firstname"
+			></app-text-field>
+
+			<app-text-field
+				appearance="outline"
+				name="lastname"
+				label="Lastname"
+			></app-text-field>
+		</div>
+
+		<div class="form-row">
+			<app-text-field
+				appearance="outline"
+				name="username"
+				label="Username"
+			></app-text-field>
+		</div>
+
+		<div class="form-row">
+			<app-text-field
+				appearance="outline"
+				name="email"
+				label="Email"
+			></app-text-field>
+		</div>
+
+		<div class="form-row">
+			<app-text-field
+				type="password"
+				appearance="outline"
+				name="password"
+				label="Password"
+				[endIcon]="true"
+			>
+				></app-text-field
+			>
+
+			<app-text-field
+				type="password"
+				appearance="outline"
+				name="confirmPassword"
+				label="Confirm password"
+				[endIcon]="true"
+			>
+				></app-text-field
+			>
+		</div>
+
+		<button mat-raised-button color="primary" type="submit">Register</button>
+	</form></app-auth-layout
+>

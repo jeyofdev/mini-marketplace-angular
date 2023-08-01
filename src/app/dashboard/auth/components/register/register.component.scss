@@ -1,0 +1,25 @@
+@import '../../../../theme/theme';
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0rem 1rem;
+	width: 100%;
+
+	@media (min-width: $sm) {
+		flex-direction: row;
+		gap: 1rem;
+	}
+}
+
+app-text-field {
+	width: 100%;
+}
