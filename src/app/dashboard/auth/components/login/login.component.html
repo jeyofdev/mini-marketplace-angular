@@ -1,16 +1,22 @@
-<!-- <app-auth-layout
+<app-auth-layout
 	pageTitle="Log in"
 	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
 	[socialProviders]="socialProviders"
 	[image]="image"
 	containerMaxHeight="700px"
 >
-	<form class="login-form">
+	<form
+		class="login-form"
+		[formGroup]="mainForm"
+		(ngSubmit)="onMainFormSubmit()"
+	>
 		<div class="form-row">
 			<app-text-field
 				appearance="outline"
 				name="email"
 				label="Email"
+				formControlName="email"
+				[parentForm]="mainForm"
 			></app-text-field>
 		</div>
 
@@ -21,6 +27,8 @@
 				name="password"
 				label="Password"
 				[endIcon]="true"
+				formControlName="password"
+				[parentForm]="mainForm"
 			>
 				></app-text-field
 			>
@@ -28,4 +36,4 @@
 
 		<button mat-raised-button color="primary" type="submit">Log In</button>
 	</form></app-auth-layout
-> -->
+>

@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 	socialProviders!: ISocialProvider[];
 	image!: IImage;
 	hidePassword!: boolean;
-	registrationForm!: FormGroup;
+	mainForm!: FormGroup;
 	personnalInfosForm!: FormGroup;
 	passwordForm!: FormGroup;
 
@@ -48,14 +48,16 @@ export class RegisterComponent implements OnInit {
 		this.initRegistrationForm();
 	}
 
+	onMainFormSubmit(): void {
+		// eslint-disable-next-line no-console
+		console.log(this.mainForm.value);
+	}
+
 	private initRegistrationForm(): void {
-		this.registrationForm = this.formBuilder.group({
+		this.mainForm = this.formBuilder.group({
 			personnalInfos: this.personnalInfosForm,
 			email: [''],
-			password: this.formBuilder.group({
-				password: [''],
-				confirmPassword: [''],
-			}),
+			password: this.passwordForm,
 		});
 	}
 
@@ -70,10 +72,5 @@ export class RegisterComponent implements OnInit {
 			password: [''],
 			confirmPassword: [''],
 		});
-	}
-
-	onRegistrationFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.registrationForm.value);
 	}
 }

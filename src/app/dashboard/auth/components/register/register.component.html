@@ -7,18 +7,18 @@
 >
 	<form
 		class="login-form"
-		*ngIf="registrationForm"
-		[formGroup]="registrationForm"
-		(ngSubmit)="onRegistrationFormSubmit()"
+		*ngIf="mainForm"
+		[formGroup]="mainForm"
+		(ngSubmit)="onMainFormSubmit()"
 	>
-		<div [formGroup]="personnalInfosForm">
+		<ng-container [formGroup]="personnalInfosForm">
 			<div class="form-row">
 				<app-text-field
 					appearance="outline"
 					name="firstname"
 					label="Firstname"
 					formControlName="firstname"
-					[parentForm]="registrationForm"
+					[parentForm]="mainForm"
 				></app-text-field>
 
 				<app-text-field
@@ -26,7 +26,7 @@
 					name="lastname"
 					label="Lastname"
 					formControlName="lastname"
-					[parentForm]="registrationForm"
+					[parentForm]="mainForm"
 				></app-text-field>
 			</div>
 
@@ -36,10 +36,10 @@
 					name="username"
 					label="Username"
 					formControlName="username"
-					[parentForm]="registrationForm"
+					[parentForm]="mainForm"
 				></app-text-field>
 			</div>
-		</div>
+		</ng-container>
 
 		<div class="form-row">
 			<app-text-field
@@ -47,11 +47,11 @@
 				name="email"
 				label="Email"
 				formControlName="email"
-				[parentForm]="registrationForm"
+				[parentForm]="mainForm"
 			></app-text-field>
 		</div>
 
-		<div [formGroup]="passwordForm">
+		<ng-container [formGroup]="passwordForm">
 			<div class="form-row">
 				<app-text-field
 					type="password"
@@ -61,7 +61,7 @@
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="password"
-					[parentForm]="registrationForm"
+					[parentForm]="mainForm"
 				>
 					></app-text-field
 				>
@@ -74,12 +74,12 @@
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="confirmPassword"
-					[parentForm]="registrationForm"
+					[parentForm]="mainForm"
 				>
 					></app-text-field
 				>
 			</div>
-		</div>
+		</ng-container>
 
 		<button mat-raised-button color="primary" type="submit">Register</button>
 	</form></app-auth-layout
