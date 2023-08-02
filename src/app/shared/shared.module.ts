@@ -7,6 +7,7 @@ import { TextFieldComponent } from './components/input/text-field/text-field.com
 import { HorizontalDividerComponent } from './components/divider/horizontal-divider/horizontal-divider.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
 import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -16,8 +17,14 @@ import { ImageFullHeightComponent } from './components/image/image-full-height/i
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
 	],
-	imports: [CommonModule, MaterialModule, FontAwesomeModule],
+	imports: [
+		CommonModule,
+		MaterialModule,
+		FontAwesomeModule,
+		ReactiveFormsModule,
+	],
 	exports: [
+		ReactiveFormsModule,
 		MaterialModule,
 		FontAwesomeModule,
 		SquareButtonComponent,

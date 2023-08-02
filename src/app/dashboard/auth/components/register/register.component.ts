@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
@@ -12,6 +13,11 @@ export class RegisterComponent implements OnInit {
 	socialProviders!: ISocialProvider[];
 	image!: IImage;
 	hidePassword!: boolean;
+	registrationForm!: FormGroup;
+	personnalInfosForm!: FormGroup;
+	passwordForm!: FormGroup;
+
+	constructor(private formBuilder: FormBuilder) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
@@ -37,5 +43,37 @@ export class RegisterComponent implements OnInit {
 			alt: '',
 			position: 'top',
 		};
+
+		this.initFormControls();
+		this.initRegistrationForm();
+	}
+
+	private initRegistrationForm(): void {
+		this.registrationForm = this.formBuilder.group({
+			personnalInfos: this.personnalInfosForm,
+			email: [''],
+			password: this.formBuilder.group({
+				password: [''],
+				confirmPassword: [''],
+			}),
+		});
+	}
+
+	private initFormControls(): void {
+		this.personnalInfosForm = this.formBuilder.group({
+			firstname: [''],
+			lastname: [''],
+			username: [''],
+		});
+
+		this.passwordForm = this.formBuilder.group({
+			password: [''],
+			confirmPassword: [''],
+		});
+	}
+
+	onRegistrationFormSubmit(): void {
+		// eslint-disable-next-line no-console
+		console.log(this.registrationForm.value);
 	}
 }
