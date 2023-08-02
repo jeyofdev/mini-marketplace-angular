@@ -1,5 +1,10 @@
 <div class="form-control">
-	<mat-label>{{ label }}</mat-label>
+	<mat-label
+		[ngClass]="{
+			'label-error': formControl.invalid && formControl.dirty
+		}"
+		>{{ label }}</mat-label
+	>
 	<mat-form-field class="form-field" [appearance]="appearance">
 		<input
 			matInput
@@ -24,20 +29,20 @@
 	<div
 		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
 	>
-		<div *ngIf="formControl.hasError('required')">
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('required')">
 			{{ validationMessages.required?.message }}
-		</div>
+		</mat-error>
 
-		<div *ngIf="formControl.hasError('minlength')">
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('minlength')">
 			{{ validationMessages.minlength?.message }}
-		</div>
+		</mat-error>
 
-		<div *ngIf="formControl.hasError('maxlength')">
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('maxlength')">
 			{{ validationMessages.maxlength?.message }}
-		</div>
+		</mat-error>
 
-		<div *ngIf="formControl.hasError('pattern')">
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('pattern')">
 			{{ validationMessages.pattern?.message }}
-		</div>
+		</mat-error>
 	</div>
 </div>

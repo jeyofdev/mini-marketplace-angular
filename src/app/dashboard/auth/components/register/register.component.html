@@ -11,6 +11,10 @@
 		[formGroup]="mainForm"
 		(ngSubmit)="onMainFormSubmit()"
 	>
+		<mat-error class="feedback-error" *ngIf="showPasswordError$ | async">
+			{{ registerValidationMessages.passewordEqual?.message }}
+		</mat-error>
+
 		<ng-container [formGroup]="personnalInfosForm">
 			<div class="form-row">
 				<app-text-field
@@ -85,8 +89,6 @@
 					[parentForm]="mainForm"
 					[validationMessages]="registerValidationMessages.confirmPassword"
 				></app-text-field>
-
-				<div *ngIf="showPasswordError$ | async">The passwords not matching</div>
 			</div>
 		</ng-container>
 
