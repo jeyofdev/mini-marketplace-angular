@@ -6,6 +6,7 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { IValidationMessage } from 'src/app/shared/interfaces/validation-message.interface';
 
 @Component({
 	selector: 'app-text-field',
@@ -30,6 +31,8 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 
 	@Input() control!: string[]; // [controlGroup, controlField]
 	@Input() groupName!: string;
+
+	@Input() validationMessages!: IValidationMessage;
 
 	isDisabled!: boolean;
 	value!: string;

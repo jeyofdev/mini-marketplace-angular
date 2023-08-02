@@ -17,6 +17,7 @@
 				label="Email"
 				formControlName="email"
 				[parentForm]="mainForm"
+				[validationMessages]="loginValidationMessages.email"
 			></app-text-field>
 		</div>
 
@@ -29,6 +30,7 @@
 				[endIcon]="true"
 				formControlName="password"
 				[parentForm]="mainForm"
+				[validationMessages]="loginValidationMessages.password"
 			>
 				></app-text-field
 			>

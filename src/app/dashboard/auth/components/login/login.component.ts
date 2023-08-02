@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
+import { loginValidationMessages } from '../../validations/messages.validation';
 
 @Component({
 	selector: 'app-login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
 	image!: IImage;
 	hidePassword!: boolean;
 	mainForm!: FormGroup;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	loginValidationMessages!: any;
 
 	constructor(private formBuilder: FormBuilder) {}
 
@@ -43,6 +46,8 @@ export class LoginComponent implements OnInit {
 		};
 
 		this.initMainForm();
+
+		this.loginValidationMessages = loginValidationMessages;
 	}
 
 	onMainFormSubmit(): void {

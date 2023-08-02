@@ -24,9 +24,20 @@
 	<div
 		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
 	>
-		<div *ngIf="formControl.hasError('required')">le champs est requis</div>
+		<div *ngIf="formControl.hasError('required')">
+			{{ validationMessages.required?.message }}
+		</div>
+
 		<div *ngIf="formControl.hasError('minlength')">
-			This field must contain at least 5 characters
+			{{ validationMessages.minlength?.message }}
+		</div>
+
+		<div *ngIf="formControl.hasError('maxlength')">
+			{{ validationMessages.maxlength?.message }}
+		</div>
+
+		<div *ngIf="formControl.hasError('pattern')">
+			{{ validationMessages.pattern?.message }}
 		</div>
 	</div>
 </div>

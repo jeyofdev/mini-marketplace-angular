@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
+import { registerValidationMessages } from '../../validations/messages.validation';
 
 @Component({
 	selector: 'app-register',
@@ -16,6 +17,9 @@ export class RegisterComponent implements OnInit {
 	mainForm!: FormGroup;
 	personnalInfosForm!: FormGroup;
 	passwordForm!: FormGroup;
+	private regexEmail!: RegExp;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	registerValidationMessages!: any;
 
 	constructor(private formBuilder: FormBuilder) {}
 
@@ -46,6 +50,8 @@ export class RegisterComponent implements OnInit {
 
 		this.initFormControls();
 		this.initRegistrationForm();
+
+		this.registerValidationMessages = registerValidationMessages;
 	}
 
 	onMainFormSubmit(): void {
@@ -54,23 +60,80 @@ export class RegisterComponent implements OnInit {
 	}
 
 	private initRegistrationForm(): void {
+		this.regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
 		this.mainForm = this.formBuilder.group({
 			personnalInfos: this.personnalInfosForm,
-			email: ['', Validators.required],
+			email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
 			password: this.passwordForm,
 		});
 	}
 
 	private initFormControls(): void {
 		this.personnalInfosForm = this.formBuilder.group({
-			firstname: ['', Validators.required],
-			lastname: ['', Validators.required],
-			username: ['', [Validators.required, Validators.minLength(5)]],
+			firstname: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						registerValidationMessages.firstname.minlength.value,
+					),
+					Validators.maxLength(
+						registerValidationMessages.firstname.maxlength.value,
+					),
+				],
+			],
+			lastname: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						registerValidationMessages.lastname.minlength.value,
+					),
+					Validators.maxLength(
+						registerValidationMessages.lastname.maxlength.value,
+					),
+				],
+			],
+			username: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						registerValidationMessages.username.minlength.value,
+					),
+					Validators.maxLength(
+						registerValidationMessages.username.maxlength.value,
+					),
+				],
+			],
 		});
 
 		this.passwordForm = this.formBuilder.group({
-			password: ['', Validators.required],
-			confirmPassword: ['', Validators.required],
+			password: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						registerValidationMessages.password.minlength.value,
+					),
+					Validators.maxLength(
+						registerValidationMessages.password.maxlength.value,
+					),
+				],
+			],
+			confirmPassword: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						registerValidationMessages.confirmPassword.minlength.value,
+					),
+					Validators.maxLength(
+						registerValidationMessages.confirmPassword.maxlength.value,
+					),
+				],
+			],
 		});
 	}
 }

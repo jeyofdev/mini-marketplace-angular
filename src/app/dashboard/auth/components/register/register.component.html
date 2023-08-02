@@ -20,6 +20,7 @@
 					formControlName="firstname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.firstname"
 				></app-text-field>
 
 				<app-text-field
@@ -29,6 +30,7 @@
 					formControlName="lastname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.lastname"
 				></app-text-field>
 			</div>
 
@@ -40,6 +42,7 @@
 					formControlName="username"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.username"
 				></app-text-field>
 			</div>
 		</ng-container>
@@ -51,6 +54,7 @@
 				label="Email"
 				formControlName="email"
 				[parentForm]="mainForm"
+				[validationMessages]="registerValidationMessages.email"
 			></app-text-field>
 		</div>
 
@@ -66,6 +70,7 @@
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.password"
 				>
 					></app-text-field
 				>
@@ -80,6 +85,7 @@
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.confirmPassword"
 				>
 					></app-text-field
 				>
