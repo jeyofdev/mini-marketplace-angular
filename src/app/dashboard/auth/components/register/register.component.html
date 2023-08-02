@@ -71,9 +71,7 @@
 					groupName="passwordForm"
 					[parentForm]="mainForm"
 					[validationMessages]="registerValidationMessages.password"
-				>
-					></app-text-field
-				>
+				></app-text-field>
 
 				<app-text-field
 					type="password"
@@ -86,9 +84,9 @@
 					groupName="passwordForm"
 					[parentForm]="mainForm"
 					[validationMessages]="registerValidationMessages.confirmPassword"
-				>
-					></app-text-field
-				>
+				></app-text-field>
+
+				<div *ngIf="showPasswordError$ | async">The passwords not matching</div>
 			</div>
 		</ng-container>
 

@@ -60,6 +60,9 @@ export const registerValidationMessages = {
 			value: 100,
 		},
 	},
+	passewordEqual: {
+		message: 'The Passwords must match',
+	},
 };
 
 export const loginValidationMessages = {

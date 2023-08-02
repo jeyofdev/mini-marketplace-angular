@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+	FormGroup,
+	FormBuilder,
+	Validators,
+	FormControl,
+} from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
 import { registerValidationMessages } from '../../validations/messages.validation';
+import { inputEqualValidator } from 'src/app/shared/validators/input-equal.validator';
+import { Observable, map } from 'rxjs';
 
 @Component({
 	selector: 'app-register',
@@ -20,6 +27,10 @@ export class RegisterComponent implements OnInit {
 	private regexEmail!: RegExp;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	registerValidationMessages!: any;
+
+	showPasswordError$!: Observable<boolean>;
+	confirmPasswordCtrl!: FormControl;
+	passwordCtrl!: FormControl;
 
 	constructor(private formBuilder: FormBuilder) {}
 
@@ -50,13 +61,14 @@ export class RegisterComponent implements OnInit {
 
 		this.initFormControls();
 		this.initRegistrationForm();
+		this.initObservables();
 
 		this.registerValidationMessages = registerValidationMessages;
 	}
 
 	onMainFormSubmit(): void {
 		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
+		console.log(this.mainForm);
 	}
 
 	private initRegistrationForm(): void {
@@ -109,31 +121,43 @@ export class RegisterComponent implements OnInit {
 			],
 		});
 
-		this.passwordForm = this.formBuilder.group({
-			password: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						registerValidationMessages.password.minlength.value,
-					),
-					Validators.maxLength(
-						registerValidationMessages.password.maxlength.value,
-					),
-				],
-			],
-			confirmPassword: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						registerValidationMessages.confirmPassword.minlength.value,
-					),
-					Validators.maxLength(
-						registerValidationMessages.confirmPassword.maxlength.value,
-					),
-				],
-			],
-		});
+		this.passwordCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(registerValidationMessages.password.minlength.value),
+			Validators.maxLength(registerValidationMessages.password.maxlength.value),
+		]);
+
+		this.confirmPasswordCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				registerValidationMessages.confirmPassword.minlength.value,
+			),
+			Validators.maxLength(
+				registerValidationMessages.confirmPassword.maxlength.value,
+			),
+		]);
+
+		this.passwordForm = this.formBuilder.group(
+			{
+				password: this.passwordCtrl,
+				confirmPassword: this.confirmPasswordCtrl,
+			},
+			{
+				updateOn: 'blur',
+				validators: [inputEqualValidator('password', 'confirmPassword')],
+			},
+		);
+	}
+
+	private initObservables(): void {
+		this.showPasswordError$ = this.passwordForm.statusChanges.pipe(
+			map(
+				status =>
+					status === 'INVALID' &&
+					this.passwordCtrl.value &&
+					this.confirmPasswordCtrl.value &&
+					this.passwordForm.hasError('confirmEqual'),
+			),
+		);
 	}
 }
