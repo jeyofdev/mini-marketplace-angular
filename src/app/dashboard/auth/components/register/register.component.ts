@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
@@ -12,6 +13,11 @@ export class RegisterComponent implements OnInit {
 	socialProviders!: ISocialProvider[];
 	image!: IImage;
 	hidePassword!: boolean;
+	mainForm!: FormGroup;
+	personnalInfosForm!: FormGroup;
+	passwordForm!: FormGroup;
+
+	constructor(private formBuilder: FormBuilder) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
@@ -37,5 +43,34 @@ export class RegisterComponent implements OnInit {
 			alt: '',
 			position: 'top',
 		};
+
+		this.initFormControls();
+		this.initRegistrationForm();
+	}
+
+	onMainFormSubmit(): void {
+		// eslint-disable-next-line no-console
+		console.log(this.mainForm.value);
+	}
+
+	private initRegistrationForm(): void {
+		this.mainForm = this.formBuilder.group({
+			personnalInfos: this.personnalInfosForm,
+			email: ['', Validators.required],
+			password: this.passwordForm,
+		});
+	}
+
+	private initFormControls(): void {
+		this.personnalInfosForm = this.formBuilder.group({
+			firstname: ['', Validators.required],
+			lastname: ['', Validators.required],
+			username: ['', [Validators.required, Validators.minLength(5)]],
+		});
+
+		this.passwordForm = this.formBuilder.group({
+			password: ['', Validators.required],
+			confirmPassword: ['', Validators.required],
+		});
 	}
 }

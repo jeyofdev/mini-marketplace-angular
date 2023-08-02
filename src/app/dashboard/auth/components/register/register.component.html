@@ -5,58 +5,86 @@
 	[image]="image"
 	containerMaxHeight="850px"
 >
-	<form class="login-form">
-		<div class="form-row">
-			<app-text-field
-				appearance="outline"
-				name="firstname"
-				label="Firstname"
-			></app-text-field>
+	<form
+		class="login-form"
+		*ngIf="mainForm"
+		[formGroup]="mainForm"
+		(ngSubmit)="onMainFormSubmit()"
+	>
+		<ng-container [formGroup]="personnalInfosForm">
+			<div class="form-row">
+				<app-text-field
+					appearance="outline"
+					name="firstname"
+					label="Firstname"
+					formControlName="firstname"
+					groupName="personnalInfosForm"
+					[parentForm]="mainForm"
+				></app-text-field>
 
-			<app-text-field
-				appearance="outline"
-				name="lastname"
-				label="Lastname"
-			></app-text-field>
-		</div>
+				<app-text-field
+					appearance="outline"
+					name="lastname"
+					label="Lastname"
+					formControlName="lastname"
+					groupName="personnalInfosForm"
+					[parentForm]="mainForm"
+				></app-text-field>
+			</div>
 
-		<div class="form-row">
-			<app-text-field
-				appearance="outline"
-				name="username"
-				label="Username"
-			></app-text-field>
-		</div>
+			<div class="form-row">
+				<app-text-field
+					appearance="outline"
+					name="username"
+					label="Username"
+					formControlName="username"
+					groupName="personnalInfosForm"
+					[parentForm]="mainForm"
+				></app-text-field>
+			</div>
+		</ng-container>
 
 		<div class="form-row">
 			<app-text-field
 				appearance="outline"
 				name="email"
 				label="Email"
+				formControlName="email"
+				[parentForm]="mainForm"
 			></app-text-field>
 		</div>
 
-		<div class="form-row">
-			<app-text-field
-				type="password"
-				appearance="outline"
-				name="password"
-				label="Password"
-				[endIcon]="true"
-			>
-				></app-text-field
-			>
+		<ng-container [formGroup]="passwordForm">
+			<div class="form-row">
+				<app-text-field
+					type="password"
+					appearance="outline"
+					name="password"
+					label="Password"
+					[hidePassword]="true"
+					[endIcon]="true"
+					formControlName="password"
+					groupName="passwordForm"
+					[parentForm]="mainForm"
+				>
+					></app-text-field
+				>
 
-			<app-text-field
-				type="password"
-				appearance="outline"
-				name="confirmPassword"
-				label="Confirm password"
-				[endIcon]="true"
-			>
-				></app-text-field
-			>
-		</div>
+				<app-text-field
+					type="password"
+					appearance="outline"
+					name="confirmPassword"
+					label="Confirm password"
+					[hidePassword]="true"
+					[endIcon]="true"
+					formControlName="confirmPassword"
+					groupName="passwordForm"
+					[parentForm]="mainForm"
+				>
+					></app-text-field
+				>
+			</div>
+		</ng-container>
 
 		<button mat-raised-button color="primary" type="submit">Register</button>
 	</form></app-auth-layout
