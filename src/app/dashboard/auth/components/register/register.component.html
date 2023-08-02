@@ -18,6 +18,7 @@
 					name="firstname"
 					label="Firstname"
 					formControlName="firstname"
+					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
 				></app-text-field>
 
@@ -26,6 +27,7 @@
 					name="lastname"
 					label="Lastname"
 					formControlName="lastname"
+					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
 				></app-text-field>
 			</div>
@@ -36,6 +38,7 @@
 					name="username"
 					label="Username"
 					formControlName="username"
+					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
 				></app-text-field>
 			</div>
@@ -61,6 +64,7 @@
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="password"
+					groupName="passwordForm"
 					[parentForm]="mainForm"
 				>
 					></app-text-field
@@ -74,6 +78,7 @@
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="confirmPassword"
+					groupName="passwordForm"
 					[parentForm]="mainForm"
 				>
 					></app-text-field

@@ -2,6 +2,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
+	FormControl,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
@@ -26,6 +27,9 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	@Input() hidePassword!: boolean;
 	@Input() endIcon!: boolean;
 	@Input() parentForm!: FormGroup;
+
+	@Input() control!: string[]; // [controlGroup, controlField]
+	@Input() groupName!: string;
 
 	isDisabled!: boolean;
 	value!: string;
@@ -59,5 +63,19 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 
 	registerOnTouched(fn: any): void {
 		this.onTouched = fn;
+	}
+
+	get formControl() {
+		return this.getFormControl();
+	}
+
+	private getFormControl(): FormControl {
+		if (this.groupName) {
+			const group = this.groupName.slice(0, this.groupName.length - 4);
+			const control = this.parentForm.controls[group].get(this.name);
+			return control as FormControl;
+		} else {
+			return this.parentForm.get(this.name) as FormControl;
+		}
 	}
 }

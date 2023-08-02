@@ -20,4 +20,13 @@
 			<mat-icon>{{ !hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
+
+	<div
+		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
+	>
+		<div *ngIf="formControl.hasError('required')">le champs est requis</div>
+		<div *ngIf="formControl.hasError('minlength')">
+			This field must contain at least 5 characters
+		</div>
+	</div>
 </div>

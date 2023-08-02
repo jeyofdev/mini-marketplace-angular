@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from 'src/app/shared/model/image.model';
 import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
 
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
-			email: [''],
-			password: [''],
+			email: ['', Validators.required],
+			password: ['', Validators.required],
 		});
 	}
 }
