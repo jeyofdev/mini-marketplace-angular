@@ -12,6 +12,8 @@ import { registerValidationMessages } from '../../validations/messages.validatio
 import { inputEqualValidator } from '../../../../shared/validators/input-equal.validator';
 import { Observable, map } from 'rxjs';
 import { ProviderEnum } from '../../../../shared/enum/provider.enum';
+import { AuthService } from '../../../../shared/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -33,7 +35,11 @@ export class RegisterComponent implements OnInit {
 	confirmPasswordCtrl!: FormControl;
 	passwordCtrl!: FormControl;
 
-	constructor(private formBuilder: FormBuilder) {}
+	constructor(
+		private formBuilder: FormBuilder,
+		private authService: AuthService,
+		private router: Router,
+	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
@@ -71,7 +77,17 @@ export class RegisterComponent implements OnInit {
 
 	onMainFormSubmit(): void {
 		// eslint-disable-next-line no-console
-		console.log(this.mainForm);
+		console.log(this.mainForm.value);
+		this.registerWithEmail();
+	}
+
+	registerWithEmail(): void {
+		this.authService.register(
+			this.mainForm.value.email,
+			this.mainForm.value.password.password,
+		);
+
+		this.mainForm.reset();
 	}
 
 	private initRegistrationForm(): void {
