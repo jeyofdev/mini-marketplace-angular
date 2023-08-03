@@ -1,10 +1,13 @@
+import { GoogleAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
 import { BreakpointState } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
-import { BreakpointEnum } from 'src/app/shared/enum/breakpoint.enum';
-import { IImage } from 'src/app/shared/model/image.model';
-import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
-import { BreakpointService } from 'src/app/shared/service/breakpoint.service';
-import { ResizeService } from 'src/app/shared/service/resize.service';
+import { BreakpointEnum } from '../../../enum/breakpoint.enum';
+import { ProviderEnum } from '../../../enum/provider.enum';
+import { IImage } from '../../../model/image.model';
+import { ISocialProvider } from '../../../model/social-provider.model';
+import { BreakpointService } from '../../../service/breakpoint.service';
+import { ResizeService } from '../../../service/resize.service';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
 	selector: 'app-auth-layout',
@@ -27,6 +30,7 @@ export class AuthLayoutComponent implements OnInit {
 	constructor(
 		private resizeService: ResizeService,
 		private breakpointService: BreakpointService,
+		private authService: AuthService,
 	) {}
 
 	ngOnInit(): void {
@@ -50,6 +54,17 @@ export class AuthLayoutComponent implements OnInit {
 		}
 
 		return 'none';
+	}
+
+	loginWithProvider(provider: ProviderEnum): void {
+		let currentProvider;
+		if (provider === ProviderEnum.GOOGLE) {
+			currentProvider = new GoogleAuthProvider();
+		} else {
+			currentProvider = new GithubAuthProvider();
+		}
+
+		this.authService.loginWithPopup(currentProvider);
 	}
 
 	private setResizeBreakpoint(): void {

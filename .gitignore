@@ -58,3 +58,8 @@ Thumbs.db
 /**/.env.test.local
 /**/.env.production.local
 .eslintcache
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

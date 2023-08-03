@@ -6,11 +6,12 @@ import {
 	FormControl,
 } from '@angular/forms';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { IImage } from 'src/app/shared/model/image.model';
-import { ISocialProvider } from 'src/app/shared/model/social-provider.model';
+import { IImage } from '../../../../shared/model/image.model';
+import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { registerValidationMessages } from '../../validations/messages.validation';
-import { inputEqualValidator } from 'src/app/shared/validators/input-equal.validator';
+import { inputEqualValidator } from '../../../../shared/validators/input-equal.validator';
 import { Observable, map } from 'rxjs';
+import { ProviderEnum } from '../../../../shared/enum/provider.enum';
 
 @Component({
 	selector: 'app-register',
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
 				color: 'primary',
 				size: '100%',
 				outline: false,
+				name: ProviderEnum.GOOGLE,
 			},
 			{
 				label: 'Connect with Github',
@@ -50,6 +52,7 @@ export class RegisterComponent implements OnInit {
 				color: 'primary',
 				size: '100%',
 				outline: false,
+				name: ProviderEnum.GITHUB,
 			},
 		];
 
