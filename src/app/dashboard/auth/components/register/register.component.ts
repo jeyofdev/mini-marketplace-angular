@@ -143,7 +143,7 @@ export class RegisterComponent implements OnInit {
 				confirmPassword: this.confirmPasswordCtrl,
 			},
 			{
-				updateOn: 'blur',
+				updateOn: 'change',
 				validators: [inputEqualValidator('password', 'confirmPassword')],
 			},
 		);

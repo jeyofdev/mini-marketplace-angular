@@ -6,6 +6,7 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { IValidationMessage } from 'src/app/shared/interfaces/validation-message.interface';
 
 @Component({
@@ -28,6 +29,8 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	@Input() hidePassword!: boolean;
 	@Input() endIcon!: boolean;
 	@Input() parentForm!: FormGroup;
+
+	@Input() showPasswordError!: Observable<boolean>;
 
 	@Input() control!: string[]; // [controlGroup, controlField]
 	@Input() groupName!: string;
