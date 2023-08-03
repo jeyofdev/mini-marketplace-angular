@@ -8,6 +8,7 @@ import {
 	signInWithPopup,
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
+	signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -37,6 +38,23 @@ export class AuthService {
 	async loginWithPopup(provider: GoogleAuthProvider | GithubAuthProvider) {
 		await signInWithPopup(this.auth, provider);
 		this.router.navigateByUrl('/dashboard');
+	}
+
+	async login(email: string, password: string) {
+		try {
+			const result = await signInWithEmailAndPassword(
+				this.auth,
+				email,
+				password,
+			);
+
+			this.userData = result.user;
+			this.ngZone.run(() => {
+				this.router.navigateByUrl('/dashboard');
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	async register(email: string, password: string) {

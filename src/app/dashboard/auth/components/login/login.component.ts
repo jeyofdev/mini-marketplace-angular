@@ -5,6 +5,7 @@ import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { loginValidationMessages } from '../../validations/messages.validation';
 import { ProviderEnum } from '../../../../shared/enum/provider.enum';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
 	selector: 'app-login',
@@ -19,7 +20,10 @@ export class LoginComponent implements OnInit {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	loginValidationMessages!: any;
 
-	constructor(private formBuilder: FormBuilder) {}
+	constructor(
+		private formBuilder: FormBuilder,
+		private authService: AuthService,
+	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
@@ -56,6 +60,15 @@ export class LoginComponent implements OnInit {
 	onMainFormSubmit(): void {
 		// eslint-disable-next-line no-console
 		console.log(this.mainForm.value);
+		this.loginWithEmail();
+	}
+
+	loginWithEmail(): void {
+		this.authService.login(
+			this.mainForm.value.email,
+			this.mainForm.value.password,
+		);
+		this.mainForm.reset();
 	}
 
 	private initMainForm() {
