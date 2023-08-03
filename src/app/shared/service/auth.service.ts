@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 	userData: any;
-	errorMessage!: string;
+	errorMessage!: string | null;
 
 	constructor(
 		private router: Router,
@@ -44,6 +44,8 @@ export class AuthService {
 	}
 
 	async login(email: string, password: string) {
+		this.resetErrorMessage();
+
 		try {
 			const result = await signInWithEmailAndPassword(
 				this.auth,
@@ -63,6 +65,8 @@ export class AuthService {
 	}
 
 	async register(email: string, password: string) {
+		this.resetErrorMessage();
+
 		try {
 			const result = await createUserWithEmailAndPassword(
 				this.auth,
@@ -73,8 +77,10 @@ export class AuthService {
 			this.ngZone.run(() => {
 				// this.router.navigateByUrl('/dashboard');
 			});
-		} catch (error) {
-			console.log(error);
+		} catch (error: unknown) {
+			if (error instanceof FirebaseError) {
+				this.setErrorMessage(error.code);
+			}
 		}
 	}
 
@@ -97,6 +103,12 @@ export class AuthService {
 		) {
 			this.errorMessage =
 				'Your credentials are incorrect. Please double-check your login details and try again.';
+		} else if (errorCode === 'auth/email-already-in-use') {
+			this.errorMessage = 'Email is invalid or already taken';
 		}
+	}
+
+	private resetErrorMessage(): void {
+		this.errorMessage = null;
 	}
 }
