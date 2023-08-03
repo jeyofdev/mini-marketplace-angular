@@ -11,6 +11,10 @@
 		[formGroup]="mainForm"
 		(ngSubmit)="onMainFormSubmit()"
 	>
+		<mat-error class="feedback-error" *ngIf="showPasswordError$ | async">
+			{{ registerValidationMessages.passwordEqual?.message }}
+		</mat-error>
+
 		<ng-container [formGroup]="personnalInfosForm">
 			<div class="form-row">
 				<app-text-field
@@ -20,6 +24,7 @@
 					formControlName="firstname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.firstname"
 				></app-text-field>
 
 				<app-text-field
@@ -29,6 +34,7 @@
 					formControlName="lastname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.lastname"
 				></app-text-field>
 			</div>
 
@@ -40,6 +46,7 @@
 					formControlName="username"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
+					[validationMessages]="registerValidationMessages.username"
 				></app-text-field>
 			</div>
 		</ng-container>
@@ -51,6 +58,7 @@
 				label="Email"
 				formControlName="email"
 				[parentForm]="mainForm"
+				[validationMessages]="registerValidationMessages.email"
 			></app-text-field>
 		</div>
 
@@ -66,9 +74,8 @@
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-				>
-					></app-text-field
-				>
+					[validationMessages]="registerValidationMessages.password"
+				></app-text-field>
 
 				<app-text-field
 					type="password"
@@ -80,9 +87,9 @@
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-				>
-					></app-text-field
-				>
+					[validationMessages]="registerValidationMessages.confirmPassword"
+					[showPasswordError]="showPasswordError$"
+				></app-text-field>
 			</div>
 		</ng-container>
 

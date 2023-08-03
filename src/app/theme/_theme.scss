@@ -5,6 +5,7 @@
 $app-primary: mat.define-palette(palette.$primary);
 $app-accent: mat.define-palette(palette.$accent);
 $app-warn: mat.define-palette(palette.$warn);
+$app-warn-200: mat.define-palette(palette.$warn, 200);
 
 $typography-configuration: mat-typography-config(
 	$font-family: 'Roboto, "Helvetica Neue", sans-serif',
@@ -56,6 +57,7 @@ $app-theme: mat.define-light-theme(
 $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
+$warn-200: mat-color($app-warn-200);
 
 // Export theme break points
 $xs: get-bp('xs');

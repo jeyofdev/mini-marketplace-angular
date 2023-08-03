@@ -1,5 +1,10 @@
 <div class="form-control">
-	<mat-label>{{ label }}</mat-label>
+	<mat-label
+		[ngClass]="{
+			'label-error': formControl.invalid && formControl.dirty
+		}"
+		>{{ label }}</mat-label
+	>
 	<mat-form-field class="form-field" [appearance]="appearance">
 		<input
 			matInput
@@ -22,11 +27,23 @@
 	</mat-form-field>
 
 	<div
+		class="error-container"
 		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
 	>
-		<div *ngIf="formControl.hasError('required')">le champs est requis</div>
-		<div *ngIf="formControl.hasError('minlength')">
-			This field must contain at least 5 characters
-		</div>
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('required')">
+			{{ validationMessages.required?.message }}
+		</mat-error>
+
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('minlength')">
+			{{ validationMessages.minlength?.message }}
+		</mat-error>
+
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('maxlength')">
+			{{ validationMessages.maxlength?.message }}
+		</mat-error>
+
+		<mat-error class="feedback-error" *ngIf="formControl.hasError('pattern')">
+			{{ validationMessages.pattern?.message }}
+		</mat-error>
 	</div>
 </div>
