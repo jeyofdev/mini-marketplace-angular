@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import { Injectable, NgZone } from '@angular/core';
+import { FirebaseError } from '@angular/fire/app';
 import {
 	Auth,
 	GoogleAuthProvider,
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 	userData: any;
+	errorMessage!: string;
 
 	constructor(
 		private router: Router,
@@ -53,8 +55,10 @@ export class AuthService {
 			this.ngZone.run(() => {
 				this.router.navigateByUrl('/dashboard');
 			});
-		} catch (error) {
-			console.log(error);
+		} catch (error: unknown) {
+			if (error instanceof FirebaseError) {
+				this.setErrorMessage(error.code);
+			}
 		}
 	}
 
@@ -84,5 +88,15 @@ export class AuthService {
 		const token = localStorage.getItem('user');
 		const user = JSON.parse(token as string);
 		console.log(user);
+	}
+
+	private setErrorMessage(errorCode: string) {
+		if (
+			errorCode === 'auth/wrong-password' ||
+			errorCode === 'auth/user-not-found'
+		) {
+			this.errorMessage =
+				'Your credentials are incorrect. Please double-check your login details and try again.';
+		}
 	}
 }

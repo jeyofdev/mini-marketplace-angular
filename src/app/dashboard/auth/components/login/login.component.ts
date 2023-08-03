@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
 	mainForm!: FormGroup;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	loginValidationMessages!: any;
+	regexEmail!: RegExp;
+	formErrorMessage!: string;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -63,18 +65,36 @@ export class LoginComponent implements OnInit {
 		this.loginWithEmail();
 	}
 
-	loginWithEmail(): void {
-		this.authService.login(
+	async loginWithEmail() {
+		await this.authService.login(
 			this.mainForm.value.email,
 			this.mainForm.value.password,
 		);
-		this.mainForm.reset();
+
+		if (this.authService.errorMessage) {
+			this.formErrorMessage = this.authService.errorMessage;
+		} else {
+			this.mainForm.reset();
+		}
 	}
 
 	private initMainForm() {
+		this.regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
 		this.mainForm = this.formBuilder.group({
-			email: ['', Validators.required],
-			password: ['', Validators.required],
+			email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
+			password: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						loginValidationMessages.password.minlength.value,
+					),
+					Validators.maxLength(
+						loginValidationMessages.password.maxlength.value,
+					),
+				],
+			],
 		});
 	}
 }
