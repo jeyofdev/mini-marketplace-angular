@@ -7,7 +7,7 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { IValidationMessage } from 'src/app/shared/interfaces/validation-message.interface';
+import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
 	selector: 'app-text-field',

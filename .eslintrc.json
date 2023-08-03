@@ -3,10 +3,14 @@
 	"ignorePatterns": ["projects/**/*"],
 	"overrides": [
 		{
-			"files": ["*.ts"],
+			"files": ["*.ts", "*.js"],
 			"parserOptions": {
 				"project": ["tsconfig.*?.json"],
-				"createDefaultProgram": true
+				"createDefaultProgram": true,
+				"ecmaVersion": "latest"
+			},
+			"env": {
+				"es6": true
 			},
 			"extends": [
 				"plugin:@typescript-eslint/recommended",
@@ -29,7 +33,9 @@
 			"rules": {
 				"no-console": "warn",
 				"import/no-extraneous-dependencies": "off",
-				"@typescript-eslint/lines-between-class-members": "off"
+				"@typescript-eslint/lines-between-class-members": "off",
+				"@typescript-eslint/no-var-requires": "off",
+				"@typescript-eslint/dot-notation": "error"
 			}
 		},
 		{
