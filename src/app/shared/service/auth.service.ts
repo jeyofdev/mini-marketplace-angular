@@ -9,6 +9,7 @@ import {
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
+	signOut,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -71,6 +72,12 @@ export class AuthService {
 		} catch (error) {
 			console.log(error);
 		}
+	}
+
+	logout() {
+		signOut(this.auth).then(() =>
+			this.router.navigateByUrl('/dashboard/auth/login'),
+		);
 	}
 
 	getAuthLocal() {
