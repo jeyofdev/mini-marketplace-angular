@@ -28,6 +28,7 @@
     "url": "https://github.com/jeyofdev/starter-angular-eslint.git/issues"
   },
   "dependencies": {
+    "@angular-builders/custom-webpack": "^16.0.0",
     "@angular/animations": "^16.1.0",
     "@angular/cdk": "~16.1.6",
     "@angular/common": "^16.1.0",
@@ -43,6 +44,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@types/node": "^20.4.6",
+    "dotenv": "^16.3.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
