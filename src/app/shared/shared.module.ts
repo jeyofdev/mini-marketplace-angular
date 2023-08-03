@@ -8,6 +8,7 @@ import { HorizontalDividerComponent } from './components/divider/horizontal-divi
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
 import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
 	declarations: [
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 		HorizontalDividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
+		AlertComponent,
 	],
 	imports: [
 		CommonModule,
@@ -32,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 		HorizontalDividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
+		AlertComponent,
 	],
 })
 export class SharedModule {}

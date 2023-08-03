@@ -15,12 +15,14 @@
 			{{ registerValidationMessages.passwordEqual?.message }}
 		</mat-error>
 
+		<app-alert [message]="formErrorMessage"></app-alert>
+
 		<ng-container [formGroup]="personnalInfosForm">
 			<div class="form-row">
 				<app-text-field
 					appearance="outline"
 					name="firstname"
-					label="Firstname"
+					label="Firstname *"
 					formControlName="firstname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
@@ -30,7 +32,7 @@
 				<app-text-field
 					appearance="outline"
 					name="lastname"
-					label="Lastname"
+					label="Lastname *"
 					formControlName="lastname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
@@ -42,7 +44,7 @@
 				<app-text-field
 					appearance="outline"
 					name="username"
-					label="Username"
+					label="Username *"
 					formControlName="username"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
@@ -55,7 +57,7 @@
 			<app-text-field
 				appearance="outline"
 				name="email"
-				label="Email"
+				label="Email *"
 				formControlName="email"
 				[parentForm]="mainForm"
 				[validationMessages]="registerValidationMessages.email"
@@ -68,7 +70,7 @@
 					type="password"
 					appearance="outline"
 					name="password"
-					label="Password"
+					label="Password *"
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="password"
@@ -81,7 +83,7 @@
 					type="password"
 					appearance="outline"
 					name="confirmPassword"
-					label="Confirm password"
+					label="Confirm password *"
 					[hidePassword]="true"
 					[endIcon]="true"
 					formControlName="confirmPassword"
@@ -93,6 +95,13 @@
 			</div>
 		</ng-container>
 
-		<button mat-raised-button color="primary" type="submit">Register</button>
+		<button
+			mat-raised-button
+			color="primary"
+			type="submit"
+			[disabled]="!mainForm.valid"
+		>
+			Register
+		</button>
 	</form></app-auth-layout
 >

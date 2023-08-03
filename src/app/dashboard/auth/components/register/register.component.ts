@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
 	private regexEmail!: RegExp;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	registerValidationMessages!: any;
+	formErrorMessage!: string | null;
 
 	showPasswordError$!: Observable<boolean>;
 	confirmPasswordCtrl!: FormControl;
@@ -81,13 +82,18 @@ export class RegisterComponent implements OnInit {
 		this.registerWithEmail();
 	}
 
-	registerWithEmail(): void {
-		this.authService.register(
+	async registerWithEmail() {
+		await this.authService.register(
 			this.mainForm.value.email,
 			this.mainForm.value.password.password,
 		);
 
-		this.mainForm.reset();
+		if (this.authService.errorMessage) {
+			this.formErrorMessage = this.authService.errorMessage;
+		} else {
+			this.formErrorMessage = null;
+			this.mainForm.reset();
+		}
 	}
 
 	private initRegistrationForm(): void {
