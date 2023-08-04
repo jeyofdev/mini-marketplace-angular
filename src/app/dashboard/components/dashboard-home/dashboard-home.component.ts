@@ -12,8 +12,4 @@ export class DashboardHomeComponent implements OnInit {
 	ngOnInit(): void {
 		this.authService.getAuthLocal();
 	}
-
-	logout() {
-		this.authService.logout();
-	}
 }

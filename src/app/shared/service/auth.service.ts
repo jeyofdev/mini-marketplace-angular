@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
 import { Injectable, NgZone } from '@angular/core';
 import { FirebaseError } from '@angular/fire/app';
 import {
@@ -40,7 +39,7 @@ export class AuthService {
 
 	async loginWithPopup(provider: GoogleAuthProvider | GithubAuthProvider) {
 		await signInWithPopup(this.auth, provider);
-		this.router.navigateByUrl('/dashboard');
+		this.router.navigateByUrl('/dashboard/home');
 	}
 
 	async login(email: string, password: string) {
@@ -55,7 +54,7 @@ export class AuthService {
 
 			this.userData = result.user;
 			this.ngZone.run(() => {
-				this.router.navigateByUrl('/dashboard');
+				this.router.navigateByUrl('/dashboard/home');
 			});
 		} catch (error: unknown) {
 			if (error instanceof FirebaseError) {
@@ -93,7 +92,7 @@ export class AuthService {
 	getAuthLocal() {
 		const token = localStorage.getItem('user');
 		const user = JSON.parse(token as string);
-		console.log(user);
+		return user;
 	}
 
 	private setErrorMessage(errorCode: string) {

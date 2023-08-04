@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import {
 	IconDefinition,
 	faBarsStaggered,
@@ -7,8 +8,10 @@ import {
 	faChartSimple,
 	faTags,
 	faCartShopping,
+	faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { INavLink } from 'src/app/shared/interfaces/link.interface';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
 	selector: 'app-dashboard-layout',
@@ -16,15 +19,21 @@ import { INavLink } from 'src/app/shared/interfaces/link.interface';
 	styleUrls: ['./dashboard-layout.component.scss'],
 })
 export class DashboardLayoutComponent implements OnInit {
+	connectedUser!: User;
 	logoIcon!: IconDefinition;
 	addIcon!: IconDefinition;
 	moreIcon!: IconDefinition;
+	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];
 
+	constructor(private authService: AuthService) {}
+
 	ngOnInit(): void {
+		this.connectedUser = this.authService.getAuthLocal();
 		this.logoIcon = faBarsStaggered;
 		this.addIcon = faPlus;
 		this.moreIcon = faEllipsis;
+		this.logoutIcon = faRightFromBracket;
 		this.navLinks = [
 			{
 				label: 'Dashboard',
@@ -42,5 +51,9 @@ export class DashboardLayoutComponent implements OnInit {
 				icon: faTags,
 			},
 		];
+	}
+
+	logout() {
+		this.authService.logout();
 	}
 }

@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
+import { FullnamePipe } from './pipe/fullname.pipe';
 
 @NgModule({
 	declarations: [
@@ -29,6 +30,7 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 		IconButtonComponent,
 		AvatarComponent,
 		NavLinkComponent,
+		FullnamePipe,
 	],
 	imports: [
 		CommonModule,
@@ -52,6 +54,7 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 		IconButtonComponent,
 		AvatarComponent,
 		NavLinkComponent,
+		FullnamePipe,
 	],
 })
 export class SharedModule {}
