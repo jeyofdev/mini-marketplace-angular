@@ -3,6 +3,9 @@
 @import '@angular/material/theming';
 
 $app-primary: mat.define-palette(palette.$primary);
+$app-primary-100: mat.define-palette(palette.$primary, 100);
+$app-primary-300: mat.define-palette(palette.$primary, 300);
+
 $app-accent: mat.define-palette(palette.$accent);
 $app-warn: mat.define-palette(palette.$warn);
 $app-warn-200: mat.define-palette(palette.$warn, 200);
@@ -58,6 +61,8 @@ $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
 $warn-200: mat-color($app-warn-200);
+$primary-100: mat-color($app-primary-100);
+$primary-300: mat-color($app-primary-300);
 
 // Export theme break points
 $xs: get-bp('xs');

@@ -1,0 +1,40 @@
+<div class="layout-container">
+	<div class="grid">
+		<div class="grid-item sidebar">
+			<div class="sidebar-top">
+				<div class="logo-box">
+					<fa-icon class="icon" [icon]="logoIcon"></fa-icon>
+					<h1 class="mat-headline-5">Fashion mode</h1>
+				</div>
+
+				<div class="btn-box">
+					<app-extended-button [icon]="addIcon"
+						>Add new product</app-extended-button
+					>
+				</div>
+
+				<div class="menu-box">
+					<ul>
+						<app-nav-link
+							*ngFor="let link of navLinks"
+							[routerLink]="link.routerLink"
+							[label]="link.label"
+							[icon]="link.icon"
+						></app-nav-link>
+					</ul>
+				</div>
+			</div>
+
+			<div class="sidebar-bottom">
+				<div class="user-box">
+					<app-avatar></app-avatar>
+					<h6 class="user-name">john doe</h6>
+					<app-icon-button [icon]="moreIcon"></app-icon-button>
+				</div>
+			</div>
+		</div>
+		<div class="grid-item content">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

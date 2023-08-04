@@ -5,7 +5,7 @@ import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { loginValidationMessages } from '../../validations/messages.validation';
 import { ProviderEnum } from '../../../../shared/enum/provider.enum';
-import { AuthService } from 'src/app/shared/service/auth.service';
+import { AuthService } from '../../../../shared/service/auth.service';
 
 @Component({
 	selector: 'app-login',
