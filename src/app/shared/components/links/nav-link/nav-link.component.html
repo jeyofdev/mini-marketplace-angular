@@ -1,0 +1,11 @@
+<li class="menu-item" routerLinkActive="active">
+	<fa-icon class="icon" [icon]="icon"></fa-icon>
+	<a
+		[routerLink]="routerLink"
+		routerLinkActive=""
+		[routerLinkActiveOptions]="{ exact: true }"
+		class="link-item"
+	>
+		{{ label }}
+	</a>
+</li>

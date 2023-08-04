@@ -9,6 +9,13 @@ import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout
 import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
+import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
+import { ExtendedButtonComponent } from './components/button/extended-button/extended-button.component';
+import { RouterModule } from '@angular/router';
+import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
+import { FullnamePipe } from './pipe/fullname.pipe';
 
 @NgModule({
 	declarations: [
@@ -18,12 +25,19 @@ import { AlertComponent } from './components/alert/alert.component';
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,
+		DashboardLayoutComponent,
+		ExtendedButtonComponent,
+		IconButtonComponent,
+		AvatarComponent,
+		NavLinkComponent,
+		FullnamePipe,
 	],
 	imports: [
 		CommonModule,
 		MaterialModule,
 		FontAwesomeModule,
 		ReactiveFormsModule,
+		RouterModule,
 	],
 	exports: [
 		ReactiveFormsModule,
@@ -35,6 +49,12 @@ import { AlertComponent } from './components/alert/alert.component';
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,
+		DashboardLayoutComponent,
+		ExtendedButtonComponent,
+		IconButtonComponent,
+		AvatarComponent,
+		NavLinkComponent,
+		FullnamePipe,
 	],
 })
 export class SharedModule {}
