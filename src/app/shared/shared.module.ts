@@ -18,7 +18,7 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
 import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
 	declarations: [
@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 		FullnamePipe,
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
+		ToastComponent,
 	],
 	imports: [
 		CommonModule,
@@ -43,7 +44,6 @@ import { HttpClientModule } from '@angular/common/http';
 		FontAwesomeModule,
 		ReactiveFormsModule,
 		RouterModule,
-		HttpClientModule,
 	],
 	exports: [
 		ReactiveFormsModule,
@@ -63,6 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
 		FullnamePipe,
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
+		ToastComponent,
 	],
 })
 export class SharedModule {}

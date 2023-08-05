@@ -9,6 +9,8 @@ import {
 	faCircleDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastComponent } from '../../toast/toast.component';
 
 @Component({
 	selector: 'app-modal-add-category',
@@ -32,6 +34,7 @@ export class ModalAddCategoryComponent implements OnInit {
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
+		private _snackBar: MatSnackBar,
 	) {}
 
 	onClose(): void {
@@ -39,8 +42,31 @@ export class ModalAddCategoryComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		this.categoryService.add(this.mainForm.value);
-		this.mainForm.reset();
+		this.categoryService
+			.add(this.mainForm.value)
+			.then(() => {
+				this.openSnackBar(
+					`The category '${this.mainForm.value.name}' has been added.`,
+					'successfull',
+				);
+
+				this.mainForm.reset();
+			})
+			.catch(err => {
+				this.openSnackBar(err.message, 'fail');
+			});
+	}
+
+	openSnackBar(message: string, panelClass: string) {
+		this._snackBar.openFromComponent(ToastComponent, {
+			duration: 2000,
+			horizontalPosition: 'right',
+			verticalPosition: 'top',
+			panelClass,
+			data: {
+				message,
+			},
+		});
 	}
 
 	private initMainForm() {

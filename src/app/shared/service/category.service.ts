@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Injectable } from '@angular/core';
 import { ICategory } from '../model/category.model';
 import {
@@ -7,7 +6,6 @@ import {
 	Firestore,
 	addDoc,
 } from '@angular/fire/firestore';
-import { HttpClient } from '@angular/common/http';
 import { collection } from '@firebase/firestore';
 
 @Injectable({
@@ -16,20 +14,13 @@ import { collection } from '@firebase/firestore';
 export class CategoryService {
 	private collectionInstance!: CollectionReference<DocumentData>;
 
-	constructor(
-		private httpClient: HttpClient,
-		private firestore: Firestore,
-	) {
+	constructor(private firestore: Firestore) {
 		this.collectionInstance = collection(this.firestore, 'categories');
 	}
 
 	add(newCategory: ICategory) {
-		addDoc(this.collectionInstance, newCategory)
-			.then(() => {
-				console.log('category save successfully');
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		const docRef = addDoc(this.collectionInstance, newCategory);
+
+		return docRef;
 	}
 }
