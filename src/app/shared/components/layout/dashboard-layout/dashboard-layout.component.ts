@@ -12,6 +12,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { INavLink } from 'src/app/shared/interfaces/link.interface';
 import { AuthService } from '../../../service/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAddProductsComponent } from '../../modal/modal-add-products/modal-add-products.component';
 
 @Component({
 	selector: 'app-dashboard-layout',
@@ -26,7 +28,10 @@ export class DashboardLayoutComponent implements OnInit {
 	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];
 
-	constructor(private authService: AuthService) {}
+	constructor(
+		private authService: AuthService,
+		public dialog: MatDialog,
+	) {}
 
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
@@ -55,5 +60,19 @@ export class DashboardLayoutComponent implements OnInit {
 
 	logout() {
 		this.authService.logout();
+	}
+
+	openModalAddNewProduct() {
+		const dialogRef = this.dialog.open(ModalAddProductsComponent, {
+			width: '400px',
+			height: '100vh',
+			position: { right: '0px', top: '0px' },
+			panelClass: 'modal-add-product',
+		});
+
+		dialogRef.afterClosed().subscribe(() => {
+			// eslint-disable-next-line no-console
+			console.log('after close');
+		});
 	}
 }

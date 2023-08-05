@@ -1,0 +1,21 @@
+@keyframes custom-dialog-enter {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+::ng-deep .modal-add-product {
+	background-color: transparent;
+
+	.mat-mdc-dialog-container .mdc-dialog__surface {
+		animation: custom-dialog-enter 1s ease;
+	}
+}
+
+.modal-container {
+	padding: 1rem 1.2rem;
+}

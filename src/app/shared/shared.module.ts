@@ -16,6 +16,8 @@ import { IconButtonComponent } from './components/button/icon-button/icon-button
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
 import { FullnamePipe } from './pipe/fullname.pipe';
+import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
+import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +33,8 @@ import { FullnamePipe } from './pipe/fullname.pipe';
 		AvatarComponent,
 		NavLinkComponent,
 		FullnamePipe,
+		ModalAddCategoryComponent,
+		ModalAddProductsComponent,
 	],
 	imports: [
 		CommonModule,
@@ -55,6 +59,8 @@ import { FullnamePipe } from './pipe/fullname.pipe';
 		AvatarComponent,
 		NavLinkComponent,
 		FullnamePipe,
+		ModalAddCategoryComponent,
+		ModalAddProductsComponent,
 	],
 })
 export class SharedModule {}
