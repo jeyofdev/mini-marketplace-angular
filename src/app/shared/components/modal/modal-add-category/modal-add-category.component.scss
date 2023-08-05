@@ -1,0 +1,58 @@
+@keyframes custom-dialog-enter {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+::ng-deep .modal-add-category {
+	background-color: transparent;
+
+	.mat-mdc-dialog-container .mdc-dialog__surface {
+		animation: custom-dialog-enter 1s ease;
+	}
+}
+
+.modal-container {
+	padding: 1.5rem 2.25rem;
+}
+
+::ng-deep .mdc-dialog .mdc-dialog__content {
+	padding: 0;
+	max-height: none;
+	overflow-y: hidden;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.add-category-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	width: 100%;
+}
+
+app-text-field {
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+app-horizontal-divider {
+	display: block;
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+}

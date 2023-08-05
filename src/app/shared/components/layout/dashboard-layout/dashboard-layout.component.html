@@ -8,7 +8,9 @@
 				</div>
 
 				<div class="btn-box">
-					<app-extended-button [icon]="addIcon"
+					<app-extended-button
+						[icon]="addIcon"
+						(click)="openModalAddNewProduct()"
 						>Add new product</app-extended-button
 					>
 				</div>
