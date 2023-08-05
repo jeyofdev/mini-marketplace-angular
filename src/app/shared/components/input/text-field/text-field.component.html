@@ -15,7 +15,7 @@
 		<textarea
 			*ngIf="type !== 'text' && type !== 'password'"
 			matInput
-			placeholder="Ex. It makes me feel..."
+			[placeholder]="placeholder"
 			[rows]="rows"
 		></textarea>
 
