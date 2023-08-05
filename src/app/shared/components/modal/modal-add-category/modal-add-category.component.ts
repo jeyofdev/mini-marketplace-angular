@@ -1,3 +1,4 @@
+import { CategoryService } from './../../../service/category.service';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,6 +31,7 @@ export class ModalAddCategoryComponent implements OnInit {
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
+		private categoryService: CategoryService,
 	) {}
 
 	onClose(): void {
@@ -37,8 +39,8 @@ export class ModalAddCategoryComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
+		this.categoryService.add(this.mainForm.value);
+		this.mainForm.reset();
 	}
 
 	private initMainForm() {

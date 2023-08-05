@@ -18,6 +18,7 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
 import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -42,6 +43,7 @@ import { ModalAddProductsComponent } from './components/modal/modal-add-products
 		FontAwesomeModule,
 		ReactiveFormsModule,
 		RouterModule,
+		HttpClientModule,
 	],
 	exports: [
 		ReactiveFormsModule,
