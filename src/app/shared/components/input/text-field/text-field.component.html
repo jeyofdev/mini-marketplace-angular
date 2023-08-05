@@ -2,6 +2,7 @@
 	<mat-label>{{ label }}</mat-label>
 	<mat-form-field class="form-field" [appearance]="appearance">
 		<input
+			*ngIf="type === 'text' || type === 'password'"
 			matInput
 			[type]="type === 'text' || !hidePassword ? 'text' : 'password'"
 			[id]="name"
@@ -10,8 +11,16 @@
 			(input)="onChange($event)"
 			(blur)="onTouched()"
 		/>
+
+		<textarea
+			*ngIf="type !== 'text' && type !== 'password'"
+			matInput
+			placeholder="Ex. It makes me feel..."
+			[rows]="rows"
+		></textarea>
+
 		<button
-			*ngIf="endIcon"
+			*ngIf="endIcon && type === 'password'"
 			mat-icon-button
 			matSuffix
 			type="button"

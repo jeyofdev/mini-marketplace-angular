@@ -22,10 +22,11 @@ import { IValidationMessage } from '../../../interfaces/validation-message.inter
 	],
 })
 export class TextFieldComponent implements OnInit, ControlValueAccessor {
-	@Input() type!: 'text' | 'password';
+	@Input() type!: 'text' | 'password' | 'textarea';
 	@Input() appearance!: 'outline' | 'fill';
 	@Input() name!: string;
 	@Input() label!: string;
+	@Input() rows!: number;
 	@Input() hidePassword!: boolean;
 	@Input() endIcon!: boolean;
 	@Input() parentForm!: FormGroup;

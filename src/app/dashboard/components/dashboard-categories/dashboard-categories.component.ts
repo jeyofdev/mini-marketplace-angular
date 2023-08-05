@@ -12,7 +12,7 @@ export class DashboardCategoriesComponent {
 
 	openModalAddNewCategory() {
 		const dialogRef = this.dialog.open(ModalAddCategoryComponent, {
-			width: '400px',
+			width: '500px',
 			height: '100vh',
 			position: { right: '0px', top: '0px' },
 			panelClass: 'modal-add-category',
