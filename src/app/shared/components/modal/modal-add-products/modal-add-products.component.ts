@@ -7,6 +7,7 @@ import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
 import { ISelectItem } from '../../../interfaces/input.interface';
 import { ICategory } from '../../../model/category.model';
+import { ProductSizeEnum } from 'src/app/shared/enum/product.enum';
 
 @Component({
 	selector: 'app-modal-add-products',
@@ -18,6 +19,7 @@ export class ModalAddProductsComponent implements OnInit {
 	mainForm!: FormGroup;
 
 	categories!: ISelectItem[];
+	sizes!: ISelectItem[];
 
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
@@ -35,11 +37,18 @@ export class ModalAddProductsComponent implements OnInit {
 				mergeMap((categories: ICategory[]) => categories),
 				map((category: ICategory) => ({
 					label: category.name,
-					value: category.name.split(' ').join('-'),
+					value: category.name.split(' ').join('-').toLowerCase(),
 				})),
 				tap(result => this.categories.push(result)),
 			)
 			.subscribe();
+
+		this.sizes = [
+			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
+			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
+			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
+			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
+		];
 
 		this.initMainForm();
 	}
@@ -57,8 +66,9 @@ export class ModalAddProductsComponent implements OnInit {
 		this.mainForm = this.formBuilder.group({
 			brandName: [''],
 			modelName: [''],
-			price: [''],
 			category: [''],
+			size: [''],
+			price: [''],
 		});
 	}
 }

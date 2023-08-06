@@ -43,7 +43,12 @@ export class ModalAddCategoryComponent implements OnInit {
 
 	onMainFormSubmit(): void {
 		this.categoryService
-			.add(this.mainForm.value)
+			.add({
+				name:
+					this.mainForm.value.name.slice(0, 1).toUpperCase() +
+					this.mainForm.value.name.slice(1),
+				description: this.mainForm.value.description,
+			})
 			.then(() => {
 				this.openSnackBar(
 					`The category '${this.mainForm.value.name}' has been added.`,

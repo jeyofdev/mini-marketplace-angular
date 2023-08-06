@@ -51,6 +51,17 @@
 				</div>
 
 				<div class="form-row">
+					<app-select
+						appearance="outline"
+						[items]="sizes"
+						label="Size"
+						name="size"
+						formControlName="size"
+						[parentForm]="mainForm"
+					></app-select>
+				</div>
+
+				<div class="form-row">
 					<app-text-field
 						type="text"
 						appearance="outline"
