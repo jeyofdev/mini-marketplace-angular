@@ -4,13 +4,7 @@
 	<div class="slider-box">
 		<label class="label">{{ ref.value }}</label>
 
-		<mat-slider
-			[max]="max"
-			[min]="min"
-			[step]="step"
-			[disabled]="disabled"
-			[discrete]="true"
-		>
+		<mat-slider [max]="max" [min]="min" [step]="step" [disabled]="disabled">
 			<input
 				matSliderThumb
 				[name]="name"

@@ -75,6 +75,21 @@
 					></app-slider-with-value>
 				</div>
 
+				<div class="form-row" [formGroup]="colorsForm">
+					<mat-label>Available colors</mat-label>
+					<div class="colors-box">
+						<ng-container *ngFor="let color of colors">
+							<app-checkbox-color
+								[name]="color.name"
+								[color]="color"
+								[formControlName]="color.name"
+								groupName="colorsForm"
+								[parentForm]="mainForm"
+							></app-checkbox-color>
+						</ng-container>
+					</div>
+				</div>
+
 				<div class="form-row">
 					<app-text-field
 						type="number"

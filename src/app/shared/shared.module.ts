@@ -6,7 +6,7 @@ import { SquareButtonComponent } from './components/button/square-button/square-
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
 import { HorizontalDividerComponent } from './components/divider/horizontal-divider/horizontal-divider.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
-import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
+import { ImageFullHeightComponent } from './components/input/image/image-full-height/image-full-height.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
@@ -21,6 +21,7 @@ import { ModalAddProductsComponent } from './components/modal/modal-add-products
 import { ToastComponent } from './components/toast/toast.component';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
+import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
 
 @NgModule({
 	declarations: [
@@ -41,6 +42,7 @@ import { SliderWithValueComponent } from './components/input/slider-with-value/s
 		ToastComponent,
 		SelectComponent,
 		SliderWithValueComponent,
+		CheckboxColorComponent,
 	],
 	imports: [
 		CommonModule,
@@ -72,6 +74,7 @@ import { SliderWithValueComponent } from './components/input/slider-with-value/s
 		ToastComponent,
 		SelectComponent,
 		SliderWithValueComponent,
+		CheckboxColorComponent,
 	],
 })
 export class SharedModule {}

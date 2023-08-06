@@ -31,17 +31,16 @@ import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
 	@ViewChild(MatSelect) matSelect!: MatSelect;
-
 	@Input() appearance!: 'outline' | 'fill';
 	@Input() label!: string;
 	@Input() name!: string;
 	@Input() items!: ISelectItem[];
 	@Input() parentForm!: FormGroup;
+
 	@Input() groupName!: string;
 
 	@Output() selectionChange: EventEmitter<MatSelectChange> =
 		new EventEmitter<MatSelectChange>();
-
 	@Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
 	isDisabled!: boolean;

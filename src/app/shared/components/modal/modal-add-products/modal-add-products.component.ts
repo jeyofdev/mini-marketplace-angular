@@ -17,9 +17,11 @@ import { ProductSizeEnum } from 'src/app/shared/enum/product.enum';
 export class ModalAddProductsComponent implements OnInit {
 	iconClose!: IconDefinition;
 	mainForm!: FormGroup;
+	colorsForm!: FormGroup;
 
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
+	colors!: { color: string; label: string; name: string }[];
 
 	//
 	value = 20;
@@ -54,6 +56,35 @@ export class ModalAddProductsComponent implements OnInit {
 			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
 		];
 
+		this.colors = [
+			{
+				color: '#f87575',
+				label: 'red',
+				name: 'red',
+			},
+			{
+				color: '#5c95ff',
+				label: 'blue',
+				name: 'blue',
+			},
+			{
+				color: '#2EC12B',
+				label: 'green',
+				name: 'green',
+			},
+			{
+				color: '#FFFF5C',
+				label: 'yellow',
+				name: 'yellow',
+			},
+			{
+				color: '#952265',
+				label: 'purple',
+				name: 'purple',
+			},
+		];
+
+		this.initFormControls();
 		this.initMainForm();
 	}
 
@@ -74,6 +105,17 @@ export class ModalAddProductsComponent implements OnInit {
 			size: [''],
 			quantity: [''],
 			price: [''],
+			colorsForm: this.colorsForm,
+		});
+	}
+
+	private initFormControls(): void {
+		this.colorsForm = this.formBuilder.group({
+			blue: [false],
+			red: [false],
+			green: [false],
+			yellow: [false],
+			purple: [false],
 		});
 	}
 }
