@@ -16,8 +16,12 @@ import { ProductSizeEnum } from 'src/app/shared/enum/product.enum';
 })
 export class ModalAddProductsComponent implements OnInit {
 	iconClose!: IconDefinition;
+
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
+	nameForm!: FormGroup;
+	detailsForm!: FormGroup;
+	infosForm!: FormGroup;
 
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
@@ -99,12 +103,9 @@ export class ModalAddProductsComponent implements OnInit {
 
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
-			brandName: [''],
-			modelName: [''],
-			category: [''],
-			size: [''],
-			quantity: [''],
-			price: [''],
+			name: this.nameForm,
+			details: this.detailsForm,
+			infos: this.infosForm,
 			colorsForm: this.colorsForm,
 		});
 	}
@@ -116,6 +117,21 @@ export class ModalAddProductsComponent implements OnInit {
 			green: [false],
 			yellow: [false],
 			purple: [false],
+		});
+
+		this.nameForm = this.formBuilder.group({
+			brandName: [''],
+			modelName: [''],
+		});
+
+		this.detailsForm = this.formBuilder.group({
+			category: [''],
+			size: [''],
+		});
+
+		this.infosForm = this.formBuilder.group({
+			quantity: [''],
+			price: [''],
 		});
 	}
 }
