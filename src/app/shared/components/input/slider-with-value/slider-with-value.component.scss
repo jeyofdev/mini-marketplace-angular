@@ -1,0 +1,28 @@
+.form-control {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.slider-box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+}
+
+.label {
+	width: 40px;
+}
+
+mat-slider {
+	width: 100%;
+	margin-right: 10px;
+	margin-left: 9px;
+}
+
+::ng-deep .mat-mdc-slider-visual-thumb .mat-ripple {
+	height: 0 !important;
+	width: 0 !important;
+}

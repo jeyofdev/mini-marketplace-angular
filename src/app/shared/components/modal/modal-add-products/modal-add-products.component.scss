@@ -23,7 +23,7 @@
 ::ng-deep .mdc-dialog .mdc-dialog__content {
 	padding: 0;
 	max-height: none;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 .modal-header {
@@ -47,7 +47,8 @@
 }
 
 app-text-field,
-app-select {
+app-select,
+app-slider-with-value {
 	width: 100%;
 	margin-bottom: 1rem;
 }

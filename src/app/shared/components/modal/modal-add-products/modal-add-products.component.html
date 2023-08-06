@@ -13,6 +13,7 @@
 
 		<div mat-dialog-content>
 			<form
+				novalidate
 				class="add-product-form"
 				[formGroup]="mainForm"
 				(ngSubmit)="onMainFormSubmit()"
@@ -62,8 +63,21 @@
 				</div>
 
 				<div class="form-row">
+					<app-slider-with-value
+						label="Quantity"
+						name="quantity"
+						[min]="1"
+						[max]="2000"
+						[step]="1"
+						formControlName="quantity"
+						[parentForm]="mainForm"
+						#quantity
+					></app-slider-with-value>
+				</div>
+
+				<div class="form-row">
 					<app-text-field
-						type="text"
+						type="number"
 						appearance="outline"
 						name="price"
 						label="Price *"

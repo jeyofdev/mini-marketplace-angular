@@ -21,6 +21,10 @@ export class ModalAddProductsComponent implements OnInit {
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
 
+	//
+	value = 20;
+	//
+
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
@@ -68,6 +72,7 @@ export class ModalAddProductsComponent implements OnInit {
 			modelName: [''],
 			category: [''],
 			size: [''],
+			quantity: [''],
 			price: [''],
 		});
 	}

@@ -7,7 +7,7 @@ import { TextFieldComponent } from './components/input/text-field/text-field.com
 import { HorizontalDividerComponent } from './components/divider/horizontal-divider/horizontal-divider.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
 import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
 import { ExtendedButtonComponent } from './components/button/extended-button/extended-button.component';
@@ -20,6 +20,7 @@ import { ModalAddCategoryComponent } from './components/modal/modal-add-category
 import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { SelectComponent } from './components/input/select/select.component';
+import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 
 @NgModule({
 	declarations: [
@@ -39,15 +40,18 @@ import { SelectComponent } from './components/input/select/select.component';
 		ModalAddProductsComponent,
 		ToastComponent,
 		SelectComponent,
+		SliderWithValueComponent,
 	],
 	imports: [
 		CommonModule,
 		MaterialModule,
 		FontAwesomeModule,
+		FormsModule,
 		ReactiveFormsModule,
 		RouterModule,
 	],
 	exports: [
+		FormsModule,
 		ReactiveFormsModule,
 		MaterialModule,
 		FontAwesomeModule,
@@ -67,6 +71,7 @@ import { SelectComponent } from './components/input/select/select.component';
 		ModalAddProductsComponent,
 		ToastComponent,
 		SelectComponent,
+		SliderWithValueComponent,
 	],
 })
 export class SharedModule {}

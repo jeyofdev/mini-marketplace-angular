@@ -1,0 +1,24 @@
+<div class="form-control">
+	<mat-label>{{ label }}</mat-label>
+
+	<div class="slider-box">
+		<label class="label">{{ ref.value }}</label>
+
+		<mat-slider
+			[max]="max"
+			[min]="min"
+			[step]="step"
+			[disabled]="disabled"
+			[discrete]="true"
+		>
+			<input
+				matSliderThumb
+				[name]="name"
+				[value]="value"
+				(input)="onChange($event)"
+				(blur)="onTouched()"
+				#ref
+			/>
+		</mat-slider>
+	</div>
+</div>
