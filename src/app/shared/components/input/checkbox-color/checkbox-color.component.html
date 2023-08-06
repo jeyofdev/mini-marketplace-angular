@@ -1,0 +1,7 @@
+<mat-checkbox
+	[class]="'color-' + color.label"
+	[id]="name"
+	[name]="name"
+	(input)="onChange($event)"
+	(blur)="onTouched()"
+></mat-checkbox>

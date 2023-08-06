@@ -12,8 +12,19 @@
 			(blur)="onTouched()"
 		/>
 
+		<input
+			*ngIf="type === 'number'"
+			matInput
+			[type]="type"
+			[id]="name"
+			[name]="name"
+			[value]="value"
+			(input)="onChange($event)"
+			(blur)="onTouched()"
+		/>
+
 		<textarea
-			*ngIf="type !== 'text' && type !== 'password'"
+			*ngIf="type !== 'text' && type !== 'password' && type !== 'number'"
 			matInput
 			[id]="name"
 			[name]="name"

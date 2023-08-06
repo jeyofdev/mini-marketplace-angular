@@ -6,57 +6,41 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
-	selector: 'app-text-field',
-	templateUrl: './text-field.component.html',
-	styleUrls: ['./text-field.component.scss'],
+	selector: 'app-slider-with-value',
+	templateUrl: './slider-with-value.component.html',
+	styleUrls: ['./slider-with-value.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => TextFieldComponent),
+			useExisting: forwardRef(() => SliderWithValueComponent),
 			multi: true,
 		},
 	],
 })
-export class TextFieldComponent implements OnInit, ControlValueAccessor {
-	@Input() type!: 'text' | 'password' | 'textarea' | 'number';
-	@Input() appearance!: 'outline' | 'fill';
-	@Input() name!: string;
+export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 	@Input() label!: string;
-	@Input() rows!: number;
-	@Input() placeholder!: string;
-	@Input() hidePassword!: boolean;
-	@Input() endIcon!: boolean;
+	@Input() name!: string;
+	@Input() min!: number;
+	@Input() max!: number;
+	@Input() step!: number;
+	@Input() disabled!: boolean;
+
 	@Input() parentForm!: FormGroup;
-
-	@Input() showPasswordError!: Observable<boolean>;
-
-	@Input() control!: string[]; // [controlGroup, controlField]
 	@Input() groupName!: string;
 
-	@Input() validationMessages!: IValidationMessage;
-
 	isDisabled!: boolean;
-	value!: string | number;
+	value!: number;
 
 	changed!: (value: string) => void;
 	onTouched!: () => void;
 
-	finalType!: 'text' | 'password';
-
 	ngOnInit(): void {
-		this.finalType =
-			this.type === 'text' || !this.hidePassword ? 'text' : 'password';
+		this.value = 1;
 	}
 
-	shownPassword(): void {
-		this.hidePassword = !this.hidePassword;
-	}
-
-	writeValue(value: string): void {
+	writeValue(value: number): void {
 		this.value = value;
 	}
 

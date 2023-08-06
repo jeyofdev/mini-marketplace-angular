@@ -64,7 +64,7 @@ export class DashboardLayoutComponent implements OnInit {
 
 	openModalAddNewProduct() {
 		const dialogRef = this.dialog.open(ModalAddProductsComponent, {
-			width: '400px',
+			width: '500px',
 			height: '100vh',
 			position: { right: '0px', top: '0px' },
 			panelClass: 'modal-add-product',
