@@ -2,10 +2,10 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
-	FormControl,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { getFormControl } from '../../../utils/form.utils';
 
 @Component({
 	selector: 'app-slider-with-value',
@@ -58,17 +58,6 @@ export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 	}
 
 	get formControl() {
-		return this.getFormControl();
-	}
-
-	private getFormControl(): FormControl {
-		if (this.groupName) {
-			const group = this.groupName.slice(0, this.groupName.length - 4);
-			const control = this.parentForm.controls[group].get(this.name);
-
-			return control as FormControl;
-		} else {
-			return this.parentForm.get(this.name) as FormControl;
-		}
+		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

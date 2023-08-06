@@ -23,13 +23,6 @@ export class ModalAddCategoryComponent implements OnInit {
 	mainForm!: FormGroup;
 	addCategoryValidationMessages!: any;
 
-	ngOnInit(): void {
-		this.iconClose = faXmark;
-		this.iconDivider = faCircleDown;
-		this.initMainForm();
-		this.addCategoryValidationMessages = addCategoryValidationMessages;
-	}
-
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
@@ -37,11 +30,40 @@ export class ModalAddCategoryComponent implements OnInit {
 		private _snackBar: MatSnackBar,
 	) {}
 
+	ngOnInit(): void {
+		this.iconClose = faXmark;
+		this.iconDivider = faCircleDown;
+		this.initMainForm();
+		this.addCategoryValidationMessages = addCategoryValidationMessages;
+	}
+
 	onClose(): void {
 		this.dialogRef.close();
 	}
 
 	onMainFormSubmit(): void {
+		this.addCategory();
+	}
+
+	private initMainForm() {
+		this.mainForm = this.formBuilder.group({
+			name: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						addCategoryValidationMessages.name.minlength.value,
+					),
+					Validators.maxLength(
+						addCategoryValidationMessages.name.maxlength.value,
+					),
+				],
+			],
+			description: [''],
+		});
+	}
+
+	private addCategory(): void {
 		this.categoryService
 			.add({
 				name:
@@ -62,7 +84,7 @@ export class ModalAddCategoryComponent implements OnInit {
 			});
 	}
 
-	openSnackBar(message: string, panelClass: string) {
+	private openSnackBar(message: string, panelClass: string) {
 		this._snackBar.openFromComponent(ToastComponent, {
 			duration: 2000,
 			horizontalPosition: 'right',
@@ -71,24 +93,6 @@ export class ModalAddCategoryComponent implements OnInit {
 			data: {
 				message,
 			},
-		});
-	}
-
-	private initMainForm() {
-		this.mainForm = this.formBuilder.group({
-			name: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						addCategoryValidationMessages.name.minlength.value,
-					),
-					Validators.maxLength(
-						addCategoryValidationMessages.name.maxlength.value,
-					),
-				],
-			],
-			description: [''],
 		});
 	}
 }

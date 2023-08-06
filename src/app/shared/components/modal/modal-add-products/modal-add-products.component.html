@@ -18,87 +18,99 @@
 				[formGroup]="mainForm"
 				(ngSubmit)="onMainFormSubmit()"
 			>
-				<div class="form-row">
-					<app-text-field
-						type="text"
-						appearance="outline"
-						name="brandName"
-						label="Brand Name *"
-						formControlName="brandName"
-						[parentForm]="mainForm"
-					></app-text-field>
-				</div>
+				<div [formGroup]="nameForm">
+					<div class="form-row">
+						<app-text-field
+							type="text"
+							appearance="outline"
+							name="brandName"
+							label="Brand Name *"
+							groupName="nameForm"
+							formControlName="brandName"
+							[parentForm]="mainForm"
+						></app-text-field>
+					</div>
 
-				<div class="form-row">
-					<app-text-field
-						type="text"
-						appearance="outline"
-						name="modelName"
-						label="Model name *"
-						formControlName="modelName"
-						[parentForm]="mainForm"
-					></app-text-field>
-				</div>
-
-				<div class="form-row">
-					<app-select
-						appearance="outline"
-						[items]="categories"
-						label="Category"
-						name="category"
-						formControlName="category"
-						[parentForm]="mainForm"
-					></app-select>
-				</div>
-
-				<div class="form-row">
-					<app-select
-						appearance="outline"
-						[items]="sizes"
-						label="Size"
-						name="size"
-						formControlName="size"
-						[parentForm]="mainForm"
-					></app-select>
-				</div>
-
-				<div class="form-row">
-					<app-slider-with-value
-						label="Quantity"
-						name="quantity"
-						[min]="1"
-						[max]="2000"
-						[step]="1"
-						formControlName="quantity"
-						[parentForm]="mainForm"
-						#quantity
-					></app-slider-with-value>
-				</div>
-
-				<div class="form-row" [formGroup]="colorsForm">
-					<mat-label>Available colors</mat-label>
-					<div class="colors-box">
-						<ng-container *ngFor="let color of colors">
-							<app-checkbox-color
-								[name]="color.name"
-								[color]="color"
-								[formControlName]="color.name"
-								groupName="colorsForm"
-								[parentForm]="mainForm"
-							></app-checkbox-color>
-						</ng-container>
+					<div class="form-row">
+						<app-text-field
+							type="text"
+							appearance="outline"
+							name="modelName"
+							label="Model name *"
+							groupName="nameForm"
+							formControlName="modelName"
+							[parentForm]="mainForm"
+						></app-text-field>
 					</div>
 				</div>
 
-				<div class="form-row">
-					<app-text-field
-						type="number"
-						appearance="outline"
-						name="price"
-						label="Price *"
-						formControlName="price"
-						[parentForm]="mainForm"
-					></app-text-field>
+				<div [formGroup]="detailsForm">
+					<div class="form-row">
+						<app-select
+							appearance="outline"
+							[items]="categories"
+							label="Category"
+							name="category"
+							groupName="detailsForm"
+							formControlName="category"
+							[parentForm]="mainForm"
+						></app-select>
+					</div>
+
+					<div class="form-row">
+						<app-select
+							appearance="outline"
+							[items]="sizes"
+							label="Size"
+							name="size"
+							groupName="detailsForm"
+							formControlName="size"
+							[parentForm]="mainForm"
+						></app-select>
+					</div>
+
+					<div class="form-row" [formGroup]="colorsForm">
+						<mat-label>Available colors</mat-label>
+						<div class="colors-box">
+							<ng-container *ngFor="let color of colors">
+								<app-checkbox-color
+									[name]="color.name"
+									[color]="color"
+									[formControlName]="color.name"
+									groupName="colorsForm"
+									[parentForm]="mainForm"
+								></app-checkbox-color>
+							</ng-container>
+						</div>
+					</div>
+				</div>
+
+				<div [formGroup]="infosForm">
+					<div class="form-row">
+						<app-slider-with-value
+							label="Quantity"
+							name="quantity"
+							[min]="1"
+							[max]="2000"
+							[step]="1"
+							groupName="infosForm"
+							formControlName="quantity"
+							[parentForm]="mainForm"
+							#quantity
+						></app-slider-with-value>
+					</div>
+
+					<div class="form-row">
+						<app-text-field
+							type="number"
+							appearance="outline"
+							name="price"
+							label="Price *"
+							groupName="infosForm"
+							formControlName="price"
+							[parentForm]="mainForm"
+						></app-text-field>
+					</div>
 				</div>
 
 				<button mat-raised-button color="primary" type="submit">
