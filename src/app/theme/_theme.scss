@@ -9,6 +9,7 @@ $app-primary-300: mat.define-palette(palette.$primary, 300);
 $app-accent: mat.define-palette(palette.$accent);
 $app-warn: mat.define-palette(palette.$warn);
 $app-warn-200: mat.define-palette(palette.$warn, 200);
+$app-warn-400: mat.define-palette(palette.$warn, 400);
 
 $typography-configuration: mat-typography-config(
 	$font-family: 'Roboto, "Helvetica Neue", sans-serif',
@@ -61,6 +62,7 @@ $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
 $warn-200: mat-color($app-warn-200);
+$warn-400: mat-color($app-warn-400);
 $primary-100: mat-color($app-primary-100);
 $primary-300: mat-color($app-primary-300);
 

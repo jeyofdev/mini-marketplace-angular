@@ -27,6 +27,7 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
 	@Input() rows!: number;
+	@Input() placeholder!: string;
 	@Input() hidePassword!: boolean;
 	@Input() endIcon!: boolean;
 	@Input() parentForm!: FormGroup;

@@ -37,6 +37,7 @@
 						label="Name *"
 						formControlName="name"
 						[parentForm]="mainForm"
+						[validationMessages]="addCategoryValidationMessages.name"
 					></app-text-field>
 				</div>
 
@@ -47,6 +48,7 @@
 						name="description"
 						label="Description"
 						[rows]="8"
+						placeholder="Enter a description"
 						formControlName="description"
 						[parentForm]="mainForm"
 					></app-text-field>
