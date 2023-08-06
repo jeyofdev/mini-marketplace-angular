@@ -5,7 +5,10 @@ import { IconDefinition, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
-import { ISelectItem } from '../../../interfaces/input.interface';
+import {
+	IColorCheckbox,
+	ISelectItem,
+} from '../../../interfaces/input.interface';
 import { ICategory } from '../../../model/category.model';
 import { ProductSizeEnum } from 'src/app/shared/enum/product.enum';
 
@@ -25,11 +28,7 @@ export class ModalAddProductsComponent implements OnInit {
 
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
-	colors!: { color: string; label: string; name: string }[];
-
-	//
-	value = 20;
-	//
+	colors!: IColorCheckbox[];
 
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
@@ -41,52 +40,9 @@ export class ModalAddProductsComponent implements OnInit {
 		this.iconClose = faXmark;
 		this.categories = [];
 
-		this.categoryService
-			.getAll()
-			.pipe(
-				mergeMap((categories: ICategory[]) => categories),
-				map((category: ICategory) => ({
-					label: category.name,
-					value: category.name.split(' ').join('-').toLowerCase(),
-				})),
-				tap(result => this.categories.push(result)),
-			)
-			.subscribe();
-
-		this.sizes = [
-			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
-			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
-			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
-			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
-		];
-
-		this.colors = [
-			{
-				color: '#f87575',
-				label: 'red',
-				name: 'red',
-			},
-			{
-				color: '#5c95ff',
-				label: 'blue',
-				name: 'blue',
-			},
-			{
-				color: '#2EC12B',
-				label: 'green',
-				name: 'green',
-			},
-			{
-				color: '#FFFF5C',
-				label: 'yellow',
-				name: 'yellow',
-			},
-			{
-				color: '#952265',
-				label: 'purple',
-				name: 'purple',
-			},
-		];
+		this.initCategories();
+		this.initSizes();
+		this.initColors();
 
 		this.initFormControls();
 		this.initMainForm();
@@ -133,5 +89,58 @@ export class ModalAddProductsComponent implements OnInit {
 			quantity: [''],
 			price: [''],
 		});
+	}
+
+	private initCategories(): void {
+		this.categoryService
+			.getAll()
+			.pipe(
+				mergeMap((categories: ICategory[]) => categories),
+				map((category: ICategory) => ({
+					label: category.name,
+					value: category.name.split(' ').join('-').toLowerCase(),
+				})),
+				tap(result => this.categories.push(result)),
+			)
+			.subscribe();
+	}
+
+	private initSizes(): void {
+		this.sizes = [
+			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
+			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
+			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
+			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
+		];
+	}
+
+	private initColors(): void {
+		this.colors = [
+			{
+				color: '#f87575',
+				label: 'red',
+				name: 'red',
+			},
+			{
+				color: '#5c95ff',
+				label: 'blue',
+				name: 'blue',
+			},
+			{
+				color: '#2EC12B',
+				label: 'green',
+				name: 'green',
+			},
+			{
+				color: '#FFFF5C',
+				label: 'yellow',
+				name: 'yellow',
+			},
+			{
+				color: '#952265',
+				label: 'purple',
+				name: 'purple',
+			},
+		];
 	}
 }
