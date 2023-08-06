@@ -1,0 +1,16 @@
+<div class="form-control">
+	<mat-label>{{ label }}</mat-label>
+	<mat-form-field [appearance]="appearance">
+		<mat-select
+			[id]="name"
+			name="category"
+			[value]="value"
+			(selectionChange)="selectionChanged($event)"
+			(blur)="onTouched()"
+		>
+			<mat-option *ngFor="let item of items" [value]="item.value">
+				{{ item.label }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+</div>

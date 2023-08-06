@@ -81,6 +81,7 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 		if (this.groupName) {
 			const group = this.groupName.slice(0, this.groupName.length - 4);
 			const control = this.parentForm.controls[group].get(this.name);
+
 			return control as FormControl;
 		} else {
 			return this.parentForm.get(this.name) as FormControl;

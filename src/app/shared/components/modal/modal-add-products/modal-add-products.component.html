@@ -1,11 +1,70 @@
 <div mat-dialog-content>
 	<div class="modal-container">
-		<h2 mat-dialog-title>add product</h2>
+		<div class="modal-header">
+			<h1 class="mat-headline">New product</h1>
 
-		<div mat-dialog-actions>
-			<button mat-button mat-dialog-close (click)="onClose()">Close</button>
+			<div mat-dialog-actions>
+				<app-icon-button
+					[icon]="iconClose"
+					(click)="onClose()"
+				></app-icon-button>
+			</div>
 		</div>
 
-		<div mat-dialog-content>content</div>
+		<div mat-dialog-content>
+			<form
+				class="add-product-form"
+				[formGroup]="mainForm"
+				(ngSubmit)="onMainFormSubmit()"
+			>
+				<div class="form-row">
+					<app-text-field
+						type="text"
+						appearance="outline"
+						name="brandName"
+						label="Brand Name *"
+						formControlName="brandName"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="form-row">
+					<app-text-field
+						type="text"
+						appearance="outline"
+						name="modelName"
+						label="Model name *"
+						formControlName="modelName"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="form-row">
+					<app-select
+						appearance="outline"
+						[items]="categories"
+						label="Category"
+						name="category"
+						formControlName="category"
+						[parentForm]="mainForm"
+					></app-select>
+				</div>
+
+				<div class="form-row">
+					<app-text-field
+						type="text"
+						appearance="outline"
+						name="price"
+						label="Price *"
+						formControlName="price"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<button mat-raised-button color="primary" type="submit">
+					Add new product
+				</button>
+			</form>
+		</div>
 	</div>
 </div>

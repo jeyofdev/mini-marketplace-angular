@@ -17,5 +17,37 @@
 }
 
 .modal-container {
-	padding: 1rem 1.2rem;
+	padding: 1.5rem 2.25rem;
+}
+
+::ng-deep .mdc-dialog .mdc-dialog__content {
+	padding: 0;
+	max-height: none;
+	overflow-y: hidden;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.add-category-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	width: 100%;
+}
+
+app-text-field,
+app-select {
+	width: 100%;
+	margin-bottom: 1rem;
 }

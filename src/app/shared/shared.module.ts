@@ -19,6 +19,7 @@ import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
 import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { SelectComponent } from './components/input/select/select.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import { ToastComponent } from './components/toast/toast.component';
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
 		ToastComponent,
+		SelectComponent,
 	],
 	imports: [
 		CommonModule,
@@ -64,6 +66,7 @@ import { ToastComponent } from './components/toast/toast.component';
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
 		ToastComponent,
+		SelectComponent,
 	],
 })
 export class SharedModule {}
