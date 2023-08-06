@@ -3,7 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ModalAddCategoryComponent } from '../modal-add-category/modal-add-category.component';
 import { IconDefinition, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
+import { map, mergeMap, tap } from 'rxjs';
+import { CategoryService } from '../../../service/category.service';
+import { ISelectItem } from '../../../interfaces/input.interface';
+import { ICategory } from '../../../model/category.model';
 
 @Component({
 	selector: 'app-modal-add-products',
@@ -19,17 +22,25 @@ export class ModalAddProductsComponent implements OnInit {
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
+		private categoryService: CategoryService,
 	) {}
 
 	ngOnInit(): void {
 		this.iconClose = faXmark;
-		this.categories = [
-			{ value: 'cat-1', label: 'cat 1' },
-			{ value: 'cat-2', label: 'cat 2' },
-			{ value: 'cat-3', label: 'cat 3' },
-			{ value: 'cat-4', label: 'cat 4' },
-			{ value: 'cat-5', label: 'cat 5' },
-		];
+		this.categories = [];
+
+		this.categoryService
+			.getAll()
+			.pipe(
+				mergeMap((categories: ICategory[]) => categories),
+				map((category: ICategory) => ({
+					label: category.name,
+					value: category.name.split(' ').join('-'),
+				})),
+				tap(result => this.categories.push(result)),
+			)
+			.subscribe();
+
 		this.initMainForm();
 	}
 
