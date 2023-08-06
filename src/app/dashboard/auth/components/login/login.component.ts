@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { loginValidationMessages } from '../../validations/messages.validation';
-import { ProviderEnum } from '../../../../shared/enum/provider.enum';
 import { AuthService } from '../../../../shared/service/auth.service';
+import {
+	getAuthProviders,
+	regexEmail,
+} from '../../../../dashboard/utils/auth.utils';
 
 @Component({
 	selector: 'app-login',
@@ -29,31 +31,9 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = [
-			{
-				label: 'Connect with Google',
-				icon: faGoogle,
-				color: 'primary',
-				size: '100%',
-				outline: false,
-				name: ProviderEnum.GOOGLE,
-			},
-			{
-				label: 'Connect with Github',
-				icon: faGithub,
-				color: 'primary',
-				size: '100%',
-				outline: false,
-				name: ProviderEnum.GITHUB,
-			},
-		];
+		this.socialProviders = getAuthProviders;
 
-		this.image = {
-			src: 'assets/img/auth/login.jpg',
-			alt: '',
-			position: 'top',
-		};
-
+		this.initImage();
 		this.initMainForm();
 
 		this.loginValidationMessages = loginValidationMessages;
@@ -79,7 +59,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	private initMainForm() {
-		this.regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+		this.regexEmail = regexEmail;
 
 		this.mainForm = this.formBuilder.group({
 			email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
@@ -96,5 +76,13 @@ export class LoginComponent implements OnInit {
 				],
 			],
 		});
+	}
+
+	private initImage(): void {
+		this.image = {
+			src: 'assets/img/auth/login.jpg',
+			alt: '',
+			position: 'top',
+		};
 	}
 }

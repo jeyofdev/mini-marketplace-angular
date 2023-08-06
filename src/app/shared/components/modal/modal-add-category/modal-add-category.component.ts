@@ -23,19 +23,19 @@ export class ModalAddCategoryComponent implements OnInit {
 	mainForm!: FormGroup;
 	addCategoryValidationMessages!: any;
 
-	ngOnInit(): void {
-		this.iconClose = faXmark;
-		this.iconDivider = faCircleDown;
-		this.initMainForm();
-		this.addCategoryValidationMessages = addCategoryValidationMessages;
-	}
-
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
 		private _snackBar: MatSnackBar,
 	) {}
+
+	ngOnInit(): void {
+		this.iconClose = faXmark;
+		this.iconDivider = faCircleDown;
+		this.initMainForm();
+		this.addCategoryValidationMessages = addCategoryValidationMessages;
+	}
 
 	onClose(): void {
 		this.dialogRef.close();

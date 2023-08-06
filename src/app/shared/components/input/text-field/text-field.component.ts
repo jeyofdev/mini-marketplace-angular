@@ -2,12 +2,12 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
-	FormControl,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { getFormControl } from '../../../utils/form.utils';
 
 @Component({
 	selector: 'app-text-field',
@@ -28,16 +28,14 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	@Input() label!: string;
 	@Input() rows!: number;
 	@Input() placeholder!: string;
-	@Input() hidePassword!: boolean;
 	@Input() endIcon!: boolean;
-	@Input() parentForm!: FormGroup;
+	@Input() hidePassword!: boolean;
 
 	@Input() showPasswordError!: Observable<boolean>;
-
-	@Input() control!: string[]; // [controlGroup, controlField]
-	@Input() groupName!: string;
-
 	@Input() validationMessages!: IValidationMessage;
+
+	@Input() parentForm!: FormGroup;
+	@Input() groupName!: string;
 
 	isDisabled!: boolean;
 	value!: string | number;
@@ -74,17 +72,6 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	}
 
 	get formControl() {
-		return this.getFormControl();
-	}
-
-	private getFormControl(): FormControl {
-		if (this.groupName) {
-			const group = this.groupName.slice(0, this.groupName.length - 4);
-			const control = this.parentForm.controls[group].get(this.name);
-
-			return control as FormControl;
-		} else {
-			return this.parentForm.get(this.name) as FormControl;
-		}
+		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

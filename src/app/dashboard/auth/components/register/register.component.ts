@@ -5,15 +5,16 @@ import {
 	Validators,
 	FormControl,
 } from '@angular/forms';
-import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { registerValidationMessages } from '../../validations/messages.validation';
 import { inputEqualValidator } from '../../../../shared/validators/input-equal.validator';
 import { Observable, map } from 'rxjs';
-import { ProviderEnum } from '../../../../shared/enum/provider.enum';
 import { AuthService } from '../../../../shared/service/auth.service';
-import { Router } from '@angular/router';
+import {
+	getAuthProviders,
+	regexEmail,
+} from '../../../../dashboard/utils/auth.utils';
 
 @Component({
 	selector: 'app-register',
@@ -39,35 +40,13 @@ export class RegisterComponent implements OnInit {
 	constructor(
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
-		private router: Router,
 	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = [
-			{
-				label: 'Connect with Google',
-				icon: faGoogle,
-				color: 'primary',
-				size: '100%',
-				outline: false,
-				name: ProviderEnum.GOOGLE,
-			},
-			{
-				label: 'Connect with Github',
-				icon: faGithub,
-				color: 'primary',
-				size: '100%',
-				outline: false,
-				name: ProviderEnum.GITHUB,
-			},
-		];
+		this.socialProviders = getAuthProviders;
 
-		this.image = {
-			src: 'assets/img/auth/register.jpg',
-			alt: '',
-			position: 'top',
-		};
+		this.initImage();
 
 		this.initFormControls();
 		this.initRegistrationForm();
@@ -97,7 +76,7 @@ export class RegisterComponent implements OnInit {
 	}
 
 	private initRegistrationForm(): void {
-		this.regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+		this.regexEmail = regexEmail;
 
 		this.mainForm = this.formBuilder.group({
 			personnalInfos: this.personnalInfosForm,
@@ -184,5 +163,13 @@ export class RegisterComponent implements OnInit {
 					this.passwordForm.hasError('confirmEqual'),
 			),
 		);
+	}
+
+	private initImage(): void {
+		this.image = {
+			src: 'assets/img/auth/register.jpg',
+			alt: '',
+			position: 'top',
+		};
 	}
 }
