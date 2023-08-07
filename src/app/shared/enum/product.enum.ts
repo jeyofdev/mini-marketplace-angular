@@ -4,3 +4,11 @@ export enum ProductSizeEnum {
 	L = 'L',
 	XL = 'XL',
 }
+
+export enum ProductColorEnum {
+	BLUE = 'blue',
+	RED = 'red',
+	GREEN = 'green',
+	YELLOW = 'yellow',
+	PURPLE = 'purple',
+}

@@ -10,7 +10,11 @@ import {
 	ISelectItem,
 } from '../../../interfaces/input.interface';
 import { ICategory } from '../../../model/category.model';
-import { ProductSizeEnum } from 'src/app/shared/enum/product.enum';
+import { ProductSizeEnum } from '../../../enum/product.enum';
+import { IProduct } from '../../../model/product.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductService } from '../../../service/product.service';
+import { openSnackBar } from '../../../utils/form.utils';
 
 @Component({
 	selector: 'app-modal-add-products',
@@ -34,6 +38,8 @@ export class ModalAddProductsComponent implements OnInit {
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
+		private productService: ProductService,
+		private _snackBar: MatSnackBar,
 	) {}
 
 	ngOnInit(): void {
@@ -49,8 +55,7 @@ export class ModalAddProductsComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
+		this.addProduct();
 	}
 
 	onClose(): void {
@@ -62,7 +67,7 @@ export class ModalAddProductsComponent implements OnInit {
 			name: this.nameForm,
 			details: this.detailsForm,
 			infos: this.infosForm,
-			colorsForm: this.colorsForm,
+			colors: this.colorsForm,
 		});
 	}
 
@@ -89,6 +94,32 @@ export class ModalAddProductsComponent implements OnInit {
 			quantity: [''],
 			price: [''],
 		});
+	}
+
+	private addProduct(): void {
+		const newProduct: IProduct = {
+			...this.mainForm.value.name,
+			...this.mainForm.value.details,
+			...this.mainForm.value.infos,
+			color: Object.entries(this.mainForm.value.colors)
+				.filter(color => color[1])
+				.map(color => color[0]),
+		};
+
+		this.productService
+			.add(newProduct)
+			.then(() => {
+				openSnackBar(
+					this._snackBar,
+					`The product '${newProduct.brandName}' has been added.`,
+					'successfull',
+				);
+
+				this.mainForm.reset();
+			})
+			.catch(err => {
+				openSnackBar(this._snackBar, err.message, 'fail');
+			});
 	}
 
 	private initCategories(): void {
