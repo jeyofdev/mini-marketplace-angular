@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ToastComponent } from '../../toast/toast.component';
+import { openSnackBar } from '../../../utils/form.utils';
 
 @Component({
 	selector: 'app-modal-add-category',
@@ -64,15 +64,18 @@ export class ModalAddCategoryComponent implements OnInit {
 	}
 
 	private addCategory(): void {
+		const newCategory = {
+			name:
+				this.mainForm.value.name.slice(0, 1).toUpperCase() +
+				this.mainForm.value.name.slice(1),
+			description: this.mainForm.value.description,
+		};
+
 		this.categoryService
-			.add({
-				name:
-					this.mainForm.value.name.slice(0, 1).toUpperCase() +
-					this.mainForm.value.name.slice(1),
-				description: this.mainForm.value.description,
-			})
+			.add(newCategory)
 			.then(() => {
-				this.openSnackBar(
+				openSnackBar(
+					this._snackBar,
 					`The category '${this.mainForm.value.name}' has been added.`,
 					'successfull',
 				);
@@ -80,19 +83,7 @@ export class ModalAddCategoryComponent implements OnInit {
 				this.mainForm.reset();
 			})
 			.catch(err => {
-				this.openSnackBar(err.message, 'fail');
+				openSnackBar(this._snackBar, err.message, 'fail');
 			});
-	}
-
-	private openSnackBar(message: string, panelClass: string) {
-		this._snackBar.openFromComponent(ToastComponent, {
-			duration: 2000,
-			horizontalPosition: 'right',
-			verticalPosition: 'top',
-			panelClass,
-			data: {
-				message,
-			},
-		});
 	}
 }
