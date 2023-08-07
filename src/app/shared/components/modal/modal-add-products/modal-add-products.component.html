@@ -28,6 +28,7 @@
 							groupName="nameForm"
 							formControlName="brandName"
 							[parentForm]="mainForm"
+							[validationMessages]="addProductValidationMessages.brandName"
 						></app-text-field>
 					</div>
 
@@ -40,6 +41,7 @@
 							groupName="nameForm"
 							formControlName="modelName"
 							[parentForm]="mainForm"
+							[validationMessages]="addProductValidationMessages.modelName"
 						></app-text-field>
 					</div>
 				</div>
@@ -49,11 +51,12 @@
 						<app-select
 							appearance="outline"
 							[items]="categories"
-							label="Category"
+							label="Category *"
 							name="category"
 							groupName="detailsForm"
 							formControlName="category"
 							[parentForm]="mainForm"
+							[validationMessages]="addProductValidationMessages.category"
 						></app-select>
 					</div>
 
@@ -61,11 +64,12 @@
 						<app-select
 							appearance="outline"
 							[items]="sizes"
-							label="Size"
+							label="Size *"
 							name="size"
 							groupName="detailsForm"
 							formControlName="size"
 							[parentForm]="mainForm"
+							[validationMessages]="addProductValidationMessages.sizes"
 						></app-select>
 					</div>
 
@@ -109,11 +113,17 @@
 							groupName="infosForm"
 							formControlName="price"
 							[parentForm]="mainForm"
+							[validationMessages]="addProductValidationMessages.price"
 						></app-text-field>
 					</div>
 				</div>
 
-				<button mat-raised-button color="primary" type="submit">
+				<button
+					mat-raised-button
+					color="primary"
+					type="submit"
+					[disabled]="!mainForm.valid"
+				>
 					Add new product
 				</button>
 			</form>

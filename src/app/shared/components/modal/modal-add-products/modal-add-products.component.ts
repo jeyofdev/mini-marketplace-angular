@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ModalAddCategoryComponent } from '../modal-add-category/modal-add-category.component';
 import { IconDefinition, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
 import {
@@ -15,6 +15,7 @@ import { IProduct } from '../../../model/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductService } from '../../../service/product.service';
 import { openSnackBar } from '../../../utils/form.utils';
+import { addProductValidationMessages } from '../../../validations/messages.validation';
 
 @Component({
 	selector: 'app-modal-add-products',
@@ -34,6 +35,9 @@ export class ModalAddProductsComponent implements OnInit {
 	sizes!: ISelectItem[];
 	colors!: IColorCheckbox[];
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	addProductValidationMessages!: any;
+
 	constructor(
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
@@ -49,6 +53,8 @@ export class ModalAddProductsComponent implements OnInit {
 		this.initCategories();
 		this.initSizes();
 		this.initColors();
+
+		this.addProductValidationMessages = addProductValidationMessages;
 
 		this.initFormControls();
 		this.initMainForm();
@@ -81,18 +87,46 @@ export class ModalAddProductsComponent implements OnInit {
 		});
 
 		this.nameForm = this.formBuilder.group({
-			brandName: [''],
-			modelName: [''],
+			brandName: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						addProductValidationMessages.brandName.minlength.value,
+					),
+					Validators.maxLength(
+						addProductValidationMessages.brandName.maxlength.value,
+					),
+				],
+			],
+			modelName: [
+				'',
+				[
+					Validators.required,
+					Validators.minLength(
+						addProductValidationMessages.modelName.minlength.value,
+					),
+					Validators.maxLength(
+						addProductValidationMessages.modelName.maxlength.value,
+					),
+				],
+			],
 		});
 
 		this.detailsForm = this.formBuilder.group({
-			category: [''],
-			size: [''],
+			category: ['', Validators.required],
+			size: ['', Validators.required],
 		});
 
 		this.infosForm = this.formBuilder.group({
-			quantity: [''],
-			price: [''],
+			quantity: ['1'],
+			price: [
+				'',
+				[
+					Validators.required,
+					Validators.pattern(/\d{1,10}((?:[.,]\d{3})*(?:[.,]\d{2}))?/g),
+				],
+			],
 		});
 	}
 

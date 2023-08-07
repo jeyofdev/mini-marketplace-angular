@@ -16,6 +16,7 @@ import {
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { ISelectItem } from '../../../interfaces/input.interface';
 import { getFormControl } from '../../../utils/form.utils';
+import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
 	selector: 'app-select',
@@ -37,6 +38,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 	@Input() items!: ISelectItem[];
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
+	@Input() validationMessages!: IValidationMessage;
 
 	@Output() selectionChange: EventEmitter<MatSelectChange> =
 		new EventEmitter<MatSelectChange>();
