@@ -1,6 +1,12 @@
 <app-dashboard-layout>
-	<div>
-		<p>dashboard categories</p>
-		<button (click)="openModalAddNewCategory()">Open modal</button>
+	<div class="container">
+		<app-dashboard-header pageTitle="Category">
+			<app-square-button
+				label="New category"
+				color="primary"
+				[icon]="iconAdd"
+				(click)="openModalAddNewCategory()"
+			></app-square-button>
+		</app-dashboard-header>
 	</div>
 </app-dashboard-layout>

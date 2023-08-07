@@ -1,0 +1,15 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.box {
+	width: 50%;
+}
+
+.btn-box {
+	display: flex;
+	justify-content: flex-end;
+}
