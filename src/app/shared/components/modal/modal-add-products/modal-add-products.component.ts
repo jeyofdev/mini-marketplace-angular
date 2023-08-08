@@ -12,15 +12,15 @@ import {
 import { ICategory } from '../../../model/category.model';
 import { ProductSizeEnum } from '../../../enum/product.enum';
 import { IProduct } from '../../../model/product.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductService } from '../../../service/product.service';
-import { openSnackBar } from '../../../utils/form.utils';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
+import { MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'app-modal-add-products',
 	templateUrl: './modal-add-products.component.html',
 	styleUrls: ['./modal-add-products.component.scss'],
+	providers: [MessageService],
 })
 export class ModalAddProductsComponent implements OnInit {
 	iconClose!: IconDefinition;
@@ -43,7 +43,7 @@ export class ModalAddProductsComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
 		private productService: ProductService,
-		private _snackBar: MatSnackBar,
+		private messageService: MessageService,
 	) {}
 
 	ngOnInit(): void {
@@ -143,16 +143,18 @@ export class ModalAddProductsComponent implements OnInit {
 		this.productService
 			.add(newProduct)
 			.then(() => {
-				openSnackBar(
-					this._snackBar,
-					`The product '${newProduct.brandName}' has been added.`,
-					'successfull',
-				);
+				this.messageService.add({
+					severity: 'success',
+					summary: `The product '${newProduct.brandName}' has been added.`,
+				});
 
 				this.mainForm.reset();
 			})
 			.catch(err => {
-				openSnackBar(this._snackBar, err.message, 'fail');
+				this.messageService.add({
+					severity: 'error',
+					summary: err.message,
+				});
 			});
 	}
 

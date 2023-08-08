@@ -5,6 +5,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { AvatarModule } from 'primeng/avatar';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
 	exports: [
@@ -14,6 +15,7 @@ import { DividerModule } from 'primeng/divider';
 		MessagesModule,
 		AvatarModule,
 		DividerModule,
+		ToastModule,
 	],
 })
 export class PrimengModule {}

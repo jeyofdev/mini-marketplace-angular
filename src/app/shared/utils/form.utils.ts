@@ -1,6 +1,4 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { ToastComponent } from '../components/toast/toast.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 export function getFormControl(
 	groupName: string,
@@ -15,20 +13,4 @@ export function getFormControl(
 	} else {
 		return parentForm.get(name) as FormControl;
 	}
-}
-
-export function openSnackBar(
-	_snackBar: MatSnackBar,
-	message: string,
-	panelClass: string,
-) {
-	_snackBar.openFromComponent(ToastComponent, {
-		duration: 2000,
-		horizontalPosition: 'right',
-		verticalPosition: 'top',
-		panelClass,
-		data: {
-			message,
-		},
-	});
 }

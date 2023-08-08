@@ -9,13 +9,13 @@ import {
 	faCircleDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { openSnackBar } from '../../../utils/form.utils';
+import { MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'app-modal-add-category',
 	templateUrl: './modal-add-category.component.html',
 	styleUrls: ['./modal-add-category.component.scss'],
+	providers: [MessageService],
 })
 export class ModalAddCategoryComponent implements OnInit {
 	iconClose!: IconDefinition;
@@ -27,7 +27,7 @@ export class ModalAddCategoryComponent implements OnInit {
 		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
-		private _snackBar: MatSnackBar,
+		private messageService: MessageService,
 	) {}
 
 	ngOnInit(): void {
@@ -74,16 +74,18 @@ export class ModalAddCategoryComponent implements OnInit {
 		this.categoryService
 			.add(newCategory)
 			.then(() => {
-				openSnackBar(
-					this._snackBar,
-					`The category '${this.mainForm.value.name}' has been added.`,
-					'successfull',
-				);
+				this.messageService.add({
+					severity: 'success',
+					summary: `The category '${this.mainForm.value.name}' has been added.`,
+				});
 
 				this.mainForm.reset();
 			})
 			.catch(err => {
-				openSnackBar(this._snackBar, err.message, 'fail');
+				this.messageService.add({
+					severity: 'error',
+					summary: err.message,
+				});
 			});
 	}
 }

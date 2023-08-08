@@ -16,7 +16,6 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
 import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
-import { ToastComponent } from './components/toast/toast.component';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
@@ -38,7 +37,6 @@ import { DividerComponent } from './components/divider/divider.component';
 		FullnamePipe,
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
-		ToastComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -71,7 +69,6 @@ import { DividerComponent } from './components/divider/divider.component';
 		FullnamePipe,
 		ModalAddCategoryComponent,
 		ModalAddProductsComponent,
-		ToastComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
