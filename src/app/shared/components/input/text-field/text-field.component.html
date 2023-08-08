@@ -1,9 +1,16 @@
 <div class="form-control">
-	<mat-label>{{ label }}</mat-label>
-	<mat-form-field class="form-field" [appearance]="appearance">
+	<label [htmlFor]="name">{{ label }}</label>
+
+	<span [class]="class">
+		<i
+			*ngIf="endIcon && type === 'password'"
+			[class]="endIcon"
+			(click)="shownPassword()"
+		></i>
+
 		<input
 			*ngIf="type === 'text' || type === 'password'"
-			matInput
+			pInputText
 			[type]="type === 'text' || !hidePassword ? 'text' : 'password'"
 			[id]="name"
 			[name]="name"
@@ -14,7 +21,7 @@
 
 		<input
 			*ngIf="type === 'number'"
-			matInput
+			pInputText
 			[type]="type"
 			[id]="name"
 			[name]="name"
@@ -22,48 +29,10 @@
 			(input)="onChange($event)"
 			(blur)="onTouched()"
 		/>
+	</span>
 
-		<textarea
-			*ngIf="type !== 'text' && type !== 'password' && type !== 'number'"
-			matInput
-			[id]="name"
-			[name]="name"
-			[placeholder]="placeholder"
-			[rows]="rows"
-			[value]="value"
-			(input)="onChange($event)"
-			(blur)="onTouched()"
-		></textarea>
-
-		<button
-			*ngIf="endIcon && type === 'password'"
-			mat-icon-button
-			matSuffix
-			type="button"
-			(click)="shownPassword()"
-		>
-			<mat-icon>{{ !hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-		</button>
-	</mat-form-field>
-
-	<div
-		class="error-container"
-		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
-	>
-		<mat-error class="feedback-error" *ngIf="formControl.hasError('required')">
-			{{ validationMessages.required?.message }}
-		</mat-error>
-
-		<mat-error class="feedback-error" *ngIf="formControl.hasError('minlength')">
-			{{ validationMessages.minlength?.message }}
-		</mat-error>
-
-		<mat-error class="feedback-error" *ngIf="formControl.hasError('maxlength')">
-			{{ validationMessages.maxlength?.message }}
-		</mat-error>
-
-		<mat-error class="feedback-error" *ngIf="formControl.hasError('pattern')">
-			{{ validationMessages.pattern?.message }}
-		</mat-error>
-	</div>
+	<app-error-field
+		[formControl]="formControl"
+		[validationMessages]="validationMessages"
+	></app-error-field>
 </div>

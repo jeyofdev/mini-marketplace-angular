@@ -15,9 +15,11 @@ $colors: (
 
 $emphasis-high: rgba(0, 0, 0, 0.87) !default;
 $emphasis-medium: rgba(0, 0, 0, 0.6) !default;
-$emphasis-low: rgba(0, 0, 0, 0.38) !default;
+$emphasis-low: rgba(237, 237, 249, 0.38) !default;
 $emphasis-lower: rgba(0, 0, 0, 0.12) !default;
 $overlayColor: #000000 !default;
+
+$input-enphasis: rgb(219, 219, 221) !default;
 
 //global
 $fontFamily:
@@ -81,10 +83,10 @@ $actionIconBorderRadius: 50% !default;
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding: 1rem 1rem !default;
 $inputTextFontSize: 1rem !default;
-$inputBg: #ffffff !default;
+$inputBg: transparent !default;
 $inputTextColor: $emphasis-high !default;
 $inputIconColor: $emphasis-medium !default;
-$inputBorder: 1px solid $emphasis-low !default;
+$inputBorder: 1px solid $input-enphasis !default;
 $inputHoverBorderColor: $emphasis-high !default;
 $inputFocusBorderColor: $primaryColor !default;
 $inputErrorBorderColor: $errorColor !default;

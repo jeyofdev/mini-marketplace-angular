@@ -590,8 +590,8 @@ p-calendar.p-calendar-clearable.p-calendar-w-btn .p-calendar-clear-icon {
   }
 }
 .p-cascadeselect {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  background: transparent;
+  border: 1px solid rgb(219, 219, 221);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
   border-radius: 4px;
 }
@@ -703,7 +703,7 @@ p-cascadeselect.p-cascadeselect-clearable .p-cascadeselect-clear-icon {
 }
 .p-checkbox .p-checkbox-box {
   border: 2px solid #757575;
-  background: #ffffff;
+  background: transparent;
   width: 18px;
   height: 18px;
   color: rgba(0, 0, 0, 0.87);
@@ -824,10 +824,11 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
 }
 
 .p-dropdown {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  background: transparent;
+  border: 1px solid rgb(219, 219, 221);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
   border-radius: 4px;
+  width: 100%;
 }
 .p-dropdown:not(.p-disabled):hover {
   border-color: rgba(0, 0, 0, 0.87);
@@ -999,7 +1000,7 @@ p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
   border: 1px solid #e0e0e0;
 }
 .p-editor-container .p-editor-content .ql-editor {
-  background: #ffffff;
+  background: transparent;
   color: rgba(0, 0, 0, 0.87);
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -1038,16 +1039,16 @@ p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
 }
 
 .p-inputgroup-addon {
-  background: #ffffff;
+  background: transparent;
   color: rgba(0, 0, 0, 0.6);
-  border-top: 1px solid rgba(0, 0, 0, 0.38);
-  border-left: 1px solid rgba(0, 0, 0, 0.38);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  border-top: 1px solid rgb(219, 219, 221);
+  border-left: 1px solid rgb(219, 219, 221);
+  border-bottom: 1px solid rgb(219, 219, 221);
   padding: 1rem 1rem;
   min-width: 2.357rem;
 }
 .p-inputgroup-addon:last-child {
-  border-right: 1px solid rgba(0, 0, 0, 0.38);
+  border-right: 1px solid rgb(219, 219, 221);
 }
 
 .p-inputgroup > .p-component,
@@ -1189,9 +1190,9 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.87);
-  background: #ffffff;
+  background: transparent;
   padding: 1rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  border: 1px solid rgb(219, 219, 221);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
   appearance: none;
   border-radius: 4px;
@@ -1357,8 +1358,8 @@ p-listbox.ng-dirty.ng-invalid > .p-listbox {
 }
 
 .p-multiselect {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  background: transparent;
+  border: 1px solid rgb(219, 219, 221);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
   border-radius: 4px;
 }
@@ -1559,7 +1560,7 @@ p-password.p-password-clearable.p-password-mask .p-password-clear-icon {
 }
 .p-radiobutton .p-radiobutton-box {
   border: 2px solid #757575;
-  background: #ffffff;
+  background: transparent;
   width: 20px;
   height: 20px;
   color: rgba(0, 0, 0, 0.87);
@@ -1783,8 +1784,8 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 }
 
 .p-treeselect {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.38);
+  background: transparent;
+  border: 1px solid rgb(219, 219, 221);
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
   border-radius: 4px;
 }
@@ -6530,7 +6531,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -6639,17 +6640,17 @@ p-autocomplete.ng-dirty.ng-invalid .p-autocomplete .p-autocomplete-multiple-cont
 }
 .p-button:disabled {
   background-color: rgba(0, 0, 0, 0.12) !important;
-  color: rgba(0, 0, 0, 0.38) !important;
+  color: rgba(237, 237, 249, 0.38) !important;
   opacity: 1;
 }
 .p-button:disabled.p-button-text {
   background-color: transparent !important;
-  color: rgba(0, 0, 0, 0.38) !important;
+  color: rgba(237, 237, 249, 0.38) !important;
 }
 .p-button:disabled.p-button-outlined {
   background-color: transparent !important;
-  color: rgba(0, 0, 0, 0.38) !important;
-  border-color: rgba(0, 0, 0, 0.38) !important;
+  color: rgba(237, 237, 249, 0.38) !important;
+  border-color: rgba(237, 237, 249, 0.38) !important;
 }
 .p-button.p-button-raised:enabled:focus {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -6848,8 +6849,8 @@ p-autocomplete.ng-dirty.ng-invalid .p-autocomplete .p-autocomplete-multiple-cont
 }
 
 .p-calendar-w-btn {
-  border: 1px solid rgba(0, 0, 0, 0.38);
-  background: #ffffff;
+  border: 1px solid rgb(219, 219, 221);
+  background: transparent;
   border-radius: 4px;
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 }
@@ -6909,7 +6910,7 @@ p-autocomplete.ng-dirty.ng-invalid .p-autocomplete .p-autocomplete-multiple-cont
 }
 .p-datepicker table th {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(237, 237, 249, 0.38);
   font-weight: 400;
   font-size: 0.875rem;
 }
@@ -6938,7 +6939,7 @@ p-calendar.ng-dirty.ng-invalid .p-calendar-w-btn:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7009,7 +7010,7 @@ p-calendar.ng-dirty.ng-invalid .p-calendar-w-btn:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7124,10 +7125,10 @@ p-cascadeselect.ng-dirty.ng-invalid .p-cascadeselect:not(.p-disabled).p-focus {
 }
 
 .p-input-filled .p-checkbox .p-checkbox-box {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 .p-input-filled .p-checkbox .p-checkbox-box:not(.p-disabled):hover {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 @keyframes checkbox-check {
@@ -7158,7 +7159,7 @@ p-cascadeselect.ng-dirty.ng-invalid .p-cascadeselect:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7253,7 +7254,7 @@ p-chips.ng-dirty.ng-invalid .p-chips .p-chips-multiple-container:not(.p-disabled
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7320,7 +7321,7 @@ p-dropdown.ng-dirty.ng-invalid .p-dropdown:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7350,7 +7351,7 @@ p-dropdown.ng-dirty.ng-invalid .p-dropdown:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7432,7 +7433,7 @@ p-inputnumber.ng-dirty.ng-invalid .p-inputtext:enabled:focus {
 .p-float-label .p-inputwrapper-focus ~ label,
 .p-float-label .p-inputwrapper-filled ~ label {
   top: -0.5rem !important;
-  background-color: #ffffff;
+  background-color: transparent;
   padding: 2px 4px;
   margin-left: -4px;
   margin-top: 0;
@@ -7564,7 +7565,7 @@ p-inputnumber.ng-dirty.ng-invalid .p-inputtext:enabled:focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -7749,10 +7750,10 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
 }
 
 .p-input-filled .p-radiobutton .p-radiobutton-box {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 .p-input-filled .p-radiobutton .p-radiobutton-box:not(.p-disabled):hover {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .p-rating .p-rating-icon {
@@ -7919,7 +7920,7 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
   border-bottom-right-radius: 0;
   border: 1px solid transparent;
   background: #f5f5f5 no-repeat;
-  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38));
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5), linear-gradient(to bottom, rgb(219, 219, 221), rgb(219, 219, 221));
   background-size: 0 2px, 100% 1px;
   background-position: 50% 100%, 50% 100%;
   background-origin: border-box;
@@ -8069,12 +8070,12 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
 }
 .p-splitbutton.p-disabled.p-button-text > .p-button {
   background-color: transparent !important;
-  color: rgba(0, 0, 0, 0.38) !important;
+  color: rgba(237, 237, 249, 0.38) !important;
 }
 .p-splitbutton.p-disabled.p-button-outlined > .p-button {
   background-color: transparent !important;
-  color: rgba(0, 0, 0, 0.38) !important;
-  border-color: rgba(0, 0, 0, 0.38) !important;
+  color: rgba(237, 237, 249, 0.38) !important;
+  border-color: rgba(237, 237, 249, 0.38) !important;
 }
 .p-splitbutton.p-button-raised > .p-button:enabled:focus, .p-splitbutton.p-button-raised > .p-button:not(button):not(a):not(.p-disabled):focus {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);

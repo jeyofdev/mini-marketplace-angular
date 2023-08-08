@@ -6,16 +6,22 @@ import { MessagesModule } from 'primeng/messages';
 import { AvatarModule } from 'primeng/avatar';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from 'primeng/toast';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
 	exports: [
 		ButtonModule,
 		InputTextModule,
+		InputTextareaModule,
 		MessageModule,
 		MessagesModule,
 		AvatarModule,
 		DividerModule,
 		ToastModule,
+		InputNumberModule,
+		DropdownModule,
 	],
 })
 export class PrimengModule {}

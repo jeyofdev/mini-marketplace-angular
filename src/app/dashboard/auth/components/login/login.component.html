@@ -15,7 +15,6 @@
 		<div class="form-row">
 			<app-text-field
 				type="text"
-				appearance="outline"
 				name="email"
 				label="Email *"
 				formControlName="email"
@@ -27,11 +26,9 @@
 		<div class="form-row">
 			<app-text-field
 				type="password"
-				appearance="outline"
 				name="password"
 				label="Password *"
 				[hidePassword]="true"
-				[endIcon]="true"
 				formControlName="password"
 				[parentForm]="mainForm"
 				[validationMessages]="loginValidationMessages.password"

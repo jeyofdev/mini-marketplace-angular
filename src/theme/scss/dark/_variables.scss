@@ -19,6 +19,8 @@ $emphasis-low: rgba(255, 255, 255, 0.38) !default;
 $emphasis-lower: rgba(255, 255, 255, 0.12) !default;
 $overlayColor: #ffffff !default;
 
+$input-enphasis: rgb(219, 219, 221) !default;
+
 //global
 $fontFamily:
 	Roboto,
@@ -81,7 +83,7 @@ $actionIconBorderRadius: 50% !default;
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding: 1rem 1rem !default;
 $inputTextFontSize: 1rem !default;
-$inputBg: #1e1e1e !default;
+$inputBg: transparent !default;
 $inputTextColor: $emphasis-high !default;
 $inputIconColor: $emphasis-medium !default;
 $inputBorder: 1px solid hsla(0, 0%, 100%, 0.3) !default;

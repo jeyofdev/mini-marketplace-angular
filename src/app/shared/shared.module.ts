@@ -19,10 +19,13 @@ import { CheckboxColorComponent } from './components/input/checkbox-color/checkb
 import { PrimengModule } from './primeng.module';
 import { DividerComponent } from './components/divider/divider.component';
 import { ButtonComponent } from './components/button/button/button.component';
+import { ErrorFieldComponent } from './components/error-field/error-field.component';
+import { TextareaComponent } from './components/input/textarea/textarea.component';
 
 @NgModule({
 	declarations: [
 		TextFieldComponent,
+		TextareaComponent,
 		DividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
@@ -36,6 +39,7 @@ import { ButtonComponent } from './components/button/button/button.component';
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
+		ErrorFieldComponent,
 	],
 	imports: [
 		CommonModule,
@@ -53,6 +57,7 @@ import { ButtonComponent } from './components/button/button/button.component';
 		PrimengModule,
 		FontAwesomeModule,
 		TextFieldComponent,
+		TextareaComponent,
 		DividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
@@ -66,6 +71,7 @@ import { ButtonComponent } from './components/button/button/button.component';
 		SliderWithValueComponent,
 		CheckboxColorComponent,
 		ButtonComponent,
+		ErrorFieldComponent,
 	],
 })
 export class SharedModule {}

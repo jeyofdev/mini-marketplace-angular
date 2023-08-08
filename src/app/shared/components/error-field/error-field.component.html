@@ -1,0 +1,20 @@
+<div
+	class="error-container"
+	*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
+>
+	<mat-error class="feedback-error" *ngIf="formControl.hasError('required')">
+		{{ validationMessages.required?.message }}
+	</mat-error>
+
+	<mat-error class="feedback-error" *ngIf="formControl.hasError('minlength')">
+		{{ validationMessages.minlength?.message }}
+	</mat-error>
+
+	<mat-error class="feedback-error" *ngIf="formControl.hasError('maxlength')">
+		{{ validationMessages.maxlength?.message }}
+	</mat-error>
+
+	<mat-error class="feedback-error" *ngIf="formControl.hasError('pattern')">
+		{{ validationMessages.pattern?.message }}
+	</mat-error>
+</div>

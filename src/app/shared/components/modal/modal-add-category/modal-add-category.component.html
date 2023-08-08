@@ -36,7 +36,6 @@
 				<div class="form-row">
 					<app-text-field
 						type="text"
-						appearance="outline"
 						name="name"
 						label="Name *"
 						formControlName="name"
@@ -46,16 +45,14 @@
 				</div>
 
 				<div class="form-row">
-					<app-text-field
-						type="textarea"
-						appearance="outline"
+					<app-textarea
 						name="description"
 						label="Description"
 						[rows]="8"
 						placeholder="Enter a description"
 						formControlName="description"
 						[parentForm]="mainForm"
-					></app-text-field>
+					></app-textarea>
 				</div>
 
 				<button
