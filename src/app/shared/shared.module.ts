@@ -4,7 +4,6 @@ import { MaterialModule } from './material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SquareButtonComponent } from './components/button/square-button/square-button.component';
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
-import { HorizontalDividerComponent } from './components/divider/horizontal-divider/horizontal-divider.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
 import { ImageFullHeightComponent } from './components/input/image/image-full-height/image-full-height.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,12 +21,13 @@ import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
 import { PrimengModule } from './primeng.module';
+import { DividerComponent } from './components/divider/divider.component';
 
 @NgModule({
 	declarations: [
 		SquareButtonComponent,
 		TextFieldComponent,
-		HorizontalDividerComponent,
+		DividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,
@@ -60,7 +60,7 @@ import { PrimengModule } from './primeng.module';
 		FontAwesomeModule,
 		SquareButtonComponent,
 		TextFieldComponent,
-		HorizontalDividerComponent,
+		DividerComponent,
 		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,

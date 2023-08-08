@@ -31,7 +31,12 @@
 					<!-- Form in parent -->
 					<ng-content></ng-content>
 
-					<app-horizontal-divider>OR</app-horizontal-divider>
+					<app-divider
+						[maxWidth]="250"
+						layout="horizontal"
+						label="OR"
+						backgroundColor="#ededf9"
+					></app-divider>
 
 					<div class="social-connect-box">
 						<app-square-button
