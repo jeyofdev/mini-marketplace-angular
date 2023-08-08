@@ -13,7 +13,6 @@ import { DashboardLayoutComponent } from './components/layout/dashboard-layout/d
 import { ExtendedButtonComponent } from './components/button/extended-button/extended-button.component';
 import { RouterModule } from '@angular/router';
 import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
-import { AvatarComponent } from './components/avatar/avatar.component';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
@@ -35,7 +34,6 @@ import { PrimengModule } from './primeng.module';
 		DashboardLayoutComponent,
 		ExtendedButtonComponent,
 		IconButtonComponent,
-		AvatarComponent,
 		NavLinkComponent,
 		FullnamePipe,
 		ModalAddCategoryComponent,
@@ -69,7 +67,6 @@ import { PrimengModule } from './primeng.module';
 		DashboardLayoutComponent,
 		ExtendedButtonComponent,
 		IconButtonComponent,
-		AvatarComponent,
 		NavLinkComponent,
 		FullnamePipe,
 		ModalAddCategoryComponent,
