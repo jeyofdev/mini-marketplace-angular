@@ -1,12 +1,13 @@
 <app-dashboard-layout>
 	<div class="container">
 		<app-dashboard-header pageTitle="Category">
-			<app-square-button
-				label="New category"
+			<app-button
+				variant="raised"
 				color="primary"
 				[icon]="iconAdd"
 				(click)="openModalAddNewCategory()"
-			></app-square-button>
+				>New category</app-button
+			>
 		</app-dashboard-header>
 
 		<div class="mat-elevation-z8">

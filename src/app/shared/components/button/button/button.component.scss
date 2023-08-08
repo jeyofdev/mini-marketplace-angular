@@ -1,0 +1,33 @@
+.icon {
+	font-size: 1rem;
+}
+
+.mr {
+	margin-right: 1rem;
+}
+
+::ng-deep .p-element {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.p-button {
+	width: 100%;
+}
+
+.content {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+::ng-deep .rounded-icon {
+	border-radius: 100% !important;
+	width: 48px !important;
+	height: 48px !important;
+	min-width: auto;
+
+	.icon {
+		font-size: 1.2rem;
+	}
+}

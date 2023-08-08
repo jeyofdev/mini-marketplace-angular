@@ -3,12 +3,12 @@
 		<div class="modal-header">
 			<h1 class="mat-headline">New category</h1>
 
-			<div mat-dialog-actions>
-				<app-icon-button
-					[icon]="iconClose"
-					(click)="onClose()"
-				></app-icon-button>
-			</div>
+			<app-button
+				variant="icon"
+				color="danger"
+				[icon]="iconClose"
+				(click)="onClose()"
+			></app-button>
 		</div>
 
 		<div mat-dialog-content>

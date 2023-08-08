@@ -39,15 +39,14 @@
 					></app-divider>
 
 					<div class="social-connect-box">
-						<app-square-button
+						<app-button
 							*ngFor="let provider of socialProviders"
-							[label]="provider.label"
-							[color]="provider.color"
+							variant="raised"
+							color="primary"
 							[icon]="provider.icon"
-							[size]="provider.size"
-							[outline]="provider.outline"
 							(click)="loginWithProvider(provider.name)"
-						></app-square-button>
+							>{{ provider.label }}</app-button
+						>
 					</div>
 				</div>
 			</div>
