@@ -575,7 +575,9 @@ $organizationChartConnectorColor: rgba(0, 0, 0, 0.12) !default;
 //message
 $messageMargin: 1rem 0 !default;
 $messagePadding: 1.25rem 1.5rem !default;
-$messageBorderWidth: 0 0 0 0 !default;
+$messageGap: 0.5rem !default;
+$messageBorder: 1px solid blue !default;
+$messageBorderWidth: 1px 1px 1px 1px !default;
 $messageIconFontSize: 1.5rem !default;
 $messageTextFontSize: 1rem !default;
 $messageTextFontWeight: 500 !default;
@@ -615,7 +617,7 @@ $warningMessageBorder: solid transparent !default;
 $warningMessageTextColor: #7f6003 !default;
 $warningMessageIconColor: #7f6003 !default;
 $errorMessageBg: #ffcdd2 !default;
-$errorMessageBorder: solid transparent !default;
+$errorMessageBorder: solid #dda8a8 !default;
 $errorMessageTextColor: #b71c1c !default;
 $errorMessageIconColor: #b71c1c !default;
 

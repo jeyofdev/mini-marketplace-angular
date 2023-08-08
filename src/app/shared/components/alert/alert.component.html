@@ -1,3 +1,8 @@
-<mat-error class="feedback-error mat-body-1" *ngIf="message">{{
-	message
-}}</mat-error>
+<ng-container *ngIf="message">
+	<p-messages [severity]="severity">
+		<ng-template pTemplate>
+			<fa-icon class="p-message-icon" [icon]="icon"></fa-icon>
+			<div>{{ message }}</div>
+		</ng-template>
+	</p-messages>
+</ng-container>
