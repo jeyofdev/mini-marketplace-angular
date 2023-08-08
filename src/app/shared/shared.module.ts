@@ -22,6 +22,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
+import { PrimengModule } from './primeng.module';
 
 @NgModule({
 	declarations: [
@@ -47,6 +48,7 @@ import { CheckboxColorComponent } from './components/input/checkbox-color/checkb
 	imports: [
 		CommonModule,
 		MaterialModule,
+		PrimengModule,
 		FontAwesomeModule,
 		FormsModule,
 		ReactiveFormsModule,
@@ -56,6 +58,7 @@ import { CheckboxColorComponent } from './components/input/checkbox-color/checkb
 		FormsModule,
 		ReactiveFormsModule,
 		MaterialModule,
+		PrimengModule,
 		FontAwesomeModule,
 		SquareButtonComponent,
 		TextFieldComponent,
