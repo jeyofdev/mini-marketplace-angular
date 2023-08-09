@@ -12,10 +12,16 @@ label {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 1.5rem;
 	width: 100%;
-}
+	padding-right: 1rem;
 
-.label {
-	width: 40px;
+	> input {
+		width: 55px;
+		padding: 0.5rem;
+	}
+
+	> p-slider {
+		width: 100%;
+	}
 }

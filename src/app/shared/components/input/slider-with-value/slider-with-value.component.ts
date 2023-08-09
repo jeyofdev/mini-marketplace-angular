@@ -1,11 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+	forwardRef,
+} from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { getFormControl } from '../../../utils/form.utils';
+import { SliderChangeEvent } from 'primeng/slider';
 
 @Component({
 	selector: 'app-slider-with-value',
@@ -30,26 +38,31 @@ export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
+	@Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
+
 	value!: number;
 
-	changed!: (value: string) => void;
+	onChanged!: (value: number) => void;
 	onTouched!: () => void;
 
 	ngOnInit(): void {
 		this.value = 1;
 	}
 
+	selectionChanged(event: SliderChangeEvent) {
+		if (event.value) {
+			this.valueChange.emit(event.value);
+			this.onChanged(event.value);
+			this.onTouched();
+		}
+	}
+
 	writeValue(value: number): void {
 		this.value = value;
 	}
 
-	onChange(event: Event): void {
-		const value: string = (<HTMLInputElement>event.target).value;
-		this.changed(value);
-	}
-
 	registerOnChange(fn: any): void {
-		this.changed = fn;
+		this.onChanged = fn;
 	}
 
 	registerOnTouched(fn: any): void {
