@@ -1,17 +1,17 @@
 <div mat-dialog-content>
 	<div class="modal-container">
 		<div class="modal-header">
-			<h1 class="mat-headline">New category</h1>
+			<h1>New category</h1>
 
-			<div mat-dialog-actions>
-				<app-icon-button
-					[icon]="iconClose"
-					(click)="onClose()"
-				></app-icon-button>
-			</div>
+			<app-button
+				variant="icon"
+				color="danger"
+				[icon]="iconClose"
+				(click)="onClose()"
+			></app-button>
 		</div>
 
-		<div mat-dialog-content>
+		<div>
 			<p>
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, minima
 				animi optio quos ad eaque aperiam, maiores error neque accusamus
@@ -20,9 +20,13 @@
 				enim voluptatum voluptatibus numquam.
 			</p>
 
-			<app-horizontal-divider>
-				<fa-icon class="icon" [icon]="iconDivider"></fa-icon>
-			</app-horizontal-divider>
+			<app-divider
+				[maxWidth]="250"
+				[icon]="iconDivider"
+				layout="horizontal"
+				backgroundColor="white"
+			>
+			</app-divider>
 
 			<form
 				class="add-category-form"
@@ -32,7 +36,6 @@
 				<div class="form-row">
 					<app-text-field
 						type="text"
-						appearance="outline"
 						name="name"
 						label="Name *"
 						formControlName="name"
@@ -42,27 +45,28 @@
 				</div>
 
 				<div class="form-row">
-					<app-text-field
-						type="textarea"
-						appearance="outline"
+					<app-textarea
 						name="description"
 						label="Description"
 						[rows]="8"
 						placeholder="Enter a description"
 						formControlName="description"
 						[parentForm]="mainForm"
-					></app-text-field>
+						[validationMessages]="addCategoryValidationMessages.description"
+					></app-textarea>
 				</div>
 
-				<button
-					mat-raised-button
-					color="primary"
+				<app-button
 					type="submit"
+					variant="raised"
+					color="primary"
 					[disabled]="!mainForm.valid"
 				>
-					Add new category
-				</button>
+					Add new category</app-button
+				>
 			</form>
 		</div>
 	</div>
 </div>
+
+<p-toast position="top-right"></p-toast>

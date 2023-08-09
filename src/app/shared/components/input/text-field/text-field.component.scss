@@ -1,46 +1,21 @@
-@import '../../../../theme/theme';
-
 .form-control {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
 
-mat-label {
+label {
 	margin-bottom: 0.2rem;
 }
 
-::ng-deep
-	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
-	.mat-mdc-form-field-infix {
-	min-height: 48px;
-	width: auto;
-	padding-top: 0.6rem;
-	padding-bottom: 0.6rem;
+:host ::ng-deep .p-inputtext {
+	width: 100%;
 }
 
-::ng-deep .mat-mdc-form-field-icon-suffix,
-::ng-deep [dir='rtl'] .mat-mdc-form-field-icon-prefix {
-	padding: 0 !important;
-}
+:host ::ng-deep p-inputNumber {
+	width: 100%;
 
-.mat-mdc-icon-button.mat-mdc-button-base {
-	--mdc-icon-button-state-layer-size: 46px;
-	width: var(--mdc-icon-button-state-layer-size);
-	height: var(--mdc-icon-button-state-layer-size);
-}
-
-::ng-deep .mat-mdc-form-field-subscript-wrapper {
-	display: none;
-}
-
-.error-container {
-	margin-top: 0.3rem;
-}
-
-mat-error {
-	color: darken($warn, 20) !important;
-	background-color: $warn-200;
-	padding: 0.15rem 0.3rem;
-	border-radius: 6px;
+	> span {
+		width: 100%;
+	}
 }

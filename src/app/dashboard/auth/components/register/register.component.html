@@ -10,17 +10,18 @@
 		[formGroup]="mainForm"
 		(ngSubmit)="onMainFormSubmit()"
 	>
-		<mat-error class="feedback-error" *ngIf="showPasswordError$ | async">
-			{{ registerValidationMessages.passwordEqual?.message }}
-		</mat-error>
-
-		<app-alert [message]="formErrorMessage"></app-alert>
+		<app-alert
+			*ngIf="showPasswordError$ | async"
+			severity="error"
+			[message]="registerValidationMessages.passwordEqual?.message"
+		>
+		</app-alert>
+		<app-alert [message]="formErrorMessage" severity="error"></app-alert>
 
 		<ng-container [formGroup]="personnalInfosForm">
 			<div class="form-row">
 				<app-text-field
 					type="text"
-					appearance="outline"
 					name="firstname"
 					label="Firstname *"
 					formControlName="firstname"
@@ -31,7 +32,6 @@
 
 				<app-text-field
 					type="text"
-					appearance="outline"
 					name="lastname"
 					label="Lastname *"
 					formControlName="lastname"
@@ -44,7 +44,6 @@
 			<div class="form-row">
 				<app-text-field
 					type="text"
-					appearance="outline"
 					name="username"
 					label="Username *"
 					formControlName="username"
@@ -58,7 +57,6 @@
 		<div class="form-row">
 			<app-text-field
 				type="text"
-				appearance="outline"
 				name="email"
 				label="Email *"
 				formControlName="email"
@@ -71,11 +69,9 @@
 			<div class="form-row">
 				<app-text-field
 					type="password"
-					appearance="outline"
 					name="password"
 					label="Password *"
 					[hidePassword]="true"
-					[endIcon]="true"
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
@@ -84,11 +80,9 @@
 
 				<app-text-field
 					type="password"
-					appearance="outline"
 					name="confirmPassword"
 					label="Confirm password *"
 					[hidePassword]="true"
-					[endIcon]="true"
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
@@ -98,13 +92,13 @@
 			</div>
 		</ng-container>
 
-		<button
-			mat-raised-button
-			color="primary"
+		<app-button
 			type="submit"
+			variant="raised"
+			color="primary"
 			[disabled]="!mainForm.valid"
 		>
-			Register
-		</button>
+			Register</app-button
+		>
 	</form></app-auth-layout
 >

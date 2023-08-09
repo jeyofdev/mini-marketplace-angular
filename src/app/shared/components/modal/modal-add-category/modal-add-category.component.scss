@@ -10,10 +10,6 @@
 
 ::ng-deep .modal-add-category {
 	background-color: transparent;
-
-	.mat-mdc-dialog-container .mdc-dialog__surface {
-		animation: custom-dialog-enter 1s ease;
-	}
 }
 
 .modal-container {
@@ -46,13 +42,8 @@
 	width: 100%;
 }
 
-app-text-field {
+app-text-field,
+app-textarea {
 	width: 100%;
 	margin-bottom: 1rem;
-}
-
-app-horizontal-divider {
-	display: block;
-	margin-top: 2.5rem;
-	margin-bottom: 2.5rem;
 }

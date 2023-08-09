@@ -1,0 +1,16 @@
+:host ::ng-deep .error-container {
+	justify-content: flex-start;
+	margin-top: 0.3rem;
+}
+
+:host ::ng-deep .error-container .p-element.p-icon-wrapper {
+	display: none;
+}
+
+:host ::ng-deep .p-inline-message {
+	padding: 0rem 0.5rem;
+}
+
+:host ::ng-deep .p-inline-message .p-inline-message-text {
+	font-size: 0.85rem;
+}

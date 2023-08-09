@@ -1,18 +1,15 @@
 <div class="form-control">
-	<mat-label>{{ label }}</mat-label>
+	<label>{{ label }}</label>
 
 	<div class="slider-box">
-		<label class="label">{{ ref.value }}</label>
-
-		<mat-slider [max]="max" [min]="min" [step]="step" [disabled]="disabled">
-			<input
-				matSliderThumb
-				[name]="name"
-				[value]="value"
-				(input)="onChange($event)"
-				(blur)="onTouched()"
-				#ref
-			/>
-		</mat-slider>
+		<input type="text" pInputText [(ngModel)]="value" [disabled]="true" />
+		<p-slider
+			[(ngModel)]="value"
+			[max]="max"
+			[min]="min"
+			[step]="step"
+			(onChange)="selectionChanged($event)"
+			(blur)="onTouched()"
+		></p-slider>
 	</div>
 </div>

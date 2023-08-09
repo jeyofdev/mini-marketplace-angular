@@ -1,0 +1,19 @@
+<div class="form-control">
+	<label [htmlFor]="name">{{ label }}</label>
+
+	<textarea
+		pInputTextarea
+		[id]="name"
+		[name]="name"
+		[placeholder]="placeholder"
+		[rows]="rows"
+		[value]="value"
+		(input)="onChange($event)"
+		(blur)="onTouched()"
+	></textarea>
+
+	<app-error-field
+		[formControl]="formControl"
+		[validationMessages]="validationMessages"
+	></app-error-field>
+</div>

@@ -1,4 +1,7 @@
 @import './app/theme/theme';
+@import './theme/css/light/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
 
 * {
 	box-sizing: border-box;
@@ -11,21 +14,17 @@ body {
 
 body {
 	margin: 0;
-	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	font-family: var(--font-family);
 }
 
-.mat-h1,
-.mat-headline-5,
-.mat-typography .mat-h1,
-.mat-typography .mat-headline-5,
-.mat-typography h1 {
-	margin-bottom: 0;
-}
-
-.mat-h6,
-.mat-typography .mat-h6,
-.mat-typography h6 {
-	margin-bottom: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
 }
 
 ul {

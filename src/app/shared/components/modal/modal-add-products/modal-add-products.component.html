@@ -1,17 +1,17 @@
 <div mat-dialog-content>
 	<div class="modal-container">
 		<div class="modal-header">
-			<h1 class="mat-headline">New product</h1>
+			<h1>New product</h1>
 
-			<div mat-dialog-actions>
-				<app-icon-button
-					[icon]="iconClose"
-					(click)="onClose()"
-				></app-icon-button>
-			</div>
+			<app-button
+				variant="icon"
+				color="danger"
+				[icon]="iconClose"
+				(click)="onClose()"
+			></app-button>
 		</div>
 
-		<div mat-dialog-content>
+		<div>
 			<form
 				novalidate
 				class="add-product-form"
@@ -22,7 +22,6 @@
 					<div class="form-row">
 						<app-text-field
 							type="text"
-							appearance="outline"
 							name="brandName"
 							label="Brand Name *"
 							groupName="nameForm"
@@ -35,7 +34,6 @@
 					<div class="form-row">
 						<app-text-field
 							type="text"
-							appearance="outline"
 							name="modelName"
 							label="Model name *"
 							groupName="nameForm"
@@ -49,10 +47,10 @@
 				<div [formGroup]="detailsForm">
 					<div class="form-row">
 						<app-select
-							appearance="outline"
 							[items]="categories"
 							label="Category *"
 							name="category"
+							placeholder="Select a category"
 							groupName="detailsForm"
 							formControlName="category"
 							[parentForm]="mainForm"
@@ -62,10 +60,10 @@
 
 					<div class="form-row">
 						<app-select
-							appearance="outline"
 							[items]="sizes"
 							label="Size *"
 							name="size"
+							placeholder="Select a size"
 							groupName="detailsForm"
 							formControlName="size"
 							[parentForm]="mainForm"
@@ -73,8 +71,8 @@
 						></app-select>
 					</div>
 
-					<div class="form-row" [formGroup]="colorsForm">
-						<mat-label>Available colors</mat-label>
+					<div class="form-row row-checkbox" [formGroup]="colorsForm">
+						<label>Available colors</label>
 						<div class="colors-box">
 							<ng-container *ngFor="let color of colors">
 								<app-checkbox-color
@@ -107,7 +105,6 @@
 					<div class="form-row">
 						<app-text-field
 							type="number"
-							appearance="outline"
 							name="price"
 							label="Price *"
 							groupName="infosForm"
@@ -118,15 +115,17 @@
 					</div>
 				</div>
 
-				<button
-					mat-raised-button
-					color="primary"
+				<app-button
 					type="submit"
+					variant="raised"
+					color="primary"
 					[disabled]="!mainForm.valid"
 				>
-					Add new product
-				</button>
+					Add new product</app-button
+				>
 			</form>
 		</div>
 	</div>
 </div>
+
+<p-toast position="top-right"></p-toast>

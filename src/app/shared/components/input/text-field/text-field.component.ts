@@ -22,14 +22,13 @@ import { getFormControl } from '../../../utils/form.utils';
 	],
 })
 export class TextFieldComponent implements OnInit, ControlValueAccessor {
-	@Input() type!: 'text' | 'password' | 'textarea' | 'number';
+	@Input() type!: 'text' | 'password' | 'number';
 	@Input() appearance!: 'outline' | 'fill';
 	@Input() name!: string;
 	@Input() label!: string;
-	@Input() rows!: number;
-	@Input() placeholder!: string;
-	@Input() endIcon!: boolean;
+	@Input() endIcon!: string;
 	@Input() hidePassword!: boolean;
+	class!: string;
 
 	@Input() showPasswordError!: Observable<boolean>;
 	@Input() validationMessages!: IValidationMessage;
@@ -47,11 +46,22 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 
 	ngOnInit(): void {
 		this.finalType =
-			this.type === 'text' || !this.hidePassword ? 'text' : 'password';
+			this.type === 'text' || this.hidePassword ? 'text' : 'password';
+
+		this.endIcon =
+			this.type === 'password' && !this.hidePassword
+				? 'pi pi-eye-slash'
+				: 'pi pi-eye';
+
+		this.class = this.type === 'password' ? 'p-input-icon-right' : '';
 	}
 
 	shownPassword(): void {
 		this.hidePassword = !this.hidePassword;
+		this.endIcon =
+			this.type === 'password' && !this.hidePassword
+				? 'pi pi-eye-slash'
+				: 'pi pi-eye';
 	}
 
 	writeValue(value: string): void {

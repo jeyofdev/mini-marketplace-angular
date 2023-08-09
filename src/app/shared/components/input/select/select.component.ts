@@ -3,9 +3,7 @@ import {
 	Component,
 	EventEmitter,
 	Input,
-	OnInit,
 	Output,
-	ViewChild,
 	forwardRef,
 } from '@angular/core';
 import {
@@ -13,10 +11,10 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { ISelectItem } from '../../../interfaces/input.interface';
 import { getFormControl } from '../../../utils/form.utils';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { DropdownChangeEvent } from 'primeng/dropdown';
 
 @Component({
 	selector: 'app-select',
@@ -30,35 +28,26 @@ import { IValidationMessage } from '../../../interfaces/validation-message.inter
 		},
 	],
 })
-export class SelectComponent implements OnInit, ControlValueAccessor {
-	@ViewChild(MatSelect) matSelect!: MatSelect;
-	@Input() appearance!: 'outline' | 'fill';
+export class SelectComponent implements ControlValueAccessor {
 	@Input() label!: string;
 	@Input() name!: string;
+	@Input() placeholder!: string;
 	@Input() items!: ISelectItem[];
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 	@Input() validationMessages!: IValidationMessage;
 
-	@Output() selectionChange: EventEmitter<MatSelectChange> =
-		new EventEmitter<MatSelectChange>();
-	@Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
+	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-	isDisabled!: boolean;
 	value!: string;
+	selectedItem: ISelectItem | undefined;
 
-	onChange!: (value: string) => void;
+	onChanged!: (value: string) => void;
 	onTouched!: () => void;
 
-	ngOnInit(): void {
-		// eslint-disable-next-line no-console
-		console.log('init');
-	}
-
-	selectionChanged(event: MatSelectChange) {
-		this.selectionChange.emit(new MatSelectChange(this.matSelect, event.value));
+	selectionChanged(event: DropdownChangeEvent) {
 		this.valueChange.emit(event.value);
-		this.onChange(event.value);
+		this.onChanged(event.value.value);
 		this.onTouched();
 	}
 
@@ -67,7 +56,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 	}
 
 	registerOnChange(fn: any): void {
-		this.onChange = fn;
+		this.onChanged = fn;
 	}
 
 	registerOnTouched(fn: any): void {

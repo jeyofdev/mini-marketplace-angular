@@ -1,0 +1,28 @@
+<div
+	class="error-container"
+	*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
+>
+	<p-message
+		*ngIf="formControl.hasError('required')"
+		severity="error"
+		[text]="validationMessages.required?.message"
+	></p-message>
+
+	<p-message
+		*ngIf="formControl.hasError('minlength')"
+		severity="error"
+		[text]="validationMessages.minlength?.message"
+	></p-message>
+
+	<p-message
+		*ngIf="formControl.hasError('maxlength')"
+		severity="error"
+		[text]="validationMessages.maxlength?.message"
+	></p-message>
+
+	<p-message
+		*ngIf="formControl.hasError('pattern')"
+		severity="error"
+		[text]="validationMessages.pattern?.message"
+	></p-message>
+</div>

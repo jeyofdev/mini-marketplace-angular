@@ -10,6 +10,12 @@ export const addCategoryValidationMessages = {
 			value: 30,
 		},
 	},
+	description: {
+		minlength: {
+			message: 'This field must contain at least 5 characters',
+			value: 5,
+		},
+	},
 };
 
 export const addProductValidationMessages = {
@@ -43,8 +49,5 @@ export const addProductValidationMessages = {
 	},
 	price: {
 		required: { message: 'This field is required' },
-		pattern: {
-			message: 'the price must be in the format 10 or 10.5 or 10.99 etc...',
-		},
 	},
 };

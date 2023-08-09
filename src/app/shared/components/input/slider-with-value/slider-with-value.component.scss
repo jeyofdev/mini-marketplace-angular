@@ -4,25 +4,24 @@
 	width: 100%;
 }
 
+label {
+	margin-bottom: 0.2rem;
+}
+
 .slider-box {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 1.5rem;
 	width: 100%;
-}
+	padding-right: 1rem;
 
-.label {
-	width: 40px;
-}
+	> input {
+		width: 55px;
+		padding: 0.5rem;
+	}
 
-mat-slider {
-	width: 100%;
-	margin-right: 10px;
-	margin-left: 9px;
-}
-
-::ng-deep .mat-mdc-slider-visual-thumb .mat-ripple {
-	height: 0 !important;
-	width: 0 !important;
+	> p-slider {
+		width: 100%;
+	}
 }

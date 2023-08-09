@@ -1,11 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, forwardRef } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+	forwardRef,
+} from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { getFormControl } from '../../../utils/form.utils';
+import { CheckboxChangeEvent } from 'primeng/checkbox';
 
 @Component({
 	selector: 'app-checkbox-color',
@@ -19,7 +27,7 @@ import { getFormControl } from '../../../utils/form.utils';
 		},
 	],
 })
-export class CheckboxColorComponent implements ControlValueAccessor {
+export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 	@Input() label!: string;
 	@Input() name!: string;
 
@@ -28,24 +36,29 @@ export class CheckboxColorComponent implements ControlValueAccessor {
 
 	@Input() color!: { color: string; label: string };
 
-	isDisabled!: boolean;
-	value!: boolean;
+	@Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	changed!: (value: boolean) => void;
+	checked!: boolean;
+
+	onChanged!: (checked: boolean) => void;
 	onTouched!: () => void;
 
-	writeValue(value: boolean): void {
-		this.value = value;
+	ngOnInit(): void {
+		this.checked = false;
 	}
 
-	onChange(event: Event): void {
-		const checked: boolean = (<HTMLInputElement>event.target).checked;
+	selectionChanged(event: CheckboxChangeEvent) {
+		this.valueChange.emit(event.checked);
+		this.onChanged(event.checked);
+		this.onTouched();
+	}
 
-		this.changed(checked);
+	writeValue(checked: boolean): void {
+		this.checked = checked;
 	}
 
 	registerOnChange(fn: any): void {
-		this.changed = fn;
+		this.onChanged = fn;
 	}
 
 	registerOnTouched(fn: any): void {

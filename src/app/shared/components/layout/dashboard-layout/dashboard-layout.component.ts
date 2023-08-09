@@ -4,7 +4,7 @@ import {
 	IconDefinition,
 	faBarsStaggered,
 	faPlus,
-	faEllipsis,
+	faEllipsisVertical,
 	faChartSimple,
 	faTags,
 	faCartShopping,
@@ -14,6 +14,7 @@ import { INavLink } from 'src/app/shared/interfaces/link.interface';
 import { AuthService } from '../../../service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAddProductsComponent } from '../../modal/modal-add-products/modal-add-products.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
 	selector: 'app-dashboard-layout',
@@ -28,6 +29,8 @@ export class DashboardLayoutComponent implements OnInit {
 	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];
 
+	items: MenuItem[] | undefined;
+
 	constructor(
 		private authService: AuthService,
 		public dialog: MatDialog,
@@ -37,7 +40,7 @@ export class DashboardLayoutComponent implements OnInit {
 		this.connectedUser = this.authService.getAuthLocal();
 		this.logoIcon = faBarsStaggered;
 		this.addIcon = faPlus;
-		this.moreIcon = faEllipsis;
+		this.moreIcon = faEllipsisVertical;
 		this.logoutIcon = faRightFromBracket;
 		this.navLinks = [
 			{
@@ -54,6 +57,16 @@ export class DashboardLayoutComponent implements OnInit {
 				label: 'Categories',
 				routerLink: '/dashboard/categories',
 				icon: faTags,
+			},
+		];
+
+		this.items = [
+			{
+				label: 'Logout',
+				icon: 'pi pi-sign-out',
+				command: () => {
+					this.logout();
+				},
 			},
 		];
 	}

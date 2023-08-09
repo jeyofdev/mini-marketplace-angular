@@ -1,25 +1,18 @@
 <div class="form-control">
-	<mat-label>{{ label }}</mat-label>
-	<mat-form-field [appearance]="appearance">
-		<mat-select
-			[id]="name"
-			name="category"
-			[value]="value"
-			(selectionChange)="selectionChanged($event)"
-			(blur)="onTouched()"
-		>
-			<mat-option *ngFor="let item of items" [value]="item.value">
-				{{ item.label }}
-			</mat-option>
-		</mat-select>
-	</mat-form-field>
+	<label>{{ label }}</label>
 
-	<div
-		class="error-container"
-		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
-	>
-		<mat-error *ngIf="formControl.hasError('required')">
-			{{ validationMessages.required?.message }}
-		</mat-error>
-	</div>
+	<p-dropdown
+		[id]="name"
+		[name]="name"
+		[options]="items"
+		optionLabel="label"
+		[placeholder]="placeholder"
+		(onChange)="selectionChanged($event)"
+		(blur)="onTouched()"
+	></p-dropdown>
+
+	<app-error-field
+		[formControl]="formControl"
+		[validationMessages]="validationMessages"
+	></app-error-field>
 </div>

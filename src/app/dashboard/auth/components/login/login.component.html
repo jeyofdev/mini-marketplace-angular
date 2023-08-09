@@ -5,7 +5,7 @@
 	[image]="image"
 	containerMaxHeight="700px"
 >
-	<app-alert [message]="formErrorMessage"></app-alert>
+	<app-alert [message]="formErrorMessage" severity="error"></app-alert>
 
 	<form
 		class="login-form"
@@ -15,7 +15,6 @@
 		<div class="form-row">
 			<app-text-field
 				type="text"
-				appearance="outline"
 				name="email"
 				label="Email *"
 				formControlName="email"
@@ -27,24 +26,22 @@
 		<div class="form-row">
 			<app-text-field
 				type="password"
-				appearance="outline"
 				name="password"
 				label="Password *"
 				[hidePassword]="true"
-				[endIcon]="true"
 				formControlName="password"
 				[parentForm]="mainForm"
 				[validationMessages]="loginValidationMessages.password"
 			></app-text-field>
 		</div>
 
-		<button
-			mat-raised-button
-			color="primary"
+		<app-button
 			type="submit"
+			variant="raised"
+			color="primary"
 			[disabled]="!mainForm.valid"
 		>
-			Log In
-		</button>
+			Log In</app-button
+		>
 	</form></app-auth-layout
 >
