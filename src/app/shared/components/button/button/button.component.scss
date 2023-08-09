@@ -16,6 +16,12 @@
 	width: 100%;
 }
 
+:host ::ng-deep .p-button:disabled {
+	background-color: rgba(63, 81, 181) !important;
+	color: black !important;
+	opacity: 0.08;
+}
+
 .content {
 	padding-left: 1rem;
 	padding-right: 1rem;

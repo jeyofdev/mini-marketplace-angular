@@ -26,11 +26,3 @@ app-text-field {
 	width: 100%;
 	margin-bottom: 1rem;
 }
-
-mat-error {
-	color: darken($warn, 20) !important;
-	background-color: $warn-200;
-	padding: 1rem 1rem;
-	border-radius: 6px;
-	margin-bottom: 1rem;
-}

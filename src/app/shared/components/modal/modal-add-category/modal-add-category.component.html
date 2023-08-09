@@ -1,7 +1,7 @@
 <div mat-dialog-content>
 	<div class="modal-container">
 		<div class="modal-header">
-			<h1 class="mat-headline">New category</h1>
+			<h1>New category</h1>
 
 			<app-button
 				variant="icon"
@@ -11,7 +11,7 @@
 			></app-button>
 		</div>
 
-		<div mat-dialog-content>
+		<div>
 			<p>
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, minima
 				animi optio quos ad eaque aperiam, maiores error neque accusamus
@@ -56,14 +56,14 @@
 					></app-textarea>
 				</div>
 
-				<button
-					mat-raised-button
-					color="primary"
+				<app-button
 					type="submit"
+					variant="raised"
+					color="primary"
 					[disabled]="!mainForm.valid"
 				>
-					Add new category
-				</button>
+					Add new category</app-button
+				>
 			</form>
 		</div>
 	</div>

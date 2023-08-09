@@ -11,12 +11,8 @@
 		(blur)="onTouched()"
 	></p-dropdown>
 
-	<div
-		class="error-container"
-		*ngIf="formControl.invalid && (formControl.dirty || formControl.touched)"
-	>
-		<mat-error *ngIf="formControl.hasError('required')">
-			{{ validationMessages.required?.message }}
-		</mat-error>
-	</div>
+	<app-error-field
+		[formControl]="formControl"
+		[validationMessages]="validationMessages"
+	></app-error-field>
 </div>

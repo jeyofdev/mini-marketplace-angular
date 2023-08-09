@@ -75,7 +75,6 @@ export class ModalAddCategoryComponent implements OnInit {
 				this.mainForm.value.name.slice(1),
 			description: this.mainForm.value.description,
 		};
-
 		this.categoryService
 			.add(newCategory)
 			.then(() => {
@@ -83,7 +82,6 @@ export class ModalAddCategoryComponent implements OnInit {
 					severity: 'success',
 					summary: `The category '${this.mainForm.value.name}' has been added.`,
 				});
-
 				this.mainForm.reset();
 			})
 			.catch(err => {

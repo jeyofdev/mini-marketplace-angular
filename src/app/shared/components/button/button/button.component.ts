@@ -8,7 +8,9 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 })
 export class ButtonComponent implements OnInit {
 	@Input() variant!: 'rounded' | 'raised' | 'icon';
+	@Input() type!: 'submit' | 'reset' | 'button';
 	@Input() icon!: IconDefinition;
+	@Input() disabled!: boolean;
 	@Input() color!:
 		| 'primary'
 		| 'secondary'
