@@ -11,3 +11,11 @@ label {
 :host ::ng-deep .p-inputtext {
 	width: 100%;
 }
+
+:host ::ng-deep p-inputNumber {
+	width: 100%;
+
+	> span {
+		width: 100%;
+	}
+}

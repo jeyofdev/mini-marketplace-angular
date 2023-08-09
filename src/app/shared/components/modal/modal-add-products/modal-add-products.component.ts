@@ -120,13 +120,7 @@ export class ModalAddProductsComponent implements OnInit {
 
 		this.infosForm = this.formBuilder.group({
 			quantity: ['1'],
-			price: [
-				'',
-				[
-					Validators.required,
-					Validators.pattern(/\d{1,10}((?:[.,]\d{3})*(?:[.,]\d{2}))?/g),
-				],
-			],
+			price: ['', [Validators.required]],
 		});
 	}
 

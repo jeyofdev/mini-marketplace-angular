@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, forwardRef } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	Output,
+	forwardRef,
+} from '@angular/core';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 import {
 	ControlValueAccessor,
@@ -29,6 +35,8 @@ export class TextareaComponent implements ControlValueAccessor {
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
+	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+
 	isDisabled!: boolean;
 	value!: string | number;
 
@@ -41,6 +49,7 @@ export class TextareaComponent implements ControlValueAccessor {
 
 	onChange(event: Event): void {
 		const value: string = (<HTMLInputElement>event.target).value;
+
 		this.changed(value);
 	}
 

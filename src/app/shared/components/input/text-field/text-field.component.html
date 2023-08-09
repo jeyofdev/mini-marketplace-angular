@@ -19,16 +19,17 @@
 			(blur)="onTouched()"
 		/>
 
-		<input
+		<p-inputNumber
 			*ngIf="type === 'number'"
-			pInputText
-			[type]="type"
 			[id]="name"
 			[name]="name"
-			[value]="value"
+			mode="currency"
+			inputId="currency-france"
+			currency="EUR"
 			(input)="onChange($event)"
 			(blur)="onTouched()"
-		/>
+		>
+		</p-inputNumber>
 	</span>
 
 	<app-error-field
