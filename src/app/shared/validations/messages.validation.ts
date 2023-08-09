@@ -10,6 +10,12 @@ export const addCategoryValidationMessages = {
 			value: 30,
 		},
 	},
+	description: {
+		minlength: {
+			message: 'This field must contain at least 5 characters',
+			value: 5,
+		},
+	},
 };
 
 export const addProductValidationMessages = {

@@ -59,7 +59,12 @@ export class ModalAddCategoryComponent implements OnInit {
 					),
 				],
 			],
-			description: [''],
+			description: [
+				'',
+				Validators.minLength(
+					addCategoryValidationMessages.name.minlength.value,
+				),
+			],
 		});
 	}
 

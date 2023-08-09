@@ -1,0 +1,16 @@
+::ng-deep .p-element {
+	justify-content: flex-start;
+	margin-top: 0.3rem;
+}
+
+::ng-deep .p-icon-wrapper {
+	display: none;
+}
+
+::ng-deep .p-inline-message {
+	padding: 0rem 0.5rem;
+}
+
+::ng-deep .p-inline-message .p-inline-message-text {
+	font-size: 0.85rem;
+}
