@@ -672,6 +672,7 @@ $progressBarValueTextColor: $primaryTextColor !default;
 
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth: 12.5rem !default;
+$menuSimpleWidth: 8.5rem !default;
 $menuBg: #ffffff !default;
 $menuBorder: 1px solid #e5e5e5 !default;
 $menuTextColor: $textColor !default;
@@ -702,7 +703,7 @@ $overlayMenuShadow:
 	0 2px 4px -1px rgba(0, 0, 0, 0.2),
 	0 4px 5px 0 rgba(0, 0, 0, 0.14),
 	0 1px 10px 0 rgba(0, 0, 0, 0.12) !default;
-$verticalMenuPadding: 0.5rem 0 !default;
+$verticalMenuPadding: 0 0 !default;
 $verticalMenuitemMargin: 0 !default;
 $menuSeparatorMargin: 0.5rem 0 !default;
 

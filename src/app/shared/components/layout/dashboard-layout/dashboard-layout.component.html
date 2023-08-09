@@ -34,15 +34,14 @@
 
 					<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
 
-					<button mat-icon-button [matMenuTriggerFor]="menu">
-						<mat-icon>more_vert</mat-icon>
-					</button>
-					<mat-menu #menu="matMenu" class="user-modal-menu">
-						<button mat-menu-item class="user-menu-item" (click)="logout()">
-							<fa-icon class="icon" [icon]="logoutIcon"></fa-icon>
-							<span class="label-menu-item">Logout</span>
-						</button>
-					</mat-menu>
+					<app-button
+						variant="icon"
+						color="primary"
+						[icon]="moreIcon"
+						(click)="menu.toggle($event)"
+					></app-button>
+
+					<p-menu #menu [model]="items" [popup]="true"></p-menu>
 				</div>
 			</div>
 		</div>

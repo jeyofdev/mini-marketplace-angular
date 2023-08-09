@@ -9,6 +9,9 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
+import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
 	exports: [
@@ -22,6 +25,9 @@ import { DropdownModule } from 'primeng/dropdown';
 		ToastModule,
 		InputNumberModule,
 		DropdownModule,
+		MenuModule,
+		DialogModule,
+		SidebarModule,
 	],
 })
 export class PrimengModule {}

@@ -4,7 +4,7 @@ import { MaterialModule } from './material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
-import { ImageFullHeightComponent } from './components/input/image/image-full-height/image-full-height.component';
+import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
 import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
@@ -19,7 +19,7 @@ import { CheckboxColorComponent } from './components/input/checkbox-color/checkb
 import { PrimengModule } from './primeng.module';
 import { DividerComponent } from './components/divider/divider.component';
 import { ButtonComponent } from './components/button/button/button.component';
-import { ErrorFieldComponent } from './components/error-field/error-field.component';
+import { ErrorFieldComponent } from './components/form/error-field/error-field.component';
 import { TextareaComponent } from './components/input/textarea/textarea.component';
 
 @NgModule({
