@@ -30,7 +30,6 @@ export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	isDisabled!: boolean;
 	value!: number;
 
 	changed!: (value: string) => void;

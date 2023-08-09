@@ -610,7 +610,7 @@ p-calendar.p-calendar-clearable.p-calendar-w-btn .p-calendar-clear-icon {
   padding: 1rem 1rem;
 }
 .p-cascadeselect .p-cascadeselect-label.p-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 .p-cascadeselect .p-cascadeselect-label:enabled:focus {
   outline: 0 none;
@@ -847,7 +847,7 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
   border: 0 none;
 }
 .p-dropdown .p-dropdown-label.p-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 .p-dropdown .p-dropdown-label:enabled:focus {
   outline: 0 none;
@@ -1220,7 +1220,7 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 
 .p-float-label > label {
   left: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
   transition-duration: 0.2s;
 }
 
@@ -1253,19 +1253,19 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 
 :-moz-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 
 ::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 
 :-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 
 .p-input-filled .p-inputtext {
@@ -1377,7 +1377,7 @@ p-listbox.ng-dirty.ng-invalid > .p-listbox {
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 }
 .p-multiselect .p-multiselect-label.p-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 .p-multiselect.p-multiselect-chip .p-multiselect-label {
   gap: 0.5rem;
@@ -1803,7 +1803,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 }
 .p-treeselect .p-treeselect-label.p-placeholder {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(218, 218, 232);
 }
 .p-treeselect.p-treeselect-chip .p-treeselect-token {
   padding: 0.5rem 1rem;
@@ -4776,7 +4776,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 }
 
 .p-tooltip .p-tooltip-text {
-  background: rgba(97, 97, 97, 0.9);
+  background: #3f51b5;
   color: #ffffff;
   padding: 0.5rem;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);

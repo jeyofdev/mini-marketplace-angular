@@ -4,6 +4,10 @@
 	width: 100%;
 }
 
+label {
+	margin-bottom: 0.2rem;
+}
+
 .slider-box {
 	display: flex;
 	justify-content: space-between;
@@ -14,15 +18,4 @@
 
 .label {
 	width: 40px;
-}
-
-mat-slider {
-	width: 100%;
-	margin-right: 10px;
-	margin-left: 9px;
-}
-
-::ng-deep .mat-mdc-slider-visual-thumb .mat-ripple {
-	height: 0 !important;
-	width: 0 !important;
 }

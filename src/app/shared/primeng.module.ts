@@ -12,6 +12,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MenuModule } from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
 	exports: [
@@ -28,6 +30,8 @@ import { SidebarModule } from 'primeng/sidebar';
 		MenuModule,
 		DialogModule,
 		SidebarModule,
+		CheckboxModule,
+		TooltipModule,
 	],
 })
 export class PrimengModule {}

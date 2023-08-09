@@ -47,10 +47,10 @@
 				<div [formGroup]="detailsForm">
 					<div class="form-row">
 						<app-select
-							appearance="outline"
 							[items]="categories"
 							label="Category *"
 							name="category"
+							placeholder="Select a category"
 							groupName="detailsForm"
 							formControlName="category"
 							[parentForm]="mainForm"
@@ -60,10 +60,10 @@
 
 					<div class="form-row">
 						<app-select
-							appearance="outline"
 							[items]="sizes"
 							label="Size *"
 							name="size"
+							placeholder="Select a size"
 							groupName="detailsForm"
 							formControlName="size"
 							[parentForm]="mainForm"
@@ -71,8 +71,8 @@
 						></app-select>
 					</div>
 
-					<div class="form-row" [formGroup]="colorsForm">
-						<mat-label>Available colors</mat-label>
+					<div class="form-row row-checkbox" [formGroup]="colorsForm">
+						<label>Available colors</label>
 						<div class="colors-box">
 							<ng-container *ngFor="let color of colors">
 								<app-checkbox-color
@@ -115,12 +115,7 @@
 					</div>
 				</div>
 
-				<button
-					mat-raised-button
-					color="primary"
-					type="submit"
-					[disabled]="!mainForm.valid"
-				>
+				<button mat-raised-button color="primary" type="submit">
 					Add new product
 				</button>
 			</form>

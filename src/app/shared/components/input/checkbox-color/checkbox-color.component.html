@@ -1,7 +1,10 @@
-<mat-checkbox
+<p-checkbox
 	[class]="'color-' + color.label"
-	[id]="name"
-	[name]="name"
-	(input)="onChange($event)"
+	[(ngModel)]="checked"
+	[binary]="true"
+	inputId="binary"
+	[pTooltip]="color.label | titlecase"
+	tooltipPosition="top"
+	(onChange)="selectionChanged($event)"
 	(blur)="onTouched()"
-></mat-checkbox>
+></p-checkbox>
