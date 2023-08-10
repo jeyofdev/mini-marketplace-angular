@@ -344,3 +344,13 @@
 	padding-left: $inlineSpacing;
 	padding-right: $inlineSpacing;
 }
+
+@function get-bp($bp) {
+	@if $bp {
+		$bp: map-get($breakpoints, $bp);
+	} @else {
+		@error "Parameter #{$bp} is unknown or empty.";
+	}
+
+	@return $bp;
+}

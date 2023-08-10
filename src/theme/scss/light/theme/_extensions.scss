@@ -1,105 +1,194 @@
 /* Customizations to the designer theme should be defined here */
 // font size
 .text-xs {
-	font-size: 0.75rem; /* 12px */
-	line-height: 1rem; /* 16px */
+	font-size: $fontSizeXS; /* 12px */
+	line-height: $lineHeightXS; /* 16px */
 }
 
 .text-sm {
-	font-size: 0.875rem; /* 14px */
-	line-height: 1.25rem; /* 20px */
+	font-size: $fontSizeSM; /* 14px */
+	line-height: $lineHeightSM; /* 20px */
 }
 
 .text-base {
-	font-size: 1rem; /* 16px */
-	line-height: 1.5rem; /* 24px */
+	font-size: $fontSizeBase; /* 16px */
+	line-height: $lineHeightBase; /* 24px */
 }
 
 .text-lg {
-	font-size: 1.125rem; /* 18px */
-	line-height: 1.75rem; /* 28px */
+	font-size: $fontSizeLG; /* 18px */
+	line-height: $lineHeightLG; /* 28px */
 }
 
 .text-xl {
-	font-size: 1.25rem; /* 20px */
-	line-height: 1.75rem; /* 28px */
+	font-size: $fontSizeXL; /* 20px */
+	line-height: $lineHeightXL; /* 28px */
 }
 
 .text-2xl {
-	font-size: 1.5rem; /* 24px */
-	line-height: 2rem; /* 32px */
+	font-size: $fontSize2XL; /* 24px */
+	line-height: $lineHeight2XL; /* 32px */
 }
 
 .text-3xl {
-	font-size: 1.875rem; /* 30px */
-	line-height: 2.25rem; /* 36px */
+	font-size: $fontSize3XL; /* 30px */
+	line-height: $lineHeight3XL; /* 36px */
 }
 .text-4xl {
-	font-size: 2.25rem; /* 36px */
-	line-height: 2.5rem; /* 40px */
+	font-size: $fontSize4XL; /* 36px */
+	line-height: $lineHeight4XL; /* 40px */
 }
 
 .text-5xl {
-	font-size: 3rem; /* 48px */
-	line-height: 1;
+	font-size: $fontSize5XL; /* 48px */
+	line-height: $lineHeight5XL;
 }
 
 .text-6xl {
-	font-size: 3.75rem; /* 60px */
-	line-height: 1;
+	font-size: $fontSize6XL; /* 60px */
+	line-height: $lineHeight6XL;
 }
 
 .text-7xl {
-	font-size: 4.5rem; /* 72px */
-	line-height: 1;
+	font-size: $fontSize7XL; /* 72px */
+	line-height: $lineHeight7XL;
 }
 
 .text-8xl {
-	font-size: 6rem; /* 96px */
-	line-height: 1;
+	font-size: $fontSize8XL; /* 96px */
+	line-height: $lineHeight8XL;
 }
+
 .text-9xl {
-	font-size: 8rem; /* 128px */
-	line-height: 1;
+	font-size: $fontSize9XL; /* 128px */
+	line-height: $lineHeight9XL;
 }
 
 //----------------------
-//----------------------
+//------------------
 
-// font weight
-
-.font-100 {
-	font-weight: 100;
+h1 {
+	@extend .text-4xl;
 }
 
-.font-200 {
-	font-weight: 200;
+h2 {
+	@extend .text-3xl;
 }
 
-.font-300 {
-	font-weight: 300;
+h3 {
+	@extend .text-2xl;
 }
 
-.font-400 {
-	font-weight: 400;
+h4 {
+	@extend .text-xl;
 }
 
-.font-500 {
-	font-weight: 500;
+h5 {
+	@extend .text-lg;
 }
 
-.font-600 {
-	font-weight: 600;
+h6 {
+	@extend .text-base;
 }
 
-.font-700 {
-	font-weight: 700;
+@media (min-width: $sm) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $md) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $lg) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
 }
 
-.font-800 {
-	font-weight: 800;
-}
+@media (min-width: $xl) {
+	h1 {
+		// @extend .text-4xl;
+	}
 
-.font-900 {
-	font-weight: 900;
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
 }

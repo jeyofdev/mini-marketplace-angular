@@ -3,4 +3,48 @@ $primaryTextColor: #ffffff !default;
 $accentColor: #ff4081 !default;
 $accentTextColor: #ffffff !default;
 
+$breakpoints: (
+	xs: 0px,
+	sm: 600px,
+	md: 960px,
+	lg: 1280px,
+	xl: 1920px,
+);
+
+$xs: get-bp('xs');
+$sm: get-bp('sm');
+$md: get-bp('md');
+$lg: get-bp('lg');
+$xl: get-bp('xl');
+
+//font size
+$fontSizeXS: 0.75rem !default; /* 12px */
+$fontSizeSM: 0.875rem !default; /* 14px */
+$fontSizeBase: 1rem !default; /* 16px */
+$fontSizeLG: 1.125rem !default; /* 18px */
+$fontSizeXL: 1.25rem !default; /* 20px */
+$fontSize2XL: 1.5rem !default; /* 24px */
+$fontSize3XL: 1.875rem !default; /* 30px */
+$fontSize4XL: 2.25rem !default; /* 36px */
+$fontSize5XL: 3rem !default; /* 48px */
+$fontSize6XL: 3.75rem !default; /* 60px */
+$fontSize7XL: 4.5rem !default; /* 72px */
+$fontSize8XL: 6rem !default; /* 96px */
+$fontSize9XL: 8rem !default; /* 128px */
+
+//line height
+$lineHeightXS: 1rem !default;
+$lineHeightSM: 1.25rem !default;
+$lineHeightBase: 1.5rem !default;
+$lineHeightLG: 1.75rem !default;
+$lineHeightXL: 1.75rem !default;
+$lineHeight2XL: 2rem !default;
+$lineHeight3XL: 2.25rem !default;
+$lineHeight4XL: 2.5rem !default;
+$lineHeight5XL: 1rem !default;
+$lineHeight6XL: 1rem !default;
+$lineHeight7XL: 1rem !default;
+$lineHeight8XL: 1rem !default;
+$lineHeight9XL: 1rem !default;
+
 @import '../variables';

@@ -1,3 +1,16 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 30px */
+/* 36px */
+/* 48px */
+/* 60px */
+/* 72px */
+/* 96px */
+/* 128px */
 :root {
   --surface-a: #ffffff;
   --surface-b: #fafafa;
@@ -8164,59 +8177,59 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
   line-height: 1.25rem; /* 20px */
 }
 
-.text-base {
+.text-base, h6 {
   font-size: 1rem; /* 16px */
   line-height: 1.5rem; /* 24px */
 }
 
-.text-lg {
+.text-lg, h5 {
   font-size: 1.125rem; /* 18px */
   line-height: 1.75rem; /* 28px */
 }
 
-.text-xl {
+.text-xl, h4 {
   font-size: 1.25rem; /* 20px */
   line-height: 1.75rem; /* 28px */
 }
 
-.text-2xl {
+.text-2xl, h3 {
   font-size: 1.5rem; /* 24px */
   line-height: 2rem; /* 32px */
 }
 
-.text-3xl {
+.text-3xl, h2 {
   font-size: 1.875rem; /* 30px */
   line-height: 2.25rem; /* 36px */
 }
 
-.text-4xl {
+.text-4xl, h1 {
   font-size: 2.25rem; /* 36px */
   line-height: 2.5rem; /* 40px */
 }
 
 .text-5xl {
   font-size: 3rem; /* 48px */
-  line-height: 1;
+  line-height: 1rem;
 }
 
 .text-6xl {
   font-size: 3.75rem; /* 60px */
-  line-height: 1;
+  line-height: 1rem;
 }
 
 .text-7xl {
   font-size: 4.5rem; /* 72px */
-  line-height: 1;
+  line-height: 1rem;
 }
 
 .text-8xl {
   font-size: 6rem; /* 96px */
-  line-height: 1;
+  line-height: 1rem;
 }
 
 .text-9xl {
   font-size: 8rem; /* 128px */
-  line-height: 1;
+  line-height: 1rem;
 }
 
 /*# sourceMappingURL=theme.css.map */
