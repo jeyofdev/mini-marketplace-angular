@@ -1,16 +1,16 @@
 :root {
-  --surface-a: #ffffff;
+  --surface-a: $light;
   --surface-b: #fafafa;
   --surface-c: rgba(0, 0, 0, 0.04);
   --surface-d: rgba(0, 0, 0, 0.12);
-  --surface-e: #ffffff;
-  --surface-f: #ffffff;
+  --surface-e: $light;
+  --surface-f: $light;
   --text-color: rgba(0, 0, 0, 0.87);
   --text-color-secondary: rgba(0, 0, 0, 0.6);
   --primary-color: #3f51b5;
   --primary-color-text: #ffffff;
   --font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  --surface-0: #ffffff;
+  --surface-0: $light;
   --surface-50: #fafafa;
   --surface-100: #f5f5f5;
   --surface-200: #eeeeee;
@@ -35,9 +35,9 @@
   --inline-spacing: 0.5rem;
   --border-radius: 4px;
   --surface-ground: #fafafa;
-  --surface-section: #ffffff;
-  --surface-card: #ffffff;
-  --surface-overlay: #ffffff;
+  --surface-section: $light;
+  --surface-card: $light;
+  --surface-overlay: $light;
   --surface-border: rgba(0, 0, 0, 0.12);
   --surface-hover: rgba(0, 0, 0, 0.04);
   --maskbg: rgba(0, 0, 0, 0.32);
@@ -8154,5 +8154,133 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
 }
 
 /* Customizations to the designer theme should be defined here */
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm, .link, .button, span, h6 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-base, .p-inputtext, p, h5 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl, h4 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl, h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl, h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl, h1 {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1rem;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1rem;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1rem;
+}
+
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1rem;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+}
+
+h4 {
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+}
+
+h5 {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: lighter;
+}
+
+h6 {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: normal;
+}
+
+p {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: normal;
+}
+
+span {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: initial;
+}
+
+label {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  font-weight: lighter;
+  color: var(--primary-800);
+}
+
+.p-inputtext {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: normal;
+  color: var(--primary-800);
+}
+
+.button {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: bold;
+}
+
+.link {
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: initial;
+}
 
 /*# sourceMappingURL=theme.css.map */

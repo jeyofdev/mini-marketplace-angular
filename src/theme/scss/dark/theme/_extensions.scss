@@ -1,1 +1,194 @@
 /* Customizations to the designer theme should be defined here */
+// font size
+.text-xs {
+	font-size: $fontSizeXS; /* 12px */
+	line-height: $lineHeightXS; /* 16px */
+}
+
+.text-sm {
+	font-size: $fontSizeSM; /* 14px */
+	line-height: $lineHeightSM; /* 20px */
+}
+
+.text-base {
+	font-size: $fontSizeBase; /* 16px */
+	line-height: $lineHeightBase; /* 24px */
+}
+
+.text-lg {
+	font-size: $fontSizeLG; /* 18px */
+	line-height: $lineHeightLG; /* 28px */
+}
+
+.text-xl {
+	font-size: $fontSizeXL; /* 20px */
+	line-height: $lineHeightXL; /* 28px */
+}
+
+.text-2xl {
+	font-size: $fontSize2XL; /* 24px */
+	line-height: $lineHeight2XL; /* 32px */
+}
+
+.text-3xl {
+	font-size: $fontSize3XL; /* 30px */
+	line-height: $lineHeight3XL; /* 36px */
+}
+.text-4xl {
+	font-size: $fontSize4XL; /* 36px */
+	line-height: $lineHeight4XL; /* 40px */
+}
+
+.text-5xl {
+	font-size: $fontSize5XL; /* 48px */
+	line-height: $lineHeight5XL;
+}
+
+.text-6xl {
+	font-size: $fontSize6XL; /* 60px */
+	line-height: $lineHeight6XL;
+}
+
+.text-7xl {
+	font-size: $fontSize7XL; /* 72px */
+	line-height: $lineHeight7XL;
+}
+
+.text-8xl {
+	font-size: $fontSize8XL; /* 96px */
+	line-height: $lineHeight8XL;
+}
+
+.text-9xl {
+	font-size: $fontSize9XL; /* 128px */
+	line-height: $lineHeight9XL;
+}
+
+//----------------------
+//------------------
+
+h1 {
+	@extend .text-4xl;
+}
+
+h2 {
+	@extend .text-3xl;
+}
+
+h3 {
+	@extend .text-2xl;
+}
+
+h4 {
+	@extend .text-xl;
+}
+
+h5 {
+	@extend .text-lg;
+}
+
+h6 {
+	@extend .text-base;
+}
+
+@media (min-width: $sm) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $md) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $lg) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}
+
+@media (min-width: $xl) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+}

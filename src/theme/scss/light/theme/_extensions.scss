@@ -1,1 +1,283 @@
 /* Customizations to the designer theme should be defined here */
+// font size
+.text-xs {
+	font-size: $fontSizeXS;
+	line-height: $lineHeightXS;
+}
+
+.text-sm {
+	font-size: $fontSizeSM;
+	line-height: $lineHeightSM;
+}
+
+.text-base {
+	font-size: $fontSizeBase;
+	line-height: $lineHeightBase;
+}
+
+.text-lg {
+	font-size: $fontSizeLG;
+	line-height: $lineHeightLG;
+}
+
+.text-xl {
+	font-size: $fontSizeXL;
+	line-height: $lineHeightXL;
+}
+
+.text-2xl {
+	font-size: $fontSize2XL;
+	line-height: $lineHeight2XL;
+}
+
+.text-3xl {
+	font-size: $fontSize3XL;
+	line-height: $lineHeight3XL;
+}
+
+.text-4xl {
+	font-size: $fontSize4XL;
+	line-height: $lineHeight4XL;
+}
+
+.text-5xl {
+	font-size: $fontSize5XL;
+	line-height: $lineHeight5XL;
+}
+
+.text-6xl {
+	font-size: $fontSize6XL;
+	line-height: $lineHeight6XL;
+}
+
+.text-7xl {
+	font-size: $fontSize7XL;
+	line-height: $lineHeight7XL;
+}
+
+.text-8xl {
+	font-size: $fontSize8XL;
+	line-height: $lineHeight8XL;
+}
+
+.text-9xl {
+	font-size: $fontSize9XL;
+	line-height: $lineHeight9XL;
+}
+
+//----------------------
+//------------------
+
+h1 {
+	@extend .text-5xl;
+	font-family: $fontFamilySerif;
+	font-weight: normal;
+	color: var(--primary-700);
+}
+
+h2 {
+	@extend .text-3xl;
+	font-family: $fontFamilySerif;
+	font-weight: normal;
+	color: var(--primary-700);
+}
+
+h3 {
+	@extend .text-2xl;
+	font-family: $fontFamilySerif;
+	font-weight: normal;
+	color: var(--primary-700);
+}
+
+h4 {
+	@extend .text-xl;
+	font-family: $fontFamilySansSerif2;
+	font-weight: normal;
+	color: var(--primary-700);
+}
+
+h5 {
+	@extend .text-base;
+	font-family: $fontFamily;
+	font-weight: lighter;
+	color: var(--primary-700);
+}
+
+h6 {
+	@extend .text-sm;
+	font-family: $fontFamily;
+	font-weight: normal;
+	color: var(--primary-700);
+}
+
+p {
+	@extend .text-base;
+	font-family: $fontFamily;
+	font-weight: lighter;
+	color: var(--primary-800);
+	font-size: 0.9rem;
+}
+
+span {
+	@extend .text-sm;
+	font-family: $fontFamily;
+	font-weight: initial;
+}
+
+label {
+	font-family: $fontFamily;
+	font-size: 0.9rem;
+	line-height: $lineHeightSM;
+	font-weight: lighter;
+	color: var(--primary-800);
+}
+
+.p-inputtext {
+	font-family: $fontFamily;
+	@extend .text-base;
+	font-weight: normal;
+	color: var(--primary-800);
+}
+
+.button {
+	font-family: $fontFamily;
+	@extend .text-sm;
+	font-weight: bold;
+	color: $light;
+}
+
+.link {
+	font-family: $fontFamily;
+	@extend .text-sm;
+	font-weight: initial;
+}
+
+@media (min-width: $sm) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+
+	p {
+		// @extend .text-base;
+	}
+
+	button {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $md) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+
+	p {
+		// @extend .text-base;
+	}
+
+	button {
+		// @extend .text-base;
+	}
+}
+@media (min-width: $lg) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	h6 {
+		// @extend .text-base;
+	}
+
+	p {
+		// @extend .text-base;
+	}
+
+	button {
+		// @extend .text-base;
+	}
+}
+
+@media (min-width: $xl) {
+	h1 {
+		// @extend .text-4xl;
+	}
+
+	h2 {
+		// @extend .text-3xl;
+	}
+
+	h3 {
+		// @extend .text-2xl;
+	}
+
+	h4 {
+		// @extend .text-xl;
+	}
+
+	h5 {
+		// @extend .text-lg;
+	}
+
+	p {
+		// @extend .text-base;
+	}
+
+	button {
+		// @extend .text-base;
+	}
+}

@@ -11,3 +11,7 @@ label {
 ::ng-deep .p-dropdown-label {
 	width: 100% !important;
 }
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+	background-color: #fff;
+}

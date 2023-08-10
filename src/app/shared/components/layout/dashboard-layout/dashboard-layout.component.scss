@@ -1,4 +1,4 @@
-@import '../../../../theme/theme';
+@import '../../../../../theme/scss/light/theme/theme';
 
 .layout-container {
 	display: flex;
@@ -6,7 +6,7 @@
 	width: 100%;
 	min-height: 100vh;
 	margin: 0rem;
-	background-color: lighten($primary, 50);
+	background-color: var(--primary-50);
 }
 
 .grid {
@@ -24,7 +24,7 @@
 		justify-content: space-between;
 		padding: 1.5rem;
 		padding-left: 0;
-		background-color: white;
+		background-color: $light;
 
 		.sidebar-top {
 			display: flex;
@@ -40,10 +40,13 @@
 
 				.icon {
 					font-size: 1rem;
+					color: var(--primary-800);
 				}
 
-				h1 {
+				.logo {
 					margin-bottom: 0;
+					font-size: 1.2rem;
+					font-weight: bold;
 				}
 			}
 
@@ -81,8 +84,6 @@
 					margin-right: 1rem;
 					text-transform: capitalize;
 					margin-bottom: 0;
-					font-weight: normal;
-					font-size: 0.85rem;
 				}
 			}
 		}
@@ -100,11 +101,11 @@
 }
 
 .user-menu-item {
-	background-color: white;
-	color: $primary-300;
+	background-color: $light;
+	color: var(--primary-300);
 
 	&:hover {
-		color: $primary;
+		color: var(--primary-500);
 	}
 }
 
@@ -114,16 +115,30 @@
 }
 
 ::ng-deep .p-menu .p-menuitem > .p-menuitem-content {
-	background-color: white;
+	background-color: $light;
 }
 
 ::ng-deep .p-menu .p-menuitem .p-menuitem-link:focus {
-	background-color: #f7f4fb;
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+	.p-menuitem-icon {
+		color: var(--primary-800);
+	}
+
+	.p-menuitem-text {
+		color: var(--primary-800);
+	}
 }
 
 ::ng-deep
 	.p-menu
 	.p-menuitem:not(.p-highlight):not(.p-disabled)
 	> .p-menuitem-content:hover {
-	background-color: #f7f4fb;
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .user-box .p-button.p-button-text {
+	color: var(--primary-800);
 }

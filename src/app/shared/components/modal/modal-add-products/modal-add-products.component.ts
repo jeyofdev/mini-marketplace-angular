@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ModalAddCategoryComponent } from '../modal-add-category/modal-add-category.component';
-import { IconDefinition, faXmark } from '@fortawesome/free-solid-svg-icons';
+import {
+	IconDefinition,
+	faCircleDown,
+	faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
@@ -24,6 +28,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ModalAddProductsComponent implements OnInit {
 	iconClose!: IconDefinition;
+	iconDivider!: IconDefinition;
 
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
@@ -48,6 +53,7 @@ export class ModalAddProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iconClose = faXmark;
+		this.iconDivider = faCircleDown;
 		this.categories = [];
 
 		this.initCategories();
