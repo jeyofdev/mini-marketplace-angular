@@ -1,4 +1,4 @@
-@import '../../../../theme/theme';
+@import '../../../../../theme/scss/light/theme/theme';
 
 .layout-container {
 	display: flex;
@@ -6,7 +6,7 @@
 	width: 100%;
 	min-height: 100vh;
 	margin: 0rem;
-	background-color: lighten($primary, 50);
+	background-color: var(--primary-50);
 }
 
 .grid {
@@ -101,10 +101,10 @@
 
 .user-menu-item {
 	background-color: white;
-	color: $primary-300;
+	color: var(--primary-300);
 
 	&:hover {
-		color: $primary;
+		color: var(--primary-500);
 	}
 }
 

@@ -3,19 +3,12 @@ $primaryTextColor: #121212 !default;
 $accentColor: #f48fb1 !default;
 $accentTextColor: #121212 !default;
 
-$breakpoints: (
-	xs: 0px,
-	sm: 600px,
-	md: 960px,
-	lg: 1280px,
-	xl: 1920px,
-);
-
-$xs: get-bp('xs');
-$sm: get-bp('sm');
-$md: get-bp('md');
-$lg: get-bp('lg');
-$xl: get-bp('xl');
+//breakpoint
+$xs: 0px;
+$sm: 600px;
+$md: 960px;
+$lg: 1280px;
+$xl: 1920px;
 
 //font size
 $fontSizeXS: 0.75rem !default; /* 12px */

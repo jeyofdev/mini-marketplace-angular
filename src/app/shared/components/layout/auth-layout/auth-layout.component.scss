@@ -1,10 +1,9 @@
-@import '../../../../theme/theme';
-@import '../../../../../theme/scss/light/theme/theme.scss';
+@import '../../../../../theme/scss/light/theme/theme';
 
 .grid {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	background-color: lighten($primary, 48);
+	background-color: var(--primary-50);
 	width: 100%;
 	border-radius: 2rem;
 	align-items: center;

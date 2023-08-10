@@ -1,4 +1,4 @@
-@import '../../../../theme/theme';
+@import '../../../../../theme/scss/light/theme/theme.scss';
 
 li {
 	display: flex;
@@ -9,25 +9,25 @@ li {
 
 a {
 	text-decoration: none;
-	color: $primary-300;
+	color: var(--primary-300);
 }
 
 fa-icon {
 	font-size: 1.1rem;
-	color: $primary-300;
+	color: var(--primary-300);
 }
 
 .active {
-	background-color: lighten($primary-100, 13);
+	background-color: var(--primary-50);
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 
 	a {
-		color: $primary;
+		color: var(--primary-500);
 	}
 
 	fa-icon {
 		font-size: 1.1rem;
-		color: $primary;
+		color: var(--primary-500);
 	}
 }
