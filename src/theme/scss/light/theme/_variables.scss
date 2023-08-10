@@ -26,20 +26,25 @@ $md: 960px;
 $lg: 1280px;
 $xl: 1920px;
 
+//font family
+$fontFamilySerif: 'Playfair Display', serif;
+$fontFamilySansSerif1: 'Poppins', sans-serif;
+$fontFamilySansSerif2: 'Raleway', sans-serif;
+
 //font size
-$fontSizeXS: 0.75rem !default; /* 12px */
-$fontSizeSM: 0.875rem !default; /* 14px */
-$fontSizeBase: 1rem !default; /* 16px */
-$fontSizeLG: 1.125rem !default; /* 18px */
-$fontSizeXL: 1.25rem !default; /* 20px */
-$fontSize2XL: 1.5rem !default; /* 24px */
-$fontSize3XL: 1.875rem !default; /* 30px */
-$fontSize4XL: 2.25rem !default; /* 36px */
-$fontSize5XL: 3rem !default; /* 48px */
-$fontSize6XL: 3.75rem !default; /* 60px */
-$fontSize7XL: 4.5rem !default; /* 72px */
-$fontSize8XL: 6rem !default; /* 96px */
-$fontSize9XL: 8rem !default; /* 128px */
+$fontSizeXS: 0.75rem !default;
+$fontSizeSM: 0.875rem !default;
+$fontSizeBase: 1rem !default;
+$fontSizeLG: 1.125rem !default;
+$fontSizeXL: 1.25rem !default;
+$fontSize2XL: 1.5rem !default;
+$fontSize3XL: 1.875rem !default;
+$fontSize4XL: 2.25rem !default;
+$fontSize5XL: 2.75rem !default;
+$fontSize6XL: 3.75rem !default;
+$fontSize7XL: 4.5rem !default;
+$fontSize8XL: 6rem !default;
+$fontSize9XL: 8rem !default;
 
 //line height
 $lineHeightXS: 1rem !default;
@@ -50,7 +55,7 @@ $lineHeightXL: 1.75rem !default;
 $lineHeight2XL: 2rem !default;
 $lineHeight3XL: 2.25rem !default;
 $lineHeight4XL: 2.5rem !default;
-$lineHeight5XL: 1rem !default;
+$lineHeight5XL: 2.75rem !default;
 $lineHeight6XL: 1rem !default;
 $lineHeight7XL: 1rem !default;
 $lineHeight8XL: 1rem !default;
