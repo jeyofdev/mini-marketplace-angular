@@ -1,6 +1,6 @@
 $colors: (
-	'blue': #2196f3,
-	'green': #689f38,
+	'blue': $info,
+	'green': $success,
 	'yellow': #fbc02d,
 	'cyan': #00bcd4,
 	'pink': #e91e63,
@@ -8,7 +8,7 @@ $colors: (
 	'teal': #009688,
 	'orange': #ff9800,
 	'bluegray': #607d8b,
-	'purple': #9c27b0,
+	'purple': $help,
 	'red': #f44336,
 	'primary': $primaryColor,
 ) !default;
@@ -54,7 +54,7 @@ $inlineSpacing: 0.5rem !default;
 $disabledOpacity: 0.38 !default;
 $maskBg: rgba(0, 0, 0, 0.32) !default;
 $loadingIconFontSize: 2rem !default;
-$errorColor: #b00020 !default;
+$errorColor: $dangerColor !default;
 
 //selected state
 $highlightBg: rgba($primaryColor, 0.12) !default;
@@ -102,7 +102,7 @@ $inputGroupTextColor: $emphasis-medium !default;
 $inputGroupAddOnMinWidth: 2.357rem !default;
 
 //input lists (e.g. dropdown, autocomplete, multiselect, orderlist)
-$inputListBg: #ffffff !default;
+$inputListBg: $light !default;
 $inputListTextColor: $textColor !default;
 $inputListBorder: 1px solid #e5e5e5 !default;
 $inputListPadding: 0 !default;
@@ -117,7 +117,7 @@ $inputListItemMargin: 0 !default;
 $inputListItemFocusShadow: none !default;
 $inputListHeaderPadding: 1rem !default;
 $inputListHeaderMargin: 0 !default;
-$inputListHeaderBg: #ffffff !default;
+$inputListHeaderBg: $light !default;
 $inputListHeaderTextColor: $textColor !default;
 $inputListHeaderBorder: 1px solid rgba(0, 0, 0, 0.12) !default;
 
@@ -132,9 +132,9 @@ $inputOverlayShadow:
 
 //password
 $passwordMeterBg: rgba($primaryColor, 0.32) !default;
-$passwordWeakBg: #d32f2f !default;
-$passwordMediumBg: #fbc02d !default;
-$passwordStrongBg: #689f38 !default;
+$passwordWeakBg: $danger !default;
+$passwordMediumBg: $warning !default;
+$passwordStrongBg: $success !default;
 
 //button
 $buttonFontSize: 0.875rem !default;
@@ -174,58 +174,58 @@ $secondaryButtonTextActiveColor: $accentTextColor !default;
 $secondaryButtonActiveBorderColor: transparent !default;
 $secondaryButtonFocusShadow: none !default;
 
-$infoButtonBg: #2196f3 !default;
-$infoButtonTextColor: #ffffff !default;
+$infoButtonBg: $info !default;
+$infoButtonTextColor: $light !default;
 $infoButtonBorder: 0 none !default;
-$infoButtonHoverBg: rgba(#2196f3, 0.92) !default;
-$infoButtonTextHoverColor: #ffffff !default;
+$infoButtonHoverBg: rgba($info, 0.92) !default;
+$infoButtonTextHoverColor: $light !default;
 $infoButtonHoverBorderColor: transparent !default;
-$infoButtonActiveBg: rgba(#2196f3, 0.68) !default;
-$infoButtonTextActiveColor: #ffffff !default;
+$infoButtonActiveBg: rgba($info, 0.68) !default;
+$infoButtonTextActiveColor: $light !default;
 $infoButtonActiveBorderColor: transparent !default;
 $infoButtonFocusShadow: none !default;
 
-$successButtonBg: #689f38 !default;
-$successButtonTextColor: #ffffff !default;
+$successButtonBg: $success !default;
+$successButtonTextColor: $light !default;
 $successButtonBorder: 0 none !default;
-$successButtonHoverBg: rgba(#689f38, 0.92) !default;
-$successButtonTextHoverColor: #ffffff !default;
+$successButtonHoverBg: rgba($success, 0.92) !default;
+$successButtonTextHoverColor: $light !default;
 $successButtonHoverBorderColor: transparent !default;
-$successButtonActiveBg: rgba(#689f38, 0.68) !default;
-$successButtonTextActiveColor: #ffffff !default;
+$successButtonActiveBg: rgba($success, 0.68) !default;
+$successButtonTextActiveColor: $light !default;
 $successButtonActiveBorderColor: transparent !default;
 $successButtonFocusShadow: none !default;
 
-$warningButtonBg: #fbc02d !default;
+$warningButtonBg: $warning !default;
 $warningButtonTextColor: #212529 !default;
 $warningButtonBorder: 0 none !default;
-$warningButtonHoverBg: rgba(#fbc02d, 0.92) !default;
+$warningButtonHoverBg: rgba($warning, 0.92) !default;
 $warningButtonTextHoverColor: #212529 !default;
 $warningButtonHoverBorderColor: transparent !default;
-$warningButtonActiveBg: rgba(#fbc02d, 0.68) !default;
+$warningButtonActiveBg: rgba($warning, 0.68) !default;
 $warningButtonTextActiveColor: #212529 !default;
 $warningButtonActiveBorderColor: transparent !default;
 $warningButtonFocusShadow: none !default;
 
-$helpButtonBg: #9c27b0 !default;
-$helpButtonTextColor: #ffffff !default;
+$helpButtonBg: $help !default;
+$helpButtonTextColor: $light !default;
 $helpButtonBorder: 0 none !default;
-$helpButtonHoverBg: rgba(#9c27b0, 0.92) !default;
-$helpButtonTextHoverColor: #ffffff !default;
+$helpButtonHoverBg: rgba($help, 0.92) !default;
+$helpButtonTextHoverColor: $light !default;
 $helpButtonHoverBorderColor: transparent !default;
-$helpButtonActiveBg: rgba(#9c27b0, 0.68) !default;
-$helpButtonTextActiveColor: #ffffff !default;
+$helpButtonActiveBg: rgba($help, 0.68) !default;
+$helpButtonTextActiveColor: $light !default;
 $helpButtonActiveBorderColor: transparent !default;
 $helpButtonFocusShadow: none !default;
 
-$dangerButtonBg: #d32f2f !default;
-$dangerButtonTextColor: #ffffff !default;
+$dangerButtonBg: $danger !default;
+$dangerButtonTextColor: $light !default;
 $dangerButtonBorder: 0 none !default;
-$dangerButtonHoverBg: rgba(#d32f2f, 0.92) !default;
-$dangerButtonTextHoverColor: #ffffff !default;
+$dangerButtonHoverBg: rgba($danger, 0.92) !default;
+$dangerButtonTextHoverColor: $light !default;
 $dangerButtonHoverBorderColor: transparent !default;
-$dangerButtonActiveBg: rgba(#d32f2f, 0.68) !default;
-$dangerButtonTextActiveColor: #ffffff !default;
+$dangerButtonActiveBg: rgba($danger, 0.68) !default;
+$dangerButtonTextActiveColor: $light !default;
 $dangerButtonActiveBorderColor: transparent !default;
 $dangerButtonFocusShadow: none !default;
 
@@ -263,10 +263,10 @@ $colorPickerPreviewWidth: 2rem !default;
 $colorPickerPreviewHeight: 2rem !default;
 $colorPickerBg: #323232 !default;
 $colorPickerBorder: 1px solid #191919 !default;
-$colorPickerHandleColor: #ffffff !default;
+$colorPickerHandleColor: $light !default;
 
 //togglebutton
-$toggleButtonBg: #ffffff !default;
+$toggleButtonBg: $light !default;
 $toggleButtonBorder: 1px solid rgba(0, 0, 0, 0.12) !default;
 $toggleButtonTextColor: $textColor !default;
 $toggleButtonIconColor: $textSecondaryColor !default;
@@ -290,8 +290,8 @@ $inplaceTextHoverColor: $textColor !default;
 
 //rating
 $ratingIconFontSize: 1.143rem !default;
-$ratingCancelIconColor: #b00020 !default;
-$ratingCancelIconHoverColor: #b00020 !default;
+$ratingCancelIconColor: $dangerColor !default;
+$ratingCancelIconHoverColor: $dangerColor !default;
 $ratingStarIconOffColor: $primaryColor !default;
 $ratingStarIconOnColor: $primaryColor !default;
 $ratingStarIconHoverColor: $primaryColor !default;
@@ -313,14 +313,14 @@ $sliderRangeBg: $primaryColor !default;
 //calendar
 $calendarTableMargin: 0.5rem 0 !default;
 $calendarPadding: 0.5rem !default;
-$calendarBg: #ffffff !default;
+$calendarBg: $light !default;
 $calendarInlineBg: $calendarBg !default;
 $calendarTextColor: $textColor !default;
 $calendarBorder: $inputListBorder !default;
 $calendarOverlayBorder: $inputOverlayBorder !default;
 
 $calendarHeaderPadding: 0.5rem !default;
-$calendarHeaderBg: #ffffff !default;
+$calendarHeaderBg: $light !default;
 $calendarInlineHeaderBg: $calendarBg !default;
 $calendarHeaderBorder: $divider !default;
 $calendarHeaderTextColor: $textColor !default;
@@ -334,7 +334,7 @@ $calendarCellDateHeight: 2.5rem !default;
 $calendarCellDateBorderRadius: 50% !default;
 $calendarCellDateBorder: 1px solid transparent !default;
 $calendarCellDateHoverBg: rgba(0, 0, 0, 0.04) !default;
-$calendarCellDateTodayBg: #ffffff !default;
+$calendarCellDateTodayBg: $light !default;
 $calendarCellDateTodayBorderColor: rgba(0, 0, 0, 12) !default;
 $calendarCellDateTodayTextColor: $textColor !default;
 
@@ -355,7 +355,7 @@ $inputSwitchHandleHeight: 1.5rem !default;
 $inputSwitchHandleBorderRadius: 50% !default;
 $inputSwitchSliderPadding: -1px !default;
 $inputSwitchSliderOffBg: rgba(0, 0, 0, 0.38) !default;
-$inputSwitchHandleOffBg: #ffffff !default;
+$inputSwitchHandleOffBg: $light !default;
 $inputSwitchSliderOffHoverBg: rgba(0, 0, 0, 0.38) !default;
 $inputSwitchSliderOnBg: rgba($primaryColor, 0.5) !default;
 $inputSwitchSliderOnHoverBg: rgba($primaryColor, 0.5) !default;
@@ -364,7 +364,7 @@ $inputSwitchHandleOnBg: $primaryColor !default;
 //panel
 $panelHeaderBorderColor: #e0e0e0 !default;
 $panelHeaderBorder: 1px solid #e0e0e0 !default;
-$panelHeaderBg: #ffffff !default;
+$panelHeaderBg: $light !default;
 $panelHeaderTextColor: $textColor !default;
 $panelHeaderFontWeight: 500 !default;
 $panelHeaderPadding: 1rem !default;
@@ -382,14 +382,14 @@ $panelContentTextColor: $textColor !default;
 $panelContentPadding: 1rem !default;
 
 $panelFooterBorder: 1px solid #e0e0e0 !default;
-$panelFooterBg: #ffffff !default;
+$panelFooterBg: $light !default;
 $panelFooterTextColor: $textColor !default;
 $panelFooterPadding: 1rem 1rem !default;
 
 //accordion
 $accordionSpacing: 0 !default;
 $accordionHeaderBorder: 0 none !default;
-$accordionHeaderBg: #ffffff !default;
+$accordionHeaderBg: $light !default;
 $accordionHeaderTextColor: $textColor !default;
 $accordionHeaderFontWeight: 400 !default;
 $accordionHeaderPadding: 1.5rem !default;
@@ -398,30 +398,30 @@ $accordionHeaderHoverBg: #f6f6f6 !default;
 $accordionHeaderHoverBorderColor: transparent !default;
 $accordionHeaderTextHoverColor: $textColor !default;
 
-$accordionHeaderActiveBg: #ffffff !default;
+$accordionHeaderActiveBg: $light !default;
 $accordionHeaderActiveBorderColor: transparent !default;
 $accordionHeaderTextActiveColor: $textColor !default;
 
-$accordionHeaderActiveHoverBg: #ffffff !default;
+$accordionHeaderActiveHoverBg: $light !default;
 $accordionHeaderActiveHoverBorderColor: transparent !default;
 $accordionHeaderTextActiveHoverColor: $textColor !default;
 
 $accordionContentBorder: 0 none !default;
-$accordionContentBg: #ffffff !default;
+$accordionContentBg: $light !default;
 $accordionContentTextColor: $textColor !default;
 $accordionContentPadding: 1rem 1.5rem !default;
 
 //tabview
 $tabviewNavBorder: solid rgba(0, 0, 0, 0.12) !default;
 $tabviewNavBorderWidth: 0 0 1px 0 !default;
-$tabviewNavBg: #ffffff !default;
+$tabviewNavBg: $light !default;
 
 $tabviewHeaderSpacing: 0 !default;
 $tabviewHeaderBorder: solid rgba(0, 0, 0, 0.12) !default;
 $tabviewHeaderBorderWidth: 0 0 1px 0 !default;
 $tabviewHeaderBorderColor: transparent transparent rgba(0, 0, 0, 0.12)
 	transparent !default;
-$tabviewHeaderBg: #ffffff !default;
+$tabviewHeaderBg: $light !default;
 $tabviewHeaderTextColor: $textSecondaryColor !default;
 $tabviewHeaderFontWeight: 500 !default;
 $tabviewHeaderPadding: 1rem 1.5rem !default;
@@ -431,12 +431,12 @@ $tabviewHeaderHoverBg: rgba($primaryColor, 0.04) !default;
 $tabviewHeaderHoverBorderColor: rgba(0, 0, 0, 0.12) !default;
 $tabviewHeaderTextHoverColor: $textSecondaryColor !default;
 
-$tabviewHeaderActiveBg: #ffffff !default;
+$tabviewHeaderActiveBg: $light !default;
 $tabviewHeaderActiveBorderColor: rgba(0, 0, 0, 0.12) !default;
 $tabviewHeaderTextActiveColor: $primaryColor !default;
 
 $tabviewContentBorder: 0 none !default;
-$tabviewContentBg: #ffffff !default;
+$tabviewContentBg: $light !default;
 $tabviewContentTextColor: $textColor !default;
 $tabviewContentPadding: $panelContentPadding !default;
 
@@ -472,7 +472,7 @@ $editorContentBorder: $panelContentBorder !default;
 $editorContentBg: $panelContentBg !default;
 
 //paginator
-$paginatorBg: #ffffff !default;
+$paginatorBg: $light !default;
 $paginatorTextColor: $textColor !default;
 $paginatorBorder: solid #e4e4e4 !default;
 $paginatorBorderWidth: 0 !default;
@@ -492,13 +492,13 @@ $paginatorElementPadding: 0 !default;
 //table
 $tableHeaderBorder: 1px solid #e4e4e4 !default;
 $tableHeaderBorderWidth: 0 0 1px 0 !default;
-$tableHeaderBg: #ffffff !default;
+$tableHeaderBg: $light !default;
 $tableHeaderTextColor: $textColor !default;
 $tableHeaderFontWeight: 500 !default;
 $tableHeaderPadding: 1rem 1rem !default;
 
 $tableHeaderCellPadding: 1rem 1rem !default;
-$tableHeaderCellBg: #ffffff !default;
+$tableHeaderCellBg: $light !default;
 $tableHeaderCellTextColor: $textColor !default;
 $tableHeaderCellFontWeight: 500 !default;
 $tableHeaderCellBorder: 1px solid #e4e4e4 !default;
@@ -507,13 +507,13 @@ $tableHeaderCellHoverBg: rgba(0, 0, 0, 0.04) !default;
 $tableHeaderCellTextHoverColor: $textColor !default;
 $tableHeaderCellIconColor: $textSecondaryColor !default;
 $tableHeaderCellIconHoverColor: $textSecondaryColor !default;
-$tableHeaderCellHighlightBg: #ffffff !default;
+$tableHeaderCellHighlightBg: $light !default;
 $tableHeaderCellHighlightTextColor: $textColor !default;
 $tableHeaderCellHighlightHoverBg: rgba(0, 0, 0, 0.04) !default;
 $tableHeaderCellHighlightTextHoverColor: $textColor !default;
 $tableSortableColumnBadgeSize: 1.143rem !default;
 
-$tableBodyRowBg: #ffffff !default;
+$tableBodyRowBg: $light !default;
 $tableBodyRowTextColor: $textColor !default;
 $tableBodyRowEvenBg: rgba(0, 0, 0, 0.02) !default;
 $tableBodyRowHoverBg: rgba(0, 0, 0, 0.04) !default;
@@ -523,7 +523,7 @@ $tableBodyCellBorderWidth: 0 0 1px 0 !default;
 $tableBodyCellPadding: 1rem 1rem !default;
 
 $tableFooterCellPadding: 1rem 1rem !default;
-$tableFooterCellBg: #ffffff !default;
+$tableFooterCellBg: $light !default;
 $tableFooterCellTextColor: $textColor !default;
 $tableFooterCellFontWeight: 500 !default;
 $tableFooterCellBorder: 1px solid #e4e4e4 !default;
@@ -532,7 +532,7 @@ $tableResizerHelperBg: $primaryColor !default;
 
 $tableFooterBorder: 1px solid #e4e4e4 !default;
 $tableFooterBorderWidth: 0 0 1px 0 !default;
-$tableFooterBg: #ffffff !default;
+$tableFooterBg: $light !default;
 $tableFooterTextColor: $textColor !default;
 $tableFooterFontWeight: 500 !default;
 $tableFooterPadding: 1rem 1rem !default;
@@ -610,20 +610,20 @@ $toastDetailMargin: $inlineSpacing 0 0 0 !default;
 //severities
 $infoMessageBg: #b3e5fc !default;
 $infoMessageBorder: solid transparent !default;
-$infoMessageTextColor: #01579b !default;
-$infoMessageIconColor: #01579b !default;
+$infoMessageTextColor: $infoTextColor !default;
+$infoMessageIconColor: $infoTextColor !default;
 $successMessageBg: #c8e6c9 !default;
 $successMessageBorder: solid transparent !default;
-$successMessageTextColor: #1b5e20 !default;
-$successMessageIconColor: #1b5e20 !default;
+$successMessageTextColor: $successTextColor !default;
+$successMessageIconColor: $successTextColor !default;
 $warningMessageBg: #ffecb3 !default;
 $warningMessageBorder: solid transparent !default;
-$warningMessageTextColor: #7f6003 !default;
-$warningMessageIconColor: #7f6003 !default;
+$warningMessageTextColor: $warningTextColor !default;
+$warningMessageIconColor: $warningTextColor !default;
 $errorMessageBg: #ffcdd2 !default;
 $errorMessageBorder: solid #dda8a8 !default;
-$errorMessageTextColor: #b71c1c !default;
-$errorMessageIconColor: #b71c1c !default;
+$errorMessageTextColor: $dangerTextColor !default;
+$errorMessageIconColor: $dangerTextColor !default;
 
 //overlays
 $overlayContentBorder: 0 none !default;
@@ -634,7 +634,7 @@ $overlayContainerShadow:
 	0 9px 46px 8px rgba(0, 0, 0, 0.12) !default;
 
 //dialog
-$dialogHeaderBg: #ffffff !default;
+$dialogHeaderBg: $light !default;
 $dialogHeaderBorder: 0 none !default;
 $dialogHeaderTextColor: $textColor !default;
 $dialogHeaderFontWeight: 500 !default;
@@ -650,7 +650,7 @@ $confirmPopupFooterPadding: 0 1.5rem 1rem 1.5rem !default;
 
 //tooltip
 $tooltipBg: rgba(97, 97, 97, 0.9) !default;
-$tooltipTextColor: #ffffff !default;
+$tooltipTextColor: $light !default;
 $tooltipPadding: 0.5rem !default;
 
 //steps
@@ -674,7 +674,7 @@ $progressBarValueTextColor: $primaryTextColor !default;
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth: 12.5rem !default;
 $menuSimpleWidth: 8.5rem !default;
-$menuBg: #ffffff !default;
+$menuBg: $light !default;
 $menuBorder: 1px solid #e5e5e5 !default;
 $menuTextColor: $textColor !default;
 $menuitemPadding: 1rem 1rem !default;
@@ -694,7 +694,7 @@ $menuitemActiveFocusBg: rgba(0, 0, 0, 0.04) !default;
 $menuitemSubmenuIconFontSize: 0.875rem !default;
 $submenuHeaderMargin: 0 !default;
 $submenuHeaderPadding: 1rem !default;
-$submenuHeaderBg: #ffffff !default;
+$submenuHeaderBg: $light !default;
 $submenuHeaderTextColor: $textSecondaryColor !default;
 $submenuHeaderBorderRadius: 0 !default;
 $submenuHeaderFontWeight: 400 !default;
@@ -709,7 +709,7 @@ $verticalMenuitemMargin: 0 !default;
 $menuSeparatorMargin: 0.5rem 0 !default;
 
 $breadcrumbPadding: 1rem !default;
-$breadcrumbBg: #ffffff !default;
+$breadcrumbBg: $light !default;
 $breadcrumbBorder: 1px solid #e5e5e5 !default;
 $breadcrumbItemTextColor: $textColor !default;
 $breadcrumbItemIconColor: $textSecondaryColor !default;
@@ -872,18 +872,18 @@ $imagePreviewActionIconFontSize: 1.5rem !default;
 $imagePreviewActionIconBorderRadius: 50% !default;
 
 :root {
-	--surface-a: #ffffff;
+	--surface-a: $light;
 	--surface-b: #fafafa;
 	--surface-c: rgba(0, 0, 0, 0.04);
 	--surface-d: rgba(0, 0, 0, 0.12);
-	--surface-e: #ffffff;
-	--surface-f: #ffffff;
+	--surface-e: $light;
+	--surface-f: $light;
 	--text-color: #{$textColor};
 	--text-color-secondary: #{$textSecondaryColor};
 	--primary-color: #{$primaryColor};
 	--primary-color-text: #{$primaryTextColor};
 	--font-family: #{$fontFamily};
-	--surface-0: #ffffff;
+	--surface-0: $light;
 	--surface-50: #fafafa;
 	--surface-100: #f5f5f5;
 	--surface-200: #eeeeee;
@@ -908,9 +908,9 @@ $imagePreviewActionIconBorderRadius: 50% !default;
 	--inline-spacing: #{$inlineSpacing};
 	--border-radius: #{$borderRadius};
 	--surface-ground: #fafafa;
-	--surface-section: #ffffff;
-	--surface-card: #ffffff;
-	--surface-overlay: #ffffff;
+	--surface-section: $light;
+	--surface-card: $light;
+	--surface-overlay: $light;
 	--surface-border: rgba(0, 0, 0, 0.12);
 	--surface-hover: rgba(0, 0, 0, 0.04);
 	--maskbg: #{$maskBg};
