@@ -69,50 +69,58 @@
 //------------------
 
 h1 {
-	font-family: $fontFamilySerif;
 	@extend .text-5xl;
+	font-family: $fontFamilySerif;
 	font-weight: normal;
+	color: var(--primary-700);
 }
 
 h2 {
-	font-family: $fontFamilySerif;
 	@extend .text-3xl;
+	font-family: $fontFamilySerif;
 	font-weight: normal;
+	color: var(--primary-700);
 }
 
 h3 {
-	font-family: $fontFamilySerif;
 	@extend .text-2xl;
+	font-family: $fontFamilySerif;
 	font-weight: normal;
+	color: var(--primary-700);
 }
 
 h4 {
-	font-family: $fontFamilySansSerif2;
 	@extend .text-xl;
+	font-family: $fontFamilySansSerif2;
 	font-weight: normal;
+	color: var(--primary-700);
 }
 
 h5 {
-	font-family: $fontFamily;
 	@extend .text-base;
+	font-family: $fontFamily;
 	font-weight: lighter;
+	color: var(--primary-700);
 }
 
 h6 {
-	font-family: $fontFamily;
 	@extend .text-sm;
+	font-family: $fontFamily;
 	font-weight: normal;
+	color: var(--primary-700);
 }
 
 p {
-	font-family: $fontFamily;
 	@extend .text-base;
-	font-weight: normal;
+	font-family: $fontFamily;
+	font-weight: lighter;
+	color: var(--primary-800);
+	font-size: 0.9rem;
 }
 
 span {
-	font-family: $fontFamily;
 	@extend .text-sm;
+	font-family: $fontFamily;
 	font-weight: initial;
 }
 
@@ -121,18 +129,21 @@ label {
 	font-size: 0.9rem;
 	line-height: $lineHeightSM;
 	font-weight: lighter;
+	color: var(--primary-800);
 }
 
 .p-inputtext {
 	font-family: $fontFamily;
 	@extend .text-base;
 	font-weight: normal;
+	color: var(--primary-800);
 }
 
 .button {
 	font-family: $fontFamily;
 	@extend .text-sm;
 	font-weight: bold;
+	color: $light;
 }
 
 .link {

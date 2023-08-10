@@ -4,6 +4,15 @@ p-divider {
 	max-width: 250px;
 }
 
+:host ::ng-deep .p-divider-horizontal::before {
+	border-color: var(--primary-100);
+	opacity: 0.6;
+}
+
 .content-box {
 	padding: 0 0.75rem;
+
+	.icon {
+		color: var(--primary-800);
+	}
 }

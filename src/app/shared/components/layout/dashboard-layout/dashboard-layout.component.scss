@@ -24,7 +24,7 @@
 		justify-content: space-between;
 		padding: 1.5rem;
 		padding-left: 0;
-		background-color: white;
+		background-color: $light;
 
 		.sidebar-top {
 			display: flex;
@@ -40,9 +40,10 @@
 
 				.icon {
 					font-size: 1rem;
+					color: var(--primary-800);
 				}
 
-				h1 {
+				.logo {
 					margin-bottom: 0;
 					font-size: 1.2rem;
 					font-weight: bold;
@@ -100,7 +101,7 @@
 }
 
 .user-menu-item {
-	background-color: white;
+	background-color: $light;
 	color: var(--primary-300);
 
 	&:hover {
@@ -114,16 +115,30 @@
 }
 
 ::ng-deep .p-menu .p-menuitem > .p-menuitem-content {
-	background-color: white;
+	background-color: $light;
 }
 
 ::ng-deep .p-menu .p-menuitem .p-menuitem-link:focus {
-	background-color: #f7f4fb;
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+	.p-menuitem-icon {
+		color: var(--primary-800);
+	}
+
+	.p-menuitem-text {
+		color: var(--primary-800);
+	}
 }
 
 ::ng-deep
 	.p-menu
 	.p-menuitem:not(.p-highlight):not(.p-disabled)
 	> .p-menuitem-content:hover {
-	background-color: #f7f4fb;
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .user-box .p-button.p-button-text {
+	color: var(--primary-800);
 }
