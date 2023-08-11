@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
-import { ModalAddProductsComponent } from './components/modal/modal-add-products/modal-add-products.component';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
@@ -21,6 +20,7 @@ import { DividerComponent } from './components/divider/divider.component';
 import { ButtonComponent } from './components/button/button/button.component';
 import { ErrorFieldComponent } from './components/form/error-field/error-field.component';
 import { TextareaComponent } from './components/input/textarea/textarea.component';
+import { ModalAddProductComponent } from './components/modal/modal-add-product/modal-add-product.component';
 
 @NgModule({
 	declarations: [
@@ -35,7 +35,7 @@ import { TextareaComponent } from './components/input/textarea/textarea.componen
 		NavLinkComponent,
 		FullnamePipe,
 		ModalAddCategoryComponent,
-		ModalAddProductsComponent,
+		ModalAddProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -66,7 +66,7 @@ import { TextareaComponent } from './components/input/textarea/textarea.componen
 		NavLinkComponent,
 		FullnamePipe,
 		ModalAddCategoryComponent,
-		ModalAddProductsComponent,
+		ModalAddProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,

@@ -15,6 +15,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TooltipModule } from 'primeng/tooltip';
 import { SliderModule } from 'primeng/slider';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
 	exports: [
@@ -34,6 +35,7 @@ import { SliderModule } from 'primeng/slider';
 		CheckboxModule,
 		TooltipModule,
 		SliderModule,
+		ScrollPanelModule,
 	],
 })
 export class PrimengModule {}

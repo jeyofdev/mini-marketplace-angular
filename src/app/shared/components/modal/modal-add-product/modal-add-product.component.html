@@ -1,17 +1,22 @@
-<div mat-dialog-content>
-	<div class="modal-container">
-		<div class="modal-header">
-			<h1>New product</h1>
+<p-sidebar
+	[visible]="visible"
+	[position]="position"
+	[showCloseIcon]="false"
+	[dismissible]="false"
+>
+	<ng-template pTemplate="header">
+		<h2>New product</h2>
 
-			<app-button
-				variant="icon"
-				color="danger"
-				[icon]="iconClose"
-				(click)="onClose()"
-			></app-button>
-		</div>
+		<app-button
+			variant="icon"
+			color="danger"
+			[icon]="iconClose"
+			(click)="onClose(false)"
+		></app-button>
+	</ng-template>
 
-		<div>
+	<ng-template pTemplate="content">
+		<p-scrollPanel [style]="{ width: '100%', height: 'calc(100%)' }">
 			<p>
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, minima
 				animi optio quos ad eaque aperiam, maiores error neque accusamus
@@ -140,8 +145,8 @@
 					Add new product</app-button
 				>
 			</form>
-		</div>
-	</div>
-</div>
+		</p-scrollPanel>
+	</ng-template>
+</p-sidebar>
 
 <p-toast position="top-right"></p-toast>
