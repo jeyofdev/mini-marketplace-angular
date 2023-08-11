@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalAddCategoryComponent } from 'src/app/shared/components/modal/modal-add-category/modal-add-category.component';
 import { IconDefinition, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Store, select } from '@ngrx/store';
 import { CategoryActions } from '../../state/actions/dashboard.actions';
@@ -16,11 +14,9 @@ import { Observable } from 'rxjs';
 export class DashboardCategoriesComponent implements OnInit {
 	iconAdd!: IconDefinition;
 	categories$!: Observable<ICategory[]>;
+	sidebarVisible = false;
 
-	constructor(
-		private dialog: MatDialog,
-		private store: Store,
-	) {}
+	constructor(private store: Store) {}
 
 	ngOnInit(): void {
 		this.iconAdd = faPlus;
@@ -29,17 +25,7 @@ export class DashboardCategoriesComponent implements OnInit {
 		this.categories$ = this.store.pipe(select(getDashboardSelector));
 	}
 
-	openModalAddNewCategory() {
-		const dialogRef = this.dialog.open(ModalAddCategoryComponent, {
-			width: '500px',
-			height: '100vh',
-			position: { right: '0px', top: '0px' },
-			panelClass: 'modal-add-category',
-		});
-
-		dialogRef.afterClosed().subscribe(() => {
-			// eslint-disable-next-line no-console
-			console.log('after close');
-		});
+	openModalAddNewCategory(): void {
+		this.sidebarVisible = true;
 	}
 }

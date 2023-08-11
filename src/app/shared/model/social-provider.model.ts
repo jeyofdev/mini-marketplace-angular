@@ -1,10 +1,17 @@
-import { ThemePalette } from '@angular/material/core';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { ProviderEnum } from '../enum/provider.enum';
 
 export interface ISocialProvider {
 	label: string;
-	color: ThemePalette;
+	color:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'warning'
+		| 'danger'
+		| 'info'
+		| 'help'
+		| 'danger';
 	icon: IconDefinition;
 	size: string;
 	outline: boolean;

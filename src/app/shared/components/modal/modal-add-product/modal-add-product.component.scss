@@ -7,12 +7,16 @@
 	background-color: $light;
 	width: 100%;
 	max-width: 500px;
-	padding: 1rem 2rem;
+	padding: 1rem 2rem 1.5rem;
 }
 
 :host ::ng-deep .p-sidebar-header,
 :host ::ng-deep .p-sidebar-content {
 	padding: 0;
+}
+
+:host ::ng-deep .p-sidebar-footer {
+	display: none;
 }
 
 :host ::ng-deep .p-sidebar-header {
@@ -29,13 +33,48 @@
 
 .form-row {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	gap: 1rem;
 	width: 100%;
 }
 
+.row-checkbox {
+	gap: 0rem;
+}
+
+.colors-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.25rem;
+	width: 100%;
+	padding-left: 0.85rem;
+}
+
+label {
+	margin-bottom: 0.2rem;
+}
+
 app-text-field,
-app-textarea {
+app-select,
+app-slider-with-value {
 	width: 100%;
 	margin-bottom: 1rem;
+}
+
+app-checkbox-color {
+	margin-bottom: 1rem;
+}
+
+:host ::ng-deep .p-scrollpanel-bar {
+	background-color: var(--primary-50);
+	opacity: 1;
+	transition: background-color 0.2s;
+}
+
+:host ::ng-deep .p-scrollpanel-content {
+	overflow-x: hidden;
+}
+
+:host ::ng-deep .p-scrollpanel-bar-x {
+	display: none;
 }

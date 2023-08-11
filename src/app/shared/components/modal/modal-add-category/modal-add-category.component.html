@@ -1,72 +1,75 @@
-<div mat-dialog-content>
-	<div class="modal-container">
-		<div class="modal-header">
-			<h1>New category</h1>
+<p-sidebar
+	[visible]="visible"
+	[position]="position"
+	[showCloseIcon]="false"
+	[dismissible]="false"
+>
+	<ng-template pTemplate="header">
+		<h2>New category</h2>
+
+		<app-button
+			variant="icon"
+			color="danger"
+			[icon]="iconClose"
+			(click)="onClose(false)"
+		></app-button>
+	</ng-template>
+
+	<ng-template pTemplate="content">
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, minima
+			animi optio quos ad eaque aperiam, maiores error neque accusamus molestiae
+			officia distinctio repellat quis quo, quisquam cum ut possimus dolorum?
+			Maiores dignissimos fugiat perferendis odio illum voluptas non enim
+			voluptatum voluptatibus numquam.
+		</p>
+
+		<app-divider
+			[maxWidth]="250"
+			[icon]="iconDivider"
+			layout="horizontal"
+			backgroundColor="white"
+		>
+		</app-divider>
+
+		<form
+			class="add-category-form"
+			[formGroup]="mainForm"
+			(ngSubmit)="onMainFormSubmit()"
+		>
+			<div class="form-row">
+				<app-text-field
+					type="text"
+					name="name"
+					label="Name *"
+					formControlName="name"
+					[parentForm]="mainForm"
+					[validationMessages]="addCategoryValidationMessages.name"
+				></app-text-field>
+			</div>
+
+			<div class="form-row">
+				<app-textarea
+					name="description"
+					label="Description"
+					[rows]="8"
+					placeholder="Enter a description"
+					formControlName="description"
+					[parentForm]="mainForm"
+					[validationMessages]="addCategoryValidationMessages.description"
+				></app-textarea>
+			</div>
 
 			<app-button
-				variant="icon"
-				color="danger"
-				[icon]="iconClose"
-				(click)="onClose()"
-			></app-button>
-		</div>
-
-		<div>
-			<p>
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, minima
-				animi optio quos ad eaque aperiam, maiores error neque accusamus
-				molestiae officia distinctio repellat quis quo, quisquam cum ut possimus
-				dolorum? Maiores dignissimos fugiat perferendis odio illum voluptas non
-				enim voluptatum voluptatibus numquam.
-			</p>
-
-			<app-divider
-				[maxWidth]="250"
-				[icon]="iconDivider"
-				layout="horizontal"
-				backgroundColor="white"
+				type="submit"
+				variant="raised"
+				color="primary"
+				[disabled]="!mainForm.valid"
 			>
-			</app-divider>
-
-			<form
-				class="add-category-form"
-				[formGroup]="mainForm"
-				(ngSubmit)="onMainFormSubmit()"
+				Add new category</app-button
 			>
-				<div class="form-row">
-					<app-text-field
-						type="text"
-						name="name"
-						label="Name *"
-						formControlName="name"
-						[parentForm]="mainForm"
-						[validationMessages]="addCategoryValidationMessages.name"
-					></app-text-field>
-				</div>
-
-				<div class="form-row">
-					<app-textarea
-						name="description"
-						label="Description"
-						[rows]="8"
-						placeholder="Enter a description"
-						formControlName="description"
-						[parentForm]="mainForm"
-						[validationMessages]="addCategoryValidationMessages.description"
-					></app-textarea>
-				</div>
-
-				<app-button
-					type="submit"
-					variant="raised"
-					color="primary"
-					[disabled]="!mainForm.valid"
-				>
-					Add new category</app-button
-				>
-			</form>
-		</div>
-	</div>
-</div>
+		</form>
+	</ng-template>
+</p-sidebar>
 
 <p-toast position="top-right"></p-toast>

@@ -12,8 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { INavLink } from 'src/app/shared/interfaces/link.interface';
 import { AuthService } from '../../../service/auth.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalAddProductsComponent } from '../../modal/modal-add-products/modal-add-products.component';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -28,13 +26,11 @@ export class DashboardLayoutComponent implements OnInit {
 	moreIcon!: IconDefinition;
 	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];
+	sidebarVisible = false;
 
 	items: MenuItem[] | undefined;
 
-	constructor(
-		private authService: AuthService,
-		public dialog: MatDialog,
-	) {}
+	constructor(private authService: AuthService) {}
 
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
@@ -76,16 +72,6 @@ export class DashboardLayoutComponent implements OnInit {
 	}
 
 	openModalAddNewProduct() {
-		const dialogRef = this.dialog.open(ModalAddProductsComponent, {
-			width: '500px',
-			height: '100vh',
-			position: { right: '0px', top: '0px' },
-			panelClass: 'modal-add-product',
-		});
-
-		dialogRef.afterClosed().subscribe(() => {
-			// eslint-disable-next-line no-console
-			console.log('after close');
-		});
+		this.sidebarVisible = true;
 	}
 }

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { ModalAddCategoryComponent } from '../modal-add-category/modal-add-category.component';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
 	IconDefinition,
 	faCircleDown,
@@ -21,12 +19,16 @@ import { addProductValidationMessages } from '../../../validations/messages.vali
 import { MessageService } from 'primeng/api';
 
 @Component({
-	selector: 'app-modal-add-products',
-	templateUrl: './modal-add-products.component.html',
-	styleUrls: ['./modal-add-products.component.scss'],
+	selector: 'app-modal-add-product',
+	templateUrl: './modal-add-product.component.html',
+	styleUrls: ['./modal-add-product.component.scss'],
 	providers: [MessageService],
 })
-export class ModalAddProductsComponent implements OnInit {
+export class ModalAddProductComponent implements OnInit {
+	@Input() visible!: boolean;
+	@Input() position!: 'left' | 'right' | 'top' | 'bottom';
+	@Output() visibleChange = new EventEmitter<boolean>();
+
 	iconClose!: IconDefinition;
 	iconDivider!: IconDefinition;
 
@@ -44,7 +46,6 @@ export class ModalAddProductsComponent implements OnInit {
 	addProductValidationMessages!: any;
 
 	constructor(
-		public dialogRef: MatDialogRef<ModalAddCategoryComponent>,
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
 		private productService: ProductService,
@@ -55,7 +56,6 @@ export class ModalAddProductsComponent implements OnInit {
 		this.iconClose = faXmark;
 		this.iconDivider = faCircleDown;
 		this.categories = [];
-
 		this.initCategories();
 		this.initSizes();
 		this.initColors();
@@ -70,8 +70,9 @@ export class ModalAddProductsComponent implements OnInit {
 		this.addProduct();
 	}
 
-	onClose(): void {
-		this.dialogRef.close();
+	onClose(arg: boolean): void {
+		this.visible = arg;
+		this.visibleChange.emit(arg);
 	}
 
 	private initMainForm() {
@@ -149,6 +150,7 @@ export class ModalAddProductsComponent implements OnInit {
 				});
 
 				this.mainForm.reset();
+				this.onClose(false);
 			})
 			.catch(err => {
 				this.messageService.add({
