@@ -3,6 +3,7 @@ import {
 	Component,
 	EventEmitter,
 	Input,
+	OnInit,
 	Output,
 	forwardRef,
 } from '@angular/core';
@@ -28,7 +29,7 @@ import { DropdownChangeEvent } from 'primeng/dropdown';
 		},
 	],
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent implements OnInit, ControlValueAccessor {
 	@Input() label!: string;
 	@Input() name!: string;
 	@Input() placeholder!: string;
@@ -41,13 +42,26 @@ export class SelectComponent implements ControlValueAccessor {
 
 	value!: string;
 	selectedItem: ISelectItem | undefined;
+	showClear!: boolean;
 
 	onChanged!: (value: string) => void;
 	onTouched!: () => void;
 
+	ngOnInit(): void {
+		this.showClear = false;
+	}
+
 	selectionChanged(event: DropdownChangeEvent) {
-		this.valueChange.emit(event.value);
-		this.onChanged(event.value.value);
+		if (event.value) {
+			this.showClear = true;
+			this.valueChange.emit(event.value);
+			this.onChanged(event.value.value);
+		} else {
+			this.showClear = false;
+			this.valueChange.emit('');
+			this.onChanged('');
+		}
+
 		this.onTouched();
 	}
 

@@ -1,3 +1,5 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
 .form-control {
 	display: flex;
 	flex-direction: column;
@@ -14,4 +16,8 @@ label {
 
 :host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
 	background-color: #fff;
+}
+
+.p-inputtext.ng-dirty.ng-invalid {
+	color: $dangerColor;
 }

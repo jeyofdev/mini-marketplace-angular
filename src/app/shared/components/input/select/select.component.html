@@ -9,6 +9,10 @@
 		[placeholder]="placeholder"
 		(onChange)="selectionChanged($event)"
 		(blur)="onTouched()"
+		[showClear]="showClear"
+		[class]="
+			formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+		"
 	></p-dropdown>
 
 	<app-error-field
