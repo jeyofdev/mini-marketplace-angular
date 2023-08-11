@@ -49,5 +49,9 @@ export const addProductValidationMessages = {
 	},
 	price: {
 		required: { message: 'This field is required' },
+		min: {
+			message: 'The price must be defined',
+			value: 1,
+		},
 	},
 };

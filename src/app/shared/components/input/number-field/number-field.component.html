@@ -1,19 +1,19 @@
 <div class="form-control">
-	<label>{{ label }}</label>
+	<label [htmlFor]="name">{{ label }}</label>
 
-	<p-dropdown
+	<p-inputNumber
 		[id]="name"
 		[name]="name"
-		[options]="items"
-		optionLabel="label"
-		[placeholder]="placeholder"
-		(onChange)="selectionChanged($event)"
-		(blur)="onTouched()"
-		[showClear]="showClear"
+		mode="currency"
+		inputId="currency-france"
+		currency="EUR"
+		(onInput)="onChanged($event)"
+		(onBlur)="onTouched()"
 		[class]="
 			formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
 		"
-	></p-dropdown>
+	>
+	</p-inputNumber>
 
 	<app-error-field
 		[formControl]="formControl"

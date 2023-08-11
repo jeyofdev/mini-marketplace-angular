@@ -10,12 +10,16 @@ label {
 	margin-bottom: 0.2rem;
 }
 
-::ng-deep .p-dropdown-label {
-	width: 100% !important;
-}
+:host ::ng-deep p-inputNumber {
+	width: 100%;
 
-:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
-	background-color: #fff;
+	.p-inputtext {
+		width: 100%;
+	}
+
+	> span {
+		width: 100%;
+	}
 }
 
 .p-inputtext.ng-dirty.ng-invalid {
