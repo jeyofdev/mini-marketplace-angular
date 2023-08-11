@@ -1,0 +1,19 @@
+<div class="form-control">
+	<label [htmlFor]="name">{{ label }}</label>
+
+	<p-inputNumber
+		[id]="name"
+		[name]="name"
+		mode="currency"
+		inputId="currency-france"
+		currency="EUR"
+		(onInput)="onChanged($event)"
+		(onBlur)="onTouched()"
+	>
+	</p-inputNumber>
+
+	<app-error-field
+		[formControl]="formControl"
+		[validationMessages]="validationMessages"
+	></app-error-field>
+</div>

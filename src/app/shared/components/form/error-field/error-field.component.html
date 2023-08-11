@@ -25,4 +25,10 @@
 		severity="error"
 		[text]="validationMessages.pattern?.message"
 	></p-message>
+
+	<p-message
+		*ngIf="formControl.hasError('min')"
+		severity="error"
+		[text]="validationMessages.min?.message"
+	></p-message>
 </div>

@@ -22,8 +22,7 @@ import { getFormControl } from '../../../utils/form.utils';
 	],
 })
 export class TextFieldComponent implements OnInit, ControlValueAccessor {
-	@Input() type!: 'text' | 'password' | 'number';
-	@Input() appearance!: 'outline' | 'fill';
+	@Input() type!: 'text' | 'password';
 	@Input() name!: string;
 	@Input() label!: string;
 	@Input() endIcon!: string;

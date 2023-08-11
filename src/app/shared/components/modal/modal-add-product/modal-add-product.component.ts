@@ -127,7 +127,13 @@ export class ModalAddProductComponent implements OnInit {
 
 		this.infosForm = this.formBuilder.group({
 			quantity: ['1'],
-			price: ['', [Validators.required]],
+			price: [
+				'',
+				[
+					Validators.required,
+					Validators.min(addProductValidationMessages.price.min.value),
+				],
+			],
 		});
 	}
 

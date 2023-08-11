@@ -3,6 +3,7 @@ export interface IValidationMessage {
 	minlength?: IValidation;
 	maxlength?: IValidation;
 	pattern?: IValidation;
+	min?: IValidation;
 }
 
 export interface IValidation {

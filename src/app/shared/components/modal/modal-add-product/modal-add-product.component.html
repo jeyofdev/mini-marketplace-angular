@@ -124,15 +124,14 @@
 					</div>
 
 					<div class="form-row">
-						<app-text-field
-							type="number"
+						<app-number-field
 							name="price"
 							label="Price *"
 							groupName="infosForm"
 							formControlName="price"
 							[parentForm]="mainForm"
 							[validationMessages]="addProductValidationMessages.price"
-						></app-text-field>
+						></app-number-field>
 					</div>
 				</div>
 
@@ -145,6 +144,8 @@
 					Add new product</app-button
 				>
 			</form>
+
+			<pre>{{ mainForm.value | json }}</pre>
 		</p-scrollPanel>
 	</ng-template>
 </p-sidebar>
