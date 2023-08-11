@@ -1,3 +1,5 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
 .form-control {
 	display: flex;
 	flex-direction: column;
@@ -18,4 +20,8 @@ label {
 	> span {
 		width: 100%;
 	}
+}
+
+.p-inputtext.ng-dirty.ng-invalid {
+	color: $dangerColor;
 }

@@ -1,3 +1,5 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
 .form-control {
 	display: flex;
 	flex-direction: column;
@@ -15,4 +17,8 @@ label {
 .p-input-icon-right > .p-icon-wrapper,
 .p-input-icon-right > i:last-of-type {
 	color: var(--primary-800);
+}
+
+.p-inputtext.ng-dirty.ng-invalid {
+	color: $dangerColor;
 }

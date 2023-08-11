@@ -17,6 +17,9 @@
 			[value]="value"
 			(input)="onChange($event)"
 			(blur)="onTouched()"
+			[class]="
+				formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+			"
 		/>
 	</span>
 

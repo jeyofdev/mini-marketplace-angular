@@ -1,3 +1,5 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
 .form-control {
 	display: flex;
 	flex-direction: column;
@@ -6,4 +8,8 @@
 
 label {
 	margin-bottom: 0.2rem;
+}
+
+.p-inputtext.ng-dirty.ng-invalid {
+	color: $dangerColor;
 }

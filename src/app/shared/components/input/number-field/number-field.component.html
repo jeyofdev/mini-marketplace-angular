@@ -9,6 +9,9 @@
 		currency="EUR"
 		(onInput)="onChanged($event)"
 		(onBlur)="onTouched()"
+		[class]="
+			formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+		"
 	>
 	</p-inputNumber>
 
