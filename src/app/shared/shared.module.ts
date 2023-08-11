@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
@@ -43,7 +42,6 @@ import { ModalAddProductComponent } from './components/modal/modal-add-product/m
 	],
 	imports: [
 		CommonModule,
-		MaterialModule,
 		PrimengModule,
 		FontAwesomeModule,
 		FormsModule,
@@ -53,7 +51,6 @@ import { ModalAddProductComponent } from './components/modal/modal-add-product/m
 	exports: [
 		FormsModule,
 		ReactiveFormsModule,
-		MaterialModule,
 		PrimengModule,
 		FontAwesomeModule,
 		TextFieldComponent,
