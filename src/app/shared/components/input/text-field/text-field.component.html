@@ -2,29 +2,25 @@
 	<label [htmlFor]="name">{{ label }}</label>
 
 	<span [class]="class">
-		<i
-			*ngIf="endIcon && type === 'password'"
-			[class]="endIcon"
-			(click)="shownPassword()"
-		></i>
+		<i *ngIf="endIcon" [class]="endIcon"></i>
 
 		<input
-			*ngIf="type === 'text' || type === 'password'"
 			pInputText
-			[type]="type === 'text' || !hidePassword ? 'text' : 'password'"
+			[type]="type"
 			[id]="name"
 			[name]="name"
 			[value]="value"
-			(input)="onChange($event)"
-			(blur)="onTouched()"
+			[disabled]="disabled"
+			(input)="onInputChange($event)"
+			(focus)="markAsTouched()"
 			[class]="
-				formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+				control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''
 			"
 		/>
 	</span>
 
 	<app-error-field
-		[formControl]="formControl"
+		[control]="control"
 		[validationMessages]="validationMessages"
 	></app-error-field>
 </div>

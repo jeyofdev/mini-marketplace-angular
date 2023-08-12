@@ -3,7 +3,7 @@
 	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
 	[socialProviders]="socialProviders"
 	[image]="image"
-	containerMaxHeight="700px"
+	containerMaxHeight="740px"
 >
 	<app-alert [message]="formErrorMessage" severity="error"></app-alert>
 
@@ -19,20 +19,20 @@
 				label="Email *"
 				formControlName="email"
 				[parentForm]="mainForm"
-				[validationMessages]="loginValidationMessages.email"
+				[validationMessages]="inputsValidationMessages.email"
 			></app-text-field>
 		</div>
 
 		<div class="form-row">
-			<app-text-field
-				type="password"
+			<app-password-field
 				name="password"
 				label="Password *"
-				[hidePassword]="true"
+				[toggleMask]="true"
+				[feedback]="false"
 				formControlName="password"
 				[parentForm]="mainForm"
-				[validationMessages]="loginValidationMessages.password"
-			></app-text-field>
+				[validationMessages]="inputsValidationMessages.password"
+			></app-password-field>
 		</div>
 
 		<app-button
@@ -43,5 +43,5 @@
 		>
 			Log In</app-button
 		>
-	</form></app-auth-layout
->
+	</form>
+</app-auth-layout>

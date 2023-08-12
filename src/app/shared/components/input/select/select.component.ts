@@ -30,17 +30,21 @@ import { DropdownChangeEvent } from 'primeng/dropdown';
 	],
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
-	@Input() label!: string;
 	@Input() name!: string;
+	@Input() label!: string;
 	@Input() placeholder!: string;
 	@Input() items!: ISelectItem[];
+
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
+
 	@Input() validationMessages!: IValidationMessage;
 
 	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
 	value!: string;
+	disabled!: boolean;
+
 	selectedItem: ISelectItem | undefined;
 	showClear!: boolean;
 
@@ -69,15 +73,23 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 		this.value = value;
 	}
 
-	registerOnChange(fn: any): void {
+	registerOnChange(fn: (value: string) => void): void {
 		this.onChanged = fn;
 	}
 
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	get formControl() {
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
+	}
+
+	get control() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

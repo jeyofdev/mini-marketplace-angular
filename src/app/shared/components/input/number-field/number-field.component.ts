@@ -1,11 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-	Component,
-	EventEmitter,
-	Input,
-	Output,
-	forwardRef,
-} from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 import {
 	ControlValueAccessor,
@@ -36,32 +29,42 @@ export class NumberFieldComponent implements ControlValueAccessor {
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	@Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
-
-	isDisabled!: boolean;
+	disabled!: boolean;
 	value!: number;
 
-	changed!: (value: number) => void;
+	onChanged!: (value: number) => void;
 	onTouched!: () => void;
+
+	onInputNumberChange(event: InputNumberInputEvent): void {
+		if (this.disabled) {
+			return;
+		}
+
+		this.value = Number(event.value);
+		this.onChanged(this.value);
+	}
 
 	writeValue(value: number): void {
 		this.value = value;
 	}
 
-	onChanged(event: InputNumberInputEvent): void {
-		const value = Number(event.value);
-		this.changed(value);
+	registerOnChange(fn: (value: number) => void): void {
+		this.onChanged = fn;
 	}
 
-	registerOnChange(fn: any): void {
-		this.changed = fn;
-	}
-
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	get formControl() {
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
+	}
+
+	get control() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

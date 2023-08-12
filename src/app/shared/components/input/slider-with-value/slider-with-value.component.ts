@@ -28,12 +28,11 @@ import { SliderChangeEvent } from 'primeng/slider';
 	],
 })
 export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
-	@Input() label!: string;
 	@Input() name!: string;
+	@Input() label!: string;
 	@Input() min!: number;
 	@Input() max!: number;
 	@Input() step!: number;
-	@Input() disabled!: boolean;
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
@@ -41,6 +40,7 @@ export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 	@Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
 
 	value!: number;
+	disabled!: boolean;
 
 	onChanged!: (value: number) => void;
 	onTouched!: () => void;
@@ -61,15 +61,23 @@ export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
 		this.value = value;
 	}
 
-	registerOnChange(fn: any): void {
+	registerOnChange(fn: (value: number) => void): void {
 		this.onChanged = fn;
 	}
 
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	get formControl() {
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
+	}
+
+	get control() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

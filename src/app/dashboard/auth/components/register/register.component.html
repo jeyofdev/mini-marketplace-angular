@@ -11,9 +11,9 @@
 		(ngSubmit)="onMainFormSubmit()"
 	>
 		<app-alert
-			*ngIf="showPasswordError$ | async"
+			*ngIf="showPasswordEqualError$ | async"
 			severity="error"
-			[message]="registerValidationMessages.passwordEqual?.message"
+			[message]="inputsValidationMessages.passwordEqual?.message"
 		>
 		</app-alert>
 		<app-alert [message]="formErrorMessage" severity="error"></app-alert>
@@ -27,7 +27,7 @@
 					formControlName="firstname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.firstname"
+					[validationMessages]="inputsValidationMessages.firstname"
 				></app-text-field>
 
 				<app-text-field
@@ -37,7 +37,7 @@
 					formControlName="lastname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.lastname"
+					[validationMessages]="inputsValidationMessages.lastname"
 				></app-text-field>
 			</div>
 
@@ -49,7 +49,7 @@
 					formControlName="username"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.username"
+					[validationMessages]="inputsValidationMessages.username"
 				></app-text-field>
 			</div>
 		</ng-container>
@@ -61,34 +61,34 @@
 				label="Email *"
 				formControlName="email"
 				[parentForm]="mainForm"
-				[validationMessages]="registerValidationMessages.email"
+				[validationMessages]="inputsValidationMessages.email"
 			></app-text-field>
 		</div>
 
 		<ng-container [formGroup]="passwordForm">
 			<div class="form-row">
-				<app-text-field
-					type="password"
+				<app-password-field
 					name="password"
 					label="Password *"
-					[hidePassword]="true"
+					[toggleMask]="true"
+					[feedback]="false"
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.password"
-				></app-text-field>
+					[validationMessages]="inputsValidationMessages.password"
+				></app-password-field>
 
-				<app-text-field
-					type="password"
+				<app-password-field
 					name="confirmPassword"
 					label="Confirm password *"
-					[hidePassword]="true"
+					[toggleMask]="true"
+					[feedback]="false"
+					formControlName="password"
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.confirmPassword"
-					[showPasswordError]="showPasswordError$"
-				></app-text-field>
+					[validationMessages]="inputsValidationMessages.confirmPassword"
+				></app-password-field>
 			</div>
 		</ng-container>
 
@@ -100,5 +100,5 @@
 		>
 			Register</app-button
 		>
-	</form></app-auth-layout
->
+	</form>
+</app-auth-layout>

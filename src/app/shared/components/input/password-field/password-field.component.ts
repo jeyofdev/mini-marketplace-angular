@@ -1,32 +1,28 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
-import {
-	ControlValueAccessor,
-	FormGroup,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { getFormControl } from '../../../utils/form.utils';
+import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
-	selector: 'app-textarea',
-	templateUrl: './textarea.component.html',
-	styleUrls: ['./textarea.component.scss'],
+	selector: 'app-password-field',
+	templateUrl: './password-field.component.html',
+	styleUrls: ['./password-field.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => TextareaComponent),
+			useExisting: forwardRef(() => PasswordFieldComponent),
 			multi: true,
 		},
 	],
 })
-export class TextareaComponent implements OnInit, ControlValueAccessor {
+export class PasswordFieldComponent implements OnInit {
 	@Input() name!: string;
 	@Input() label!: string;
-	@Input() rows!: number;
-	@Input() placeholder!: string;
+	@Input() toggleMask!: boolean;
+	@Input() feedback!: boolean;
 
 	@Input() validationMessages!: IValidationMessage;
+
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
@@ -40,7 +36,7 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
 		this.disabled = false;
 	}
 
-	onTextareaChange(event: Event): void {
+	onInputPasswordChange(event: Event): void {
 		if (this.disabled) {
 			return;
 		}

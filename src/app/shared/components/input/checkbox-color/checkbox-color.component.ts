@@ -28,8 +28,8 @@ import { CheckboxChangeEvent } from 'primeng/checkbox';
 	],
 })
 export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
-	@Input() label!: string;
 	@Input() name!: string;
+	@Input() label!: string;
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
@@ -39,6 +39,7 @@ export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 	@Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	checked!: boolean;
+	disabled!: boolean;
 
 	onChanged!: (checked: boolean) => void;
 	onTouched!: () => void;
@@ -57,12 +58,20 @@ export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 		this.checked = checked;
 	}
 
-	registerOnChange(fn: any): void {
+	registerOnChange(fn: (checked: boolean) => void): void {
 		this.onChanged = fn;
 	}
 
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
+	}
+
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
 	}
 
 	get formControl() {

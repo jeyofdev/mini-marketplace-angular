@@ -8,15 +8,14 @@
 		[placeholder]="placeholder"
 		[rows]="rows"
 		[value]="value"
-		(input)="onChange($event)"
-		(blur)="onTouched()"
-		[class]="
-			formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
-		"
+		[disabled]="disabled"
+		(input)="onTextareaChange($event)"
+		(focus)="markAsTouched()"
+		[class]="control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''"
 	></textarea>
 
 	<app-error-field
-		[formControl]="formControl"
+		[control]="control"
 		[validationMessages]="validationMessages"
 	></app-error-field>
 </div>

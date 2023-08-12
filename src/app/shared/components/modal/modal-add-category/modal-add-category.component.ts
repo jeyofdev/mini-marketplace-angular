@@ -1,7 +1,11 @@
 import { CategoryService } from './../../../service/category.service';
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+	FormBuilder,
+	FormControl,
+	FormGroup,
+	Validators,
+} from '@angular/forms';
 import {
 	IconDefinition,
 	faXmark,
@@ -23,7 +27,12 @@ export class ModalAddCategoryComponent implements OnInit {
 
 	iconClose!: IconDefinition;
 	iconDivider!: IconDefinition;
+
 	mainForm!: FormGroup;
+	nameCtrl!: FormControl<string | null>;
+	descriptionCtrl!: FormControl<string | null>;
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	addCategoryValidationMessages!: any;
 
 	constructor(
@@ -35,6 +44,8 @@ export class ModalAddCategoryComponent implements OnInit {
 	ngOnInit(): void {
 		this.iconClose = faXmark;
 		this.iconDivider = faCircleDown;
+
+		this.initFormControls();
 		this.initMainForm();
 		this.addCategoryValidationMessages = addCategoryValidationMessages;
 	}
@@ -50,25 +61,23 @@ export class ModalAddCategoryComponent implements OnInit {
 
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
-			name: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						addCategoryValidationMessages.name.minlength.value,
-					),
-					Validators.maxLength(
-						addCategoryValidationMessages.name.maxlength.value,
-					),
-				],
-			],
-			description: [
-				'',
-				Validators.minLength(
-					addCategoryValidationMessages.description.minlength.value,
-				),
-			],
+			name: this.nameCtrl,
+			description: this.descriptionCtrl,
 		});
+	}
+
+	private initFormControls(): void {
+		this.nameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(addCategoryValidationMessages.name.minlength.value),
+			Validators.maxLength(addCategoryValidationMessages.name.maxlength.value),
+		]);
+
+		this.descriptionCtrl = this.formBuilder.control('', [
+			Validators.minLength(
+				addCategoryValidationMessages.description.minlength.value,
+			),
+		]);
 	}
 
 	private addCategory(): void {
