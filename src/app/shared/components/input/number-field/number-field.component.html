@@ -1,4 +1,4 @@
-<!-- <div class="form-control">
+<div class="form-control">
 	<label [htmlFor]="name">{{ label }}</label>
 
 	<p-inputNumber
@@ -10,13 +10,13 @@
 		(onInput)="onChanged($event)"
 		(onBlur)="onTouched()"
 		[class]="
-			formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+			formControl?.invalid && formControl?.touched ? 'ng-invalid ng-dirty' : ''
 		"
 	>
 	</p-inputNumber>
 
 	<app-error-field
-		[formControl]="formControl"
+		[control]="formControl"
 		[validationMessages]="validationMessages"
 	></app-error-field>
-</div> -->
+</div>

@@ -4,7 +4,12 @@ import {
 	faCircleDown,
 	faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+	FormBuilder,
+	FormControl,
+	FormGroup,
+	Validators,
+} from '@angular/forms';
 import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
 import {
@@ -12,11 +17,11 @@ import {
 	ISelectItem,
 } from '../../../interfaces/input.interface';
 import { ICategory } from '../../../model/category.model';
-import { ProductSizeEnum } from '../../../enum/product.enum';
 import { IProduct } from '../../../model/product.model';
 import { ProductService } from '../../../service/product.service';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
 	selector: 'app-modal-add-product',
@@ -38,36 +43,48 @@ export class ModalAddProductComponent implements OnInit {
 	detailsForm!: FormGroup;
 	infosForm!: FormGroup;
 
+	brandNameCtrl!: FormControl<string | null>;
+	modelNameCtrl!: FormControl<string | null>;
+	categoryCtrl!: FormControl<string | null>;
+	sizeCtrl!: FormControl<string | null>;
+	quantityCtrl!: FormControl<string | null>;
+	priceCtrl!: FormControl<string | null>;
+
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
 	colors!: IColorCheckbox[];
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	addProductValidationMessages!: any;
+	inputsValidationMessages!: any;
 
 	constructor(
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
 		private productService: ProductService,
 		private messageService: MessageService,
+		private dataService: DataService,
 	) {}
 
 	ngOnInit(): void {
 		this.iconClose = faXmark;
 		this.iconDivider = faCircleDown;
+
 		this.categories = [];
+		this.sizes = this.dataService.getAllSizes();
+		this.colors = this.dataService.getAllColors();
+
+		this.inputsValidationMessages = addProductValidationMessages;
+
 		this.initCategories();
-		this.initSizes();
-		this.initColors();
-
-		this.addProductValidationMessages = addProductValidationMessages;
-
 		this.initFormControls();
+		this.initFormGroups();
 		this.initMainForm();
 	}
 
 	onMainFormSubmit(): void {
-		this.addProduct();
+		// eslint-disable-next-line no-console
+		console.log(this.mainForm.value);
+		// this.addProduct();
 	}
 
 	onClose(arg: boolean): void {
@@ -84,7 +101,7 @@ export class ModalAddProductComponent implements OnInit {
 		});
 	}
 
-	private initFormControls(): void {
+	private initFormGroups(): void {
 		this.colorsForm = this.formBuilder.group({
 			blue: [false],
 			red: [false],
@@ -94,47 +111,50 @@ export class ModalAddProductComponent implements OnInit {
 		});
 
 		this.nameForm = this.formBuilder.group({
-			brandName: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						addProductValidationMessages.brandName.minlength.value,
-					),
-					Validators.maxLength(
-						addProductValidationMessages.brandName.maxlength.value,
-					),
-				],
-			],
-			modelName: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						addProductValidationMessages.modelName.minlength.value,
-					),
-					Validators.maxLength(
-						addProductValidationMessages.modelName.maxlength.value,
-					),
-				],
-			],
+			brandName: this.brandNameCtrl,
+			modelName: this.modelNameCtrl,
 		});
 
 		this.detailsForm = this.formBuilder.group({
-			category: ['', Validators.required],
-			size: ['', Validators.required],
+			category: this.categoryCtrl,
+			size: this.sizeCtrl,
 		});
 
 		this.infosForm = this.formBuilder.group({
-			quantity: ['1'],
-			price: [
-				'',
-				[
-					Validators.required,
-					Validators.min(addProductValidationMessages.price.min.value),
-				],
-			],
+			quantity: this.quantityCtrl,
+			price: this.priceCtrl,
 		});
+	}
+
+	private initFormControls(): void {
+		this.brandNameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				addProductValidationMessages.brandName.minlength.value,
+			),
+			Validators.maxLength(
+				addProductValidationMessages.brandName.maxlength.value,
+			),
+		]);
+
+		this.modelNameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				addProductValidationMessages.modelName.minlength.value,
+			),
+			Validators.maxLength(
+				addProductValidationMessages.modelName.maxlength.value,
+			),
+		]);
+
+		this.categoryCtrl = this.formBuilder.control('', Validators.required);
+		this.sizeCtrl = this.formBuilder.control('', Validators.required);
+
+		this.quantityCtrl = this.formBuilder.control('1');
+		this.priceCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.min(addProductValidationMessages.price.min.value),
+		]);
 	}
 
 	private addProduct(): void {
@@ -178,44 +198,5 @@ export class ModalAddProductComponent implements OnInit {
 				tap(result => this.categories.push(result)),
 			)
 			.subscribe();
-	}
-
-	private initSizes(): void {
-		this.sizes = [
-			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
-			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
-			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
-			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
-		];
-	}
-
-	private initColors(): void {
-		this.colors = [
-			{
-				color: '#f87575',
-				label: 'red',
-				name: 'red',
-			},
-			{
-				color: '#5c95ff',
-				label: 'blue',
-				name: 'blue',
-			},
-			{
-				color: '#2EC12B',
-				label: 'green',
-				name: 'green',
-			},
-			{
-				color: '#FFFF5C',
-				label: 'yellow',
-				name: 'yellow',
-			},
-			{
-				color: '#952265',
-				label: 'purple',
-				name: 'purple',
-			},
-		];
 	}
 }

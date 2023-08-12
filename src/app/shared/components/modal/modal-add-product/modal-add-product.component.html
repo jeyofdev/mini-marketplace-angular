@@ -1,4 +1,4 @@
-<!-- <p-sidebar
+<p-sidebar
 	[visible]="visible"
 	[position]="position"
 	[showCloseIcon]="false"
@@ -48,7 +48,7 @@
 							groupName="nameForm"
 							formControlName="brandName"
 							[parentForm]="mainForm"
-							[validationMessages]="addProductValidationMessages.brandName"
+							[validationMessages]="inputsValidationMessages.brandName"
 						></app-text-field>
 					</div>
 
@@ -60,7 +60,7 @@
 							groupName="nameForm"
 							formControlName="modelName"
 							[parentForm]="mainForm"
-							[validationMessages]="addProductValidationMessages.modelName"
+							[validationMessages]="inputsValidationMessages.modelName"
 						></app-text-field>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 							groupName="detailsForm"
 							formControlName="category"
 							[parentForm]="mainForm"
-							[validationMessages]="addProductValidationMessages.category"
+							[validationMessages]="inputsValidationMessages.category"
 						></app-select>
 					</div>
 
@@ -88,7 +88,7 @@
 							groupName="detailsForm"
 							formControlName="size"
 							[parentForm]="mainForm"
-							[validationMessages]="addProductValidationMessages.sizes"
+							[validationMessages]="inputsValidationMessages.sizes"
 						></app-select>
 					</div>
 
@@ -130,7 +130,7 @@
 							groupName="infosForm"
 							formControlName="price"
 							[parentForm]="mainForm"
-							[validationMessages]="addProductValidationMessages.price"
+							[validationMessages]="inputsValidationMessages.price"
 						></app-number-field>
 					</div>
 				</div>
@@ -150,4 +150,4 @@
 	</ng-template>
 </p-sidebar>
 
-<p-toast position="top-right"></p-toast> -->
+<p-toast position="top-right"></p-toast>
