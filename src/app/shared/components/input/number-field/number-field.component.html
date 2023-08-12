@@ -4,19 +4,18 @@
 	<p-inputNumber
 		[id]="name"
 		[name]="name"
-		mode="currency"
 		inputId="currency-france"
+		mode="currency"
 		currency="EUR"
-		(onInput)="onChanged($event)"
-		(onBlur)="onTouched()"
-		[class]="
-			formControl?.invalid && formControl?.touched ? 'ng-invalid ng-dirty' : ''
-		"
+		[disabled]="disabled"
+		(onInput)="onInputNumberChange($event)"
+		(focus)="markAsTouched()"
+		[class]="control?.invalid && control?.dirty ? 'ng-invalid ng-dirty' : ''"
 	>
 	</p-inputNumber>
 
 	<app-error-field
-		[control]="formControl"
+		[control]="control"
 		[validationMessages]="validationMessages"
 	></app-error-field>
 </div>
