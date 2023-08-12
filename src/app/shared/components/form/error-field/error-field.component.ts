@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
@@ -8,6 +8,7 @@ import { IValidationMessage } from '../../../interfaces/validation-message.inter
 	styleUrls: ['./error-field.component.scss'],
 })
 export class ErrorFieldComponent {
-	@Input() formControl!: FormControl;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	@Input() control!: AbstractControl<any, any> | null;
 	@Input() validationMessages!: IValidationMessage;
 }

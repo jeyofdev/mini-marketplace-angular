@@ -1,3 +1,5 @@
+import { regexEmail } from '../../utils/auth.utils';
+
 export const registerValidationMessages = {
 	firstname: {
 		required: { message: 'This field is required' },
@@ -34,7 +36,10 @@ export const registerValidationMessages = {
 	},
 	email: {
 		required: { message: 'This field is required' },
-		pattern: { message: 'Your email is not in a valid format' },
+		pattern: {
+			regex: regexEmail,
+			message: 'Your email is not in a valid format',
+		},
 	},
 	password: {
 		required: { message: 'This field is required' },
@@ -68,7 +73,10 @@ export const registerValidationMessages = {
 export const loginValidationMessages = {
 	email: {
 		required: { message: 'This field is required' },
-		pattern: { message: 'Your email is not in a valid format' },
+		pattern: {
+			regex: regexEmail,
+			message: 'Your email is not in a valid format',
+		},
 	},
 	password: {
 		required: { message: 'This field is required' },

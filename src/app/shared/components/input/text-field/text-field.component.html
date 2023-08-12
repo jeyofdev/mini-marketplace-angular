@@ -15,16 +15,17 @@
 			[id]="name"
 			[name]="name"
 			[value]="value"
-			(input)="onChange($event)"
-			(blur)="onTouched()"
+			[disabled]="disabled"
+			(input)="onInputChange($event)"
+			(focus)="markAsTouched()"
 			[class]="
-				formControl.invalid && formControl.touched ? 'ng-invalid ng-dirty' : ''
+				control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''
 			"
 		/>
 	</span>
 
 	<app-error-field
-		[formControl]="formControl"
+		[control]="control"
 		[validationMessages]="validationMessages"
 	></app-error-field>
 </div>

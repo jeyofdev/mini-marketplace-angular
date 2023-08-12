@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 import { getFormControl } from '../../../utils/form.utils';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-text-field',
@@ -27,25 +26,22 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 	@Input() label!: string;
 	@Input() endIcon!: string;
 	@Input() hidePassword!: boolean;
-	class!: string;
 
-	@Input() showPasswordError!: Observable<boolean>;
+	@Input() showPasswordEqualError!: Observable<boolean>;
 	@Input() validationMessages!: IValidationMessage;
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	isDisabled!: boolean;
-	value!: string | number;
+	class!: string;
+	value!: string;
+	disabled!: boolean;
 
-	changed!: (value: string) => void;
+	onChanged!: (value: string) => void;
 	onTouched!: () => void;
 
-	finalType!: 'text' | 'password';
-
 	ngOnInit(): void {
-		this.finalType =
-			this.type === 'text' || this.hidePassword ? 'text' : 'password';
+		this.disabled = false;
 
 		this.endIcon =
 			this.type === 'password' && !this.hidePassword
@@ -63,24 +59,36 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 				: 'pi pi-eye';
 	}
 
+	onInputChange(event: Event): void {
+		if (this.disabled) {
+			return;
+		}
+
+		this.value = (event.target as HTMLInputElement).value;
+		this.onChanged(this.value);
+	}
+
 	writeValue(value: string): void {
 		this.value = value;
 	}
 
-	onChange(event: Event): void {
-		const value: string = (<HTMLInputElement>event.target).value;
-		this.changed(value);
+	registerOnChange(fn: (value: string) => void): void {
+		this.onChanged = fn;
 	}
 
-	registerOnChange(fn: any): void {
-		this.changed = fn;
-	}
-
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	get formControl() {
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
+	}
+
+	get control() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

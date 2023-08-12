@@ -11,9 +11,9 @@
 		(ngSubmit)="onMainFormSubmit()"
 	>
 		<app-alert
-			*ngIf="showPasswordError$ | async"
+			*ngIf="showPasswordEqualError$ | async"
 			severity="error"
-			[message]="registerValidationMessages.passwordEqual?.message"
+			[message]="inputsValidationMessages.passwordEqual?.message"
 		>
 		</app-alert>
 		<app-alert [message]="formErrorMessage" severity="error"></app-alert>
@@ -27,7 +27,7 @@
 					formControlName="firstname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.firstname"
+					[validationMessages]="inputsValidationMessages.firstname"
 				></app-text-field>
 
 				<app-text-field
@@ -37,7 +37,7 @@
 					formControlName="lastname"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.lastname"
+					[validationMessages]="inputsValidationMessages.lastname"
 				></app-text-field>
 			</div>
 
@@ -49,7 +49,7 @@
 					formControlName="username"
 					groupName="personnalInfosForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.username"
+					[validationMessages]="inputsValidationMessages.username"
 				></app-text-field>
 			</div>
 		</ng-container>
@@ -61,7 +61,7 @@
 				label="Email *"
 				formControlName="email"
 				[parentForm]="mainForm"
-				[validationMessages]="registerValidationMessages.email"
+				[validationMessages]="inputsValidationMessages.email"
 			></app-text-field>
 		</div>
 
@@ -75,7 +75,7 @@
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.password"
+					[validationMessages]="inputsValidationMessages.password"
 				></app-text-field>
 
 				<app-text-field
@@ -86,8 +86,8 @@
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
-					[validationMessages]="registerValidationMessages.confirmPassword"
-					[showPasswordError]="showPasswordError$"
+					[validationMessages]="inputsValidationMessages.confirmPassword"
+					[showPasswordEqualError]="showPasswordEqualError$"
 				></app-text-field>
 			</div>
 		</ng-container>

@@ -11,10 +11,7 @@ import { registerValidationMessages } from '../../validations/messages.validatio
 import { inputEqualValidator } from '../../../../shared/validators/input-equal.validator';
 import { Observable, map } from 'rxjs';
 import { AuthService } from '../../../../shared/service/auth.service';
-import {
-	getAuthProviders,
-	regexEmail,
-} from '../../../../dashboard/utils/auth.utils';
+import { getAuthProviders } from '../../../../dashboard/utils/auth.utils';
 
 @Component({
 	selector: 'app-register',
@@ -25,17 +22,22 @@ export class RegisterComponent implements OnInit {
 	socialProviders!: ISocialProvider[];
 	image!: IImage;
 	hidePassword!: boolean;
+
 	mainForm!: FormGroup;
 	personnalInfosForm!: FormGroup;
 	passwordForm!: FormGroup;
-	private regexEmail!: RegExp;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	registerValidationMessages!: any;
-	formErrorMessage!: string | null;
 
-	showPasswordError$!: Observable<boolean>;
+	firstnameCtrl!: FormControl<string | null>;
+	lastnameCtrl!: FormControl<string | null>;
+	usernameCtrl!: FormControl<string | null>;
+	emailCtrl!: FormControl<string | null>;
 	confirmPasswordCtrl!: FormControl;
 	passwordCtrl!: FormControl;
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	inputsValidationMessages!: any;
+	formErrorMessage!: string | null;
+	showPasswordEqualError$!: Observable<boolean>;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -45,20 +47,20 @@ export class RegisterComponent implements OnInit {
 	ngOnInit(): void {
 		this.hidePassword = false;
 		this.socialProviders = getAuthProviders;
+		this.inputsValidationMessages = registerValidationMessages;
 
 		this.initImage();
 
 		this.initFormControls();
+		this.initFormGroups();
 		this.initRegistrationForm();
 		this.initObservables();
-
-		this.registerValidationMessages = registerValidationMessages;
 	}
 
 	onMainFormSubmit(): void {
 		// eslint-disable-next-line no-console
 		console.log(this.mainForm.value);
-		this.registerWithEmail();
+		// this.registerWithEmail();
 	}
 
 	async registerWithEmail() {
@@ -76,70 +78,19 @@ export class RegisterComponent implements OnInit {
 	}
 
 	private initRegistrationForm(): void {
-		this.regexEmail = regexEmail;
-
 		this.mainForm = this.formBuilder.group({
 			personnalInfos: this.personnalInfosForm,
-			email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
+			email: this.emailCtrl,
 			password: this.passwordForm,
 		});
 	}
 
-	private initFormControls(): void {
+	private initFormGroups(): void {
 		this.personnalInfosForm = this.formBuilder.group({
-			firstname: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						registerValidationMessages.firstname.minlength.value,
-					),
-					Validators.maxLength(
-						registerValidationMessages.firstname.maxlength.value,
-					),
-				],
-			],
-			lastname: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						registerValidationMessages.lastname.minlength.value,
-					),
-					Validators.maxLength(
-						registerValidationMessages.lastname.maxlength.value,
-					),
-				],
-			],
-			username: [
-				'',
-				[
-					Validators.required,
-					Validators.minLength(
-						registerValidationMessages.username.minlength.value,
-					),
-					Validators.maxLength(
-						registerValidationMessages.username.maxlength.value,
-					),
-				],
-			],
+			firstname: this.firstnameCtrl,
+			lastname: this.lastnameCtrl,
+			username: this.usernameCtrl,
 		});
-
-		this.passwordCtrl = this.formBuilder.control('', [
-			Validators.required,
-			Validators.minLength(registerValidationMessages.password.minlength.value),
-			Validators.maxLength(registerValidationMessages.password.maxlength.value),
-		]);
-
-		this.confirmPasswordCtrl = this.formBuilder.control('', [
-			Validators.required,
-			Validators.minLength(
-				registerValidationMessages.confirmPassword.minlength.value,
-			),
-			Validators.maxLength(
-				registerValidationMessages.confirmPassword.maxlength.value,
-			),
-		]);
 
 		this.passwordForm = this.formBuilder.group(
 			{
@@ -153,8 +104,65 @@ export class RegisterComponent implements OnInit {
 		);
 	}
 
+	private initFormControls(): void {
+		this.firstnameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				registerValidationMessages.firstname.minlength.value,
+			),
+			Validators.maxLength(
+				registerValidationMessages.firstname.maxlength.value,
+			),
+		]);
+
+		this.lastnameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				this.inputsValidationMessages.lastname.minlength.value,
+			),
+			Validators.maxLength(
+				this.inputsValidationMessages.lastname.maxlength.value,
+			),
+		]);
+
+		this.usernameCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				this.inputsValidationMessages.username.minlength.value,
+			),
+			Validators.maxLength(
+				this.inputsValidationMessages.username.maxlength.value,
+			),
+		]);
+
+		this.emailCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.pattern(this.inputsValidationMessages.email.pattern.regex),
+		]);
+
+		this.passwordCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				this.inputsValidationMessages.password.minlength.value,
+			),
+			Validators.maxLength(
+				this.inputsValidationMessages.password.maxlength.value,
+			),
+		]);
+
+		this.confirmPasswordCtrl = this.formBuilder.control('', [
+			Validators.required,
+			Validators.minLength(
+				this.inputsValidationMessages.confirmPassword.minlength.value,
+			),
+			Validators.maxLength(
+				this.inputsValidationMessages.confirmPassword.maxlength.value,
+			),
+		]);
+	}
+
 	private initObservables(): void {
-		this.showPasswordError$ = this.passwordForm.statusChanges.pipe(
+		this.showPasswordEqualError$ = this.passwordForm.statusChanges.pipe(
 			map(
 				status =>
 					status === 'INVALID' &&
