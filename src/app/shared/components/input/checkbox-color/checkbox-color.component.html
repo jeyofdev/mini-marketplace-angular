@@ -1,10 +1,11 @@
-<!-- <p-checkbox
+<p-checkbox
+	inputId="binary"
 	[class]="'color-' + color.label"
+	[disabled]="disabled"
 	[(ngModel)]="checked"
 	[binary]="true"
-	inputId="binary"
 	[pTooltip]="color.label | titlecase"
 	tooltipPosition="top"
 	(onChange)="selectionChanged($event)"
 	(blur)="onTouched()"
-></p-checkbox> -->
+></p-checkbox>
