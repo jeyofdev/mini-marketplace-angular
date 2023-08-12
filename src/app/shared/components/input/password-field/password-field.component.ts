@@ -1,36 +1,31 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import {
-	ControlValueAccessor,
-	FormGroup,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { getFormControl } from '../../../utils/form.utils';
+import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 
 @Component({
-	selector: 'app-text-field',
-	templateUrl: './text-field.component.html',
-	styleUrls: ['./text-field.component.scss'],
+	selector: 'app-password-field',
+	templateUrl: './password-field.component.html',
+	styleUrls: ['./password-field.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => TextFieldComponent),
+			useExisting: forwardRef(() => PasswordFieldComponent),
 			multi: true,
 		},
 	],
 })
-export class TextFieldComponent implements OnInit, ControlValueAccessor {
-	@Input() type!: 'text' | 'password';
+export class PasswordFieldComponent implements OnInit {
 	@Input() name!: string;
 	@Input() label!: string;
-	@Input() endIcon!: string;
+	@Input() toggleMask!: boolean;
+	@Input() feedback!: boolean;
 
 	@Input() validationMessages!: IValidationMessage;
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	class!: string;
 	value!: string;
 	disabled!: boolean;
 
@@ -39,11 +34,9 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
 
 	ngOnInit(): void {
 		this.disabled = false;
-
-		this.class = this.endIcon ? 'p-input-icon-right' : '';
 	}
 
-	onInputChange(event: Event): void {
+	onInputPasswordChange(event: Event): void {
 		if (this.disabled) {
 			return;
 		}

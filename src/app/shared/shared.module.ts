@@ -21,6 +21,7 @@ import { ErrorFieldComponent } from './components/form/error-field/error-field.c
 import { TextareaComponent } from './components/input/textarea/textarea.component';
 import { ModalAddProductComponent } from './components/modal/modal-add-product/modal-add-product.component';
 import { NumberFieldComponent } from './components/input/number-field/number-field.component';
+import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 
 @NgModule({
 	declarations: [
@@ -41,6 +42,7 @@ import { NumberFieldComponent } from './components/input/number-field/number-fie
 		CheckboxColorComponent,
 		ErrorFieldComponent,
 		NumberFieldComponent,
+		PasswordFieldComponent,
 	],
 	imports: [
 		CommonModule,
@@ -72,6 +74,7 @@ import { NumberFieldComponent } from './components/input/number-field/number-fie
 		ButtonComponent,
 		ErrorFieldComponent,
 		NumberFieldComponent,
+		PasswordFieldComponent,
 	],
 })
 export class SharedModule {}

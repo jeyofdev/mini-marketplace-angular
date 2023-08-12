@@ -74,7 +74,7 @@ export class AuthService {
 			);
 			this.userData = result.user;
 			this.ngZone.run(() => {
-				// this.router.navigateByUrl('/dashboard');
+				this.router.navigateByUrl('/dashboard/home');
 			});
 		} catch (error: unknown) {
 			if (error instanceof FirebaseError) {

@@ -67,28 +67,28 @@
 
 		<ng-container [formGroup]="passwordForm">
 			<div class="form-row">
-				<app-text-field
-					type="password"
+				<app-password-field
 					name="password"
 					label="Password *"
-					[hidePassword]="true"
+					[toggleMask]="true"
+					[feedback]="false"
 					formControlName="password"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
 					[validationMessages]="inputsValidationMessages.password"
-				></app-text-field>
+				></app-password-field>
 
-				<app-text-field
-					type="password"
+				<app-password-field
 					name="confirmPassword"
 					label="Confirm password *"
-					[hidePassword]="true"
+					[toggleMask]="true"
+					[feedback]="false"
+					formControlName="password"
 					formControlName="confirmPassword"
 					groupName="passwordForm"
 					[parentForm]="mainForm"
 					[validationMessages]="inputsValidationMessages.confirmPassword"
-					[showPasswordEqualError]="showPasswordEqualError$"
-				></app-text-field>
+				></app-password-field>
 			</div>
 		</ng-container>
 
@@ -100,5 +100,5 @@
 		>
 			Register</app-button
 		>
-	</form></app-auth-layout
->
+	</form>
+</app-auth-layout>
