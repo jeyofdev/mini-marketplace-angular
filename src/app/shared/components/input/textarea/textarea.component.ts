@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-	Component,
-	EventEmitter,
-	Input,
-	Output,
-	forwardRef,
-} from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 import {
 	ControlValueAccessor,
@@ -26,42 +20,56 @@ import { getFormControl } from '../../../utils/form.utils';
 		},
 	],
 })
-export class TextareaComponent implements ControlValueAccessor {
+export class TextareaComponent implements OnInit, ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
 	@Input() rows!: number;
 	@Input() placeholder!: string;
+
 	@Input() validationMessages!: IValidationMessage;
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+	value!: string;
+	disabled!: boolean;
 
-	isDisabled!: boolean;
-	value!: string | number;
-
-	changed!: (value: string) => void;
+	onChanged!: (value: string) => void;
 	onTouched!: () => void;
+
+	ngOnInit(): void {
+		this.disabled = false;
+	}
+
+	onTextareaChange(event: Event): void {
+		if (this.disabled) {
+			return;
+		}
+
+		this.value = (event.target as HTMLInputElement).value;
+		this.onChanged(this.value);
+	}
 
 	writeValue(value: string): void {
 		this.value = value;
 	}
 
-	onChange(event: Event): void {
-		const value: string = (<HTMLInputElement>event.target).value;
-
-		this.changed(value);
+	registerOnChange(fn: (value: string) => void): void {
+		this.onChanged = fn;
 	}
 
-	registerOnChange(fn: any): void {
-		this.changed = fn;
-	}
-
-	registerOnTouched(fn: any): void {
+	registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	get formControl() {
+	setDisabledState(isDisabled: boolean): void {
+		this.disabled = isDisabled;
+	}
+
+	markAsTouched(): void {
+		this.onTouched();
+	}
+
+	get control() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

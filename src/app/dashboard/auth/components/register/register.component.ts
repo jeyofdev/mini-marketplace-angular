@@ -53,14 +53,12 @@ export class RegisterComponent implements OnInit {
 
 		this.initFormControls();
 		this.initFormGroups();
-		this.initRegistrationForm();
+		this.initMainForm();
 		this.initObservables();
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
-		// this.registerWithEmail();
+		this.registerWithEmail();
 	}
 
 	async registerWithEmail() {
@@ -77,7 +75,7 @@ export class RegisterComponent implements OnInit {
 		}
 	}
 
-	private initRegistrationForm(): void {
+	private initMainForm(): void {
 		this.mainForm = this.formBuilder.group({
 			personnalInfos: this.personnalInfosForm,
 			email: this.emailCtrl,
