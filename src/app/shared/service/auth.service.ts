@@ -10,6 +10,8 @@ import {
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signOut,
+	updateProfile,
+	User,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -63,24 +65,22 @@ export class AuthService {
 		}
 	}
 
-	async register(email: string, password: string) {
+	async register(email: string, password: string, displayName: string) {
 		this.resetErrorMessage();
 
-		try {
-			const result = await createUserWithEmailAndPassword(
-				this.auth,
-				email,
-				password,
-			);
-			this.userData = result.user;
-			this.ngZone.run(() => {
-				this.router.navigateByUrl('/dashboard/home');
+		await createUserWithEmailAndPassword(this.auth, email, password)
+			.then((result: any) => {
+				this.updateUser(result.user, { displayName });
+
+				this.ngZone.run(() => {
+					this.router.navigateByUrl('/dashboard/home');
+				});
+			})
+			.catch((error: unknown) => {
+				if (error instanceof FirebaseError) {
+					this.setErrorMessage(error.code);
+				}
 			});
-		} catch (error: unknown) {
-			if (error instanceof FirebaseError) {
-				this.setErrorMessage(error.code);
-			}
-		}
 	}
 
 	logout() {
@@ -109,5 +109,20 @@ export class AuthService {
 
 	private resetErrorMessage(): void {
 		this.errorMessage = null;
+	}
+
+	private updateUser(
+		user: User,
+		updatedDatas: { displayName?: string; photoURL?: string },
+	): void {
+		updateProfile(user, updatedDatas)
+			.then(updatedUser => {
+				this.userData = updatedUser;
+			})
+			.catch((error: unknown) => {
+				if (error instanceof FirebaseError) {
+					this.setErrorMessage(error.code);
+				}
+			});
 	}
 }

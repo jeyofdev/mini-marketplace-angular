@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
 		await this.authService.register(
 			this.mainForm.value.email,
 			this.mainForm.value.password.password,
+			`${this.mainForm.value.personnalInfos.firstname} ${this.mainForm.value.personnalInfos.lastname}`,
 		);
 
 		if (this.authService.errorMessage) {
