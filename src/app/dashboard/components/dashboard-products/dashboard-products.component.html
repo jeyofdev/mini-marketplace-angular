@@ -1,5 +1,17 @@
 <app-dashboard-layout>
 	<div class="container">
-		<app-dashboard-header pageTitle="Products"></app-dashboard-header>
+		<app-dashboard-header pageTitle="Products">
+			<app-button
+				variant="raised"
+				[icon]="iconAdd"
+				(click)="openModalAddNewProduct()"
+				>Add new product</app-button
+			>
+		</app-dashboard-header>
 	</div>
 </app-dashboard-layout>
+
+<app-modal-add-product
+	[(visible)]="sidebarVisible"
+	position="right"
+></app-modal-add-product>
