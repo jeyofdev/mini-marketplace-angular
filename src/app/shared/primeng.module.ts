@@ -17,6 +17,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SliderModule } from 'primeng/slider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PasswordModule } from 'primeng/password';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @NgModule({
 	exports: [
@@ -38,6 +39,7 @@ import { PasswordModule } from 'primeng/password';
 		SliderModule,
 		ScrollPanelModule,
 		PasswordModule,
+		BreadcrumbModule,
 	],
 })
 export class PrimengModule {}

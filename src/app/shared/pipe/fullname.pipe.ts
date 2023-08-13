@@ -6,11 +6,15 @@ export class FullnamePipe implements PipeTransform {
 		if (value) {
 			const valueArr = value?.split(' ');
 
-			return value
-				? valueArr
-						?.filter((word, index) => index < valueArr?.length - 1)
-						.join(' ')
-				: '';
+			if (valueArr.length === 3) {
+				return value
+					? valueArr
+							?.filter((_, index) => index < valueArr?.length - 1)
+							.join(' ')
+					: '';
+			}
+
+			return value;
 		}
 
 		return '';

@@ -1,4 +1,10 @@
-.container {
+header {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.header-body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -12,4 +18,8 @@
 .btn-box {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.page-title {
+	margin-top: 0.3rem;
 }

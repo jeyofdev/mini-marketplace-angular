@@ -1,10 +1,8 @@
-<div class="container">
-	<div class="box page-title-box">
-		<h2>{{ pageTitle }}</h2>
+<header>
+	<app-breadcrumb></app-breadcrumb>
+	<div class="header-body">
+		<h2 class="page-title">{{ pageTitle }}</h2>
+
+		<ng-content></ng-content>
 	</div>
-	<div class="box btn-box">
-		<div>
-			<ng-content></ng-content>
-		</div>
-	</div>
-</div>
+</header>

@@ -1,0 +1,66 @@
+.p-breadcrumb {
+	width: 100%;
+}
+
+.icon {
+	font-size: 0.825rem;
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-breadcrumb {
+	background-color: transparent;
+	padding: 0.3rem 1rem 0.3rem 0;
+	border: none;
+}
+
+:host ::ng-deep .p-breadcrumb .p-breadcrumb-list li {
+	.p-menuitem-separator {
+		margin: 0 0.25rem;
+	}
+
+	.p-menuitem-link:focus {
+		background-color: var(--primary-800);
+	}
+
+	&:last-child .p-menuitem-link:focus {
+		background-color: var(--primary-400);
+	}
+}
+
+:host ::ng-deep .p-breadcrumb .p-breadcrumb-list li .p-menuitem-link {
+	.p-menuitem-icon,
+	.p-menuitem-text {
+		color: var(--primary-800);
+		font-size: 0.825rem;
+	}
+
+	.p-menuitem-icon {
+		font-size: 0.7rem;
+	}
+
+	&:focus {
+		.p-menuitem-icon,
+		.p-menuitem-text {
+			color: var(--primary-50);
+		}
+	}
+}
+
+:host
+	::ng-deep
+	.p-breadcrumb
+	.p-breadcrumb-list
+	li:last-child
+	.p-menuitem-link {
+	.p-menuitem-text {
+		color: var(--primary-400);
+		font-weight: initial;
+	}
+
+	&:focus {
+		.p-menuitem-icon,
+		.p-menuitem-text {
+			color: var(--primary-50);
+		}
+	}
+}
