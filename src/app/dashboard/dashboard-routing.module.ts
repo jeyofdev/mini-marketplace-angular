@@ -8,14 +8,23 @@ const routes: Routes = [
 	{
 		path: 'home',
 		component: DashboardHomeComponent,
+		data: {
+			breadcrumb: 'Home',
+		},
 	},
 	{
 		path: 'products',
 		component: DashboardProductsComponent,
+		data: {
+			breadcrumb: 'Products',
+		},
 	},
 	{
 		path: 'categories',
 		component: DashboardCategoriesComponent,
+		data: {
+			breadcrumb: 'Categories',
+		},
 	},
 	{
 		path: 'auth',

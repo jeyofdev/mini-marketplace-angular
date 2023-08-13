@@ -22,6 +22,7 @@ import { TextareaComponent } from './components/input/textarea/textarea.componen
 import { ModalAddProductComponent } from './components/modal/modal-add-product/modal-add-product.component';
 import { NumberFieldComponent } from './components/input/number-field/number-field.component';
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
 	declarations: [
@@ -43,6 +44,7 @@ import { PasswordFieldComponent } from './components/input/password-field/passwo
 		ErrorFieldComponent,
 		NumberFieldComponent,
 		PasswordFieldComponent,
+		BreadcrumbComponent,
 	],
 	imports: [
 		CommonModule,
@@ -75,6 +77,7 @@ import { PasswordFieldComponent } from './components/input/password-field/passwo
 		ErrorFieldComponent,
 		NumberFieldComponent,
 		PasswordFieldComponent,
+		BreadcrumbComponent,
 	],
 })
 export class SharedModule {}
