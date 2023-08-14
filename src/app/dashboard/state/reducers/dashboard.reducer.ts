@@ -8,6 +8,7 @@ export const dashboardFeatureKey = 'dashboard';
 
 export interface IDashboardState {
 	categories: ICategory[];
+	loading: boolean;
 }
 
 export interface State {
@@ -16,14 +17,22 @@ export interface State {
 
 export const initialState: IDashboardState = {
 	categories: [],
+	loading: false,
 };
 
 export const reducer = createReducer(
 	initialState,
+	on(CategoryActions.loadCategories, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
 	on(CategoryActions.loadCategoriesSuccess, (state, actions) => {
 		return {
 			...state,
 			categories: actions.payload.data,
+			loading: false,
 		};
 	}),
 );
