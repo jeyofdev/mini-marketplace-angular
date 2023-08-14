@@ -10,7 +10,9 @@
 			>
 		</app-dashboard-header>
 
-		<div class="list-container">
+		<p-progressSpinner *ngIf="(loading$ | async) === true"></p-progressSpinner>
+
+		<div class="list-container" *ngIf="(loading$ | async) === false">
 			<app-table
 				[items]="categories"
 				[cols]="cols"
@@ -18,7 +20,9 @@
 				[rows]="5"
 				[showCurrentPageReport]="true"
 				currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-				[rowsPerPageOptions]="[5, 10, 25, 50]"
+				[rowsPerPageOptions]="rowsPerPageOptions"
+				[first]="1"
+				[totalRecords]="totalRecords"
 			></app-table>
 		</div>
 	</div>

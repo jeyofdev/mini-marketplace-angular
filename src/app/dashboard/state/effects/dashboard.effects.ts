@@ -8,7 +8,7 @@ import { ICategory } from 'src/app/shared/model/category.model';
 
 @Injectable()
 export class DashboardEffects {
-	loadCategories$ = createEffect(() => {
+	getAllCategories$ = createEffect(() => {
 		return this.actions$.pipe(
 			tap(value => console.log('actions', value)),
 			ofType(CategoryActions.loadCategories),

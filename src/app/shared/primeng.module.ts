@@ -20,6 +20,7 @@ import { PasswordModule } from 'primeng/password';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
 	exports: [
@@ -44,6 +45,7 @@ import { PaginatorModule } from 'primeng/paginator';
 		BreadcrumbModule,
 		TableModule,
 		PaginatorModule,
+		ProgressSpinnerModule,
 	],
 })
 export class PrimengModule {}
