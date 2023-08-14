@@ -1,0 +1,30 @@
+<p-table #myTab [value]="items">
+	<ng-template pTemplate="header">
+		<tr>
+			<ng-container *ngFor="let col of cols">
+				<th>{{ col.header }}</th>
+			</ng-container>
+			<th>Actions</th>
+		</tr>
+	</ng-template>
+
+	<ng-template pTemplate="body" let-description>
+		<tr>
+			<ng-container *ngFor="let col of cols">
+				<td>
+					{{ description[col.field] }}
+				</td>
+			</ng-container>
+
+			<td class="actions-btn">
+				<app-button variant="raised" color="success" [icon]="editIcon"
+					>Edit</app-button
+				>
+
+				<app-button variant="raised" color="danger" [icon]="deleteIcon"
+					>Delete</app-button
+				>
+			</td>
+		</tr>
+	</ng-template>
+</p-table>

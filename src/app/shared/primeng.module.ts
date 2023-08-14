@@ -18,6 +18,7 @@ import { SliderModule } from 'primeng/slider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PasswordModule } from 'primeng/password';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
 	exports: [
@@ -40,6 +41,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 		ScrollPanelModule,
 		PasswordModule,
 		BreadcrumbModule,
+		TableModule,
 	],
 })
 export class PrimengModule {}

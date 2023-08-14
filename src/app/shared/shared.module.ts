@@ -23,6 +23,7 @@ import { ModalAddProductComponent } from './components/modal/modal-add-product/m
 import { NumberFieldComponent } from './components/input/number-field/number-field.component';
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
 	declarations: [
@@ -45,6 +46,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
+		TableComponent,
 	],
 	imports: [
 		CommonModule,
@@ -78,6 +80,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
+		TableComponent,
 	],
 })
 export class SharedModule {}

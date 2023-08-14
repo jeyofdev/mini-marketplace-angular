@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IColorCheckbox, ISelectItem } from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
+import { ICategoryTableColumns } from '../interfaces/table.interface';
 
 @Injectable({
 	providedIn: 'root',
@@ -41,6 +42,23 @@ export class DataService {
 				color: '#952265',
 				label: 'purple',
 				name: 'purple',
+			},
+		];
+	}
+
+	getColsCategories(): ICategoryTableColumns[] {
+		return [
+			{
+				field: 'id',
+				header: 'ID',
+			},
+			{
+				field: 'name',
+				header: 'Name',
+			},
+			{
+				field: 'description',
+				header: 'Description',
 			},
 		];
 	}
