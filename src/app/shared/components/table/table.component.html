@@ -36,16 +36,18 @@
 	</ng-template>
 
 	<ng-template pTemplate="paginatorleft" let-state>
-		<span class="p-paginator-current" *ngIf="currentPageReportTemplate">
-			{{ myPaginationString }}
-		</span>
+		<div class="pagination-left-box">
+			<span class="p-paginator-current" *ngIf="currentPageReportTemplate">
+				{{ myPaginationString }}
+			</span>
 
-		<p-dropdown
-			[options]="rowsPerPageOptions"
-			optionLabel="label"
-			optionValue="value"
-			[(ngModel)]="rows"
-			(ngModelChange)="onRowSelect($event)"
-		></p-dropdown>
+			<p-dropdown
+				[options]="rowsPerPageOptions"
+				optionLabel="label"
+				optionValue="value"
+				[(ngModel)]="rows"
+				(ngModelChange)="onRowSelect($event)"
+			></p-dropdown>
+		</div>
 	</ng-template>
 </p-table>

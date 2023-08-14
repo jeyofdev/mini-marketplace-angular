@@ -38,4 +38,69 @@ p-table th {
 
 .pagination-left-box {
 	display: flex;
+	align-items: center;
+
+	.p-paginator-current {
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+	background-color: var(--primary-500);
+	color: $light;
+	min-width: 2.25rem;
+	height: 2.25rem;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+
+	&:not(.p-highlight):hover {
+		background-color: light;
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+}
+
+:host ::ng-deep .p-disabled,
+:host ::ng-deep .p-component:disabled {
+	opacity: 0.45;
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-dropdown {
+	height: 30px;
+}
+
+:host ::ng-deep .p-paginator .p-dropdown {
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .p-paginator .p-dropdown .p-inputtext {
+	padding: 0.25rem 0rem 0.25rem 1rem;
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-dropdown .p-inputtext,
+:host ::ng-deep .p-dropdown .p-dropdown-trigger {
+	color: var(--primary-800);
+	height: 35px;
+}
+
+:host
+	::ng-deep
+	.p-dropdown-panel
+	.p-dropdown-items
+	.p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+	background-color: var(--primary-50);
 }
