@@ -14,6 +14,11 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 export class TableComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
 	@Input() items: Array<ICategory> = [];
+	@Input() paginator!: boolean;
+	@Input() rows!: number;
+	@Input() showCurrentPageReport!: boolean;
+	@Input() currentPageReportTemplate!: string;
+	@Input() rowsPerPageOptions!: number[];
 
 	deleteIcon!: IconDefinition;
 	editIcon!: IconDefinition;

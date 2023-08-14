@@ -1,4 +1,12 @@
-<p-table #myTab [value]="items">
+<p-table
+	#myTab
+	[value]="items"
+	[paginator]="paginator"
+	[rows]="rows"
+	[showCurrentPageReport]="showCurrentPageReport"
+	[currentPageReportTemplate]="currentPageReportTemplate"
+	[rowsPerPageOptions]="rowsPerPageOptions"
+>
 	<ng-template pTemplate="header">
 		<tr>
 			<ng-container *ngFor="let col of cols">
