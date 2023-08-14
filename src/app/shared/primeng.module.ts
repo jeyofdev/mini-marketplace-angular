@@ -19,6 +19,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PasswordModule } from 'primeng/password';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
 	exports: [
@@ -42,6 +43,7 @@ import { TableModule } from 'primeng/table';
 		PasswordModule,
 		BreadcrumbModule,
 		TableModule,
+		PaginatorModule,
 	],
 })
 export class PrimengModule {}
