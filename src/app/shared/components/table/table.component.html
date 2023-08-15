@@ -32,7 +32,7 @@
 					variant="raised"
 					color="danger"
 					[icon]="deleteIcon"
-					(click)="onClick(data['id'])"
+					(click)="onClick(data['id'], data['name'])"
 					>Delete</app-button
 				>
 			</td>
@@ -57,6 +57,6 @@
 </p-table>
 
 <app-confirm-dialog
-	title="Delete the category 'test'"
+	title="Delete the category"
 	(showConfirmDialog)="onAffich($event)"
 ></app-confirm-dialog>

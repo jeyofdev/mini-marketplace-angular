@@ -37,15 +37,16 @@ export class ConfirmDialogComponent implements OnInit {
 		messageService: MessageService,
 		acceptFn: (categoryId: string) => void,
 		categoryId: string,
+		itemName: string,
 	): void {
 		confirmationService.confirm({
-			message: `Are you sure you want to delete the category with name "test" ?`,
+			message: `Are you sure you want to delete the category with name '${itemName}' ?`,
 			accept: () => {
 				acceptFn(categoryId);
 
 				messageService.add({
 					severity: 'error',
-					summary: 'deleted confirmed',
+					summary: `The category '${itemName}' successfully deleted`,
 					detail: '',
 				});
 			},

@@ -5,4 +5,5 @@ export type ShowConfirmDialogFnType = (
 	messageService: MessageService,
 	acceptFn: (categoryId: string) => void,
 	categoryId: string,
+	itemName: string,
 ) => void;

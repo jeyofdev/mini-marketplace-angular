@@ -83,12 +83,13 @@ export class TableComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
-	onClick(categoryId: string): void {
+	onClick(categoryId: string, categoryName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
 			this.categoryService.deleteById,
 			categoryId,
+			categoryName,
 		);
 	}
 }
