@@ -13,6 +13,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
+import { ICategory } from '../../../model/category.model';
+import { FillFormWithCurrentCategoryFnType } from 'src/app/shared/types/index.type';
 
 @Component({
 	selector: 'app-modal-add-category',
@@ -23,7 +25,10 @@ import { MessageService } from 'primeng/api';
 export class ModalAddCategoryComponent implements OnInit {
 	@Input() visible!: boolean;
 	@Input() position!: 'left' | 'right' | 'top' | 'bottom';
+	@Input() title!: string;
 	@Output() visibleChange = new EventEmitter<boolean>();
+	@Output() fillFormCategory =
+		new EventEmitter<FillFormWithCurrentCategoryFnType>();
 
 	iconClose!: IconDefinition;
 	iconDivider!: IconDefinition;
@@ -34,6 +39,8 @@ export class ModalAddCategoryComponent implements OnInit {
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	addCategoryValidationMessages!: any;
+
+	currentCategory!: ICategory;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -48,6 +55,8 @@ export class ModalAddCategoryComponent implements OnInit {
 		this.initFormControls();
 		this.initMainForm();
 		this.addCategoryValidationMessages = addCategoryValidationMessages;
+
+		this.fillFormCategory.emit(this.fillFormWithCurrentCategory);
 	}
 
 	onClose(arg: boolean): void {
@@ -104,4 +113,13 @@ export class ModalAddCategoryComponent implements OnInit {
 				});
 			});
 	}
+
+	fillFormWithCurrentCategory = (category: ICategory) => {
+		this.currentCategory = category;
+
+		this.mainForm.patchValue({
+			name: this.currentCategory.name,
+			description: this.currentCategory.description,
+		});
+	};
 }

@@ -24,7 +24,11 @@
 			</ng-container>
 
 			<td class="actions-btn">
-				<app-button variant="raised" color="success" [icon]="editIcon"
+				<app-button
+					variant="raised"
+					color="success"
+					[icon]="editIcon"
+					(click)="openModalUpdateCategory(data)"
 					>Edit</app-button
 				>
 
@@ -60,3 +64,10 @@
 	title="Delete the category"
 	(showConfirmDialog)="onAffich($event)"
 ></app-confirm-dialog>
+
+<app-modal-add-category
+	[(visible)]="sidebarVisible"
+	title="Edit category"
+	position="right"
+	(fillFormCategory)="getCurrentCategory($event)"
+></app-modal-add-category>
