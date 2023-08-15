@@ -21,6 +21,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
 	exports: [
@@ -46,6 +47,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 		TableModule,
 		PaginatorModule,
 		ProgressSpinnerModule,
+		ConfirmDialogModule,
 	],
 })
 export class PrimengModule {}

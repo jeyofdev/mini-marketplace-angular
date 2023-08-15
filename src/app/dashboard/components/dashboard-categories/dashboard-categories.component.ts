@@ -13,11 +13,13 @@ import {
 	ICategoryTableColumns,
 	IRowsPerPageOptions,
 } from '../../../shared/interfaces/table.interface';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'app-dashboard-categories',
 	templateUrl: './dashboard-categories.component.html',
 	styleUrls: ['./dashboard-categories.component.scss'],
+	providers: [ConfirmationService, MessageService],
 })
 export class DashboardCategoriesComponent implements OnInit {
 	iconAdd!: IconDefinition;

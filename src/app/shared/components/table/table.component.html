@@ -28,7 +28,11 @@
 					>Edit</app-button
 				>
 
-				<app-button variant="raised" color="danger" [icon]="deleteIcon"
+				<app-button
+					variant="raised"
+					color="danger"
+					[icon]="deleteIcon"
+					(click)="onClick()"
 					>Delete</app-button
 				>
 			</td>
@@ -51,3 +55,8 @@
 		</div>
 	</ng-template>
 </p-table>
+
+<app-confirm-dialog
+	deleteConfirmMessage="Are you sure that you want to proceed?"
+	(showConfirmDialog)="onAffich($event)"
+></app-confirm-dialog>

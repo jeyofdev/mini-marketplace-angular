@@ -24,6 +24,7 @@ import { NumberFieldComponent } from './components/input/number-field/number-fie
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { TableComponent } from './components/table/table.component';
+import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -47,6 +48,7 @@ import { TableComponent } from './components/table/table.component';
 		PasswordFieldComponent,
 		BreadcrumbComponent,
 		TableComponent,
+		ConfirmDialogComponent,
 	],
 	imports: [
 		CommonModule,
@@ -81,6 +83,7 @@ import { TableComponent } from './components/table/table.component';
 		PasswordFieldComponent,
 		BreadcrumbComponent,
 		TableComponent,
+		ConfirmDialogComponent,
 	],
 })
 export class SharedModule {}
