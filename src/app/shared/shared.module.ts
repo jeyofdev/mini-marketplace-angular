@@ -10,7 +10,6 @@ import { DashboardLayoutComponent } from './components/layout/dashboard-layout/d
 import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
 import { FullnamePipe } from './pipe/fullname.pipe';
-import { ModalAddCategoryComponent } from './components/modal/modal-add-category/modal-add-category.component';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
 import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
@@ -25,6 +24,7 @@ import { PasswordFieldComponent } from './components/input/password-field/passwo
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { TableComponent } from './components/table/table.component';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
+import { ModalAddCategoryComponent } from './components/modal/modal-category/modal-category.component';
 
 @NgModule({
 	declarations: [
