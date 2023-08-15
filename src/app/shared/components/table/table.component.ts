@@ -9,11 +9,13 @@ import { PaginatorState } from 'primeng/paginator';
 import { IRowsPerPageOptions } from '../../interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ShowConfirmDialogFnType } from '../../types/index.type';
+import { CategoryService } from '../../service/category.service';
 
 @Component({
 	selector: 'app-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
+	providers: [CategoryService],
 })
 export class TableComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
@@ -45,6 +47,7 @@ export class TableComponent implements OnInit {
 	constructor(
 		private confirmationService: ConfirmationService,
 		private messageService: MessageService,
+		private categoryService: CategoryService,
 	) {}
 
 	ngOnInit(): void {
@@ -80,7 +83,12 @@ export class TableComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
-	onClick(): void {
-		this.showConfirmDialogFn(this.confirmationService, this.messageService);
+	onClick(categoryId: string): void {
+		this.showConfirmDialogFn(
+			this.confirmationService,
+			this.messageService,
+			this.categoryService.deleteById,
+			categoryId,
+		);
 	}
 }

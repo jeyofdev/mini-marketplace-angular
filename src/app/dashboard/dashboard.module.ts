@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromDashboard from './state/reducers/dashboard.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardEffects } from './state/effects/dashboard.effects';
+import { CategoryService } from '../shared/service/category.service';
 
 @NgModule({
 	declarations: [
@@ -32,5 +33,6 @@ import { DashboardEffects } from './state/effects/dashboard.effects';
 		),
 		EffectsModule.forFeature([DashboardEffects]),
 	],
+	providers: [CategoryService],
 })
 export class DashboardModule {}

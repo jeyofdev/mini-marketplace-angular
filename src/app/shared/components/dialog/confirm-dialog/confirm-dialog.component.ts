@@ -6,11 +6,13 @@ import {
 	faTriangleExclamation,
 	faXmark,
 } from '@fortawesome/free-solid-svg-icons';
+import { CategoryService } from 'src/app/shared/service/category.service';
 
 @Component({
 	selector: 'app-confirm-dialog',
 	templateUrl: './confirm-dialog.component.html',
 	styleUrls: ['./confirm-dialog.component.scss'],
+	providers: [CategoryService],
 })
 export class ConfirmDialogComponent implements OnInit {
 	@Output() showConfirmDialog = new EventEmitter<ShowConfirmDialogFnType>();
@@ -33,10 +35,14 @@ export class ConfirmDialogComponent implements OnInit {
 	confirm(
 		confirmationService: ConfirmationService,
 		messageService: MessageService,
+		acceptFn: (categoryId: string) => void,
+		categoryId: string,
 	): void {
 		confirmationService.confirm({
 			message: `Are you sure you want to delete the category with name "test" ?`,
 			accept: () => {
+				acceptFn(categoryId);
+
 				messageService.add({
 					severity: 'error',
 					summary: 'deleted confirmed',

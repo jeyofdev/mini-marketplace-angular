@@ -15,11 +15,11 @@
 		</tr>
 	</ng-template>
 
-	<ng-template pTemplate="body" let-description>
+	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
 				<td>
-					{{ description[col.field] }}
+					{{ data[col.field] }}
 				</td>
 			</ng-container>
 
@@ -32,7 +32,7 @@
 					variant="raised"
 					color="danger"
 					[icon]="deleteIcon"
-					(click)="onClick()"
+					(click)="onClick(data['id'])"
 					>Delete</app-button
 				>
 			</td>
