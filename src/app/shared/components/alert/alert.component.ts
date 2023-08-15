@@ -15,7 +15,7 @@ export class AlertComponent implements OnInit {
 	@Input() icon!: IconDefinition;
 
 	ngOnInit() {
-		if (this.severity === 'error') {
+		if (this.severity === 'error' && !this.icon) {
 			this.icon = faCircleXmark;
 		}
 	}

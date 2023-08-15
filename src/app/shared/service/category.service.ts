@@ -6,6 +6,8 @@ import {
 	Firestore,
 	addDoc,
 	collectionData,
+	doc,
+	deleteDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
@@ -31,4 +33,10 @@ export class CategoryService {
 
 		return docRef;
 	}
+
+	deleteById = (categoryId: string) => {
+		const docInstance = doc(this.firestore, 'categories', categoryId);
+
+		deleteDoc(docInstance);
+	};
 }

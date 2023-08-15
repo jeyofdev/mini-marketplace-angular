@@ -15,11 +15,11 @@
 		</tr>
 	</ng-template>
 
-	<ng-template pTemplate="body" let-description>
+	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
 				<td>
-					{{ description[col.field] }}
+					{{ data[col.field] }}
 				</td>
 			</ng-container>
 
@@ -28,7 +28,11 @@
 					>Edit</app-button
 				>
 
-				<app-button variant="raised" color="danger" [icon]="deleteIcon"
+				<app-button
+					variant="raised"
+					color="danger"
+					[icon]="deleteIcon"
+					(click)="onClick(data['id'], data['name'])"
 					>Delete</app-button
 				>
 			</td>
@@ -51,3 +55,8 @@
 		</div>
 	</ng-template>
 </p-table>
+
+<app-confirm-dialog
+	title="Delete the category"
+	(showConfirmDialog)="onAffich($event)"
+></app-confirm-dialog>
