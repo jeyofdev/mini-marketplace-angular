@@ -8,6 +8,7 @@ import {
 	collectionData,
 	doc,
 	deleteDoc,
+	updateDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
@@ -36,7 +37,12 @@ export class CategoryService {
 
 	deleteById = (categoryId: string) => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
-
 		deleteDoc(docInstance);
+	};
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	updateById = (categoryId: string, newDatas: any) => {
+		const docInstance = doc(this.firestore, 'categories', categoryId);
+		return updateDoc(docInstance, newDatas);
 	};
 }

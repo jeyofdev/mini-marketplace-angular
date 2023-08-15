@@ -1,4 +1,5 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ICategory } from '../model/category.model';
 
 export type ShowConfirmDialogFnType = (
 	confirmationService: ConfirmationService,
@@ -7,3 +8,5 @@ export type ShowConfirmDialogFnType = (
 	categoryId: string,
 	itemName: string,
 ) => void;
+
+export type FillFormWithCurrentCategoryFnType = (category: ICategory) => void;

@@ -8,7 +8,10 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { PaginatorState } from 'primeng/paginator';
 import { IRowsPerPageOptions } from '../../interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ShowConfirmDialogFnType } from '../../types/index.type';
+import {
+	FillFormWithCurrentCategoryFnType,
+	ShowConfirmDialogFnType,
+} from '../../types/index.type';
 import { CategoryService } from '../../service/category.service';
 
 @Component({
@@ -42,7 +45,10 @@ export class TableComponent implements OnInit {
 	deleteIcon!: IconDefinition;
 	editIcon!: IconDefinition;
 
+	sidebarVisible = false;
+
 	showConfirmDialogFn!: ShowConfirmDialogFnType;
+	fillFormWithCurrentCategoryFn!: FillFormWithCurrentCategoryFnType;
 
 	constructor(
 		private confirmationService: ConfirmationService,
@@ -83,6 +89,12 @@ export class TableComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
+	getCurrentCategory(
+		fillFormWithCurrentCategoryFn: FillFormWithCurrentCategoryFnType,
+	) {
+		this.fillFormWithCurrentCategoryFn = fillFormWithCurrentCategoryFn;
+	}
+
 	onClick(categoryId: string, categoryName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
@@ -91,5 +103,10 @@ export class TableComponent implements OnInit {
 			categoryId,
 			categoryName,
 		);
+	}
+
+	openModalUpdateCategory(category: ICategory): void {
+		this.fillFormWithCurrentCategoryFn(category);
+		this.sidebarVisible = true;
 	}
 }
