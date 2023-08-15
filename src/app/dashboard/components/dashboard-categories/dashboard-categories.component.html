@@ -10,20 +10,39 @@
 			>
 		</app-dashboard-header>
 
-		<p-progressSpinner *ngIf="(loading$ | async) === true"></p-progressSpinner>
+		<div class="loading-box">
+			<p-progressSpinner
+				*ngIf="(loading$ | async) === true"
+			></p-progressSpinner>
+		</div>
 
 		<div class="list-container" *ngIf="(loading$ | async) === false">
-			<app-table
-				[items]="categories"
-				[cols]="cols"
-				[paginator]="true"
-				[rows]="5"
-				[showCurrentPageReport]="true"
-				currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-				[rowsPerPageOptions]="rowsPerPageOptions"
-				[first]="1"
-				[totalRecords]="totalRecords"
-			></app-table>
+			<div class="no-result-box" *ngIf="categories.length <= 0">
+				<i class="no-result-icon fa-regular fa-face-frown-open"></i>
+				<h2>No result found</h2>
+
+				<app-button
+					variant="raised"
+					color="primary"
+					[icon]="iconAdd"
+					(click)="openModalAddNewCategory()"
+					>New category</app-button
+				>
+			</div>
+
+			<ng-container *ngIf="categories.length > 0">
+				<app-table
+					[items]="categories"
+					[cols]="cols"
+					[paginator]="true"
+					[rows]="5"
+					[showCurrentPageReport]="true"
+					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+					[rowsPerPageOptions]="rowsPerPageOptions"
+					[first]="1"
+					[totalRecords]="totalRecords"
+				></app-table>
+			</ng-container>
 		</div>
 	</div>
 </app-dashboard-layout>
