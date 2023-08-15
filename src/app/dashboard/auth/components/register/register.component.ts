@@ -11,7 +11,7 @@ import { registerValidationMessages } from '../../validations/messages.validatio
 import { inputEqualValidator } from '../../../../shared/validators/input-equal.validator';
 import { Observable, map } from 'rxjs';
 import { AuthService } from '../../../../shared/service/auth.service';
-import { getAuthProviders } from '../../../../dashboard/utils/auth.utils';
+import { DataService } from '../../../../shared/service/data.service';
 
 @Component({
 	selector: 'app-register',
@@ -42,11 +42,12 @@ export class RegisterComponent implements OnInit {
 	constructor(
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
+		private dataService: DataService,
 	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = getAuthProviders;
+		this.socialProviders = this.dataService.getAuthProviders();
 		this.inputsValidationMessages = registerValidationMessages;
 
 		this.initImage();

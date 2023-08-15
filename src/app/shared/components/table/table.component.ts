@@ -1,10 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICategory } from '../../model/category.model';
-import {
-	IconDefinition,
-	faTrashCan,
-} from '@fortawesome/free-regular-svg-icons';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+
 import { PaginatorState } from 'primeng/paginator';
 import { IRowsPerPageOptions } from '../../interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -42,8 +38,6 @@ export class TableComponent implements OnInit {
 	@Input() deleteCancelToastDetail!: string;
 
 	myPaginationString!: string;
-	deleteIcon!: IconDefinition;
-	editIcon!: IconDefinition;
 
 	sidebarVisible = false;
 
@@ -57,8 +51,6 @@ export class TableComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.deleteIcon = faTrashCan;
-		this.editIcon = faPencil;
 		this.totalRecords = this.items.length;
 		this.myPaginationString = `showing ${this.first + 1} to ${
 			this.first + this.rows

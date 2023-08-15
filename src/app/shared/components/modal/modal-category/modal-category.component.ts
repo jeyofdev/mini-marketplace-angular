@@ -6,11 +6,6 @@ import {
 	FormGroup,
 	Validators,
 } from '@angular/forms';
-import {
-	IconDefinition,
-	faXmark,
-	faCircleDown,
-} from '@fortawesome/free-solid-svg-icons';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
 import { ICategory } from '../../../model/category.model';
@@ -30,9 +25,6 @@ export class ModalAddCategoryComponent implements OnInit {
 	@Output() fillFormCategory =
 		new EventEmitter<FillFormWithCurrentCategoryFnType>();
 
-	iconClose!: IconDefinition;
-	iconDivider!: IconDefinition;
-
 	mainForm!: FormGroup;
 	nameCtrl!: FormControl<string | null>;
 	descriptionCtrl!: FormControl<string | null>;
@@ -51,9 +43,6 @@ export class ModalAddCategoryComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.iconClose = faXmark;
-		this.iconDivider = faCircleDown;
-
 		this.initFormControls();
 		this.initMainForm();
 		this.addCategoryValidationMessages = addCategoryValidationMessages;

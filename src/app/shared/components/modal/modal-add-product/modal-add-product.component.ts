@@ -1,10 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
-	IconDefinition,
-	faCircleDown,
-	faXmark,
-} from '@fortawesome/free-solid-svg-icons';
-import {
 	FormBuilder,
 	FormControl,
 	FormGroup,
@@ -33,9 +28,6 @@ export class ModalAddProductComponent implements OnInit {
 	@Input() visible!: boolean;
 	@Input() position!: 'left' | 'right' | 'top' | 'bottom';
 	@Output() visibleChange = new EventEmitter<boolean>();
-
-	iconClose!: IconDefinition;
-	iconDivider!: IconDefinition;
 
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
@@ -66,9 +58,6 @@ export class ModalAddProductComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.iconClose = faXmark;
-		this.iconDivider = faCircleDown;
-
 		this.categories = [];
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();

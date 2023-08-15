@@ -4,7 +4,7 @@
 			<app-button
 				variant="icon"
 				color="danger"
-				[icon]="iconClose"
+				icon="fa-solid fa-xmark"
 				(click)="cd.reject()"
 			></app-button>
 
@@ -18,7 +18,7 @@
 		<ng-template pTemplate="footer">
 			<app-alert
 				severity="error"
-				[icon]="iconErrorAlert"
+				icon="fa-solid fa-triangle-exclamation"
 				[message]="warningMessage"
 			></app-alert>
 

@@ -3,14 +3,14 @@
 		<div class="grid-item sidebar">
 			<div class="sidebar-top">
 				<div class="logo-box">
-					<fa-icon class="icon" [icon]="logoIcon"></fa-icon>
+					<i class="icon fa-solid fa-bars-staggered"></i>
 					<h1 class="logo">Fashion mode</h1>
 				</div>
 
 				<div class="btn-box">
 					<app-button
 						variant="rounded"
-						[icon]="addIcon"
+						icon="fa-solid fa-plus"
 						(click)="openModalAddNewProduct()"
 						>Add new product</app-button
 					>
@@ -36,7 +36,7 @@
 
 					<app-button
 						variant="icon"
-						[icon]="moreIcon"
+						icon="fa-solid fa-ellipsis-vertical"
 						(click)="menu.toggle($event)"
 					></app-button>
 

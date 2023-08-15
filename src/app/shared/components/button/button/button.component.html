@@ -1,7 +1,7 @@
 <ng-container *ngIf="variant !== 'icon'">
 	<p-button [styleClass]="styleClass" [disabled]="disabled" [type]="type">
 		<div class="btn-content" [ngClass]="{ content: variant === 'raised' }">
-			<fa-icon *ngIf="icon" class="icon mr" [icon]="icon"></fa-icon>
+			<i [class]="'icon mr ' + icon"></i>
 			<h5 class="button">
 				<ng-content></ng-content>
 			</h5>
@@ -11,6 +11,6 @@
 
 <ng-container *ngIf="variant === 'icon'">
 	<p-button [styleClass]="styleClass" [disabled]="disabled" [type]="type">
-		<fa-icon class="icon" [icon]="icon"></fa-icon>
+		<i class="'icon ' + icon"></i>
 	</p-button>
 </ng-container>
