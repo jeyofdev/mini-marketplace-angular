@@ -18,12 +18,32 @@
 	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
-				<td *ngIf="data[col.field].value && col.field !== 'color'">
+				<td
+					*ngIf="
+						data[col.field].value &&
+						col.field !== 'color' &&
+						col.field !== 'price'
+					"
+				>
 					{{ data[col.field].value }}
 				</td>
 
-				<td *ngIf="!data[col.field].value && col.field !== 'color'">
+				<td
+					*ngIf="
+						!data[col.field].value &&
+						col.field !== 'color' &&
+						col.field !== 'price'
+					"
+				>
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'price'">
+					<app-price
+						[value]="data[col.field]"
+						[prefix]="true"
+						[currency]="currencyEnum.EUR"
+					></app-price>
 				</td>
 
 				<td *ngIf="col.field === 'color'">

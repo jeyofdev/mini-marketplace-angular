@@ -8,6 +8,7 @@ import {
 } from '../../../types/index.type';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductService } from '../../../service/product.service';
+import { CurrencyEnum } from 'src/app/shared/enum/properties.enum';
 
 @Component({
 	selector: 'app-table-dashboard-product',
@@ -24,6 +25,8 @@ export class TableDashboardProductComponent implements OnInit {
 	@Input() rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 	@Input() first!: number;
 	@Input() totalRecords!: number;
+
+	currencyEnum = CurrencyEnum;
 
 	myPaginationString!: string;
 
