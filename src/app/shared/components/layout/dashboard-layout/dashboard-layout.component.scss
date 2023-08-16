@@ -142,3 +142,7 @@
 :host ::ng-deep .user-box .p-button.p-button-text {
 	color: var(--primary-800);
 }
+
+:host ::ng-deep .user-box .p-button span {
+	font-size: 1.15rem;
+}

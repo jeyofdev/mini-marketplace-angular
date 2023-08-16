@@ -3,14 +3,17 @@
 		<div class="grid-item sidebar">
 			<div class="sidebar-top">
 				<div class="logo-box">
-					<fa-icon class="icon" [icon]="logoIcon"></fa-icon>
+					<i class="icon fa-solid fa-bars-staggered"></i>
 					<h1 class="logo">Fashion mode</h1>
 				</div>
 
 				<div class="btn-box">
 					<app-button
 						variant="rounded"
-						[icon]="addIcon"
+						shape="square"
+						color="primary"
+						size="medium"
+						iconPrefix="fa-solid fa-plus"
 						(click)="openModalAddNewProduct()"
 						>Add new product</app-button
 					>
@@ -35,8 +38,11 @@
 					<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
 
 					<app-button
-						variant="icon"
-						[icon]="moreIcon"
+						variant="rounded"
+						shape="circle"
+						color="danger"
+						icon="fa-solid fa-ellipsis-vertical"
+						[text]="true"
 						(click)="menu.toggle($event)"
 					></app-button>
 

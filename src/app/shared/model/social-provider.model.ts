@@ -1,4 +1,3 @@
-import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { ProviderEnum } from '../enum/provider.enum';
 
 export interface ISocialProvider {
@@ -12,7 +11,7 @@ export interface ISocialProvider {
 		| 'info'
 		| 'help'
 		| 'danger';
-	icon: IconDefinition;
+	icon: string;
 	size: string;
 	outline: boolean;
 	name: ProviderEnum;

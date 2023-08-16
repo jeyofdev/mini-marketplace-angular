@@ -42,8 +42,9 @@
 						<app-button
 							*ngFor="let provider of socialProviders"
 							variant="raised"
+							shape="square"
 							color="primary"
-							[icon]="provider.icon"
+							[iconPrefix]="provider.icon"
 							(click)="loginWithProvider(provider.name)"
 							>{{ provider.label }}</app-button
 						>

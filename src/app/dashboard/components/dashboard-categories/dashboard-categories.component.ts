@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IconDefinition, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Store, select } from '@ngrx/store';
 import { CategoryActions } from '../../state/actions/dashboard.actions';
 import {
@@ -22,7 +21,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 	providers: [ConfirmationService, MessageService],
 })
 export class DashboardCategoriesComponent implements OnInit {
-	iconAdd!: IconDefinition;
+	iconAdd!: string;
 	categories!: ICategory[];
 	cols!: ICategoryTableColumns[];
 	sidebarVisible = false;
@@ -36,7 +35,7 @@ export class DashboardCategoriesComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.iconAdd = faPlus;
+		this.iconAdd = 'fa-solid fa-plus';
 		this.cols = this.dataService.getColsCategories();
 		this.rowsPerPageOptions = [
 			{ label: 5, value: 5 },

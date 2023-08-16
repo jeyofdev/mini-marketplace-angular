@@ -1,11 +1,6 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShowConfirmDialogFnType } from '../../../types/index.type';
-import {
-	IconDefinition,
-	faTriangleExclamation,
-	faXmark,
-} from '@fortawesome/free-solid-svg-icons';
 import { CategoryService } from 'src/app/shared/service/category.service';
 
 @Component({
@@ -20,13 +15,7 @@ export class ConfirmDialogComponent implements OnInit {
 	@Input() itemName!: string;
 	@Input() warningMessage!: string;
 
-	iconErrorAlert!: IconDefinition;
-	iconClose!: IconDefinition;
-
 	ngOnInit(): void {
-		this.iconErrorAlert = faTriangleExclamation;
-		this.iconClose = faXmark;
-
 		this.showConfirmDialog.emit(this.confirm);
 		this.warningMessage =
 			'this action cannot be undone. this will permanently delete the category.';

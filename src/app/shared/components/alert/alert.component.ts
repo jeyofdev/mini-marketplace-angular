@@ -1,8 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-	IconDefinition,
-	faCircleXmark,
-} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 	selector: 'app-alert',
@@ -12,11 +8,11 @@ import {
 export class AlertComponent implements OnInit {
 	@Input() severity!: 'info' | 'success' | 'warn' | 'error';
 	@Input() message!: string | null;
-	@Input() icon!: IconDefinition;
+	@Input() icon!: string;
 
 	ngOnInit() {
 		if (this.severity === 'error' && !this.icon) {
-			this.icon = faCircleXmark;
+			this.icon = 'fa-solid fa-circle-xmark';
 		}
 	}
 }

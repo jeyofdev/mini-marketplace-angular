@@ -8,9 +8,10 @@
 		<h2>{{ title }}</h2>
 
 		<app-button
-			variant="icon"
+			shape="circle"
+			variant="rounded"
 			color="danger"
-			[icon]="iconClose"
+			icon="fa-solid fa-xmark"
 			(click)="onClose(false)"
 		></app-button>
 	</ng-template>
@@ -26,7 +27,7 @@
 
 		<app-divider
 			[maxWidth]="250"
-			[icon]="iconDivider"
+			icon="fa-solid fa-circle-down"
 			layout="horizontal"
 			backgroundColor="white"
 		>
@@ -61,12 +62,12 @@
 			</div>
 
 			<app-button
-				type="submit"
 				variant="raised"
+				shape="square"
 				color="primary"
+				size="medium"
 				[disabled]="!mainForm.valid"
-			>
-				{{ submitBtnLabel }}</app-button
+				>{{ submitBtnLabel }}</app-button
 			>
 		</form>
 	</ng-template>

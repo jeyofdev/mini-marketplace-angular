@@ -1,3 +1,4 @@
+import { DataService } from '../../../../shared/service/data.service';
 import { Component, OnInit } from '@angular/core';
 import {
 	FormBuilder,
@@ -9,7 +10,6 @@ import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { loginValidationMessages } from '../../validations/messages.validation';
 import { AuthService } from '../../../../shared/service/auth.service';
-import { getAuthProviders } from '../../../../dashboard/utils/auth.utils';
 
 @Component({
 	selector: 'app-login',
@@ -33,11 +33,12 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
+		private dataService: DataService,
 	) {}
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = getAuthProviders;
+		this.socialProviders = this.dataService.getAuthProviders();
 		this.inputsValidationMessages = loginValidationMessages;
 
 		this.initImage();

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { IColorCheckbox, ISelectItem } from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
 import { ICategoryTableColumns } from '../interfaces/table.interface';
+import { ISocialProvider } from '../model/social-provider.model';
+import { ProviderEnum } from '../enum/provider.enum';
+import { INavLink } from '../interfaces/link.interface';
 
 @Injectable({
 	providedIn: 'root',
@@ -59,6 +62,47 @@ export class DataService {
 			{
 				field: 'description',
 				header: 'Description',
+			},
+		];
+	}
+
+	getDashboardNavLinks(): INavLink[] {
+		return [
+			{
+				label: 'Dashboard',
+				routerLink: '/dashboard/home',
+				icon: 'fa-solid fa-chart-simple',
+			},
+			{
+				label: 'Products',
+				routerLink: '/dashboard/products',
+				icon: 'fa-solid fa-cart-shopping',
+			},
+			{
+				label: 'Categories',
+				routerLink: '/dashboard/categories',
+				icon: 'fa-solid fa-tags',
+			},
+		];
+	}
+
+	getAuthProviders(): ISocialProvider[] {
+		return [
+			{
+				label: 'Connect with Google',
+				icon: 'fa-brands fa-google',
+				color: 'primary',
+				size: '100%',
+				outline: false,
+				name: ProviderEnum.GOOGLE,
+			},
+			{
+				label: 'Connect with Github',
+				icon: 'fa-brands fa-github',
+				color: 'primary',
+				size: '100%',
+				outline: false,
+				name: ProviderEnum.GITHUB,
 			},
 		];
 	}

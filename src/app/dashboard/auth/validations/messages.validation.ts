@@ -1,4 +1,4 @@
-import { regexEmail } from '../../utils/auth.utils';
+export const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
 export const registerValidationMessages = {
 	firstname: {

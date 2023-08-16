@@ -2,9 +2,10 @@
 	<p-confirmDialog #cd [style]="{ width: '50vw' }">
 		<ng-template pTemplate="header">
 			<app-button
-				variant="icon"
+				shape="circle"
+				variant="rounded"
 				color="danger"
-				[icon]="iconClose"
+				icon="fa-solid fa-xmark"
 				(click)="cd.reject()"
 			></app-button>
 
@@ -18,11 +19,29 @@
 		<ng-template pTemplate="footer">
 			<app-alert
 				severity="error"
-				[icon]="iconErrorAlert"
+				icon="fa-solid fa-triangle-exclamation"
 				[message]="warningMessage"
 			></app-alert>
 
 			<div class="btn-box">
+				<app-button
+					variant="raised"
+					shape="square"
+					color="primary"
+					size="medium"
+					(click)="cd.reject()"
+					>Cancel</app-button
+				>
+
+				<app-button
+					variant="raised"
+					shape="square"
+					color="primary"
+					size="medium"
+					(click)="cd.accept()"
+					>Delete</app-button
+				>
+
 				<app-button variant="rounded" (click)="cd.reject()">Cancel</app-button>
 				<app-button variant="rounded" (click)="cd.accept()">Delete</app-button>
 			</div>
