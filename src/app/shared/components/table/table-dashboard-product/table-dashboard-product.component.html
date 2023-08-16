@@ -22,7 +22,8 @@
 					*ngIf="
 						data[col.field].value &&
 						col.field !== 'color' &&
-						col.field !== 'price'
+						col.field !== 'price' &&
+						col.field !== 'size'
 					"
 				>
 					{{ data[col.field].value }}
@@ -32,10 +33,19 @@
 					*ngIf="
 						!data[col.field].value &&
 						col.field !== 'color' &&
-						col.field !== 'price'
+						col.field !== 'price' &&
+						col.field !== 'size'
 					"
 				>
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'size'">
+					<app-tag
+						[value]="data[col.field].value"
+						variant="raised"
+						severity="primary"
+					></app-tag>
 				</td>
 
 				<td *ngIf="col.field === 'price'">
