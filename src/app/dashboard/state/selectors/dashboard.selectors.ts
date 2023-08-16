@@ -16,3 +16,13 @@ export const getDashboardCategoriesSelector = createSelector(
 	SELECT_DASHBOARD_FEATURE,
 	(state: IDashboardState) => state.categories,
 );
+
+export const getDashboardProductsLoadingSelector = createSelector(
+	SELECT_DASHBOARD_FEATURE,
+	(state: IDashboardState) => state.loading,
+);
+
+export const getDashboardProductsSelector = createSelector(
+	SELECT_DASHBOARD_FEATURE,
+	(state: IDashboardState) => state.products,
+);

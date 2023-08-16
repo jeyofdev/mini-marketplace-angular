@@ -16,7 +16,7 @@ import { IProduct } from '../../../model/product.model';
 import { ProductService } from '../../../service/product.service';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
-import { DataService } from 'src/app/shared/service/data.service';
+import { DataService } from '../../../service/data.service';
 
 @Component({
 	selector: 'app-modal-add-product',

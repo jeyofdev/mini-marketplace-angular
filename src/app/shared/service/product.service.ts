@@ -4,9 +4,11 @@ import {
 	DocumentData,
 	Firestore,
 	addDoc,
+	collectionData,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -16,6 +18,12 @@ export class ProductService {
 
 	constructor(private firestore: Firestore) {
 		this.collectionInstance = collection(this.firestore, 'products');
+	}
+
+	getAll(): Observable<IProduct[]> {
+		return collectionData(this.collectionInstance, {
+			idField: 'id',
+		}) as Observable<IProduct[]>;
 	}
 
 	add(newProduct: IProduct) {

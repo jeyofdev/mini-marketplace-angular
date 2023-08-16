@@ -3,11 +3,20 @@
 		<app-dashboard-header pageTitle="Products">
 			<app-button
 				variant="raised"
-				icon="fa-solid fa-plus"
+				shape="square"
+				color="primary"
+				size="medium"
+				[iconPrefix]="iconAdd"
 				(click)="openModalAddNewProduct()"
 				>Add new product</app-button
 			>
 		</app-dashboard-header>
+
+		<div class="loading-box">
+			<p-progressSpinner
+				*ngIf="(loading$ | async) === true"
+			></p-progressSpinner>
+		</div>
 	</div>
 </app-dashboard-layout>
 
