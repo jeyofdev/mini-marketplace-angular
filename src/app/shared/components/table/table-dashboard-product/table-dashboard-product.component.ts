@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { PaginatorState } from 'primeng/paginator';
 import { IRowsPerPageSelectOptions } from '../../../interfaces/table.interface';
-import { ConfirmationService, MessageService } from 'primeng/api';
-
 import { IProduct } from '../../../model/product.model';
+import { ShowConfirmDialogFnType } from '../../../types/index.type';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductService } from '../../../service/product.service';
 
 @Component({
@@ -26,6 +25,8 @@ export class TableDashboardProductComponent implements OnInit {
 	myPaginationString!: string;
 
 	sidebarVisible = false;
+
+	showConfirmDialogFn!: ShowConfirmDialogFnType;
 
 	constructor(
 		private confirmationService: ConfirmationService,
@@ -58,5 +59,19 @@ export class TableDashboardProductComponent implements OnInit {
 		this.first = 1;
 		this.rows = event;
 		this.myPaginationString = `showing ${this.first} to ${this.rows} of ${this.totalRecords} entries`;
+	}
+
+	onAffich(showConfirmDialogFn: ShowConfirmDialogFnType) {
+		this.showConfirmDialogFn = showConfirmDialogFn;
+	}
+
+	onDelete(categoryId: string, categoryName: string): void {
+		this.showConfirmDialogFn(
+			this.confirmationService,
+			this.messageService,
+			this.productService.deleteById,
+			categoryId,
+			categoryName,
+		);
 	}
 }

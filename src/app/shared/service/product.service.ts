@@ -5,6 +5,8 @@ import {
 	Firestore,
 	addDoc,
 	collectionData,
+	doc,
+	deleteDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
@@ -31,4 +33,9 @@ export class ProductService {
 
 		return docRef;
 	}
+
+	deleteById = (productId: string) => {
+		const docInstance = doc(this.firestore, 'products', productId);
+		deleteDoc(docInstance);
+	};
 }

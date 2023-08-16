@@ -76,7 +76,7 @@ export class TableDashboardCategoryComponent implements OnInit {
 		this.fillFormWithCurrentCategoryFn = fillFormWithCurrentCategoryFn;
 	}
 
-	onClick(categoryId: string, categoryName: string): void {
+	onDelete(categoryId: string, categoryName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,

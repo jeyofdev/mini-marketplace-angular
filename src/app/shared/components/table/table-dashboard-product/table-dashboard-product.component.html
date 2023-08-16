@@ -38,6 +38,7 @@
 					shape="circle"
 					color="danger"
 					icon="fa-solid fa-trash-can"
+					(click)="onDelete(data['id'], data['name'])"
 					>Delete</app-button
 				>
 			</td>
@@ -60,3 +61,8 @@
 		</div>
 	</ng-template>
 </p-table>
+
+<app-confirm-dialog
+	title="Delete the category"
+	(showConfirmDialog)="onAffich($event)"
+></app-confirm-dialog>
