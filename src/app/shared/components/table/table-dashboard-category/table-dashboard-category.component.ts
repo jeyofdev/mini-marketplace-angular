@@ -1,25 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICategory } from '../../model/category.model';
+import { ICategory } from '../../../model/category.model';
 
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '../../interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '../../../interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
 	FillFormWithCurrentCategoryFnType,
 	ShowConfirmDialogFnType,
-} from '../../types/index.type';
-import { CategoryService } from '../../service/category.service';
-import { IProduct } from '../../model/product.model';
+} from '../../../types/index.type';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
-	selector: 'app-table',
-	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss'],
-	providers: [CategoryService],
+	selector: 'app-table-dashboard-category',
+	templateUrl: './table-dashboard-category.component.html',
+	styleUrls: ['./table-dashboard-category.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableDashboardCategoryComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
-	@Input() items: Array<ICategory | IProduct> = [];
+	@Input() items: Array<ICategory> = [];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;
@@ -27,16 +25,6 @@ export class TableComponent implements OnInit {
 	@Input() rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 	@Input() first!: number;
 	@Input() totalRecords!: number;
-
-	@Input() deleteConfirmMessage!: string;
-	@Input() deleteAcceptToastSummary!: string;
-	@Input() deleteAcceptToastDetail!: string;
-
-	@Input() deleteRejectToastSummary!: string;
-	@Input() deleteRejectToastDetail!: string;
-
-	@Input() deleteCancelToastSummary!: string;
-	@Input() deleteCancelToastDetail!: string;
 
 	myPaginationString!: string;
 

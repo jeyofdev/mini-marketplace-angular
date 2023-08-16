@@ -22,9 +22,10 @@ import { ModalAddProductComponent } from './components/modal/modal-add-product/m
 import { NumberFieldComponent } from './components/input/number-field/number-field.component';
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { TableComponent } from './components/table/table.component';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
 import { ModalAddCategoryComponent } from './components/modal/modal-category/modal-category.component';
+import { TableDashboardCategoryComponent } from './components/table/table-dashboard-category/table-dashboard-category.component';
+import { TableDashboardProductComponent } from './components/table/table-dashboard-product/table-dashboard-product.component';
 
 @NgModule({
 	declarations: [
@@ -47,8 +48,9 @@ import { ModalAddCategoryComponent } from './components/modal/modal-category/mod
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
-		TableComponent,
+		TableDashboardCategoryComponent,
 		ConfirmDialogComponent,
+		TableDashboardProductComponent,
 	],
 	imports: [
 		CommonModule,
@@ -82,7 +84,8 @@ import { ModalAddCategoryComponent } from './components/modal/modal-category/mod
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
-		TableComponent,
+		TableDashboardCategoryComponent,
+		TableDashboardProductComponent,
 		ConfirmDialogComponent,
 	],
 })
