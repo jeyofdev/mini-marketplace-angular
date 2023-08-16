@@ -104,3 +104,8 @@ p-table th {
 	.p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
 	background-color: var(--primary-50);
 }
+
+:host .badge-colors-box {
+	display: flex;
+	gap: 0.25rem;
+}

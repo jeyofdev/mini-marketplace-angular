@@ -18,12 +18,20 @@
 	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
-				<td *ngIf="data[col.field].value">
+				<td *ngIf="data[col.field].value && col.field !== 'color'">
 					{{ data[col.field].value }}
 				</td>
 
-				<td *ngIf="!data[col.field].value">
+				<td *ngIf="!data[col.field].value && col.field !== 'color'">
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'color'">
+					<div class="badge-colors-box">
+						<ng-container *ngFor="let color of data[col.field]">
+							<app-badge-color [color]="color" size="medium"></app-badge-color>
+						</ng-container>
+					</div>
 				</td>
 			</ng-container>
 

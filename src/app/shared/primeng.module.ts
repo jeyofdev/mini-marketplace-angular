@@ -22,6 +22,7 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
 	exports: [
@@ -48,6 +49,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 		PaginatorModule,
 		ProgressSpinnerModule,
 		ConfirmDialogModule,
+		BadgeModule,
 	],
 })
 export class PrimengModule {}

@@ -26,6 +26,7 @@ import { TableDashboardCategoryComponent } from './components/table/table-dashbo
 import { TableDashboardProductComponent } from './components/table/table-dashboard-product/table-dashboard-product.component';
 import { ModalProductComponent } from './components/modal/modal-product/modal-product.component';
 import { ModalCategoryComponent } from './components/modal/modal-category/modal-category.component';
+import { BadgeColorComponent } from './components/badge-color/badge-color.component';
 
 @NgModule({
 	declarations: [
@@ -51,6 +52,7 @@ import { ModalCategoryComponent } from './components/modal/modal-category/modal-
 		TableDashboardCategoryComponent,
 		ConfirmDialogComponent,
 		TableDashboardProductComponent,
+		BadgeColorComponent,
 	],
 	imports: [
 		CommonModule,
@@ -87,6 +89,7 @@ import { ModalCategoryComponent } from './components/modal/modal-category/modal-
 		TableDashboardCategoryComponent,
 		TableDashboardProductComponent,
 		ConfirmDialogComponent,
+		BadgeColorComponent,
 	],
 })
 export class SharedModule {}
