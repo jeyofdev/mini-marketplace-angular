@@ -1,0 +1,44 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+.chip {
+	border-radius: 5px;
+	display: flex;
+	align-items: flex-start;
+	width: fit-content;
+
+	p {
+		color: inherit;
+		font-size: 0.825rem;
+		line-height: 1;
+		font-weight: initial;
+	}
+}
+
+.chip-small {
+	padding: 0.2rem 0.3rem;
+}
+
+.chip-primary {
+	background-color: var(--primary-500);
+	color: $light;
+}
+
+.chip-success {
+	background-color: var(--green-500);
+	color: $light;
+}
+
+.chip-info {
+	background-color: var(--blue-500);
+	color: $light;
+}
+
+.chip-warning {
+	background-color: var(--yellow-500);
+	color: $light;
+}
+
+.chip-danger {
+	background-color: var(--red-500);
+	color: $light;
+}

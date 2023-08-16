@@ -24,6 +24,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BadgeModule } from 'primeng/badge';
 import { TagModule } from 'primeng/tag';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
 	exports: [
@@ -52,6 +53,7 @@ import { TagModule } from 'primeng/tag';
 		ConfirmDialogModule,
 		BadgeModule,
 		TagModule,
+		ChipModule,
 	],
 })
 export class PrimengModule {}

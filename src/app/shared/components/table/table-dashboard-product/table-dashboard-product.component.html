@@ -23,7 +23,8 @@
 						data[col.field].value &&
 						col.field !== 'color' &&
 						col.field !== 'price' &&
-						col.field !== 'size'
+						col.field !== 'size' &&
+						col.field !== 'category'
 					"
 				>
 					{{ data[col.field].value }}
@@ -34,10 +35,19 @@
 						!data[col.field].value &&
 						col.field !== 'color' &&
 						col.field !== 'price' &&
-						col.field !== 'size'
+						col.field !== 'size' &&
+						col.field !== 'category'
 					"
 				>
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'category'">
+					<app-ship
+						[label]="data[col.field].value"
+						size="small"
+						severity="primary"
+					></app-ship>
 				</td>
 
 				<td *ngIf="col.field === 'size'">
