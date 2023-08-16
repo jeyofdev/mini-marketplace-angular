@@ -9,8 +9,8 @@ import { ICategory } from '../../../shared/model/category.model';
 import { Observable, map } from 'rxjs';
 import { DataService } from '../../../shared/service/data.service';
 import {
-	ICategoryTableColumns,
-	IRowsPerPageOptions,
+	ITableColumns,
+	IRowsPerPageSelectOptions,
 } from '../../../shared/interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -23,11 +23,11 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class DashboardCategoriesComponent implements OnInit {
 	iconAdd!: string;
 	categories!: ICategory[];
-	cols!: ICategoryTableColumns[];
+	cols!: ITableColumns[];
 	sidebarVisible = false;
 	totalRecords!: number;
 	loading$!: Observable<boolean>;
-	rowsPerPageOptions!: IRowsPerPageOptions[];
+	rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 
 	constructor(
 		private store: Store,
@@ -37,12 +37,7 @@ export class DashboardCategoriesComponent implements OnInit {
 	ngOnInit(): void {
 		this.iconAdd = 'fa-solid fa-plus';
 		this.cols = this.dataService.getColsCategories();
-		this.rowsPerPageOptions = [
-			{ label: 5, value: 5 },
-			{ label: 10, value: 10 },
-			{ label: 25, value: 25 },
-			{ label: 50, value: 50 },
-		];
+		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
 
 		this.store.dispatch(CategoryActions.loadCategories());
 

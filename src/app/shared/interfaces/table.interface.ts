@@ -1,9 +1,9 @@
-export interface ICategoryTableColumns {
+export interface ITableColumns {
 	header: string;
 	field: string;
 }
 
-export interface IRowsPerPageOptions {
+export interface IRowsPerPageSelectOptions {
 	label: number;
 	value: number;
 }

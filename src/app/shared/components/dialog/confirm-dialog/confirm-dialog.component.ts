@@ -1,7 +1,7 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShowConfirmDialogFnType } from '../../../types/index.type';
-import { CategoryService } from 'src/app/shared/service/category.service';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
 	selector: 'app-confirm-dialog',

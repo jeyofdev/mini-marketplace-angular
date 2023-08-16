@@ -4,7 +4,7 @@ import {
 	IconDefinition,
 	faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { INavLink } from 'src/app/shared/interfaces/link.interface';
+import { INavLink } from '../../../interfaces/link.interface';
 import { AuthService } from '../../../service/auth.service';
 import { MenuItem } from 'primeng/api';
 import { DataService } from '../../../service/data.service';
