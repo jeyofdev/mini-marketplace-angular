@@ -78,7 +78,7 @@ p-table th {
 	color: var(--primary-800);
 }
 
-:host ::ng-deep .p-dropdown {
+:host ::ng-deep .p-paginator-left-content .p-dropdown {
 	height: 30px;
 }
 

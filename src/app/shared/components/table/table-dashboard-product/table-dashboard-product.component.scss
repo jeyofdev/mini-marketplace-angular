@@ -78,7 +78,7 @@ p-table th {
 	color: var(--primary-800);
 }
 
-:host ::ng-deep .p-dropdown {
+:host ::ng-deep .p-paginator-left-content .p-dropdown {
 	height: 30px;
 }
 
@@ -91,8 +91,8 @@ p-table th {
 	color: var(--primary-800);
 }
 
-:host ::ng-deep .p-dropdown .p-inputtext,
-:host ::ng-deep .p-dropdown .p-dropdown-trigger {
+:host ::ng-deep .p-paginator .p-dropdown .p-inputtext,
+:host ::ng-deep .p-paginator .p-dropdown .p-dropdown-trigger {
 	color: var(--primary-800);
 	height: 35px;
 }

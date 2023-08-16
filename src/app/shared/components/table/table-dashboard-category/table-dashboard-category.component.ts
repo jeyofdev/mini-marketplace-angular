@@ -76,13 +76,13 @@ export class TableDashboardCategoryComponent implements OnInit {
 		this.fillFormWithCurrentCategoryFn = fillFormWithCurrentCategoryFn;
 	}
 
-	onDelete(categoryId: string, categoryName: string): void {
+	onDelete(itemId: string, itemName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
 			this.categoryService.deleteById,
-			categoryId,
-			categoryName,
+			itemId,
+			itemName,
 		);
 	}
 

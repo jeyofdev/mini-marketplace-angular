@@ -5,7 +5,7 @@
 	[dismissible]="false"
 >
 	<ng-template pTemplate="header">
-		<h2>New product</h2>
+		<h2>{{ title }}</h2>
 
 		<app-button
 			shape="circle"
@@ -142,7 +142,7 @@
 					color="primary"
 					size="medium"
 					[disabled]="!mainForm.valid"
-					>Add new product</app-button
+					>{{ submitBtnLabel }}</app-button
 				>
 			</form>
 		</p-scrollPanel>

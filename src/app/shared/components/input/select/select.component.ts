@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-	Component,
-	EventEmitter,
-	Input,
-	OnInit,
-	Output,
-	forwardRef,
-} from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
@@ -40,15 +33,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
 	@Input() validationMessages!: IValidationMessage;
 
-	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-
 	value!: string;
 	disabled!: boolean;
 
 	selectedItem: ISelectItem | undefined;
 	showClear!: boolean;
 
-	onChanged!: (value: string) => void;
+	onChanged!: (selectedItem: ISelectItem) => void;
 	onTouched!: () => void;
 
 	ngOnInit(): void {
@@ -58,22 +49,19 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 	selectionChanged(event: DropdownChangeEvent) {
 		if (event.value) {
 			this.showClear = true;
-			this.valueChange.emit(event.value);
-			this.onChanged(event.value.value);
+			this.onChanged(event.value);
 		} else {
 			this.showClear = false;
-			this.valueChange.emit('');
-			this.onChanged('');
 		}
 
 		this.onTouched();
 	}
 
-	writeValue(value: string): void {
-		this.value = value;
+	writeValue(selectedItem: ISelectItem): void {
+		this.selectedItem = selectedItem;
 	}
 
-	registerOnChange(fn: (value: string) => void): void {
+	registerOnChange(fn: (selectedItem: ISelectItem) => void): void {
 		this.onChanged = fn;
 	}
 

@@ -1,13 +1,11 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShowConfirmDialogFnType } from '../../../types/index.type';
-import { CategoryService } from '../../../service/category.service';
 
 @Component({
 	selector: 'app-confirm-dialog',
 	templateUrl: './confirm-dialog.component.html',
 	styleUrls: ['./confirm-dialog.component.scss'],
-	providers: [CategoryService],
 })
 export class ConfirmDialogComponent implements OnInit {
 	@Output() showConfirmDialog = new EventEmitter<ShowConfirmDialogFnType>();
@@ -24,14 +22,14 @@ export class ConfirmDialogComponent implements OnInit {
 	confirm(
 		confirmationService: ConfirmationService,
 		messageService: MessageService,
-		acceptFn: (categoryId: string) => void,
-		categoryId: string,
+		acceptFn: (itemId: string) => void,
+		itemId: string,
 		itemName: string,
 	): void {
 		confirmationService.confirm({
 			message: `Are you sure you want to delete the category with name '${itemName}' ?`,
 			accept: () => {
-				acceptFn(categoryId);
+				acceptFn(itemId);
 
 				messageService.add({
 					severity: 'error',

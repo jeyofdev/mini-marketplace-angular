@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PaginatorState } from 'primeng/paginator';
 import { IRowsPerPageSelectOptions } from '../../../interfaces/table.interface';
 import { IProduct } from '../../../model/product.model';
-import { ShowConfirmDialogFnType } from '../../../types/index.type';
+import {
+	FillFormWithCurrentProductFnType,
+	ShowConfirmDialogFnType,
+} from '../../../types/index.type';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductService } from '../../../service/product.service';
 
@@ -27,6 +30,7 @@ export class TableDashboardProductComponent implements OnInit {
 	sidebarVisible = false;
 
 	showConfirmDialogFn!: ShowConfirmDialogFnType;
+	fillFormWithCurrentProductFn!: FillFormWithCurrentProductFnType;
 
 	constructor(
 		private confirmationService: ConfirmationService,
@@ -65,13 +69,24 @@ export class TableDashboardProductComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
-	onDelete(categoryId: string, categoryName: string): void {
+	getCurrentProduct(
+		fillFormWithCurrentProductFn: FillFormWithCurrentProductFnType,
+	) {
+		this.fillFormWithCurrentProductFn = fillFormWithCurrentProductFn;
+	}
+
+	onDelete(itemId: string, itemName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
 			this.productService.deleteById,
-			categoryId,
-			categoryName,
+			itemId,
+			itemName,
 		);
+	}
+
+	openModalUpdateProduct(product: IProduct): void {
+		this.fillFormWithCurrentProductFn(product);
+		this.sidebarVisible = true;
 	}
 }

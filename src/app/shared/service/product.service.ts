@@ -7,6 +7,7 @@ import {
 	collectionData,
 	doc,
 	deleteDoc,
+	updateDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
@@ -37,5 +38,11 @@ export class ProductService {
 	deleteById = (productId: string) => {
 		const docInstance = doc(this.firestore, 'products', productId);
 		deleteDoc(docInstance);
+	};
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	updateById = (productId: string, newDatas: any) => {
+		const docInstance = doc(this.firestore, 'products', productId);
+		return updateDoc(docInstance, newDatas);
 	};
 }

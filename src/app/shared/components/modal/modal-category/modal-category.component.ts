@@ -17,7 +17,7 @@ import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
 	styleUrls: ['./modal-category.component.scss'],
 	providers: [MessageService],
 })
-export class ModalAddCategoryComponent implements OnInit {
+export class ModalCategoryComponent implements OnInit {
 	@Input() visible!: boolean;
 	@Input() position!: 'left' | 'right' | 'top' | 'bottom';
 	@Input() title!: string;

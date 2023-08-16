@@ -18,14 +18,14 @@ import { DividerComponent } from './components/divider/divider.component';
 import { ButtonComponent } from './components/button/button/button.component';
 import { ErrorFieldComponent } from './components/form/error-field/error-field.component';
 import { TextareaComponent } from './components/input/textarea/textarea.component';
-import { ModalAddProductComponent } from './components/modal/modal-add-product/modal-add-product.component';
 import { NumberFieldComponent } from './components/input/number-field/number-field.component';
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
-import { ModalAddCategoryComponent } from './components/modal/modal-category/modal-category.component';
 import { TableDashboardCategoryComponent } from './components/table/table-dashboard-category/table-dashboard-category.component';
 import { TableDashboardProductComponent } from './components/table/table-dashboard-product/table-dashboard-product.component';
+import { ModalProductComponent } from './components/modal/modal-product/modal-product.component';
+import { ModalCategoryComponent } from './components/modal/modal-category/modal-category.component';
 
 @NgModule({
 	declarations: [
@@ -39,8 +39,8 @@ import { TableDashboardProductComponent } from './components/table/table-dashboa
 		ButtonComponent,
 		NavLinkComponent,
 		FullnamePipe,
-		ModalAddCategoryComponent,
-		ModalAddProductComponent,
+		ModalCategoryComponent,
+		ModalProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -74,8 +74,8 @@ import { TableDashboardProductComponent } from './components/table/table-dashboa
 		DashboardLayoutComponent,
 		NavLinkComponent,
 		FullnamePipe,
-		ModalAddCategoryComponent,
-		ModalAddProductComponent,
+		ModalCategoryComponent,
+		ModalProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
