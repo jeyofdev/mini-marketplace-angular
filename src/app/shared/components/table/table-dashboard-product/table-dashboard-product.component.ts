@@ -1,25 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICategory } from '../../model/category.model';
-
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '../../interfaces/table.interface';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { IRowsPerPageSelectOptions } from '../../../interfaces/table.interface';
+import { IProduct } from '../../../model/product.model';
 import {
-	FillFormWithCurrentCategoryFnType,
+	FillFormWithCurrentProductFnType,
 	ShowConfirmDialogFnType,
-} from '../../types/index.type';
-import { CategoryService } from '../../service/category.service';
-import { IProduct } from '../../model/product.model';
+} from '../../../types/index.type';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProductService } from '../../../service/product.service';
 
 @Component({
-	selector: 'app-table',
-	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss'],
-	providers: [CategoryService],
+	selector: 'app-table-dashboard-product',
+	templateUrl: './table-dashboard-product.component.html',
+	styleUrls: ['./table-dashboard-product.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableDashboardProductComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
-	@Input() items: Array<ICategory | IProduct> = [];
+	@Input() items: Array<IProduct> = [];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;
@@ -28,27 +25,17 @@ export class TableComponent implements OnInit {
 	@Input() first!: number;
 	@Input() totalRecords!: number;
 
-	@Input() deleteConfirmMessage!: string;
-	@Input() deleteAcceptToastSummary!: string;
-	@Input() deleteAcceptToastDetail!: string;
-
-	@Input() deleteRejectToastSummary!: string;
-	@Input() deleteRejectToastDetail!: string;
-
-	@Input() deleteCancelToastSummary!: string;
-	@Input() deleteCancelToastDetail!: string;
-
 	myPaginationString!: string;
 
 	sidebarVisible = false;
 
 	showConfirmDialogFn!: ShowConfirmDialogFnType;
-	fillFormWithCurrentCategoryFn!: FillFormWithCurrentCategoryFnType;
+	fillFormWithCurrentProductFn!: FillFormWithCurrentProductFnType;
 
 	constructor(
 		private confirmationService: ConfirmationService,
 		private messageService: MessageService,
-		private categoryService: CategoryService,
+		private productService: ProductService,
 	) {}
 
 	ngOnInit(): void {
@@ -82,24 +69,24 @@ export class TableComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
-	getCurrentCategory(
-		fillFormWithCurrentCategoryFn: FillFormWithCurrentCategoryFnType,
+	getCurrentProduct(
+		fillFormWithCurrentProductFn: FillFormWithCurrentProductFnType,
 	) {
-		this.fillFormWithCurrentCategoryFn = fillFormWithCurrentCategoryFn;
+		this.fillFormWithCurrentProductFn = fillFormWithCurrentProductFn;
 	}
 
-	onClick(categoryId: string, categoryName: string): void {
+	onDelete(itemId: string, itemName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
-			this.categoryService.deleteById,
-			categoryId,
-			categoryName,
+			this.productService.deleteById,
+			itemId,
+			itemName,
 		);
 	}
 
-	openModalUpdateCategory(category: ICategory): void {
-		this.fillFormWithCurrentCategoryFn(category);
+	openModalUpdateProduct(product: IProduct): void {
+		this.fillFormWithCurrentProductFn(product);
 		this.sidebarVisible = true;
 	}
 }

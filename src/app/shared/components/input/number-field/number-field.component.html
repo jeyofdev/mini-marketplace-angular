@@ -8,6 +8,7 @@
 		mode="currency"
 		currency="EUR"
 		[disabled]="disabled"
+		[(ngModel)]="value"
 		(onInput)="onInputNumberChange($event)"
 		(focus)="markAsTouched()"
 		[class]="control?.invalid && control?.dirty ? 'ng-invalid ng-dirty' : ''"

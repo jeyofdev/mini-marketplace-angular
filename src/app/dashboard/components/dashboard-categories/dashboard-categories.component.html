@@ -33,7 +33,7 @@
 			</div>
 
 			<ng-container *ngIf="categories.length > 0">
-				<app-table
+				<app-table-dashboard-category
 					[items]="categories"
 					[cols]="cols"
 					[paginator]="true"
@@ -43,7 +43,7 @@
 					[rowsPerPageOptions]="rowsPerPageOptions"
 					[first]="1"
 					[totalRecords]="totalRecords"
-				></app-table>
+				></app-table-dashboard-category>
 			</ng-container>
 		</div>
 	</div>

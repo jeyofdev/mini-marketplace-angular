@@ -35,7 +35,7 @@
 			</div>
 
 			<ng-container *ngIf="products.length > 0">
-				<app-table
+				<app-table-dashboard-product
 					[items]="products"
 					[cols]="cols"
 					[paginator]="true"
@@ -45,13 +45,14 @@
 					[rowsPerPageOptions]="rowsPerPageOptions"
 					[first]="1"
 					[totalRecords]="totalRecords"
-				></app-table>
+				></app-table-dashboard-product>
 			</ng-container>
 		</div>
 	</div>
 </app-dashboard-layout>
 
-<app-modal-add-product
-	[(visible)]="sidebarVisible"
+<app-modal-product
+	title="New product"
 	position="right"
-></app-modal-add-product>
+	[(visible)]="sidebarVisible"
+></app-modal-product>

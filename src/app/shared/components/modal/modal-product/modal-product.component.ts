@@ -17,17 +17,23 @@ import { ProductService } from '../../../service/product.service';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
 import { DataService } from '../../../service/data.service';
+import { FillFormWithCurrentProductFnType } from '../../../types/index.type';
+import { ProductColorEnum } from 'src/app/shared/enum/product.enum';
 
 @Component({
-	selector: 'app-modal-add-product',
-	templateUrl: './modal-add-product.component.html',
-	styleUrls: ['./modal-add-product.component.scss'],
+	selector: 'app-modal-product',
+	templateUrl: './modal-product.component.html',
+	styleUrls: ['./modal-product.component.scss'],
 	providers: [MessageService],
 })
-export class ModalAddProductComponent implements OnInit {
+export class ModalProductComponent implements OnInit {
 	@Input() visible!: boolean;
 	@Input() position!: 'left' | 'right' | 'top' | 'bottom';
+	@Input() title!: string;
+
 	@Output() visibleChange = new EventEmitter<boolean>();
+	@Output() fillFormProduct =
+		new EventEmitter<FillFormWithCurrentProductFnType>();
 
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
@@ -39,15 +45,19 @@ export class ModalAddProductComponent implements OnInit {
 	modelNameCtrl!: FormControl<string | null>;
 	categoryCtrl!: FormControl<string | null>;
 	sizeCtrl!: FormControl<string | null>;
-	quantityCtrl!: FormControl<string | null>;
-	priceCtrl!: FormControl<string | null>;
+	quantityCtrl!: FormControl;
+	priceCtrl!: FormControl;
 
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
 	colors!: IColorCheckbox[];
 
+	submitBtnLabel!: string;
+
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	inputsValidationMessages!: any;
+
+	currentProduct!: IProduct;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -68,11 +78,25 @@ export class ModalAddProductComponent implements OnInit {
 		this.initFormControls();
 		this.initFormGroups();
 		this.initMainForm();
+		this.submitBtnLabel = 'Add product';
+
+		this.fillFormProduct.emit(this.fillFormWithCurrentProduct);
 	}
 
 	onMainFormSubmit(): void {
-		this.addProduct();
+		if (!this.currentProduct) {
+			this.addProduct();
+		} else {
+			this.updateProduct();
+		}
 	}
+
+	fillFormWithCurrentProduct = (product: IProduct) => {
+		this.currentProduct = product;
+		this.submitBtnLabel = 'Update product';
+
+		this.patchValueForm();
+	};
 
 	onClose(arg: boolean): void {
 		this.visible = arg;
@@ -134,7 +158,7 @@ export class ModalAddProductComponent implements OnInit {
 			),
 		]);
 
-		this.categoryCtrl = this.formBuilder.control('', Validators.required);
+		this.categoryCtrl = this.formBuilder.control(null, Validators.required);
 		this.sizeCtrl = this.formBuilder.control('', Validators.required);
 
 		this.quantityCtrl = this.formBuilder.control('1');
@@ -144,33 +168,55 @@ export class ModalAddProductComponent implements OnInit {
 		]);
 	}
 
+	private patchValueForm(): void {
+		this.nameForm.patchValue({
+			brandName: this.currentProduct.brandName,
+			modelName: this.currentProduct.modelName,
+		});
+
+		this.detailsForm.patchValue({
+			category: this.currentProduct.category,
+			size: this.currentProduct.size,
+		});
+
+		this.infosForm.patchValue({
+			quantity: this.currentProduct.quantity,
+			price: this.currentProduct.price,
+		});
+
+		this.colorsForm.patchValue({
+			blue: this.currentProduct.color.includes(ProductColorEnum.BLUE),
+			red: this.currentProduct.color.includes(ProductColorEnum.RED),
+			green: this.currentProduct.color.includes(ProductColorEnum.GREEN),
+			yellow: this.currentProduct.color.includes(ProductColorEnum.YELLOW),
+			purple: this.currentProduct.color.includes(ProductColorEnum.PURPLE),
+		});
+	}
+
 	private addProduct(): void {
-		const newProduct: IProduct = {
-			...this.mainForm.value.name,
-			...this.mainForm.value.details,
-			...this.mainForm.value.infos,
-			color: Object.entries(this.mainForm.value.colors)
-				.filter(color => color[1])
-				.map(color => color[0]),
-		};
+		const newProduct = this.formatProductDatas();
 
 		this.productService
 			.add(newProduct)
 			.then(() => {
-				this.messageService.add({
-					severity: 'success',
-					summary: `The product '${newProduct.brandName}' has been added.`,
-				});
-
-				this.mainForm.reset();
-				this.onClose(false);
+				this.toastSuccess(
+					`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
+				);
 			})
-			.catch(err => {
-				this.messageService.add({
-					severity: 'error',
-					summary: err.message,
-				});
-			});
+			.catch(err => this.toastError(err.message));
+	}
+
+	private updateProduct(): void {
+		const updateProduct = this.formatProductDatas();
+
+		this.productService
+			.updateById(this.currentProduct.id as string, updateProduct)
+			.then(() => {
+				this.toastSuccess(
+					`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
+				);
+			})
+			.catch(err => this.toastError(err.message));
 	}
 
 	private initCategories(): void {
@@ -185,5 +231,35 @@ export class ModalAddProductComponent implements OnInit {
 				tap(result => this.categories.push(result)),
 			)
 			.subscribe();
+	}
+
+	private toastSuccess(message: string): void {
+		this.messageService.add({
+			severity: 'success',
+			summary: message,
+		});
+
+		this.mainForm.reset();
+		this.onClose(false);
+	}
+
+	private toastError(message: string): void {
+		this.messageService.add({
+			severity: 'error',
+			summary: message,
+		});
+	}
+
+	private formatProductDatas(): IProduct {
+		return {
+			...this.mainForm.value.name,
+			...this.mainForm.value.infos,
+			...this.mainForm.value.details,
+			// category: this.mainForm.value.details.category.value,
+			// size: this.mainForm.value.details.size.value,
+			color: Object.entries(this.mainForm.value.colors)
+				.filter(color => color[1])
+				.map(color => color[0]),
+		};
 	}
 }

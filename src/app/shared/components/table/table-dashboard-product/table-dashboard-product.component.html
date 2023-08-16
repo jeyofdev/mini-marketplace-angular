@@ -18,7 +18,11 @@
 	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
-				<td>
+				<td *ngIf="data[col.field].value">
+					{{ data[col.field].value }}
+				</td>
+
+				<td *ngIf="!data[col.field].value">
 					{{ data[col.field] }}
 				</td>
 			</ng-container>
@@ -30,7 +34,7 @@
 					color="success"
 					size="medium"
 					iconPrefix="fa-solid fa-pencil"
-					(click)="openModalUpdateCategory(data)"
+					(click)="openModalUpdateProduct(data)"
 					>Edit</app-button
 				>
 
@@ -39,7 +43,7 @@
 					shape="circle"
 					color="danger"
 					icon="fa-solid fa-trash-can"
-					(click)="onClick(data['id'], data['name'])"
+					(click)="onDelete(data['id'], data['name'])"
 					>Delete</app-button
 				>
 			</td>
@@ -64,13 +68,13 @@
 </p-table>
 
 <app-confirm-dialog
-	title="Delete the category"
+	title="Delete the product"
 	(showConfirmDialog)="onAffich($event)"
 ></app-confirm-dialog>
 
-<app-modal-category
+<app-modal-product
 	[(visible)]="sidebarVisible"
-	title="Edit category"
+	title="Edit product"
 	position="right"
-	(fillFormCategory)="getCurrentCategory($event)"
-></app-modal-category>
+	(fillFormProduct)="getCurrentProduct($event)"
+></app-modal-product>

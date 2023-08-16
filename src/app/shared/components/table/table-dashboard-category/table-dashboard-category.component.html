@@ -1,0 +1,76 @@
+<p-table
+	#myTab
+	[value]="items"
+	[paginator]="paginator"
+	[rows]="rows"
+	(onPage)="setMyPagination($event)"
+	(rowsChange)="onRowSelect($event)"
+>
+	<ng-template pTemplate="header">
+		<tr>
+			<ng-container *ngFor="let col of cols">
+				<th>{{ col.header }}</th>
+			</ng-container>
+			<th>Actions</th>
+		</tr>
+	</ng-template>
+
+	<ng-template pTemplate="body" let-data>
+		<tr>
+			<ng-container *ngFor="let col of cols">
+				<td>
+					{{ data[col.field] }}
+				</td>
+			</ng-container>
+
+			<td class="actions-btn">
+				<app-button
+					variant="raised"
+					shape="square"
+					color="success"
+					size="medium"
+					iconPrefix="fa-solid fa-pencil"
+					(click)="openModalUpdateCategory(data)"
+					>Edit</app-button
+				>
+
+				<app-button
+					variant="rounded"
+					shape="circle"
+					color="danger"
+					icon="fa-solid fa-trash-can"
+					(click)="onDelete(data['id'], data['name'])"
+					>Delete</app-button
+				>
+			</td>
+		</tr>
+	</ng-template>
+
+	<ng-template pTemplate="paginatorleft" let-state>
+		<div class="pagination-left-box">
+			<span class="p-paginator-current" *ngIf="currentPageReportTemplate">
+				{{ myPaginationString }}
+			</span>
+
+			<p-dropdown
+				[options]="rowsPerPageOptions"
+				optionLabel="label"
+				optionValue="value"
+				[(ngModel)]="rows"
+				(ngModelChange)="onRowSelect($event)"
+			></p-dropdown>
+		</div>
+	</ng-template>
+</p-table>
+
+<app-confirm-dialog
+	title="Delete the category"
+	(showConfirmDialog)="onAffich($event)"
+></app-confirm-dialog>
+
+<app-modal-category
+	[(visible)]="sidebarVisible"
+	title="Edit category"
+	position="right"
+	(fillFormCategory)="getCurrentCategory($event)"
+></app-modal-category>

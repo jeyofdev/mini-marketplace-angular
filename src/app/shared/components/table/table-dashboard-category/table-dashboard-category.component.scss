@@ -1,4 +1,4 @@
-@import '../../../../theme/scss/light/theme/theme';
+@import '../../../../../theme/scss/light/theme/theme';
 
 .actions-btn {
 	display: flex;
@@ -78,7 +78,7 @@ p-table th {
 	color: var(--primary-800);
 }
 
-:host ::ng-deep .p-dropdown {
+:host ::ng-deep .p-paginator-left-content .p-dropdown {
 	height: 30px;
 }
 

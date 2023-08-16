@@ -8,6 +8,7 @@
 		optionLabel="label"
 		[disabled]="disabled"
 		[placeholder]="placeholder"
+		[(ngModel)]="selectedItem"
 		[showClear]="showClear"
 		(onChange)="selectionChanged($event)"
 		(focus)="markAsTouched()"
