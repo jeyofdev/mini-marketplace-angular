@@ -8,7 +8,8 @@
 		<h2>New product</h2>
 
 		<app-button
-			variant="icon"
+			shape="circle"
+			variant="rounded"
 			color="danger"
 			icon="fa-solid fa-xmark"
 			(click)="onClose(false)"
@@ -136,16 +137,14 @@
 				</div>
 
 				<app-button
-					type="submit"
 					variant="raised"
+					shape="square"
 					color="primary"
+					size="medium"
 					[disabled]="!mainForm.valid"
-				>
-					Add new product</app-button
+					>Add new product</app-button
 				>
 			</form>
-
-			<pre>{{ mainForm.value | json }}</pre>
 		</p-scrollPanel>
 	</ng-template>
 </p-sidebar>

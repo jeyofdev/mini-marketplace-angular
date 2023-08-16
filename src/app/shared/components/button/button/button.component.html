@@ -1,16 +1,21 @@
-<ng-container *ngIf="variant !== 'icon'">
-	<p-button [styleClass]="styleClass" [disabled]="disabled" [type]="type">
-		<div class="btn-content" [ngClass]="{ content: variant === 'raised' }">
-			<i [class]="'icon mr ' + icon"></i>
+<ng-container *ngIf="shape === 'circle'">
+	<p-button
+		[icon]="icon"
+		[type]="type"
+		[disabled]="disabled"
+		[styleClass]="styleClass"
+		class="icon"
+	></p-button>
+</ng-container>
+
+<ng-container *ngIf="shape === 'square'">
+	<p-button [type]="type" [disabled]="disabled" [styleClass]="styleClass">
+		<div class="btn-content">
+			<i *ngIf="iconPrefix" [class]="'icon mr ' + iconPrefix"></i>
 			<h5 class="button">
 				<ng-content></ng-content>
 			</h5>
+			<i *ngIf="iconSuffix" [class]="'icon ml ' + iconSuffix"></i>
 		</div>
-	</p-button>
-</ng-container>
-
-<ng-container *ngIf="variant === 'icon'">
-	<p-button [styleClass]="styleClass" [disabled]="disabled" [type]="type">
-		<i class="'icon ' + icon"></i>
 	</p-button>
 </ng-container>

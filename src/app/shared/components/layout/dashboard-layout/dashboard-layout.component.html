@@ -10,7 +10,10 @@
 				<div class="btn-box">
 					<app-button
 						variant="rounded"
-						icon="fa-solid fa-plus"
+						shape="square"
+						color="primary"
+						size="medium"
+						iconPrefix="fa-solid fa-plus"
 						(click)="openModalAddNewProduct()"
 						>Add new product</app-button
 					>
@@ -35,8 +38,11 @@
 					<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
 
 					<app-button
-						variant="icon"
+						variant="rounded"
+						shape="circle"
+						color="danger"
 						icon="fa-solid fa-ellipsis-vertical"
+						[text]="true"
 						(click)="menu.toggle($event)"
 					></app-button>
 

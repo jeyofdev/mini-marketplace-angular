@@ -26,14 +26,17 @@
 			<td class="actions-btn">
 				<app-button
 					variant="raised"
+					shape="square"
 					color="success"
-					icon="fa-solid fa-pencil"
+					size="medium"
+					iconPrefix="fa-solid fa-pencil"
 					(click)="openModalUpdateCategory(data)"
 					>Edit</app-button
 				>
 
 				<app-button
-					variant="raised"
+					variant="rounded"
+					shape="circle"
 					color="danger"
 					icon="fa-solid fa-trash-can"
 					(click)="onClick(data['id'], data['name'])"

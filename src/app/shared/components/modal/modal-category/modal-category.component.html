@@ -8,7 +8,8 @@
 		<h2>{{ title }}</h2>
 
 		<app-button
-			variant="icon"
+			shape="circle"
+			variant="rounded"
 			color="danger"
 			icon="fa-solid fa-xmark"
 			(click)="onClose(false)"
@@ -61,12 +62,12 @@
 			</div>
 
 			<app-button
-				type="submit"
 				variant="raised"
+				shape="square"
 				color="primary"
+				size="medium"
 				[disabled]="!mainForm.valid"
-			>
-				{{ submitBtnLabel }}</app-button
+				>{{ submitBtnLabel }}</app-button
 			>
 		</form>
 	</ng-template>
