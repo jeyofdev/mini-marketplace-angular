@@ -2,13 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ICategory } from '../../model/category.model';
 
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageOptions } from '../../interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '../../interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
 	FillFormWithCurrentCategoryFnType,
 	ShowConfirmDialogFnType,
 } from '../../types/index.type';
 import { CategoryService } from '../../service/category.service';
+import { IProduct } from '../../model/product.model';
 
 @Component({
 	selector: 'app-table',
@@ -18,12 +19,12 @@ import { CategoryService } from '../../service/category.service';
 })
 export class TableComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
-	@Input() items: Array<ICategory> = [];
+	@Input() items: Array<ICategory | IProduct> = [];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;
 	@Input() currentPageReportTemplate!: string;
-	@Input() rowsPerPageOptions!: IRowsPerPageOptions[];
+	@Input() rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 	@Input() first!: number;
 	@Input() totalRecords!: number;
 

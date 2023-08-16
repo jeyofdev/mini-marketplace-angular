@@ -71,9 +71,7 @@ export class ModalAddProductComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
-		// this.addProduct();
+		this.addProduct();
 	}
 
 	onClose(arg: boolean): void {

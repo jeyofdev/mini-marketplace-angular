@@ -17,6 +17,37 @@
 				*ngIf="(loading$ | async) === true"
 			></p-progressSpinner>
 		</div>
+
+		<div class="list-container" *ngIf="(loading$ | async) === false">
+			<div class="no-result-box" *ngIf="products.length <= 0">
+				<i class="no-result-icon fa-regular fa-face-frown-open"></i>
+				<h2>No result found</h2>
+
+				<app-button
+					variant="raised"
+					shape="square"
+					color="primary"
+					size="medium"
+					[iconPrefix]="iconAdd"
+					(click)="openModalAddNewProduct()"
+					>Add new product</app-button
+				>
+			</div>
+
+			<ng-container *ngIf="products.length > 0">
+				<app-table
+					[items]="products"
+					[cols]="cols"
+					[paginator]="true"
+					[rows]="5"
+					[showCurrentPageReport]="true"
+					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+					[rowsPerPageOptions]="rowsPerPageOptions"
+					[first]="1"
+					[totalRecords]="totalRecords"
+				></app-table>
+			</ng-container>
+		</div>
 	</div>
 </app-dashboard-layout>
 

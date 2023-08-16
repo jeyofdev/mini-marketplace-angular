@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { IColorCheckbox, ISelectItem } from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
-import { ICategoryTableColumns } from '../interfaces/table.interface';
+import {
+	ITableColumns,
+	IRowsPerPageSelectOptions,
+} from '../interfaces/table.interface';
 import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
@@ -49,7 +52,7 @@ export class DataService {
 		];
 	}
 
-	getColsCategories(): ICategoryTableColumns[] {
+	getColsCategories(): ITableColumns[] {
 		return [
 			{
 				field: 'id',
@@ -62,6 +65,39 @@ export class DataService {
 			{
 				field: 'description',
 				header: 'Description',
+			},
+		];
+	}
+
+	getColsProducts(): ITableColumns[] {
+		return [
+			{
+				field: 'modelName',
+				header: 'Model name',
+			},
+			{
+				field: 'brandName',
+				header: 'Brand name',
+			},
+			{
+				field: 'category',
+				header: 'Category',
+			},
+			{
+				field: 'size',
+				header: 'Size',
+			},
+			{
+				field: 'quantity',
+				header: 'Quantity',
+			},
+			{
+				field: 'price',
+				header: 'Price',
+			},
+			{
+				field: 'color',
+				header: 'Color',
 			},
 		];
 	}
@@ -104,6 +140,15 @@ export class DataService {
 				outline: false,
 				name: ProviderEnum.GITHUB,
 			},
+		];
+	}
+
+	getRowsPerPageSelectOptions(): IRowsPerPageSelectOptions[] {
+		return [
+			{ label: 5, value: 5 },
+			{ label: 10, value: 10 },
+			{ label: 25, value: 25 },
+			{ label: 50, value: 50 },
 		];
 	}
 }
