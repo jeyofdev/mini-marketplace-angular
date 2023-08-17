@@ -12,6 +12,7 @@ export class PriceComponent implements OnInit {
 	@Input() suffix!: boolean;
 	@Input() currency!: CurrencyEnum;
 
+	price!: string;
 	icon!: string;
 
 	ngOnInit(): void {
@@ -29,5 +30,7 @@ export class PriceComponent implements OnInit {
 			default:
 				break;
 		}
+
+		this.price = this.value.toFixed(2);
 	}
 }
