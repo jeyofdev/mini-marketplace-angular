@@ -65,7 +65,27 @@ export class DashboardEffects {
 						}),
 					)
 					.catch(error =>
-						CategoryActions.addCategoryFailure({
+						CategoryActions.updateCategoryFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
+	deleteCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(CategoryActions.deleteCategory),
+			mergeMap(async ({ payload: { id } }) =>
+				this.categoryService
+					.deleteById(id)
+					.then(() =>
+						CategoryActions.deleteCategorySuccess({
+							payload: { id },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.deleteCategoryFailure({
 							payload: { error: error.body.error },
 						}),
 					),

@@ -5,7 +5,8 @@ import { IProduct } from '../model/product.model';
 export type ShowConfirmDialogFnType = (
 	confirmationService: ConfirmationService,
 	messageService: MessageService,
-	acceptFn: (itemId: string) => void,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	action: any,
 	itemId: string,
 	itemName: string,
 ) => void;

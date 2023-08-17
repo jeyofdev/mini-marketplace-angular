@@ -18,6 +18,10 @@ export const CategoryActions = createActionGroup({
 			payload: { id: string; data: ICategory };
 		}>(),
 		'Update Category Failure': props<{ payload: { error: unknown } }>(),
+
+		'Delete Category': props<{ payload: { id: string } }>(),
+		'Delete Category Success': props<{ payload: { id: string } }>(),
+		'Delete Category Failure': props<{ payload: { error: unknown } }>(),
 	},
 });
 

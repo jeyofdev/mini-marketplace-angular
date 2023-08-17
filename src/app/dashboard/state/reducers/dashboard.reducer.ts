@@ -61,6 +61,15 @@ export const reducer = createReducer(
 		};
 	}),
 
+	on(CategoryActions.deleteCategory, (state, actions) => {
+		return {
+			...state,
+			categories: state.categories.filter(
+				category => category.id !== actions.payload.id,
+			),
+		};
+	}),
+
 	on(ProductActions.loadProducts, state => {
 		return {
 			...state,

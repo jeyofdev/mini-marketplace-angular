@@ -1,5 +1,4 @@
 import { DataService } from './../../../service/data.service';
-import { CategoryService } from '../../../service/category.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
 	FormBuilder,
@@ -49,7 +48,6 @@ export class ModalCategoryComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private categoryService: CategoryService,
 		private messageService: MessageService,
 		private dataService: DataService,
 		private store: Store,

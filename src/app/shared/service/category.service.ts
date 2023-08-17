@@ -36,12 +36,15 @@ export class CategoryService {
 		return docRef as Promise<DocumentReference<ICategory>>;
 	}
 
-	deleteById = (categoryId: string) => {
+	deleteById = (categoryId: string): Promise<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
-		deleteDoc(docInstance);
+		return deleteDoc(docInstance);
 	};
 
-	updateById = (categoryId: string, newDatas: Partial<ICategory>) => {
+	updateById = (
+		categoryId: string,
+		newDatas: Partial<ICategory>,
+	): Promise<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
 		return updateDoc(docInstance, newDatas);
 	};
