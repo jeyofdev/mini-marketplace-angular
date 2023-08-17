@@ -25,6 +25,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BadgeModule } from 'primeng/badge';
 import { TagModule } from 'primeng/tag';
 import { ChipModule } from 'primeng/chip';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
 	exports: [
@@ -54,6 +55,7 @@ import { ChipModule } from 'primeng/chip';
 		BadgeModule,
 		TagModule,
 		ChipModule,
+		RadioButtonModule,
 	],
 })
 export class PrimengModule {}

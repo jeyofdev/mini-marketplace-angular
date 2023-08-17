@@ -3,6 +3,11 @@ export interface ISelectItem {
 	label: string;
 }
 
+export interface IRadioButtonItem {
+	label: string;
+	key: string;
+}
+
 export interface IColorCheckbox {
 	color: string;
 	label: string;

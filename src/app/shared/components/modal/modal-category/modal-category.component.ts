@@ -1,3 +1,4 @@
+import { DataService } from './../../../service/data.service';
 import { CategoryService } from '../../../service/category.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
@@ -10,6 +11,7 @@ import { addCategoryValidationMessages } from '../../../validations/messages.val
 import { MessageService } from 'primeng/api';
 import { ICategory } from '../../../model/category.model';
 import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
+import { IRadioButtonItem } from '../../../interfaces/input.interface';
 
 @Component({
 	selector: 'app-modal-category',
@@ -28,8 +30,11 @@ export class ModalCategoryComponent implements OnInit {
 	mainForm!: FormGroup;
 	nameCtrl!: FormControl<string | null>;
 	descriptionCtrl!: FormControl<string | null>;
+	statusCtrl!: FormControl<string | null>;
 
 	submitBtnLabel!: string;
+
+	status!: IRadioButtonItem[];
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	addCategoryValidationMessages!: any;
@@ -40,9 +45,12 @@ export class ModalCategoryComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
 		private messageService: MessageService,
+		private dataService: DataService,
 	) {}
 
 	ngOnInit(): void {
+		this.status = this.dataService.getAllStatus();
+
 		this.initFormControls();
 		this.initMainForm();
 		this.addCategoryValidationMessages = addCategoryValidationMessages;
@@ -66,6 +74,7 @@ export class ModalCategoryComponent implements OnInit {
 		this.mainForm.patchValue({
 			name: this.currentCategory.name,
 			description: this.currentCategory.description,
+			status: this.currentCategory.status,
 		});
 	};
 
@@ -78,6 +87,7 @@ export class ModalCategoryComponent implements OnInit {
 		this.mainForm = this.formBuilder.group({
 			name: this.nameCtrl,
 			description: this.descriptionCtrl,
+			status: this.statusCtrl,
 		});
 	}
 
@@ -93,6 +103,8 @@ export class ModalCategoryComponent implements OnInit {
 				addCategoryValidationMessages.description.minlength.value,
 			),
 		]);
+
+		this.statusCtrl = this.formBuilder.control('', [Validators.required]);
 	}
 
 	private addCategory(): void {
@@ -144,6 +156,7 @@ export class ModalCategoryComponent implements OnInit {
 				this.mainForm.value.name.slice(0, 1).toUpperCase() +
 				this.mainForm.value.name.slice(1),
 			description: this.mainForm.value.description,
+			status: this.mainForm.value.status,
 		};
 	}
 }
