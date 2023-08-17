@@ -1,0 +1,17 @@
+:host .price {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+:host i {
+	font-size: 0.9rem;
+}
+
+.price-prefix {
+	margin-right: 0.25rem;
+}
+
+.price-suffix {
+	margin-left: 0.25rem;
+}

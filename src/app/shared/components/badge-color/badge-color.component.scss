@@ -1,0 +1,46 @@
+.badge {
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background-color: var(--surface-300);
+}
+
+.bg-red {
+	background-color: var(--red-300);
+}
+
+.bg-green {
+	background-color: var(--green-300);
+}
+
+.bg-blue {
+	background-color: var(--blue-300);
+}
+
+.bg-yellow {
+	background-color: var(--yellow-300);
+}
+
+.bg-purple {
+	background-color: var(--purple-300);
+}
+
+:host .badge-small {
+	width: 10px;
+	height: 10px;
+}
+
+:host .badge-medium {
+	width: 15px;
+	height: 15px;
+}
+
+:host .badge-large {
+	width: 20px;
+	height: 20px;
+}
+
+:host .badge-xlarge {
+	width: 30px;
+	height: 30px;
+}

@@ -1,0 +1,9 @@
+<div class="price">
+	<i *ngIf="prefix" [class]="'price-prefix ' + icon"></i>
+
+	<p>
+		{{ price }}
+	</p>
+
+	<i *ngIf="suffix" [class]="'price-suffix ' + icon"></i>
+</div>

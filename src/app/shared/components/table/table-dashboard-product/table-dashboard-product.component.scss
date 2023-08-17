@@ -10,6 +10,7 @@
 p-table th,
 p-table tr {
 	background-color: transparent;
+	color: var(--primary-700);
 }
 
 p-table th {
@@ -103,4 +104,9 @@ p-table th {
 	.p-dropdown-items
 	.p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
 	background-color: var(--primary-50);
+}
+
+:host .badge-colors-box {
+	display: flex;
+	gap: 0.25rem;
 }
