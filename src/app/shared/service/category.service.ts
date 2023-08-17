@@ -9,6 +9,7 @@ import {
 	doc,
 	deleteDoc,
 	updateDoc,
+	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
@@ -29,10 +30,10 @@ export class CategoryService {
 		}) as Observable<ICategory[]>;
 	}
 
-	add(newCategory: ICategory) {
+	add(newCategory: ICategory): Promise<DocumentReference<ICategory>> {
 		const docRef = addDoc(this.collectionInstance, newCategory);
 
-		return docRef;
+		return docRef as Promise<DocumentReference<ICategory>>;
 	}
 
 	deleteById = (categoryId: string) => {

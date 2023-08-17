@@ -33,6 +33,27 @@ export class DashboardEffects {
 		);
 	});
 
+	addCategories$ = createEffect(() => {
+		return this.actions$.pipe(
+			tap(value => console.log('actions', value)),
+			ofType(CategoryActions.addCategories),
+			mergeMap(async ({ payload: { data } }) =>
+				this.categoryService
+					.add(data)
+					.then(() =>
+						CategoryActions.addCategoriesSuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.addCategoriesFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	getAllProducts$ = createEffect(() => {
 		return this.actions$.pipe(
 			tap(value => console.log('actions', value)),

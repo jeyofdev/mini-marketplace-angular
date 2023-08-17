@@ -31,6 +31,7 @@ export const reducer = createReducer(
 			loading: true,
 		};
 	}),
+
 	on(CategoryActions.loadCategoriesSuccess, (state, actions) => {
 		return {
 			...state,
@@ -38,12 +39,21 @@ export const reducer = createReducer(
 			loading: false,
 		};
 	}),
+
+	on(CategoryActions.addCategoriesSuccess, (state, actions) => {
+		return {
+			...state,
+			categories: [...state.categories, actions.payload.data],
+		};
+	}),
+
 	on(ProductActions.loadProducts, state => {
 		return {
 			...state,
 			loading: true,
 		};
 	}),
+
 	on(ProductActions.loadProductsSuccess, (state, actions) => {
 		return {
 			...state,

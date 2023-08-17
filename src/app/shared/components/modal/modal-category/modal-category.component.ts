@@ -12,6 +12,10 @@ import { MessageService } from 'primeng/api';
 import { ICategory } from '../../../model/category.model';
 import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
 import { IRadioButtonItem } from '../../../interfaces/input.interface';
+import { Subscription } from 'rxjs';
+import { ActionsSubject, Store } from '@ngrx/store';
+import { CategoryActions } from '../../../../dashboard/state/actions/dashboard.actions';
+import { ofType } from '@ngrx/effects';
 
 @Component({
 	selector: 'app-modal-category',
@@ -32,6 +36,8 @@ export class ModalCategoryComponent implements OnInit {
 	descriptionCtrl!: FormControl<string | null>;
 	statusCtrl!: FormControl<string | null>;
 
+	private subscription: Subscription = new Subscription();
+
 	submitBtnLabel!: string;
 
 	status!: IRadioButtonItem[];
@@ -46,6 +52,8 @@ export class ModalCategoryComponent implements OnInit {
 		private categoryService: CategoryService,
 		private messageService: MessageService,
 		private dataService: DataService,
+		private store: Store,
+		private actionsSubject: ActionsSubject,
 	) {}
 
 	ngOnInit(): void {
@@ -108,16 +116,21 @@ export class ModalCategoryComponent implements OnInit {
 	}
 
 	private addCategory(): void {
-		const newCategory = this.formatCategoryDatas();
+		this.store.dispatch(
+			CategoryActions.addCategories({
+				payload: { data: this.formatCategoryDatas() },
+			}),
+		);
 
-		this.categoryService
-			.add(newCategory)
-			.then(() => {
-				this.toastSuccess(
-					`The category '${this.mainForm.value.name}' has been successfully added.`,
-				);
-			})
-			.catch(err => this.toastError(err.message));
+		this.subscription.add(
+			this.actionsSubject
+				.pipe(ofType(CategoryActions.addCategoriesSuccess))
+				.subscribe(() => {
+					this.toastSuccess(
+						`The category '${this.mainForm.value.name}' has been successfully added.`,
+					);
+				}),
+		);
 	}
 
 	private updateCategory(): void {
@@ -143,7 +156,7 @@ export class ModalCategoryComponent implements OnInit {
 		this.onClose(false);
 	}
 
-	private toastError(message: string): void {
+	private toastError(message: string) {
 		this.messageService.add({
 			severity: 'error',
 			summary: message,
