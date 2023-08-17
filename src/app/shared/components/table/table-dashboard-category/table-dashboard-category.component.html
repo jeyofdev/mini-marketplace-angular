@@ -18,8 +18,16 @@
 	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
-				<td>
+				<td *ngIf="col.field !== 'status'">
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'status'">
+					<app-ship
+						[label]="data[col.field] ?? 'inactive'"
+						size="small"
+						[severity]="data[col.field] === 'active' ? 'info' : 'warning'"
+					></app-ship>
 				</td>
 			</ng-container>
 

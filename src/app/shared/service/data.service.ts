@@ -121,6 +121,10 @@ export class DataService {
 				field: 'color',
 				header: 'Color',
 			},
+			{
+				field: 'status',
+				header: 'Status',
+			},
 		];
 	}
 

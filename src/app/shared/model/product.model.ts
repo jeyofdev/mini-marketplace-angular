@@ -10,4 +10,5 @@ export interface IProduct {
 	quantity: number;
 	price: number;
 	color: ProductColorEnum[];
+	status: string;
 }

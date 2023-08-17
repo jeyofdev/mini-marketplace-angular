@@ -134,6 +134,22 @@
 							[validationMessages]="inputsValidationMessages.price"
 						></app-number-field>
 					</div>
+
+					<div class="form-row row-radio">
+						<label class="label-group">Status *</label>
+
+						<div class="radio-box">
+							<ng-container *ngFor="let item of status">
+								<app-radio
+									label="Status"
+									name="status"
+									[item]="item"
+									formControlName="status"
+									[parentForm]="mainForm"
+								></app-radio>
+							</ng-container>
+						</div>
+					</div>
 				</div>
 
 				<app-button
