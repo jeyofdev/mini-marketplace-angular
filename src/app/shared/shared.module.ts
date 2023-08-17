@@ -30,6 +30,7 @@ import { BadgeColorComponent } from './components/badge-color/badge-color.compon
 import { PriceComponent } from './components/price/price.component';
 import { TagComponent } from './components/tag/tag.component';
 import { ShipComponent } from './components/ship/ship.component';
+import { RadioComponent } from './components/input/radio/radio.component';
 
 @NgModule({
 	declarations: [
@@ -59,6 +60,7 @@ import { ShipComponent } from './components/ship/ship.component';
 		PriceComponent,
 		TagComponent,
 		ShipComponent,
+		RadioComponent,
 	],
 	imports: [
 		CommonModule,
@@ -99,6 +101,7 @@ import { ShipComponent } from './components/ship/ship.component';
 		PriceComponent,
 		TagComponent,
 		ShipComponent,
+		RadioComponent,
 	],
 })
 export class SharedModule {}

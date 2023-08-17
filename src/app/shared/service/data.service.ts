@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IColorCheckbox, ISelectItem } from '../interfaces/input.interface';
+import {
+	IColorCheckbox,
+	IRadioButtonItem,
+	ISelectItem,
+} from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
 import {
 	ITableColumns,
@@ -8,6 +12,7 @@ import {
 import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
+import { StatusEnum } from '../enum/form.enum';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,6 +24,19 @@ export class DataService {
 			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
 			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
 			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
+		];
+	}
+
+	getAllStatus(): IRadioButtonItem[] {
+		return [
+			{
+				key: StatusEnum.INACTIVE,
+				label: StatusEnum.INACTIVE,
+			},
+			{
+				key: StatusEnum.ACTIVE,
+				label: StatusEnum.ACTIVE,
+			},
 		];
 	}
 
@@ -66,6 +84,10 @@ export class DataService {
 				field: 'description',
 				header: 'Description',
 			},
+			{
+				field: 'status',
+				header: 'Status',
+			},
 		];
 	}
 
@@ -98,6 +120,10 @@ export class DataService {
 			{
 				field: 'color',
 				header: 'Color',
+			},
+			{
+				field: 'status',
+				header: 'Status',
 			},
 		];
 	}

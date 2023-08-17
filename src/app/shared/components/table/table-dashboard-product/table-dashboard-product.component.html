@@ -20,23 +20,10 @@
 			<ng-container *ngFor="let col of cols">
 				<td
 					*ngIf="
-						data[col.field].value &&
-						col.field !== 'color' &&
-						col.field !== 'price' &&
-						col.field !== 'size' &&
-						col.field !== 'category'
-					"
-				>
-					{{ data[col.field].value }}
-				</td>
-
-				<td
-					*ngIf="
 						!data[col.field].value &&
-						col.field !== 'color' &&
-						col.field !== 'price' &&
-						col.field !== 'size' &&
-						col.field !== 'category'
+						(col.field === 'modelName' ||
+							col.field === 'brandName' ||
+							col.field === 'quantity')
 					"
 				>
 					{{ data[col.field] }}
@@ -72,6 +59,14 @@
 							<app-badge-color [color]="color" size="medium"></app-badge-color>
 						</ng-container>
 					</div>
+				</td>
+
+				<td *ngIf="col.field === 'status'">
+					<app-ship
+						[label]="data[col.field] ?? 'inactive'"
+						size="small"
+						[severity]="data[col.field] === 'active' ? 'info' : 'warning'"
+					></app-ship>
 				</td>
 			</ng-container>
 

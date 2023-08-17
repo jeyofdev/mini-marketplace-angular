@@ -9,6 +9,7 @@ import { map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
 import {
 	IColorCheckbox,
+	IRadioButtonItem,
 	ISelectItem,
 } from '../../../interfaces/input.interface';
 import { ICategory } from '../../../model/category.model';
@@ -47,10 +48,12 @@ export class ModalProductComponent implements OnInit {
 	sizeCtrl!: FormControl<string | null>;
 	quantityCtrl!: FormControl;
 	priceCtrl!: FormControl;
+	statusCtrl!: FormControl<string | null>;
 
 	categories!: ISelectItem[];
 	sizes!: ISelectItem[];
 	colors!: IColorCheckbox[];
+	status!: IRadioButtonItem[];
 
 	submitBtnLabel!: string;
 
@@ -71,6 +74,7 @@ export class ModalProductComponent implements OnInit {
 		this.categories = [];
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();
+		this.status = this.dataService.getAllStatus();
 
 		this.inputsValidationMessages = addProductValidationMessages;
 
@@ -134,6 +138,7 @@ export class ModalProductComponent implements OnInit {
 		this.infosForm = this.formBuilder.group({
 			quantity: this.quantityCtrl,
 			price: this.priceCtrl,
+			status: this.statusCtrl,
 		});
 	}
 
@@ -166,6 +171,8 @@ export class ModalProductComponent implements OnInit {
 			Validators.required,
 			Validators.min(addProductValidationMessages.price.min.value),
 		]);
+
+		this.statusCtrl = this.formBuilder.control('', [Validators.required]);
 	}
 
 	private patchValueForm(): void {
@@ -182,6 +189,7 @@ export class ModalProductComponent implements OnInit {
 		this.infosForm.patchValue({
 			quantity: this.currentProduct.quantity,
 			price: this.currentProduct.price,
+			status: this.statusCtrl,
 		});
 
 		this.colorsForm.patchValue({
