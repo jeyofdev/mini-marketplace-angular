@@ -31,6 +31,7 @@ export const reducer = createReducer(
 			loading: true,
 		};
 	}),
+
 	on(CategoryActions.loadCategoriesSuccess, (state, actions) => {
 		return {
 			...state,
@@ -38,12 +39,44 @@ export const reducer = createReducer(
 			loading: false,
 		};
 	}),
+
+	on(CategoryActions.addCategorySuccess, (state, actions) => {
+		return {
+			...state,
+			categories: [...state.categories, actions.payload.data],
+		};
+	}),
+
+	on(CategoryActions.updateCategorySuccess, (state, actions) => {
+		const updatedCategory: ICategory[] = state.categories.map(
+			(existingCategory: ICategory) =>
+				existingCategory.id === actions.payload.data.id
+					? actions.payload.data
+					: existingCategory,
+		);
+
+		return {
+			...state,
+			books: updatedCategory,
+		};
+	}),
+
+	on(CategoryActions.deleteCategory, (state, actions) => {
+		return {
+			...state,
+			categories: state.categories.filter(
+				category => category.id !== actions.payload.id,
+			),
+		};
+	}),
+
 	on(ProductActions.loadProducts, state => {
 		return {
 			...state,
 			loading: true,
 		};
 	}),
+
 	on(ProductActions.loadProductsSuccess, (state, actions) => {
 		return {
 			...state,

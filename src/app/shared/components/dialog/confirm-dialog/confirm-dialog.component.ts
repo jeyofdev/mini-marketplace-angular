@@ -1,6 +1,7 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShowConfirmDialogFnType } from '../../../types/index.type';
+import { Store } from '@ngrx/store';
 
 @Component({
 	selector: 'app-confirm-dialog',
@@ -13,23 +14,32 @@ export class ConfirmDialogComponent implements OnInit {
 	@Input() itemName!: string;
 	@Input() warningMessage!: string;
 
+	constructor(private store: Store) {}
+
 	ngOnInit(): void {
 		this.showConfirmDialog.emit(this.confirm);
 		this.warningMessage =
 			'this action cannot be undone. this will permanently delete the category.';
 	}
 
-	confirm(
+	confirm = (
 		confirmationService: ConfirmationService,
 		messageService: MessageService,
-		acceptFn: (itemId: string) => void,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		action: any,
 		itemId: string,
 		itemName: string,
-	): void {
+	) => {
 		confirmationService.confirm({
 			message: `Are you sure you want to delete the category with name '${itemName}' ?`,
 			accept: () => {
-				acceptFn(itemId);
+				this.store.dispatch(
+					action({
+						payload: {
+							id: itemId,
+						},
+					}),
+				);
 
 				messageService.add({
 					severity: 'error',
@@ -38,5 +48,5 @@ export class ConfirmDialogComponent implements OnInit {
 				});
 			},
 		});
-	}
+	};
 }

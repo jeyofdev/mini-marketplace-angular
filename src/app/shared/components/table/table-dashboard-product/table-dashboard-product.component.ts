@@ -78,15 +78,15 @@ export class TableDashboardProductComponent implements OnInit {
 		this.fillFormWithCurrentProductFn = fillFormWithCurrentProductFn;
 	}
 
-	onDelete(itemId: string, itemName: string): void {
-		this.showConfirmDialogFn(
-			this.confirmationService,
-			this.messageService,
-			this.productService.deleteById,
-			itemId,
-			itemName,
-		);
-	}
+	// onDelete(itemId: string, itemName: string): void {
+	// 	this.showConfirmDialogFn(
+	// 		this.confirmationService,
+	// 		this.messageService,
+	// 		this.productService.deleteById,
+	// 		itemId,
+	// 		itemName,
+	// 	);
+	// }
 
 	openModalUpdateProduct(product: IProduct): void {
 		this.fillFormWithCurrentProductFn(product);

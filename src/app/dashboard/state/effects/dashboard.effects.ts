@@ -33,6 +33,66 @@ export class DashboardEffects {
 		);
 	});
 
+	addCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(CategoryActions.addCategory),
+			mergeMap(async ({ payload: { data } }) =>
+				this.categoryService
+					.add(data)
+					.then(() =>
+						CategoryActions.addCategorySuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.addCategoryFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
+	updateCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(CategoryActions.updateCategory),
+			mergeMap(async ({ payload: { id, data } }) =>
+				this.categoryService
+					.updateById(id, data)
+					.then(() =>
+						CategoryActions.updateCategorySuccess({
+							payload: { id, data },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.updateCategoryFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
+	deleteCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(CategoryActions.deleteCategory),
+			mergeMap(async ({ payload: { id } }) =>
+				this.categoryService
+					.deleteById(id)
+					.then(() =>
+						CategoryActions.deleteCategorySuccess({
+							payload: { id },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.deleteCategoryFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	getAllProducts$ = createEffect(() => {
 		return this.actions$.pipe(
 			tap(value => console.log('actions', value)),

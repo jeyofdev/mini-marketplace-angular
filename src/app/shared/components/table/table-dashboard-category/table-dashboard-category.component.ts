@@ -8,7 +8,7 @@ import {
 	FillFormWithCurrentCategoryFnType,
 	ShowConfirmDialogFnType,
 } from '../../../types/index.type';
-import { CategoryService } from '../../../service/category.service';
+import { CategoryActions } from '../../../../dashboard/state/actions/dashboard.actions';
 
 @Component({
 	selector: 'app-table-dashboard-category',
@@ -36,7 +36,6 @@ export class TableDashboardCategoryComponent implements OnInit {
 	constructor(
 		private confirmationService: ConfirmationService,
 		private messageService: MessageService,
-		private categoryService: CategoryService,
 	) {}
 
 	ngOnInit(): void {
@@ -80,7 +79,7 @@ export class TableDashboardCategoryComponent implements OnInit {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
-			this.categoryService.deleteById,
+			CategoryActions.deleteCategory,
 			itemId,
 			itemName,
 		);

@@ -9,6 +9,7 @@ import {
 	doc,
 	deleteDoc,
 	updateDoc,
+	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
@@ -29,19 +30,21 @@ export class CategoryService {
 		}) as Observable<ICategory[]>;
 	}
 
-	add(newCategory: ICategory) {
+	add(newCategory: ICategory): Promise<DocumentReference<ICategory>> {
 		const docRef = addDoc(this.collectionInstance, newCategory);
 
-		return docRef;
+		return docRef as Promise<DocumentReference<ICategory>>;
 	}
 
-	deleteById = (categoryId: string) => {
+	deleteById = (categoryId: string): Promise<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
-		deleteDoc(docInstance);
+		return deleteDoc(docInstance);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	updateById = (categoryId: string, newDatas: any) => {
+	updateById = (
+		categoryId: string,
+		newDatas: Partial<ICategory>,
+	): Promise<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
 		return updateDoc(docInstance, newDatas);
 	};
