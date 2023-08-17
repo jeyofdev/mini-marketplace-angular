@@ -40,10 +40,24 @@ export const reducer = createReducer(
 		};
 	}),
 
-	on(CategoryActions.addCategoriesSuccess, (state, actions) => {
+	on(CategoryActions.addCategorySuccess, (state, actions) => {
 		return {
 			...state,
 			categories: [...state.categories, actions.payload.data],
+		};
+	}),
+
+	on(CategoryActions.updateCategorySuccess, (state, actions) => {
+		const updatedCategory: ICategory[] = state.categories.map(
+			(existingCategory: ICategory) =>
+				existingCategory.id === actions.payload.data.id
+					? actions.payload.data
+					: existingCategory,
+		);
+
+		return {
+			...state,
+			books: updatedCategory,
 		};
 	}),
 

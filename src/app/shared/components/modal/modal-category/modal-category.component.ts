@@ -117,14 +117,14 @@ export class ModalCategoryComponent implements OnInit {
 
 	private addCategory(): void {
 		this.store.dispatch(
-			CategoryActions.addCategories({
+			CategoryActions.addCategory({
 				payload: { data: this.formatCategoryDatas() },
 			}),
 		);
 
 		this.subscription.add(
 			this.actionsSubject
-				.pipe(ofType(CategoryActions.addCategoriesSuccess))
+				.pipe(ofType(CategoryActions.addCategorySuccess))
 				.subscribe(() => {
 					this.toastSuccess(
 						`The category '${this.mainForm.value.name}' has been successfully added.`,
@@ -134,16 +134,24 @@ export class ModalCategoryComponent implements OnInit {
 	}
 
 	private updateCategory(): void {
-		const updateCategory = this.formatCategoryDatas();
+		this.store.dispatch(
+			CategoryActions.updateCategory({
+				payload: {
+					id: this.currentCategory.id as string,
+					data: this.formatCategoryDatas(),
+				},
+			}),
+		);
 
-		this.categoryService
-			.updateById(this.currentCategory.id as string, updateCategory)
-			.then(() => {
-				this.toastSuccess(
-					`The category '${this.mainForm.value.name}' has been successfully updated.`,
-				);
-			})
-			.catch(err => this.toastError(err.message));
+		this.subscription.add(
+			this.actionsSubject
+				.pipe(ofType(CategoryActions.updateCategorySuccess))
+				.subscribe(() => {
+					this.toastSuccess(
+						`The category '${this.mainForm.value.name}' has been successfully updated.`,
+					);
+				}),
+		);
 	}
 
 	private toastSuccess(message: string): void {

@@ -41,8 +41,7 @@ export class CategoryService {
 		deleteDoc(docInstance);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	updateById = (categoryId: string, newDatas: any) => {
+	updateById = (categoryId: string, newDatas: Partial<ICategory>) => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
 		return updateDoc(docInstance, newDatas);
 	};

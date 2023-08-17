@@ -9,9 +9,15 @@ export const CategoryActions = createActionGroup({
 		'Load Categories Success': props<{ payload: { data: ICategory[] } }>(),
 		'Load Categories Failure': props<{ payload: { error: unknown } }>(),
 
-		'Add Categories': props<{ payload: { data: ICategory } }>(),
-		'Add Categories Success': props<{ payload: { data: ICategory } }>(),
-		'Add Categories Failure': props<{ payload: { error: unknown } }>(),
+		'Add Category': props<{ payload: { data: ICategory } }>(),
+		'Add Category Success': props<{ payload: { data: ICategory } }>(),
+		'Add Category Failure': props<{ payload: { error: unknown } }>(),
+
+		'Update Category': props<{ payload: { id: string; data: ICategory } }>(),
+		'Update Category Success': props<{
+			payload: { id: string; data: ICategory };
+		}>(),
+		'Update Category Failure': props<{ payload: { error: unknown } }>(),
 	},
 });
 

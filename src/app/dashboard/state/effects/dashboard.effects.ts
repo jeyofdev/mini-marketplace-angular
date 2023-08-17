@@ -33,20 +33,39 @@ export class DashboardEffects {
 		);
 	});
 
-	addCategories$ = createEffect(() => {
+	addCategory$ = createEffect(() => {
 		return this.actions$.pipe(
-			tap(value => console.log('actions', value)),
-			ofType(CategoryActions.addCategories),
+			ofType(CategoryActions.addCategory),
 			mergeMap(async ({ payload: { data } }) =>
 				this.categoryService
 					.add(data)
 					.then(() =>
-						CategoryActions.addCategoriesSuccess({
+						CategoryActions.addCategorySuccess({
 							payload: { data },
 						}),
 					)
 					.catch(error =>
-						CategoryActions.addCategoriesFailure({
+						CategoryActions.addCategoryFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
+	updateCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(CategoryActions.updateCategory),
+			mergeMap(async ({ payload: { id, data } }) =>
+				this.categoryService
+					.updateById(id, data)
+					.then(() =>
+						CategoryActions.updateCategorySuccess({
+							payload: { id, data },
+						}),
+					)
+					.catch(error =>
+						CategoryActions.addCategoryFailure({
 							payload: { error: error.body.error },
 						}),
 					),
