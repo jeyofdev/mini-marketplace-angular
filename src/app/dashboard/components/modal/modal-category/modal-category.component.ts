@@ -84,10 +84,10 @@ export class ModalCategoryComponent implements OnInit {
 		});
 	};
 
-	onClose(arg: boolean): void {
+	onClose = (arg: boolean): void => {
 		this.visible = arg;
 		this.visibleChange.emit(arg);
-	}
+	};
 
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
@@ -121,6 +121,7 @@ export class ModalCategoryComponent implements OnInit {
 		);
 
 		this.addSubscription(
+			DashboardActions.categories.addCategorySuccess,
 			`The category '${this.mainForm.value.name}' has been successfully added.`,
 		);
 	}
@@ -136,6 +137,7 @@ export class ModalCategoryComponent implements OnInit {
 		);
 
 		this.addSubscription(
+			DashboardActions.categories.updateCategorySuccess,
 			`The category '${this.mainForm.value.name}' has been successfully updated.`,
 		);
 	}
@@ -150,11 +152,12 @@ export class ModalCategoryComponent implements OnInit {
 		};
 	}
 
-	private addSubscription(message: string): void {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private addSubscription(action: any, message: string): void {
 		addSubscriptionAndShowToast(
 			this.subscription,
 			this.actionsSubject,
-			DashboardActions.products.updateProductSuccess,
+			action,
 			this.messageService,
 			message,
 			this.mainForm,
