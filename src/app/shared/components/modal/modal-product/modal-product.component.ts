@@ -19,7 +19,7 @@ import { addProductValidationMessages } from '../../../validations/messages.vali
 import { MessageService } from 'primeng/api';
 import { DataService } from '../../../service/data.service';
 import { FillFormWithCurrentProductFnType } from '../../../types/index.type';
-import { ProductColorEnum } from 'src/app/shared/enum/product.enum';
+import { ProductColorEnum } from '../../../enum/product.enum';
 
 @Component({
 	selector: 'app-modal-product',

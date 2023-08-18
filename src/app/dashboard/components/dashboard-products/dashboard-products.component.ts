@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { ProductActions } from '../../state/actions/dashboard.actions';
-import {
-	getDashboardProductsLoadingSelector,
-	getDashboardProductsSelector,
-} from '../../state/selectors/dashboard.selectors';
 import { IProduct } from '../../../shared/model/product.model';
 import { DataService } from '../../../shared/service/data.service';
 import {
@@ -13,6 +8,11 @@ import {
 	ITableColumns,
 } from '../../../shared/interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DashboardActions } from '../../state/actions/dashboard-index.actions';
+import {
+	getDashboardProductsLoadingSelector,
+	getDashboardProductsSelector,
+} from '../../state/selectors/dashboard-product.selectors';
 
 @Component({
 	selector: 'app-dashboard-products',
@@ -41,7 +41,7 @@ export class DashboardProductsComponent implements OnInit {
 		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
 		this.sidebarVisible = false;
 
-		this.store.dispatch(ProductActions.loadProducts());
+		this.store.dispatch(DashboardActions.products.loadProducts());
 		this.loading$ = this.store.pipe(
 			select(getDashboardProductsLoadingSelector),
 		);

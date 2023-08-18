@@ -1,89 +1,37 @@
-import { MetaReducer, createReducer, on } from '@ngrx/store';
-import { ICategory } from '../../../shared/model/category.model';
-import { CategoryActions, ProductActions } from '../actions/dashboard.actions';
+import { MetaReducer, combineReducers } from '@ngrx/store';
 import { isDevMode } from '@angular/core';
 import { log } from './dashboard.meta-reducer';
-import { IProduct } from '../../../shared/model/product.model';
+import {
+	IDashboardProductState,
+	dashboardProductFeatureKey,
+	initialProductState,
+	productReducer,
+} from './dashboard-product.reducer';
+import {
+	IDashboardCategoryState,
+	categoryReducer,
+	dashboardCategoryFeatureKey,
+	initialCategoryState,
+} from './dashboard-category.reducer';
 
 export const dashboardFeatureKey = 'dashboard';
 
 export interface IDashboardState {
-	categories: ICategory[];
-	products: IProduct[];
-	loading: boolean;
+	[dashboardCategoryFeatureKey]: IDashboardCategoryState;
+	[dashboardProductFeatureKey]: IDashboardProductState;
 }
 
-export interface State {
-	readonly [dashboardFeatureKey]: IDashboardState;
-}
-
-export const initialState: IDashboardState = {
-	categories: [],
-	products: [],
-	loading: false,
+export const initialDashboardState: IDashboardState = {
+	[dashboardCategoryFeatureKey]: initialCategoryState,
+	[dashboardProductFeatureKey]: initialProductState,
 };
 
-export const reducer = createReducer(
-	initialState,
-	on(CategoryActions.loadCategories, state => {
-		return {
-			...state,
-			loading: true,
-		};
-	}),
-
-	on(CategoryActions.loadCategoriesSuccess, (state, actions) => {
-		return {
-			...state,
-			categories: actions.payload.data,
-			loading: false,
-		};
-	}),
-
-	on(CategoryActions.addCategorySuccess, (state, actions) => {
-		return {
-			...state,
-			categories: [...state.categories, actions.payload.data],
-		};
-	}),
-
-	on(CategoryActions.updateCategorySuccess, (state, actions) => {
-		const updatedCategory: ICategory[] = state.categories.map(
-			(existingCategory: ICategory) =>
-				existingCategory.id === actions.payload.data.id
-					? actions.payload.data
-					: existingCategory,
-		);
-
-		return {
-			...state,
-			books: updatedCategory,
-		};
-	}),
-
-	on(CategoryActions.deleteCategory, (state, actions) => {
-		return {
-			...state,
-			categories: state.categories.filter(
-				category => category.id !== actions.payload.id,
-			),
-		};
-	}),
-
-	on(ProductActions.loadProducts, state => {
-		return {
-			...state,
-			loading: true,
-		};
-	}),
-
-	on(ProductActions.loadProductsSuccess, (state, actions) => {
-		return {
-			...state,
-			products: actions.payload.data,
-			loading: false,
-		};
-	}),
+export const reducers = combineReducers(
+	{
+		[dashboardCategoryFeatureKey]: categoryReducer,
+		[dashboardProductFeatureKey]: productReducer,
+	},
+	initialDashboardState,
 );
 
 export const metaReducers: MetaReducer[] = isDevMode() ? [log] : [];

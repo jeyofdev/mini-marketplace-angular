@@ -1,8 +1,7 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { ICategory } from '../../../shared/model/category.model';
-import { IProduct } from '../../../shared/model/product.model';
 
-export const CategoryActions = createActionGroup({
+export const DashboardCategoryActions = createActionGroup({
 	source: 'Category',
 	events: {
 		'Load Categories': emptyProps(),
@@ -22,14 +21,5 @@ export const CategoryActions = createActionGroup({
 		'Delete Category': props<{ payload: { id: string } }>(),
 		'Delete Category Success': props<{ payload: { id: string } }>(),
 		'Delete Category Failure': props<{ payload: { error: unknown } }>(),
-	},
-});
-
-export const ProductActions = createActionGroup({
-	source: 'Product',
-	events: {
-		'Load products': emptyProps(),
-		'Load products Success': props<{ payload: { data: IProduct[] } }>(),
-		'Load products Failure': props<{ payload: { error: unknown } }>(),
 	},
 });

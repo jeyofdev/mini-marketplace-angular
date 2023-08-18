@@ -13,8 +13,8 @@ import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
 import { IRadioButtonItem } from '../../../interfaces/input.interface';
 import { Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
-import { CategoryActions } from '../../../../dashboard/state/actions/dashboard.actions';
 import { ofType } from '@ngrx/effects';
+import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-modal-category',
@@ -115,14 +115,14 @@ export class ModalCategoryComponent implements OnInit {
 
 	private addCategory(): void {
 		this.store.dispatch(
-			CategoryActions.addCategory({
+			DashboardActions.categories.addCategory({
 				payload: { data: this.formatCategoryDatas() },
 			}),
 		);
 
 		this.subscription.add(
 			this.actionsSubject
-				.pipe(ofType(CategoryActions.addCategorySuccess))
+				.pipe(ofType(DashboardActions.categories.addCategorySuccess))
 				.subscribe(() => {
 					this.toastSuccess(
 						`The category '${this.mainForm.value.name}' has been successfully added.`,
@@ -133,7 +133,7 @@ export class ModalCategoryComponent implements OnInit {
 
 	private updateCategory(): void {
 		this.store.dispatch(
-			CategoryActions.updateCategory({
+			DashboardActions.categories.updateCategory({
 				payload: {
 					id: this.currentCategory.id as string,
 					data: this.formatCategoryDatas(),
@@ -143,7 +143,7 @@ export class ModalCategoryComponent implements OnInit {
 
 		this.subscription.add(
 			this.actionsSubject
-				.pipe(ofType(CategoryActions.updateCategorySuccess))
+				.pipe(ofType(DashboardActions.categories.updateCategorySuccess))
 				.subscribe(() => {
 					this.toastSuccess(
 						`The category '${this.mainForm.value.name}' has been successfully updated.`,

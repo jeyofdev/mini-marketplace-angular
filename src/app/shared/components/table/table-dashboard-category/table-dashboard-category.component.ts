@@ -8,7 +8,7 @@ import {
 	FillFormWithCurrentCategoryFnType,
 	ShowConfirmDialogFnType,
 } from '../../../types/index.type';
-import { CategoryActions } from '../../../../dashboard/state/actions/dashboard.actions';
+import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-table-dashboard-category',
@@ -79,7 +79,7 @@ export class TableDashboardCategoryComponent implements OnInit {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
-			CategoryActions.deleteCategory,
+			DashboardActions.categories.deleteCategory,
 			itemId,
 			itemName,
 		);
