@@ -7,22 +7,12 @@ import {
 export const SELECT_DASHBOARD_FEATURE =
 	createFeatureSelector<IDashboardState>(dashboardFeatureKey);
 
-export const getDashboardCategoriesLoadingSelector = createSelector(
-	SELECT_DASHBOARD_FEATURE,
-	(state: IDashboardState) => state.loading,
-);
-
-export const getDashboardCategoriesSelector = createSelector(
-	SELECT_DASHBOARD_FEATURE,
-	(state: IDashboardState) => state.categories,
-);
-
 export const getDashboardProductsLoadingSelector = createSelector(
 	SELECT_DASHBOARD_FEATURE,
-	(state: IDashboardState) => state.loading,
+	(state: IDashboardState) => state.products.loading,
 );
 
 export const getDashboardProductsSelector = createSelector(
 	SELECT_DASHBOARD_FEATURE,
-	(state: IDashboardState) => state.products,
+	(state: IDashboardState) => state.products.data,
 );

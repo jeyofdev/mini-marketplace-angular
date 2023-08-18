@@ -7,8 +7,8 @@ import {
 	ShowConfirmDialogFnType,
 } from '../../../types/index.type';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ProductService } from '../../../service/product.service';
-import { CurrencyEnum } from 'src/app/shared/enum/properties.enum';
+import { CurrencyEnum } from '../../../enum/properties.enum';
+import { DashboardActions } from 'src/app/dashboard/state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-table-dashboard-product',
@@ -38,7 +38,6 @@ export class TableDashboardProductComponent implements OnInit {
 	constructor(
 		private confirmationService: ConfirmationService,
 		private messageService: MessageService,
-		private productService: ProductService,
 	) {}
 
 	ngOnInit(): void {
@@ -78,15 +77,15 @@ export class TableDashboardProductComponent implements OnInit {
 		this.fillFormWithCurrentProductFn = fillFormWithCurrentProductFn;
 	}
 
-	// onDelete(itemId: string, itemName: string): void {
-	// 	this.showConfirmDialogFn(
-	// 		this.confirmationService,
-	// 		this.messageService,
-	// 		this.productService.deleteById,
-	// 		itemId,
-	// 		itemName,
-	// 	);
-	// }
+	onDelete(itemId: string, itemName: string): void {
+		this.showConfirmDialogFn(
+			this.confirmationService,
+			this.messageService,
+			DashboardActions.products.deleteProduct,
+			itemId,
+			itemName,
+		);
+	}
 
 	openModalUpdateProduct(product: IProduct): void {
 		this.fillFormWithCurrentProductFn(product);

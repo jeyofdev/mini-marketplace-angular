@@ -1,29 +1,25 @@
-/* eslint-disable no-console */
 import { CategoryService } from './../../../shared/service/category.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
-import { CategoryActions, ProductActions } from '../actions/dashboard.actions';
+import { catchError, map, mergeMap, of } from 'rxjs';
 import { ICategory } from '../../../shared/model/category.model';
-import { ProductService } from '../../../shared/service/product.service';
-import { IProduct } from '../../../shared/model/product.model';
+import { DashboardActions } from '../actions/dashboard-index.actions';
 
 @Injectable()
-export class DashboardEffects {
+export class DashboardCategoryEffects {
 	getAllCategories$ = createEffect(() => {
 		return this.actions$.pipe(
-			tap(value => console.log('actions', value)),
-			ofType(CategoryActions.loadCategories),
+			ofType(DashboardActions.categories.loadCategories),
 			mergeMap(() =>
 				this.categoryService.getAll().pipe(
 					map((categories: ICategory[]) =>
-						CategoryActions.loadCategoriesSuccess({
+						DashboardActions.categories.loadCategoriesSuccess({
 							payload: { data: categories },
 						}),
 					),
 					catchError(error =>
 						of(
-							CategoryActions.loadCategoriesFailure({
+							DashboardActions.categories.loadCategoriesFailure({
 								payload: { error: error.body.error },
 							}),
 						),
@@ -35,17 +31,17 @@ export class DashboardEffects {
 
 	addCategory$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(CategoryActions.addCategory),
+			ofType(DashboardActions.categories.addCategory),
 			mergeMap(async ({ payload: { data } }) =>
 				this.categoryService
 					.add(data)
 					.then(() =>
-						CategoryActions.addCategorySuccess({
+						DashboardActions.categories.addCategorySuccess({
 							payload: { data },
 						}),
 					)
 					.catch(error =>
-						CategoryActions.addCategoryFailure({
+						DashboardActions.categories.addCategoryFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -55,17 +51,17 @@ export class DashboardEffects {
 
 	updateCategory$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(CategoryActions.updateCategory),
+			ofType(DashboardActions.categories.updateCategory),
 			mergeMap(async ({ payload: { id, data } }) =>
 				this.categoryService
 					.updateById(id, data)
 					.then(() =>
-						CategoryActions.updateCategorySuccess({
+						DashboardActions.categories.updateCategorySuccess({
 							payload: { id, data },
 						}),
 					)
 					.catch(error =>
-						CategoryActions.updateCategoryFailure({
+						DashboardActions.categories.updateCategoryFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -75,17 +71,17 @@ export class DashboardEffects {
 
 	deleteCategory$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(CategoryActions.deleteCategory),
+			ofType(DashboardActions.categories.deleteCategory),
 			mergeMap(async ({ payload: { id } }) =>
 				this.categoryService
 					.deleteById(id)
 					.then(() =>
-						CategoryActions.deleteCategorySuccess({
+						DashboardActions.categories.deleteCategorySuccess({
 							payload: { id },
 						}),
 					)
 					.catch(error =>
-						CategoryActions.deleteCategoryFailure({
+						DashboardActions.categories.deleteCategoryFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -93,32 +89,8 @@ export class DashboardEffects {
 		);
 	});
 
-	getAllProducts$ = createEffect(() => {
-		return this.actions$.pipe(
-			tap(value => console.log('actions', value)),
-			ofType(ProductActions.loadProducts),
-			mergeMap(() =>
-				this.productService.getAll().pipe(
-					map((products: IProduct[]) =>
-						ProductActions.loadProductsSuccess({
-							payload: { data: products },
-						}),
-					),
-					catchError(error =>
-						of(
-							ProductActions.loadProductsFailure({
-								payload: { error: error.body.error },
-							}),
-						),
-					),
-				),
-			),
-		);
-	});
-
 	constructor(
 		private actions$: Actions,
 		private categoryService: CategoryService,
-		private productService: ProductService,
 	) {}
 }

@@ -8,6 +8,7 @@ import {
 	doc,
 	deleteDoc,
 	updateDoc,
+	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
@@ -29,19 +30,21 @@ export class ProductService {
 		}) as Observable<IProduct[]>;
 	}
 
-	add(newProduct: IProduct) {
+	add(newProduct: IProduct): Promise<DocumentReference<IProduct>> {
 		const docRef = addDoc(this.collectionInstance, newProduct);
 
-		return docRef;
+		return docRef as Promise<DocumentReference<IProduct>>;
 	}
 
-	deleteById = (productId: string) => {
+	deleteById = (productId: string): Promise<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
-		deleteDoc(docInstance);
+		return deleteDoc(docInstance);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	updateById = (productId: string, newDatas: any) => {
+	updateById = (
+		productId: string,
+		newDatas: Partial<IProduct>,
+	): Promise<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
 		return updateDoc(docInstance, newDatas);
 	};

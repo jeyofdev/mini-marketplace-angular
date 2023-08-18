@@ -10,8 +10,9 @@ import { DashboardHeaderComponent } from './components/ui/dashboard-header/dashb
 import { StoreModule } from '@ngrx/store';
 import * as fromDashboard from './state/reducers/dashboard.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { DashboardEffects } from './state/effects/dashboard.effects';
 import { CategoryService } from '../shared/service/category.service';
+import { DashboardCategoryEffects } from './state/effects/dashboard-category.effects';
+import { DashboardProductEffects } from './state/effects/dashboard-product.effects';
 
 @NgModule({
 	declarations: [
@@ -26,12 +27,15 @@ import { CategoryService } from '../shared/service/category.service';
 		SharedModule,
 		StoreModule.forFeature(
 			fromDashboard.dashboardFeatureKey,
-			fromDashboard.reducer,
+			fromDashboard.reducers,
 			{
 				metaReducers: fromDashboard.metaReducers,
 			},
 		),
-		EffectsModule.forFeature([DashboardEffects]),
+		EffectsModule.forFeature([
+			DashboardCategoryEffects,
+			DashboardProductEffects,
+		]),
 	],
 	providers: [CategoryService],
 })

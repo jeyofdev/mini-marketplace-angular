@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { CategoryActions } from '../../state/actions/dashboard.actions';
-import {
-	getDashboardCategoriesLoadingSelector,
-	getDashboardCategoriesSelector,
-} from '../../state/selectors/dashboard.selectors';
 import { ICategory } from '../../../shared/model/category.model';
 import { Observable, map } from 'rxjs';
 import { DataService } from '../../../shared/service/data.service';
@@ -13,6 +8,11 @@ import {
 	IRowsPerPageSelectOptions,
 } from '../../../shared/interfaces/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DashboardActions } from '../../state/actions/dashboard-index.actions';
+import {
+	getDashboardCategoriesLoadingSelector,
+	getDashboardCategoriesSelector,
+} from '../../state/selectors/dashboard-category.selectors';
 
 @Component({
 	selector: 'app-dashboard-categories',
@@ -39,7 +39,7 @@ export class DashboardCategoriesComponent implements OnInit {
 		this.cols = this.dataService.getColsCategories();
 		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
 
-		this.store.dispatch(CategoryActions.loadCategories());
+		this.store.dispatch(DashboardActions.categories.loadCategories());
 
 		this.loading$ = this.store.pipe(
 			select(getDashboardCategoriesLoadingSelector),

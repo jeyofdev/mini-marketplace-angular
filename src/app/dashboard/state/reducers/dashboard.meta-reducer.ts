@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 import { ActionReducer } from '@ngrx/store';
-import { State } from './dashboard.reducer';
+import { IDashboardState } from './dashboard.reducer';
 
-export const log = (reducer: ActionReducer<State>): ActionReducer<State> => {
+export const log = (
+	reducer: ActionReducer<IDashboardState>,
+): ActionReducer<IDashboardState> => {
 	return (state, action) => {
 		const currentState = reducer(state, action);
 
