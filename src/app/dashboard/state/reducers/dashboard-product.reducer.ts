@@ -36,11 +36,18 @@ export const productReducer = createReducer(
 		};
 	}),
 
-	on(DashboardActions.products.addProduct, (state, actions) => {
+	on(DashboardActions.products.addProductSuccess, (state, actions) => {
 		return {
 			...state,
 			data: [...state.data, actions.payload.data],
 			loading: false,
+		};
+	}),
+
+	on(DashboardActions.products.deleteProductSuccess, (state, actions) => {
+		return {
+			...state,
+			data: state.data.filter(product => product.id !== actions.payload.id),
 		};
 	}),
 );

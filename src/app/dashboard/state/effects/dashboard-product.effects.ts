@@ -49,6 +49,26 @@ export class DashboardProductEffects {
 		);
 	});
 
+	deleteProducts$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(DashboardActions.products.deleteProduct),
+			mergeMap(async ({ payload: { id } }) =>
+				this.productService
+					.deleteById(id)
+					.then(() =>
+						DashboardActions.products.deleteProductSuccess({
+							payload: { id },
+						}),
+					)
+					.catch(error =>
+						DashboardActions.products.deleteProductFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private productService: ProductService,

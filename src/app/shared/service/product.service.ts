@@ -36,9 +36,9 @@ export class ProductService {
 		return docRef as Promise<DocumentReference<IProduct>>;
 	}
 
-	deleteById = (productId: string) => {
+	deleteById = (productId: string): Promise<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
-		deleteDoc(docInstance);
+		return deleteDoc(docInstance);
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any

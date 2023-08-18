@@ -11,5 +11,9 @@ export const DashboardProductActions = createActionGroup({
 		'Add product': props<{ payload: { data: IProduct } }>(),
 		'Add product Success': props<{ payload: { data: IProduct } }>(),
 		'Add product Failure': props<{ payload: { error: unknown } }>(),
+
+		'Delete product': props<{ payload: { id: string } }>(),
+		'Delete product Success': props<{ payload: { id: string } }>(),
+		'Delete product Failure': props<{ payload: { error: unknown } }>(),
 	},
 });
