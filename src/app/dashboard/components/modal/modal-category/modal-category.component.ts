@@ -1,4 +1,4 @@
-import { DataService } from './../../../service/data.service';
+import { DataService } from '../../../../shared/service/data.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
 	FormBuilder,
@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
-import { ICategory } from '../../../model/category.model';
-import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
-import { IRadioButtonItem } from '../../../interfaces/input.interface';
+import { ICategory } from '../../../../shared/model/category.model';
+import { FillFormWithCurrentCategoryFnType } from '../../../../shared/types/index.type';
+import { IRadioButtonItem } from '../../../../shared/interfaces/input.interface';
 import { Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { ofType } from '@ngrx/effects';
-import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
+import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-modal-category',

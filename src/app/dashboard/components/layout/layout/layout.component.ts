@@ -4,17 +4,17 @@ import {
 	IconDefinition,
 	faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { INavLink } from '../../../interfaces/link.interface';
-import { AuthService } from '../../../service/auth.service';
+import { INavLink } from '../../../../shared/interfaces/link.interface';
+import { AuthService } from '../../../../shared/service/auth.service';
 import { MenuItem } from 'primeng/api';
-import { DataService } from '../../../service/data.service';
+import { DataService } from '../../../../shared/service/data.service';
 
 @Component({
-	selector: 'app-dashboard-layout',
-	templateUrl: './dashboard-layout.component.html',
-	styleUrls: ['./dashboard-layout.component.scss'],
+	selector: 'app-layout',
+	templateUrl: './layout.component.html',
+	styleUrls: ['./layout.component.scss'],
 })
-export class DashboardLayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit {
 	connectedUser!: User;
 	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];

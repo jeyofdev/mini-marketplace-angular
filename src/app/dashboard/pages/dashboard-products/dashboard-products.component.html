@@ -1,16 +1,16 @@
-<app-dashboard-layout>
+<app-layout>
 	<div class="container">
-		<app-dashboard-header pageTitle="Category">
+		<app-header pageTitle="Products">
 			<app-button
 				variant="raised"
 				shape="square"
 				color="primary"
 				size="medium"
 				[iconPrefix]="iconAdd"
-				(click)="openModalAddNewCategory()"
-				>Add new category</app-button
+				(click)="openModalAddNewProduct()"
+				>Add new product</app-button
 			>
-		</app-dashboard-header>
+		</app-header>
 
 		<div class="loading-box">
 			<p-progressSpinner
@@ -19,22 +19,24 @@
 		</div>
 
 		<div class="list-container" *ngIf="(loading$ | async) === false">
-			<div class="no-result-box" *ngIf="categories.length <= 0">
+			<div class="no-result-box" *ngIf="products.length <= 0">
 				<i class="no-result-icon fa-regular fa-face-frown-open"></i>
 				<h2>No result found</h2>
 
 				<app-button
 					variant="raised"
+					shape="square"
 					color="primary"
-					[icon]="iconAdd"
-					(click)="openModalAddNewCategory()"
-					>New category</app-button
+					size="medium"
+					[iconPrefix]="iconAdd"
+					(click)="openModalAddNewProduct()"
+					>Add new product</app-button
 				>
 			</div>
 
-			<ng-container *ngIf="categories.length > 0">
-				<app-table-dashboard-category
-					[items]="categories"
+			<ng-container *ngIf="products.length > 0">
+				<app-table-dashboard-product
+					[items]="products"
 					[cols]="cols"
 					[paginator]="true"
 					[rows]="5"
@@ -43,16 +45,14 @@
 					[rowsPerPageOptions]="rowsPerPageOptions"
 					[first]="1"
 					[totalRecords]="totalRecords"
-				></app-table-dashboard-category>
+				></app-table-dashboard-product>
 			</ng-container>
 		</div>
 	</div>
-</app-dashboard-layout>
+</app-layout>
 
-<app-modal-category
-	[(visible)]="sidebarVisible"
-	title="New category"
+<app-modal-product
+	title="New product"
 	position="right"
-></app-modal-category>
-
-<p-toast position="top-right"></p-toast>
+	[(visible)]="sidebarVisible"
+></app-modal-product>

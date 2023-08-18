@@ -6,23 +6,23 @@ import {
 	Validators,
 } from '@angular/forms';
 import { Subscription, map, mergeMap, tap } from 'rxjs';
-import { CategoryService } from '../../../service/category.service';
+import { CategoryService } from '../../../../shared/service/category.service';
 import {
 	IColorCheckbox,
 	IRadioButtonItem,
 	ISelectItem,
-} from '../../../interfaces/input.interface';
-import { ICategory } from '../../../model/category.model';
-import { IProduct } from '../../../model/product.model';
-import { ProductService } from '../../../service/product.service';
+} from '../../../../shared/interfaces/input.interface';
+import { ICategory } from '../../../../shared/model/category.model';
+import { IProduct } from '../../../../shared/model/product.model';
+import { ProductService } from '../../../../shared/service/product.service';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
-import { DataService } from '../../../service/data.service';
-import { FillFormWithCurrentProductFnType } from '../../../types/index.type';
-import { ProductColorEnum } from '../../../enum/product.enum';
+import { DataService } from '../../../../shared/service/data.service';
+import { FillFormWithCurrentProductFnType } from '../../../../shared/types/index.type';
+import { ProductColorEnum } from '../../../../shared/enum/product.enum';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { ofType } from '@ngrx/effects';
-import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
+import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-modal-product',

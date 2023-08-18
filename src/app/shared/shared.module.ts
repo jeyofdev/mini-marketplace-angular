@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextFieldComponent } from './components/input/text-field/text-field.component';
-import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
 import { ImageFullHeightComponent } from './components/image/image-full-height/image-full-height.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
-import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
 import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './components/links/nav-link/nav-link.component';
 import { FullnamePipe } from './pipe/fullname.pipe';
@@ -22,10 +20,6 @@ import { NumberFieldComponent } from './components/input/number-field/number-fie
 import { PasswordFieldComponent } from './components/input/password-field/password-field.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
-import { TableDashboardCategoryComponent } from './components/table/table-dashboard-category/table-dashboard-category.component';
-import { TableDashboardProductComponent } from './components/table/table-dashboard-product/table-dashboard-product.component';
-import { ModalProductComponent } from './components/modal/modal-product/modal-product.component';
-import { ModalCategoryComponent } from './components/modal/modal-category/modal-category.component';
 import { BadgeColorComponent } from './components/badge-color/badge-color.component';
 import { PriceComponent } from './components/price/price.component';
 import { TagComponent } from './components/tag/tag.component';
@@ -37,15 +31,11 @@ import { RadioComponent } from './components/input/radio/radio.component';
 		TextFieldComponent,
 		TextareaComponent,
 		DividerComponent,
-		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,
-		DashboardLayoutComponent,
 		ButtonComponent,
 		NavLinkComponent,
 		FullnamePipe,
-		ModalCategoryComponent,
-		ModalProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -53,9 +43,7 @@ import { RadioComponent } from './components/input/radio/radio.component';
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
-		TableDashboardCategoryComponent,
 		ConfirmDialogComponent,
-		TableDashboardProductComponent,
 		BadgeColorComponent,
 		PriceComponent,
 		TagComponent,
@@ -78,14 +66,10 @@ import { RadioComponent } from './components/input/radio/radio.component';
 		TextFieldComponent,
 		TextareaComponent,
 		DividerComponent,
-		AuthLayoutComponent,
 		ImageFullHeightComponent,
 		AlertComponent,
-		DashboardLayoutComponent,
 		NavLinkComponent,
 		FullnamePipe,
-		ModalCategoryComponent,
-		ModalProductComponent,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -94,8 +78,6 @@ import { RadioComponent } from './components/input/radio/radio.component';
 		NumberFieldComponent,
 		PasswordFieldComponent,
 		BreadcrumbComponent,
-		TableDashboardCategoryComponent,
-		TableDashboardProductComponent,
 		ConfirmDialogComponent,
 		BadgeColorComponent,
 		PriceComponent,
