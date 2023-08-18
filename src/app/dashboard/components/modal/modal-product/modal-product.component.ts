@@ -21,8 +21,8 @@ import { DataService } from '../../../../shared/service/data.service';
 import { FillFormWithCurrentProductFnType } from '../../../../shared/types/index.type';
 import { ProductColorEnum } from '../../../../shared/enum/product.enum';
 import { ActionsSubject, Store } from '@ngrx/store';
-import { ofType } from '@ngrx/effects';
 import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
+import { addSubscriptionAndShowToast } from '../../../../dashboard/utils/components.util';
 
 @Component({
 	selector: 'app-modal-product',
@@ -208,45 +208,6 @@ export class ModalProductComponent implements OnInit {
 		});
 	}
 
-	private addProduct(): void {
-		this.store.dispatch(
-			DashboardActions.products.addProduct({
-				payload: { data: this.formatProductDatas() },
-			}),
-		);
-
-		this.subscription.add(
-			this.actionsSubject
-				.pipe(ofType(DashboardActions.products.addProductSuccess))
-				.subscribe(() => {
-					this.toastSuccess(
-						`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
-					);
-				}),
-		);
-	}
-
-	private updateProduct(): void {
-		this.store.dispatch(
-			DashboardActions.products.updateProduct({
-				payload: {
-					id: this.currentProduct.id as string,
-					data: this.formatProductDatas(),
-				},
-			}),
-		);
-
-		this.subscription.add(
-			this.actionsSubject
-				.pipe(ofType(DashboardActions.products.updateProductSuccess))
-				.subscribe(() => {
-					this.toastSuccess(
-						`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
-					);
-				}),
-		);
-	}
-
 	private initCategories(): void {
 		this.categoryService
 			.getAll()
@@ -261,21 +222,31 @@ export class ModalProductComponent implements OnInit {
 			.subscribe();
 	}
 
-	private toastSuccess(message: string): void {
-		this.messageService.add({
-			severity: 'success',
-			summary: message,
-		});
+	private addProduct(): void {
+		this.store.dispatch(
+			DashboardActions.products.addProduct({
+				payload: { data: this.formatProductDatas() },
+			}),
+		);
 
-		this.mainForm.reset();
-		this.onClose(false);
+		this.addSubscription(
+			`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
+		);
 	}
 
-	private toastError(message: string): void {
-		this.messageService.add({
-			severity: 'error',
-			summary: message,
-		});
+	private updateProduct(): void {
+		this.store.dispatch(
+			DashboardActions.products.updateProduct({
+				payload: {
+					id: this.currentProduct.id as string,
+					data: this.formatProductDatas(),
+				},
+			}),
+		);
+
+		this.addSubscription(
+			`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
+		);
 	}
 
 	private formatProductDatas(): IProduct {
@@ -283,11 +254,21 @@ export class ModalProductComponent implements OnInit {
 			...this.mainForm.value.name,
 			...this.mainForm.value.infos,
 			...this.mainForm.value.details,
-			// category: this.mainForm.value.details.category.value,
-			// size: this.mainForm.value.details.size.value,
 			color: Object.entries(this.mainForm.value.colors)
 				.filter(color => color[1])
 				.map(color => color[0]),
 		};
+	}
+
+	private addSubscription(message: string): void {
+		addSubscriptionAndShowToast(
+			this.subscription,
+			this.actionsSubject,
+			DashboardActions.products.updateProductSuccess,
+			this.messageService,
+			message,
+			this.mainForm,
+			this.onClose,
+		);
 	}
 }
