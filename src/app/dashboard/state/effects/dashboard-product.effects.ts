@@ -29,6 +29,26 @@ export class DashboardProductEffects {
 		);
 	});
 
+	addProducts$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(DashboardActions.products.addProduct),
+			mergeMap(async ({ payload: { data } }) =>
+				this.productService
+					.add(data)
+					.then(() =>
+						DashboardActions.products.addProductSuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error =>
+						DashboardActions.products.addProductFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private productService: ProductService,

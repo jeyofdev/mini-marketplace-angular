@@ -7,5 +7,9 @@ export const DashboardProductActions = createActionGroup({
 		'Load products': emptyProps(),
 		'Load products Success': props<{ payload: { data: IProduct[] } }>(),
 		'Load products Failure': props<{ payload: { error: unknown } }>(),
+
+		'Add product': props<{ payload: { data: IProduct } }>(),
+		'Add product Success': props<{ payload: { data: IProduct } }>(),
+		'Add product Failure': props<{ payload: { error: unknown } }>(),
 	},
 });

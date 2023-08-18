@@ -8,6 +8,7 @@ import {
 	doc,
 	deleteDoc,
 	updateDoc,
+	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
@@ -29,10 +30,10 @@ export class ProductService {
 		}) as Observable<IProduct[]>;
 	}
 
-	add(newProduct: IProduct) {
+	add(newProduct: IProduct): Promise<DocumentReference<IProduct>> {
 		const docRef = addDoc(this.collectionInstance, newProduct);
 
-		return docRef;
+		return docRef as Promise<DocumentReference<IProduct>>;
 	}
 
 	deleteById = (productId: string) => {

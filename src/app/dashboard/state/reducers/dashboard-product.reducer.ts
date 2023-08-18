@@ -35,4 +35,12 @@ export const productReducer = createReducer(
 			loading: false,
 		};
 	}),
+
+	on(DashboardActions.products.addProduct, (state, actions) => {
+		return {
+			...state,
+			data: [...state.data, actions.payload.data],
+			loading: false,
+		};
+	}),
 );

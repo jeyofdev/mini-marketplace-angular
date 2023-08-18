@@ -5,7 +5,7 @@ import {
 	FormGroup,
 	Validators,
 } from '@angular/forms';
-import { map, mergeMap, tap } from 'rxjs';
+import { Subscription, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../service/category.service';
 import {
 	IColorCheckbox,
@@ -20,6 +20,9 @@ import { MessageService } from 'primeng/api';
 import { DataService } from '../../../service/data.service';
 import { FillFormWithCurrentProductFnType } from '../../../types/index.type';
 import { ProductColorEnum } from '../../../enum/product.enum';
+import { ActionsSubject, Store } from '@ngrx/store';
+import { ofType } from '@ngrx/effects';
+import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
 
 @Component({
 	selector: 'app-modal-product',
@@ -57,6 +60,8 @@ export class ModalProductComponent implements OnInit {
 
 	submitBtnLabel!: string;
 
+	private subscription: Subscription = new Subscription();
+
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	inputsValidationMessages!: any;
 
@@ -68,6 +73,8 @@ export class ModalProductComponent implements OnInit {
 		private productService: ProductService,
 		private messageService: MessageService,
 		private dataService: DataService,
+		private store: Store,
+		private actionsSubject: ActionsSubject,
 	) {}
 
 	ngOnInit(): void {
@@ -202,16 +209,21 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	private addProduct(): void {
-		const newProduct = this.formatProductDatas();
+		this.store.dispatch(
+			DashboardActions.products.addProduct({
+				payload: { data: this.formatProductDatas() },
+			}),
+		);
 
-		this.productService
-			.add(newProduct)
-			.then(() => {
-				this.toastSuccess(
-					`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
-				);
-			})
-			.catch(err => this.toastError(err.message));
+		this.subscription.add(
+			this.actionsSubject
+				.pipe(ofType(DashboardActions.products.addProductSuccess))
+				.subscribe(() => {
+					this.toastSuccess(
+						`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
+					);
+				}),
+		);
 	}
 
 	private updateProduct(): void {
