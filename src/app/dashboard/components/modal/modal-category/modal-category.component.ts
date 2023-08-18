@@ -1,4 +1,4 @@
-import { DataService } from './../../../service/data.service';
+import { DataService } from '../../../../shared/service/data.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
 	FormBuilder,
@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 import { addCategoryValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
-import { ICategory } from '../../../model/category.model';
-import { FillFormWithCurrentCategoryFnType } from '../../../types/index.type';
-import { IRadioButtonItem } from '../../../interfaces/input.interface';
+import { ICategory } from '../../../../shared/model/category.model';
+import { FillFormWithCurrentCategoryFnType } from '../../../../shared/types/index.type';
+import { IRadioButtonItem } from '../../../../shared/interfaces/input.interface';
 import { Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
-import { ofType } from '@ngrx/effects';
-import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
+import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
+import { addSubscriptionAndShowToast } from 'src/app/dashboard/utils/components.util';
 
 @Component({
 	selector: 'app-modal-category',
@@ -120,14 +120,8 @@ export class ModalCategoryComponent implements OnInit {
 			}),
 		);
 
-		this.subscription.add(
-			this.actionsSubject
-				.pipe(ofType(DashboardActions.categories.addCategorySuccess))
-				.subscribe(() => {
-					this.toastSuccess(
-						`The category '${this.mainForm.value.name}' has been successfully added.`,
-					);
-				}),
+		this.addSubscription(
+			`The category '${this.mainForm.value.name}' has been successfully added.`,
 		);
 	}
 
@@ -141,32 +135,9 @@ export class ModalCategoryComponent implements OnInit {
 			}),
 		);
 
-		this.subscription.add(
-			this.actionsSubject
-				.pipe(ofType(DashboardActions.categories.updateCategorySuccess))
-				.subscribe(() => {
-					this.toastSuccess(
-						`The category '${this.mainForm.value.name}' has been successfully updated.`,
-					);
-				}),
+		this.addSubscription(
+			`The category '${this.mainForm.value.name}' has been successfully updated.`,
 		);
-	}
-
-	private toastSuccess(message: string): void {
-		this.messageService.add({
-			severity: 'success',
-			summary: message,
-		});
-
-		this.mainForm.reset();
-		this.onClose(false);
-	}
-
-	private toastError(message: string) {
-		this.messageService.add({
-			severity: 'error',
-			summary: message,
-		});
 	}
 
 	private formatCategoryDatas(): ICategory {
@@ -177,5 +148,17 @@ export class ModalCategoryComponent implements OnInit {
 			description: this.mainForm.value.description,
 			status: this.mainForm.value.status,
 		};
+	}
+
+	private addSubscription(message: string): void {
+		addSubscriptionAndShowToast(
+			this.subscription,
+			this.actionsSubject,
+			DashboardActions.products.updateProductSuccess,
+			this.messageService,
+			message,
+			this.mainForm,
+			this.onClose,
+		);
 	}
 }

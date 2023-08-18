@@ -1,23 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICategory } from '../../../model/category.model';
-
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '../../../interfaces/table.interface';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { IRowsPerPageSelectOptions } from '../../../../shared/interfaces/table.interface';
+import { IProduct } from '../../../../shared/model/product.model';
 import {
-	FillFormWithCurrentCategoryFnType,
+	FillFormWithCurrentProductFnType,
 	ShowConfirmDialogFnType,
-} from '../../../types/index.type';
-import { DashboardActions } from '../../../../dashboard/state/actions/dashboard-index.actions';
+} from '../../../../shared/types/index.type';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { CurrencyEnum } from '../../../../shared/enum/properties.enum';
+import { DashboardActions } from 'src/app/dashboard/state/actions/dashboard-index.actions';
 
 @Component({
-	selector: 'app-table-dashboard-category',
-	templateUrl: './table-dashboard-category.component.html',
-	styleUrls: ['./table-dashboard-category.component.scss'],
+	selector: 'app-table-dashboard-product',
+	templateUrl: './table-dashboard-product.component.html',
+	styleUrls: ['./table-dashboard-product.component.scss'],
 })
-export class TableDashboardCategoryComponent implements OnInit {
+export class TableDashboardProductComponent implements OnInit {
 	@Input() cols!: { header: string; field: string }[];
-	@Input() items: Array<ICategory> = [];
+	@Input() items: Array<IProduct> = [];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;
@@ -26,12 +26,14 @@ export class TableDashboardCategoryComponent implements OnInit {
 	@Input() first!: number;
 	@Input() totalRecords!: number;
 
+	currencyEnum = CurrencyEnum;
+
 	myPaginationString!: string;
 
 	sidebarVisible = false;
 
 	showConfirmDialogFn!: ShowConfirmDialogFnType;
-	fillFormWithCurrentCategoryFn!: FillFormWithCurrentCategoryFnType;
+	fillFormWithCurrentProductFn!: FillFormWithCurrentProductFnType;
 
 	constructor(
 		private confirmationService: ConfirmationService,
@@ -69,24 +71,24 @@ export class TableDashboardCategoryComponent implements OnInit {
 		this.showConfirmDialogFn = showConfirmDialogFn;
 	}
 
-	getCurrentCategory(
-		fillFormWithCurrentCategoryFn: FillFormWithCurrentCategoryFnType,
+	getCurrentProduct(
+		fillFormWithCurrentProductFn: FillFormWithCurrentProductFnType,
 	) {
-		this.fillFormWithCurrentCategoryFn = fillFormWithCurrentCategoryFn;
+		this.fillFormWithCurrentProductFn = fillFormWithCurrentProductFn;
 	}
 
 	onDelete(itemId: string, itemName: string): void {
 		this.showConfirmDialogFn(
 			this.confirmationService,
 			this.messageService,
-			DashboardActions.categories.deleteCategory,
+			DashboardActions.products.deleteProduct,
 			itemId,
 			itemName,
 		);
 	}
 
-	openModalUpdateCategory(category: ICategory): void {
-		this.fillFormWithCurrentCategoryFn(category);
+	openModalUpdateProduct(product: IProduct): void {
+		this.fillFormWithCurrentProductFn(product);
 		this.sidebarVisible = true;
 	}
 }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
-import { DashboardProductsComponent } from './components/dashboard-products/dashboard-products.component';
-import { DashboardCategoriesComponent } from './components/dashboard-categories/dashboard-categories.component';
+import { DashboardCategoriesComponent } from './pages/dashboard-categories/dashboard-categories.component';
+import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.component';
+import { DashboardProductsComponent } from './pages/dashboard-products/dashboard-products.component';
 
 const routes: Routes = [
 	{

@@ -1,13 +1,13 @@
 import { GoogleAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
 import { BreakpointState } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
-import { BreakpointEnum } from '../../../enum/breakpoint.enum';
-import { ProviderEnum } from '../../../enum/provider.enum';
-import { IImage } from '../../../model/image.model';
-import { ISocialProvider } from '../../../model/social-provider.model';
-import { BreakpointService } from '../../../service/breakpoint.service';
-import { ResizeService } from '../../../service/resize.service';
-import { AuthService } from '../../../service/auth.service';
+import { BreakpointEnum } from '../../../../shared/enum/breakpoint.enum';
+import { ProviderEnum } from '../../../../shared/enum/provider.enum';
+import { IImage } from '../../../../shared/model/image.model';
+import { ISocialProvider } from '../../../../shared/model/social-provider.model';
+import { BreakpointService } from '../../../../shared/service/breakpoint.service';
+import { ResizeService } from '../../../../shared/service/resize.service';
+import { AuthService } from '../../../../shared/service/auth.service';
 
 @Component({
 	selector: 'app-auth-layout',
