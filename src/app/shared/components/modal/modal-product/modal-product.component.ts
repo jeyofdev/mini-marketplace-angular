@@ -227,16 +227,24 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	private updateProduct(): void {
-		const updateProduct = this.formatProductDatas();
+		this.store.dispatch(
+			DashboardActions.products.updateProduct({
+				payload: {
+					id: this.currentProduct.id as string,
+					data: this.formatProductDatas(),
+				},
+			}),
+		);
 
-		this.productService
-			.updateById(this.currentProduct.id as string, updateProduct)
-			.then(() => {
-				this.toastSuccess(
-					`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
-				);
-			})
-			.catch(err => this.toastError(err.message));
+		this.subscription.add(
+			this.actionsSubject
+				.pipe(ofType(DashboardActions.products.updateProductSuccess))
+				.subscribe(() => {
+					this.toastSuccess(
+						`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
+					);
+				}),
+		);
 	}
 
 	private initCategories(): void {

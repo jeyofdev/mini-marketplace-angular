@@ -41,8 +41,10 @@ export class ProductService {
 		return deleteDoc(docInstance);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	updateById = (productId: string, newDatas: any) => {
+	updateById = (
+		productId: string,
+		newDatas: Partial<IProduct>,
+	): Promise<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
 		return updateDoc(docInstance, newDatas);
 	};

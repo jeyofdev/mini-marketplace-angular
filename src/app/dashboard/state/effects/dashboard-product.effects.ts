@@ -69,6 +69,26 @@ export class DashboardProductEffects {
 		);
 	});
 
+	updateProducts$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(DashboardActions.products.updateProduct),
+			mergeMap(async ({ payload: { id, data } }) =>
+				this.productService
+					.updateById(id, data)
+					.then(() =>
+						DashboardActions.products.updateProductSuccess({
+							payload: { id, data },
+						}),
+					)
+					.catch(error =>
+						DashboardActions.products.updateProductFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private productService: ProductService,

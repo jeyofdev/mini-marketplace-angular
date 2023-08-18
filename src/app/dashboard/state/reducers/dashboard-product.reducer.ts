@@ -50,4 +50,18 @@ export const productReducer = createReducer(
 			data: state.data.filter(product => product.id !== actions.payload.id),
 		};
 	}),
+
+	on(DashboardActions.products.updateProductSuccess, (state, actions) => {
+		const updateProduct: IProduct[] = state.data.map(
+			(existingProduct: IProduct) =>
+				existingProduct.id === actions.payload.data.id
+					? actions.payload.data
+					: existingProduct,
+		);
+
+		return {
+			...state,
+			data: updateProduct,
+		};
+	}),
 );
