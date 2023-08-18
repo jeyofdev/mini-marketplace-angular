@@ -196,7 +196,7 @@ export class ModalProductComponent implements OnInit {
 		this.infosForm.patchValue({
 			quantity: this.currentProduct.quantity,
 			price: this.currentProduct.price,
-			status: this.statusCtrl,
+			status: this.currentProduct.status,
 		});
 
 		this.colorsForm.patchValue({
