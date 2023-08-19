@@ -109,10 +109,10 @@ export class ModalProductComponent implements OnInit {
 		this.patchValueForm();
 	};
 
-	onClose(arg: boolean): void {
+	onClose = (arg: boolean): void => {
 		this.visible = arg;
 		this.visibleChange.emit(arg);
-	}
+	};
 
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
@@ -196,7 +196,7 @@ export class ModalProductComponent implements OnInit {
 		this.infosForm.patchValue({
 			quantity: this.currentProduct.quantity,
 			price: this.currentProduct.price,
-			status: this.statusCtrl,
+			status: this.currentProduct.status,
 		});
 
 		this.colorsForm.patchValue({
@@ -230,6 +230,7 @@ export class ModalProductComponent implements OnInit {
 		);
 
 		this.addSubscription(
+			DashboardActions.products.addProductSuccess,
 			`The product '${this.mainForm.value.name.brandName}' has been successfully added.`,
 		);
 	}
@@ -245,6 +246,7 @@ export class ModalProductComponent implements OnInit {
 		);
 
 		this.addSubscription(
+			DashboardActions.products.updateProductSuccess,
 			`The product '${this.mainForm.value.name.brandName}' has been successfully updated.`,
 		);
 	}
@@ -260,11 +262,12 @@ export class ModalProductComponent implements OnInit {
 		};
 	}
 
-	private addSubscription(message: string): void {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private addSubscription(action: any, message: string): void {
 		addSubscriptionAndShowToast(
 			this.subscription,
 			this.actionsSubject,
-			DashboardActions.products.updateProductSuccess,
+			action,
 			this.messageService,
 			message,
 			this.mainForm,

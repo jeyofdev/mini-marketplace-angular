@@ -56,7 +56,7 @@ export const categoryReducer = createReducer(
 		};
 	}),
 
-	on(DashboardActions.categories.deleteCategory, (state, actions) => {
+	on(DashboardActions.categories.deleteCategorySuccess, (state, actions) => {
 		return {
 			...state,
 			data: state.data.filter(category => category.id !== actions.payload.id),

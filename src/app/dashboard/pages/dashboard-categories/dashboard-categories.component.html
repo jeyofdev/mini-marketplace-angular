@@ -25,10 +25,12 @@
 
 				<app-button
 					variant="raised"
+					shape="square"
 					color="primary"
-					[icon]="iconAdd"
+					size="medium"
+					[iconPrefix]="iconAdd"
 					(click)="openModalAddNewCategory()"
-					>New category</app-button
+					>Add new category</app-button
 				>
 			</div>
 
@@ -55,4 +57,4 @@
 	position="right"
 ></app-modal-category>
 
-<p-toast position="top-right"></p-toast>
+<p-toast position="top-right" [preventDuplicates]="true"></p-toast>
