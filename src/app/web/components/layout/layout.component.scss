@@ -1,0 +1,15 @@
+@import '../../../../theme/scss/light//theme/theme';
+
+.layout-container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	min-height: 200px;
+	background-color: var(--primary-50);
+	width: 100%;
+	align-items: center;
+
+	@media (min-width: $lg) {
+		max-width: 1280px;
+		margin: auto;
+	}
+}
