@@ -1,0 +1,7 @@
+<ul>
+	<app-navigation-link
+		*ngFor="let link of navLinks"
+		[routerLink]="link.routerLink"
+		[label]="link.label"
+	></app-navigation-link>
+</ul>

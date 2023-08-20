@@ -1,12 +1,15 @@
 @import '../../../../theme/scss/light//theme/theme';
 
+.page-container {
+	min-height: 100vh;
+}
+
 .layout-container {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	background-color: var(--primary-50);
 	width: 100%;
 	align-items: center;
-  padding: 0.5rem;
 
 	@media (min-width: $lg) {
 		max-width: 1280px;
@@ -16,4 +19,9 @@
 
 .logo-container {
 	grid-column: 1 / span 3;
+	padding-top: 0.75rem;
+}
+
+.navigation-container {
+	grid-column: auto / span 6;
 }

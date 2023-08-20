@@ -25,7 +25,7 @@ import { PriceComponent } from './components/price/price.component';
 import { TagComponent } from './components/tag/tag.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { RadioComponent } from './components/input/radio/radio.component';
-import { LogoComponent } from './component/logo/logo.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
 	declarations: [

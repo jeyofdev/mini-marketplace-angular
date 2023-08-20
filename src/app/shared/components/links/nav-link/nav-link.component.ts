@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class NavLinkComponent {
 	@Input() routerLink!: string;
 	@Input() label!: string;
-	@Input() icon!: string;
+	@Input() icon!: string | undefined;
 }
