@@ -1,0 +1,24 @@
+<div class="actions-box">
+	<p-menubar [model]="items"></p-menubar>
+
+	<span class="vertical-separator"></span>
+
+	<app-button
+		*ngIf="!connectedUser"
+		shape="circle"
+		variant="rounded"
+		(click)="menu.toggle($event)"
+		icon="fa-solid fa-user"
+	></app-button>
+
+	<div class="user-connected" *ngIf="connectedUser">
+		<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
+		<p-avatar
+			size="large"
+			shape="circle"
+			(click)="menu.toggle($event)"
+		></p-avatar>
+	</div>
+
+	<p-menu #menu [model]="userItems" [popup]="true"></p-menu>
+</div>

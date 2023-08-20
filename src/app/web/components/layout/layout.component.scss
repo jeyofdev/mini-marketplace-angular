@@ -7,7 +7,7 @@
 .layout-container {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	background-color: var(--primary-50);
+	// background-color: var(--primary-50);
 	width: 100%;
 	align-items: center;
 
@@ -19,9 +19,17 @@
 
 .logo-container {
 	grid-column: 1 / span 3;
-	padding-top: 0.75rem;
+	padding-top: 1rem;
 }
 
 .navigation-container {
-	grid-column: auto / span 6;
+	grid-column: auto / span 5;
+}
+
+.user-action-container {
+	grid-column: auto / span 4;
+	display: flex;
+	justify-content: flex-end;
+	// padding-right: 1.5rem;
+	padding-top: 0.75rem;
 }

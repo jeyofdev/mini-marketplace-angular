@@ -1,0 +1,138 @@
+:host ::ng-deep .actions-box {
+	display: flex;
+	gap: 1rem;
+}
+
+:host ::ng-deep .vertical-separator {
+	display: block;
+	width: 1px;
+	height: 38px;
+	background-color: var(--primary-100);
+}
+
+:host ::ng-deep .p-menubar {
+	padding: 0;
+	border: none;
+
+	.p-submenu-list {
+		width: auto;
+		min-width: 100%;
+	}
+}
+
+:host
+	::ng-deep
+	.p-menubar
+	.p-menubar-root-list
+	> .p-menuitem
+	> .p-menuitem-content
+	.p-menuitem-link {
+	padding: 0.75rem 0.75rem;
+	border-radius: 100%;
+
+	.p-menuitem-icon {
+		margin-right: 0;
+	}
+}
+
+:host
+	::ng-deep
+	.p-menubar
+	.p-menubar-root-list
+	> .p-menuitem
+	> .p-menuitem-content
+	.p-menuitem-link {
+	.p-menuitem-text,
+	.p-menuitem-icon {
+		color: var(--primary-800);
+	}
+
+	.p-menuitem-icon {
+		font-size: 1rem;
+	}
+}
+
+:host
+	::ng-deep
+	.p-menubar
+	.p-menubar-root-list
+	> .p-menuitem:not(.p-highlight):not(.p-disabled)
+	> .p-menuitem-content:hover
+	.p-menuitem-link
+	.p-menuitem-icon,
+.p-menubar
+	.p-menubar-root-list
+	> .p-menuitem:not(.p-highlight):not(.p-disabled)
+	> .p-menuitem-content:hover
+	.p-menuitem-link
+	.p-submenu-icon {
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-menubar .p-menuitem > .p-menuitem-content {
+	border-radius: 100%;
+}
+
+:host
+	::ng-deep
+	.p-menubar
+	.p-menubar-root-list
+	> .p-menuitem:not(.p-highlight):not(.p-disabled)
+	> .p-menuitem-content:hover {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-menu {
+	width: auto;
+}
+
+:host ::ng-deep.p-menu .p-submenu-header {
+	display: none;
+}
+
+:host ::ng-deep .p-menu .p-menu-separator {
+	margin: 0rem;
+	border-color: var(--primary-800);
+}
+
+:host ::ng-deep .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+	padding: 0.8rem 1rem;
+}
+
+:host ::ng-deep .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link {
+	.p-menuitem-icon,
+	.p-menuitem-text {
+		color: var(--primary-800);
+	}
+}
+
+:host
+	::ng-deep
+	.p-menu
+	.p-menuitem:not(.p-highlight):not(.p-disabled)
+	> .p-menuitem-content:hover {
+	background-color: var(--primary-50);
+}
+
+:host
+	::ng-deep
+	.p-menu
+	.p-menuitem:not(.p-highlight):not(.p-disabled)
+	> .p-menuitem-content:hover
+	.p-menuitem-link {
+	.p-menuitem-icon,
+	.p-menuitem-text {
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .user-connected {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding-left: 0.75rem;
+}
+
+:host ::ng-deep .user-name {
+	font-weight: bold;
+}

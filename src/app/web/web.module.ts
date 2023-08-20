@@ -9,7 +9,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { MenComponent } from './pages/men/men.component';
 import { WomenComponent } from './pages/women/women.component';
 import { ChildrenComponent } from './pages/children/children.component';
-import { NavigationLinkComponent } from './components/navigation-link/navigation-link.component';
+import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
+import { HeaderUserActionComponent } from './components/header-user-action/header-user-action.component';
 
 @NgModule({
 	declarations: [
@@ -20,6 +21,7 @@ import { NavigationLinkComponent } from './components/navigation-link/navigation
 		WomenComponent,
 		ChildrenComponent,
 		NavigationLinkComponent,
+		HeaderUserActionComponent,
 	],
 	imports: [CommonModule, WebRoutingModule, SharedModule],
 })

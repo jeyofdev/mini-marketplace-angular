@@ -27,6 +27,16 @@
 	border-radius: 6px;
 }
 
+:host ::ng-deep .p-button-transparent {
+	background-color: transparent;
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-button-transparent:enabled:hover {
+	background-color: transparent;
+	color: var(--primary-800);
+}
+
 :host ::ng-deep .p-button:disabled {
 	background-color: var(--primary-500) !important;
 	color: black !important;
