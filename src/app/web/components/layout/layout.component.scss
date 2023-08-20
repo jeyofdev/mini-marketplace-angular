@@ -3,13 +3,17 @@
 .layout-container {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	min-height: 200px;
 	background-color: var(--primary-50);
 	width: 100%;
 	align-items: center;
+  padding: 0.5rem;
 
 	@media (min-width: $lg) {
 		max-width: 1280px;
 		margin: auto;
 	}
+}
+
+.logo-container {
+	grid-column: 1 / span 3;
 }
