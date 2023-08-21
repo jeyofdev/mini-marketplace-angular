@@ -6,15 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./ship.component.scss'],
 })
 export class ShipComponent implements OnInit {
-	@Input() label!: string;
-	@Input() size!: 'small';
+	@Input() label!: string | number;
+	@Input() size!: 'small' | 'large';
 	@Input() severity!: 'primary' | 'success' | 'info' | 'warning' | 'danger';
 
 	class!: string;
 	ngOnInit(): void {
 		this.class = 'chip ';
 
-		if (this.size === 'small') {
+		if (this.size) {
 			this.class += `chip-${this.size} `;
 		}
 

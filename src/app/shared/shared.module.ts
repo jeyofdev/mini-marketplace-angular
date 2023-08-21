@@ -26,6 +26,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { RadioComponent } from './components/input/radio/radio.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import { LogoComponent } from './components/logo/logo.component';
 		ButtonComponent,
 		NavLinkComponent,
 		FullnamePipe,
+		ConvertToStringPipe,
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
@@ -87,6 +89,7 @@ import { LogoComponent } from './components/logo/logo.component';
 		ShipComponent,
 		RadioComponent,
 		LogoComponent,
+		ConvertToStringPipe,
 	],
 })
 export class SharedModule {}

@@ -1,0 +1,44 @@
+:host ::ng-deep .product-card-box {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+:host ::ng-deep .p-card-header {
+	position: relative;
+}
+
+:host ::ng-deep .product-thumbs {
+	border-radius: 10px;
+}
+
+:host ::ng-deep .add-wish-list-btn {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+}
+
+:host ::ng-deep .p-card-body {
+	padding: 0;
+}
+
+:host ::ng-deep .p-card-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+:host ::ng-deep .product-name {
+	text-align: left;
+	font-weight: bold;
+}
+
+:host ::ng-deep app-price p {
+	color: var(--primary-50);
+	line-height: 1.15rem;
+}
+
+:host ::ng-deep .badge-colors-box {
+	display: flex;
+	gap: 0.3rem;
+	margin-top: 0.15rem;
+}
