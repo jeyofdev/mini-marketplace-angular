@@ -18,6 +18,7 @@ import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
 export class AllProductsComponent implements OnInit {
 	loading$!: Observable<boolean>;
 	products!: IProduct[];
+	filteredProducts!: IProduct[];
 	sizes!: ISelectItem[];
 	filters!: { sizes: string[] };
 
@@ -40,6 +41,7 @@ export class AllProductsComponent implements OnInit {
 				select(getWebProductsSelector),
 				map(products => {
 					this.products = products;
+					this.filteredProducts = this.getFilteredProducts(products);
 				}),
 			)
 			.subscribe();
@@ -48,14 +50,26 @@ export class AllProductsComponent implements OnInit {
 	sizeSelected(currentSize: ISelectItem): void {
 		if (!this.filters.sizes.includes(currentSize.value)) {
 			this.filters.sizes.push(currentSize.value);
+			this.filteredProducts = this.getFilteredProducts(this.products);
 		} else {
 			this.filters.sizes = this.filters.sizes.filter(
 				(size: string) => size !== currentSize.value,
 			);
+			this.filteredProducts = this.getFilteredProducts(this.products);
 		}
 	}
 
 	getOutline(size: ISelectItem) {
 		return !this.filters.sizes.includes(size.value);
+	}
+
+	getFilteredProducts(products: IProduct[]) {
+		if (this.filters.sizes.length > 0) {
+			return products.filter(product =>
+				this.filters.sizes.includes(product.size.value),
+			);
+		}
+
+		return products;
 	}
 }
