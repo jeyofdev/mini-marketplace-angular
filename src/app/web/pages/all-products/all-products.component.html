@@ -18,7 +18,10 @@
 		<app-panel title="Colors">
 			<div class="colors-box">
 				<ng-container *ngFor="let color of colors">
-					<div [class]="'color-item color-' + color.name"></div>
+					<div
+						[class]="'color-item color-' + color.name"
+						(click)="colorSelected(color)"
+					></div>
 				</ng-container>
 			</div>
 		</app-panel>

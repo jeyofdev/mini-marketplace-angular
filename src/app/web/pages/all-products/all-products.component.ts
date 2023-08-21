@@ -24,7 +24,7 @@ export class AllProductsComponent implements OnInit {
 	filteredProducts!: IProduct[];
 	sizes!: ISelectItem[];
 	colors!: IColorCheckbox[];
-	filters!: { sizes: string[] };
+	filters!: { sizes: string[]; colors: string[] };
 
 	constructor(
 		private store: Store,
@@ -36,6 +36,7 @@ export class AllProductsComponent implements OnInit {
 		this.colors = this.dataService.getAllColors();
 		this.filters = {
 			sizes: [],
+			colors: [],
 		};
 
 		this.store.dispatch(WebActions.products.loadProducts());
@@ -64,6 +65,18 @@ export class AllProductsComponent implements OnInit {
 		}
 	}
 
+	colorSelected(currentColor: IColorCheckbox): void {
+		if (!this.filters.colors.includes(currentColor.name)) {
+			this.filters.colors.push(currentColor.name);
+			this.filteredProducts = this.getFilteredProducts(this.products);
+		} else {
+			this.filters.colors = this.filters.colors.filter(
+				(color: string) => color !== currentColor.name,
+			);
+			this.filteredProducts = this.getFilteredProducts(this.products);
+		}
+	}
+
 	getOutline(size: ISelectItem) {
 		return !this.filters.sizes.includes(size.value);
 	}
@@ -73,6 +86,12 @@ export class AllProductsComponent implements OnInit {
 			return products.filter(product =>
 				this.filters.sizes.includes(product.size.value),
 			);
+		}
+
+		if (this.filters.colors.length > 0) {
+			return this.products.filter(product => {
+				return product.color.some(item => this.filters.colors.includes(item));
+			});
 		}
 
 		return products;
