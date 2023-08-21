@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromWeb from './state/reducers/web.reducer';
 import { WebCategoryEffects } from './state/effects/web-category.effects';
 import { WebProductEffects } from './state/effects/web-product.effects';
+import { AllProductsComponent } from './pages/all-products/all-products.component';
 
 @NgModule({
 	declarations: [
@@ -35,6 +36,7 @@ import { WebProductEffects } from './state/effects/web-product.effects';
 		NavigationLinkMobileComponent,
 		ProductCardListComponent,
 		ProductListComponent,
+		AllProductsComponent,
 	],
 	imports: [
 		CommonModule,
