@@ -5,21 +5,11 @@
 		</div>
 
 		<div class="navigation-mobile-container">
-			<div class="nav-links-mobile-list">
-				<ng-container *ngFor="let link of navLinks">
-					<a class="nav-link-mobile" [routerLink]="link.routerLink">
-						<div class="nav-link-mobile-left">
-							<i [class]="'nav-link-mobile-icon ' + link.icon"></i>
-							<span class="nav-link-mobile-text">{{ link.label }}</span>
-						</div>
-						<i class="nav-link-mobile-arrow fa-solid fa-chevron-right"></i>
-					</a>
-				</ng-container>
-			</div>
+			<app-navigation-link-mobile></app-navigation-link-mobile>
 		</div>
 	</div>
 
-	<div class="user-action-container">
+	<div class="sidebar-content-bottom">
 		<app-header-user-action
 			direction="column"
 			[isMobile]="true"

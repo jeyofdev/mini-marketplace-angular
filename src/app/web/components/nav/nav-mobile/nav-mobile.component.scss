@@ -30,48 +30,13 @@
 	z-index: 1000;
 }
 
-:host ::ng-deep .links-mobile-block {
-	margin-bottom: 1rem;
-	font-size: 1.1rem;
-}
-
-:host ::ng-deep .nav-links-mobile-list {
+:host ::ng-deep .navigation-mobile-container {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-:host ::ng-deep .nav-link-mobile {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 1px solid var(--primary-100);
-	padding: 1rem 0rem;
-	text-decoration: none;
-}
-
-:host ::ng-deep .nav-link-mobile-left {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-:host ::ng-deep .nav-link-mobile-icon {
-	color: var(--primary-800);
-	font-size: 1.2rem;
-}
-
-:host ::ng-deep .nav-link-mobile-arrow {
-	color: var(--primary-100);
-	font-size: 0.9rem;
-}
-
-:host ::ng-deep .nav-link-mobile-text {
-	color: var(--primary-800);
-	font-size: 1rem;
-}
-
-:host ::ng-deep .user-action-container {
+:host ::ng-deep .sidebar-content-bottom {
 	display: flex;
 	justify-content: center;
 	margin-top: 1rem;

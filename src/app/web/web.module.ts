@@ -12,6 +12,7 @@ import { ChildrenComponent } from './pages/children/children.component';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
 import { HeaderUserActionComponent } from './components/header-user-action/header-user-action.component';
 import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
+import { NavigationLinkMobileComponent } from './components/link/navigation-link-mobile/navigation-link-mobile.component';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.compo
 		NavigationLinkComponent,
 		HeaderUserActionComponent,
 		NavMobileComponent,
+		NavigationLinkMobileComponent,
 	],
 	imports: [CommonModule, WebRoutingModule, SharedModule],
 })

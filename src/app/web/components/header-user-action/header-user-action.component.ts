@@ -32,22 +32,16 @@ export class HeaderUserActionComponent implements OnInit {
 			this.items = this.dataService.getConnectedLinks();
 			this.userItems = this.dataService.getUserConnectedLinks();
 		} else if (this.connectedUser && this.isMobile) {
-			const itemsMobile = this.dataService.getUserConnectedLinks()[0];
-			const items = itemsMobile.items
-				?.filter(item => !item.separator)
-				.map(item => ({
-					icon: item.icon,
-					command: item.command,
-				})) as MenuItem[];
+			const items = this.filterItems(
+				this.dataService.getUserConnectedLinks()[0],
+			);
+
 			this.items = [...this.dataService.getConnectedLinks(), ...items];
 		} else if (!this.connectedUser && this.isMobile) {
-			const itemsMobile = this.dataService.getUserNotConnectedLinks()[0];
-			const items = itemsMobile.items
-				?.filter(item => !item.separator)
-				.map(item => ({
-					icon: item.icon,
-					command: item.command,
-				})) as MenuItem[];
+			const items = this.filterItems(
+				this.dataService.getUserNotConnectedLinks()[0],
+			);
+
 			this.items = [...this.dataService.getNotConnectedLinks(), ...items];
 		} else {
 			this.items = this.dataService.getNotConnectedLinks();
@@ -57,5 +51,14 @@ export class HeaderUserActionComponent implements OnInit {
 		if (this.direction) {
 			this.class += ' ' + this.direction;
 		}
+	}
+
+	private filterItems(itemsMobile: MenuItem): MenuItem[] {
+		return itemsMobile.items
+			?.filter((item: MenuItem) => !item.separator)
+			.map((item: MenuItem) => ({
+				icon: item.icon,
+				command: item.command,
+			})) as MenuItem[];
 	}
 }
