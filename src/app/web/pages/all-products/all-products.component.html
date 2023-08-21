@@ -1,5 +1,19 @@
 <app-layout>
-	<div class="side"></div>
+	<div class="side">
+		<app-panel title="Sizes">
+			<ng-container *ngFor="let size of sizes">
+				<app-button
+					variant="raised"
+					shape="square"
+					[outline]="getOutline(size)"
+					color="primary"
+					size="small"
+					(click)="sizeSelected(size)"
+					>{{ size.value }}</app-button
+				>
+			</ng-container>
+		</app-panel>
+	</div>
 
 	<div class="content-list">
 		<h4 class="page-title">All clothing</h4>

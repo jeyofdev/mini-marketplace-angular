@@ -7,6 +7,8 @@ import {
 	getWebProductsLoadingSelector,
 	getWebProductsSelector,
 } from '../../state/selectors/web-product.selectors';
+import { DataService } from '../../../shared/service/data.service';
+import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-all-products',
@@ -16,10 +18,20 @@ import {
 export class AllProductsComponent implements OnInit {
 	loading$!: Observable<boolean>;
 	products!: IProduct[];
+	sizes!: ISelectItem[];
+	filters!: { sizes: string[] };
 
-	constructor(private store: Store) {}
+	constructor(
+		private store: Store,
+		private dataService: DataService,
+	) {}
 
 	ngOnInit(): void {
+		this.sizes = this.dataService.getAllSizes();
+		this.filters = {
+			sizes: [],
+		};
+
 		this.store.dispatch(WebActions.products.loadProducts());
 		this.loading$ = this.store.pipe(select(getWebProductsLoadingSelector));
 
@@ -31,5 +43,19 @@ export class AllProductsComponent implements OnInit {
 				}),
 			)
 			.subscribe();
+	}
+
+	sizeSelected(currentSize: ISelectItem): void {
+		if (!this.filters.sizes.includes(currentSize.value)) {
+			this.filters.sizes.push(currentSize.value);
+		} else {
+			this.filters.sizes = this.filters.sizes.filter(
+				(size: string) => size !== currentSize.value,
+			);
+		}
+	}
+
+	getOutline(size: ISelectItem) {
+		return !this.filters.sizes.includes(size.value);
 	}
 }

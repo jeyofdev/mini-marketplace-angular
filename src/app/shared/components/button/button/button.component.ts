@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-button',
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, OnChanges {
 	@Input() variant!: 'rounded' | 'raised' | 'icon';
 	@Input() shape!: 'circle' | 'oval' | 'square';
 	@Input() type!: 'submit' | 'reset' | 'button';
@@ -16,7 +16,7 @@ export class ButtonComponent implements OnInit {
 	@Input() outline!: boolean;
 	@Input() text!: boolean;
 	@Input() shadow!: boolean;
-	@Input() size!: 'medium' | 'normal' | 'large';
+	@Input() size!: 'small' | 'medium' | 'normal' | 'large';
 	@Input() color!:
 		| 'primary'
 		| 'secondary'
@@ -31,6 +31,14 @@ export class ButtonComponent implements OnInit {
 	styleClass!: string;
 
 	ngOnInit(): void {
+		this.setStyleClass();
+	}
+
+	ngOnChanges(): void {
+		this.setStyleClass();
+	}
+
+	setStyleClass() {
 		if (this.variant) {
 			this.styleClass = ` p-button-${this.variant}`;
 		}

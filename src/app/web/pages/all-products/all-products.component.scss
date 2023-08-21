@@ -1,5 +1,7 @@
 .side {
 	grid-column: 1 / span 3;
+	padding-left: 1rem;
+	align-items: flex-start;
 }
 
 .content-list {
@@ -9,4 +11,14 @@
 
 .page-title {
 	font-weight: bold;
+}
+
+:host ::ng-deep .p-panel-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+
+	app-button {
+		width: calc(33.333333% - 0.5rem);
+	}
 }

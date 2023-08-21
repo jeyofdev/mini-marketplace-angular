@@ -8222,36 +8222,44 @@ p-multiselect.ng-dirty.ng-invalid .p-multiselect:not(.p-disabled).p-focus {
 h1 {
   font-family: "Playfair Display", serif;
   font-weight: normal;
+  color: var(--primary-700);
 }
 
 h2 {
   font-family: "Playfair Display", serif;
   font-weight: normal;
+  color: var(--primary-700);
 }
 
 h3 {
   font-family: "Playfair Display", serif;
   font-weight: normal;
+  color: var(--primary-700);
 }
 
 h4 {
   font-family: "Raleway", sans-serif;
   font-weight: normal;
+  color: var(--primary-700);
 }
 
 h5 {
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   font-weight: lighter;
+  color: var(--primary-700);
 }
 
 h6 {
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   font-weight: normal;
+  color: var(--primary-700);
 }
 
 p {
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  font-weight: normal;
+  font-weight: lighter;
+  color: var(--primary-800);
+  font-size: 0.9rem;
 }
 
 span {

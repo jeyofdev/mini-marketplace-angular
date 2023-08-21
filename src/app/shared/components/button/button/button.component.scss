@@ -79,6 +79,10 @@
 	line-height: 1.2;
 }
 
+:host ::ng-deep .size-small {
+	padding: 0.25rem 0.35rem;
+}
+
 :host ::ng-deep .size-medium {
 	padding-left: 1rem;
 	padding-right: 1rem;

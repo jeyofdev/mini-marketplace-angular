@@ -10,7 +10,7 @@ import { NavLinkComponent } from './components/links/nav-link/nav-link.component
 import { FullnamePipe } from './pipe/fullname.pipe';
 import { SelectComponent } from './components/input/select/select.component';
 import { SliderWithValueComponent } from './components/input/slider-with-value/slider-with-value.component';
-import { CheckboxColorComponent } from './components/input/checkbox-color/checkbox-color.component';
+import { CheckboxColorComponent } from './components/input/checkbox/checkbox-color/checkbox-color.component';
 import { PrimengModule } from './primeng.module';
 import { DividerComponent } from './components/divider/divider.component';
 import { ButtonComponent } from './components/button/button/button.component';
@@ -27,6 +27,7 @@ import { ShipComponent } from './components/ship/ship.component';
 import { RadioComponent } from './components/input/radio/radio.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
 	declarations: [
@@ -53,6 +54,7 @@ import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 		ShipComponent,
 		RadioComponent,
 		LogoComponent,
+		PanelComponent,
 	],
 	imports: [
 		CommonModule,
@@ -90,6 +92,7 @@ import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 		RadioComponent,
 		LogoComponent,
 		ConvertToStringPipe,
+		PanelComponent,
 	],
 })
 export class SharedModule {}
