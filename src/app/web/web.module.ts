@@ -13,6 +13,8 @@ import { NavigationLinkComponent } from './components/link/navigation-link/navig
 import { HeaderUserActionComponent } from './components/header-user-action/header-user-action.component';
 import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
 import { NavigationLinkMobileComponent } from './components/link/navigation-link-mobile/navigation-link-mobile.component';
+import { ProductCardListComponent } from './components/card/product-card-list/product-card-list.component';
+import { ProductListComponent } from './components/list/product-list/product-list.component';
 
 @NgModule({
 	declarations: [
@@ -26,6 +28,9 @@ import { NavigationLinkMobileComponent } from './components/link/navigation-link
 		HeaderUserActionComponent,
 		NavMobileComponent,
 		NavigationLinkMobileComponent,
+
+		ProductCardListComponent,
+		ProductListComponent,
 	],
 	imports: [CommonModule, WebRoutingModule, SharedModule],
 })
