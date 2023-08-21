@@ -7,6 +7,7 @@ import { IProduct } from '../../../../shared/model/product.model';
 	styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent {
-	@Input() products!: IProduct[];
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	@Input() products!: any | IProduct;
 	@Input() loading!: boolean;
 }
