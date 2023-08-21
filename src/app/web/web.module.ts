@@ -15,6 +15,11 @@ import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.compo
 import { NavigationLinkMobileComponent } from './components/link/navigation-link-mobile/navigation-link-mobile.component';
 import { ProductCardListComponent } from './components/card/product-card-list/product-card-list.component';
 import { ProductListComponent } from './components/list/product-list/product-list.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromWeb from './state/reducers/web.reducer';
+import { WebCategoryEffects } from './state/effects/web-category.effects';
+import { WebProductEffects } from './state/effects/web-product.effects';
 
 @NgModule({
 	declarations: [
@@ -28,10 +33,17 @@ import { ProductListComponent } from './components/list/product-list/product-lis
 		HeaderUserActionComponent,
 		NavMobileComponent,
 		NavigationLinkMobileComponent,
-
 		ProductCardListComponent,
 		ProductListComponent,
 	],
-	imports: [CommonModule, WebRoutingModule, SharedModule],
+	imports: [
+		CommonModule,
+		WebRoutingModule,
+		SharedModule,
+		StoreModule.forFeature(fromWeb.webFeatureKey, fromWeb.reducers, {
+			metaReducers: fromWeb.metaReducers,
+		}),
+		EffectsModule.forFeature([WebCategoryEffects, WebProductEffects]),
+	],
 })
 export class WebModule {}
