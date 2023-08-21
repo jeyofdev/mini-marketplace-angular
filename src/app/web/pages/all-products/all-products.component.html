@@ -5,6 +5,7 @@
 		<h4 class="page-title">All clothing</h4>
 		<app-product-list
 			[loading]="(loading$ | async) === true"
+			[products]="products"
 		></app-product-list>
 	</div>
 </app-layout>

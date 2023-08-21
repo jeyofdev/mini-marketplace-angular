@@ -1,3 +1,17 @@
-<div class="loading-box">
-	<p-progressSpinner *ngIf="loading"></p-progressSpinner>
+<div class="loading-box" *ngIf="loading">
+	<p-progressSpinner></p-progressSpinner>
 </div>
+
+<p-dataView
+	#dv
+	[value]="products"
+	[rows]="5"
+	[paginator]="true"
+	*ngIf="!loading"
+>
+	<ng-template let-product pTemplate="listItem">
+		<div class="col-12">
+			<p>{{ product.modelName }}</p>
+		</div>
+	</ng-template>
+</p-dataView>
