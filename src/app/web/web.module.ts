@@ -21,6 +21,7 @@ import * as fromWeb from './state/reducers/web.reducer';
 import { WebCategoryEffects } from './state/effects/web-category.effects';
 import { WebProductEffects } from './state/effects/web-product.effects';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import { AllProductsComponent } from './pages/all-products/all-products.componen
 		ProductCardListComponent,
 		ProductListComponent,
 		AllProductsComponent,
+		ProductComponent,
 	],
 	imports: [
 		CommonModule,
