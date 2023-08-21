@@ -1,0 +1,78 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-sidebar .p-sidebar-header + .p-sidebar-content {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.logo-container {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 2rem;
+}
+
+:host ::ng-deep .p-sidebar-right,
+:host ::ng-deep .p-sidebar-left,
+:host ::ng-deep .p-sidebar-top,
+:host ::ng-deep .p-sidebar-bottom {
+	background-color: $light;
+	width: 100%;
+	padding: 1rem 1rem;
+	min-height: 100vh;
+}
+
+:host ::ng-deep .p-sidebar .p-sidebar-header {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+:host ::ng-deep .links-mobile-block {
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+}
+
+:host ::ng-deep .nav-links-mobile-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+:host ::ng-deep .nav-link-mobile {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--primary-100);
+	padding: 1rem 0rem;
+	text-decoration: none;
+}
+
+:host ::ng-deep .nav-link-mobile-left {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+:host ::ng-deep .nav-link-mobile-icon {
+	color: var(--primary-800);
+	font-size: 1.2rem;
+}
+
+:host ::ng-deep .nav-link-mobile-arrow {
+	color: var(--primary-100);
+	font-size: 0.9rem;
+}
+
+:host ::ng-deep .nav-link-mobile-text {
+	color: var(--primary-800);
+	font-size: 1rem;
+}
+
+:host ::ng-deep .user-action-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}

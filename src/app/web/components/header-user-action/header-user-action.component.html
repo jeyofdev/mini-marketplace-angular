@@ -1,7 +1,7 @@
-<div class="actions-box">
+<div [class]="class">
 	<p-menubar [model]="items"></p-menubar>
 
-	<span class="vertical-separator"></span>
+	<span *ngIf="showSeparator" class="vertical-separator"></span>
 
 	<app-button
 		*ngIf="!connectedUser"
@@ -11,7 +11,7 @@
 		icon="fa-solid fa-user"
 	></app-button>
 
-	<div class="user-connected" *ngIf="connectedUser">
+	<div class="user-connected" *ngIf="connectedUser && !isMobile">
 		<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
 		<p-avatar
 			size="large"

@@ -1,6 +1,17 @@
+@import '../../../../theme/scss/light/theme/theme';
+
 :host ::ng-deep .actions-box {
 	display: flex;
 	gap: 1rem;
+
+	&.column {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&.row {
+		flex-direction: row;
+	}
 }
 
 :host ::ng-deep .vertical-separator {
@@ -135,4 +146,27 @@
 
 :host ::ng-deep .user-name {
 	font-weight: bold;
+
+	@media (min-width: 768px) and (max-width: $md) {
+		display: none;
+	}
+}
+
+:host ::ng-deep .p-menubar .p-menubar-button {
+	display: none;
+}
+
+@media screen and (max-width: 960px) {
+	:host ::ng-deep .p-menubar .p-menubar-root-list {
+		position: relative;
+		display: flex;
+		border: none;
+		box-shadow: none;
+		width: auto;
+
+		.p-menuitem {
+			width: auto;
+			position: relative;
+		}
+	}
 }

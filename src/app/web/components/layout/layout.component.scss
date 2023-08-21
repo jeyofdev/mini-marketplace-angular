@@ -24,6 +24,10 @@
 
 .navigation-container {
 	grid-column: auto / span 5;
+
+	@media (max-width: $md) {
+		grid-column: auto / span 6;
+	}
 }
 
 .user-action-container {
@@ -32,4 +36,8 @@
 	justify-content: flex-end;
 	// padding-right: 1.5rem;
 	padding-top: 0.75rem;
+
+	@media (max-width: $md) {
+		grid-column: auto / span 3;
+	}
 }

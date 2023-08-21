@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { INavLink } from '../../../shared/interfaces/link.interface';
-import { DataService } from '../../services/data.service';
+import { INavLink } from '../../../../shared/interfaces/link.interface';
+import { DataService } from '../../../../web/services/data.service';
 
 @Component({
 	selector: 'app-navigation',

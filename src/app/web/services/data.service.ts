@@ -18,18 +18,22 @@ export class DataService {
 			{
 				label: 'Home',
 				routerLink: '/home',
+				icon: 'fa-solid fa-house',
 			},
 			{
 				label: 'Women',
 				routerLink: '/women',
+				icon: 'fa-solid fa-person-dress',
 			},
 			{
 				label: 'Men',
 				routerLink: '/men',
+				icon: 'fa-solid fa-person',
 			},
 			{
 				label: 'Children',
 				routerLink: '/children',
+				icon: 'fa-solid fa-child',
 			},
 		];
 	}
@@ -37,7 +41,6 @@ export class DataService {
 	getUserActionsLinks(): MenuItem[] {
 		return [
 			{
-				// label: 'cart',
 				icon: 'fa-solid fa-cart-shopping',
 			},
 		];

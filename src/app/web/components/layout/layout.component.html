@@ -1,7 +1,7 @@
 <div class="page-container">
-	<header class="layout-container">
+	<header class="layout-container" *ngIf="windowSize >= 768">
 		<div class="logo-container">
-			<app-logo></app-logo>
+			<app-logo [hasPaddingLeft]="true"></app-logo>
 		</div>
 
 		<div class="navigation-container">
@@ -9,7 +9,11 @@
 		</div>
 
 		<div class="user-action-container">
-			<app-header-user-action></app-header-user-action>
+			<app-header-user-action [showSeparator]="true"></app-header-user-action>
 		</div>
 	</header>
+
+	<div *ngIf="windowSize < 768">
+		<app-nav-mobile></app-nav-mobile>
+	</div>
 </div>
