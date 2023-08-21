@@ -1,0 +1,15 @@
+<div class="loading-box" *ngIf="loading">
+	<p-progressSpinner></p-progressSpinner>
+</div>
+
+<p-dataView
+	#dv
+	[value]="products"
+	[rows]="5"
+	[paginator]="true"
+	*ngIf="!loading"
+>
+	<ng-template let-product pTemplate="listItem">
+		<app-product-card-list [product]="product"></app-product-card-list>
+	</ng-template>
+</p-dataView>

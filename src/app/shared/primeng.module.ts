@@ -28,6 +28,7 @@ import { ChipModule } from 'primeng/chip';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MenubarModule } from 'primeng/menubar';
 import { DataViewModule } from 'primeng/dataview';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
 	exports: [
@@ -60,6 +61,7 @@ import { DataViewModule } from 'primeng/dataview';
 		RadioButtonModule,
 		MenubarModule,
 		DataViewModule,
+		CardModule,
 	],
 })
 export class PrimengModule {}

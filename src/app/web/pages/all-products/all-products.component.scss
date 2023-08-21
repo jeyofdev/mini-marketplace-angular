@@ -1,0 +1,12 @@
+.side {
+	grid-column: 1 / span 3;
+}
+
+.content-list {
+	grid-column: auto / span 9;
+	padding: 1rem 1rem;
+}
+
+.page-title {
+	font-weight: bold;
+}

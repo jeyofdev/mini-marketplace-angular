@@ -24,7 +24,9 @@ export class ButtonComponent implements OnInit {
 		| 'warning'
 		| 'danger'
 		| 'info'
-		| 'help';
+		| 'help'
+		| 'white'
+		| 'transparent';
 
 	styleClass!: string;
 
@@ -35,8 +37,6 @@ export class ButtonComponent implements OnInit {
 
 		if (this.color) {
 			this.styleClass += ` p-button-${this.color}`;
-		} else {
-			this.styleClass += ` p-button-transparent`;
 		}
 
 		if (this.outline) {
@@ -54,10 +54,5 @@ export class ButtonComponent implements OnInit {
 		if (this.size) {
 			this.styleClass += ` size-${this.size}`;
 		}
-
-		// 		this.styleClass =
-		// 			this.variant === 'icon'
-		// 				? `p-button-rounded p-button-${this.color} p-button-text rounded-icon`
-		// 				: `p-button-${this.variant} p-button-${this.color}`;
 	}
 }

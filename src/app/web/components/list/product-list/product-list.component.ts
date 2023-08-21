@@ -8,4 +8,5 @@ import { IProduct } from '../../../../shared/model/product.model';
 })
 export class ProductListComponent {
 	@Input() products!: IProduct[];
+	@Input() loading!: boolean;
 }

@@ -32,9 +32,19 @@
 	color: var(--primary-800);
 }
 
+:host ::ng-deep .p-button-white {
+	background-color: var(--primary-50);
+	color: var(--primary-800);
+}
+
 :host ::ng-deep .p-button-transparent:enabled:hover {
 	background-color: transparent;
 	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-button-white:enabled:hover {
+	background-color: var(--primary-800);
+	color: var(--primary-50);
 }
 
 :host ::ng-deep .p-button:disabled {

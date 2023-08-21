@@ -1,1 +1,34 @@
-<p>product-card-list works!</p>
+<div class="product-card-box">
+	<p-card>
+		<ng-template pTemplate="header">
+			<img class="product-thumbs" alt="Card" src="assets/img/auth/login.jpg" />
+			<app-button
+				shape="circle"
+				variant="rounded"
+				color="white"
+				icon="fa-regular fa-heart"
+				class="add-wish-list-btn"
+			></app-button>
+		</ng-template>
+
+		<ng-template pTemplate="body">
+			<div class="product-primary-content-box">
+				<h5 class="product-name">{{ product.brandName }}</h5>
+
+				<div class="badge-colors-box">
+					<ng-container *ngFor="let color of product.color">
+						<app-badge-color [color]="color" size="medium"></app-badge-color>
+					</ng-container>
+				</div>
+			</div>
+
+			<app-ship size="large" severity="primary">
+				<app-price
+					[value]="product.price"
+					[prefix]="true"
+					[currency]="currencyEnum.EUR"
+				></app-price
+			></app-ship>
+		</ng-template>
+	</p-card>
+</div>

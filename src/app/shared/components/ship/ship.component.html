@@ -1,5 +1,7 @@
 <span [class]="class">
-	<p>
+	<p *ngIf="label">
 		{{ label }}
 	</p>
+
+	<ng-content></ng-content>
 </span>
