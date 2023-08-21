@@ -1,0 +1,20 @@
+:host ::ng-deep .logo-box {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	&.pl {
+		padding-left: 1.5rem;
+	}
+}
+
+:host .icon {
+	font-size: 1rem;
+	color: var(--primary-800);
+}
+
+:host .title {
+	margin-bottom: 0;
+	font-size: 1.2rem;
+	font-weight: bold;
+}

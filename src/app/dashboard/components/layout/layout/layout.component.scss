@@ -32,24 +32,6 @@
 			gap: 2.5rem;
 			width: 100%;
 
-			.logo-box {
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-				padding-left: 1.5rem;
-
-				.icon {
-					font-size: 1rem;
-					color: var(--primary-800);
-				}
-
-				.logo {
-					margin-bottom: 0;
-					font-size: 1.2rem;
-					font-weight: bold;
-				}
-			}
-
 			.btn-box {
 				width: 100%;
 				padding-left: 1.5rem;

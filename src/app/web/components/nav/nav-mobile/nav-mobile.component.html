@@ -1,0 +1,20 @@
+<p-sidebar [(visible)]="sidebarVisible">
+	<div class="sidebar-content-top">
+		<div class="logo-container">
+			<app-logo></app-logo>
+		</div>
+
+		<div class="navigation-mobile-container">
+			<app-navigation-link-mobile></app-navigation-link-mobile>
+		</div>
+	</div>
+
+	<div class="sidebar-content-bottom">
+		<app-header-user-action
+			direction="column"
+			[isMobile]="true"
+		></app-header-user-action>
+	</div>
+</p-sidebar>
+
+<p-button (click)="sidebarVisible = true" icon="fa-solid fa-bars"></p-button>

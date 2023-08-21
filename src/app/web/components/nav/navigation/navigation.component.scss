@@ -1,0 +1,15 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0;
+}
+
+@media (min-width: 768px) {
+	ul {
+		flex-direction: row;
+	}
+}

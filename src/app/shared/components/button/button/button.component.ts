@@ -35,6 +35,8 @@ export class ButtonComponent implements OnInit {
 
 		if (this.color) {
 			this.styleClass += ` p-button-${this.color}`;
+		} else {
+			this.styleClass += ` p-button-transparent`;
 		}
 
 		if (this.outline) {

@@ -10,6 +10,10 @@ const routes: Routes = [
 			breadcrumb: 'Dashboard',
 		},
 	},
+	{
+		path: '',
+		loadChildren: () => import('./web/web.module').then(m => m.WebModule),
+	},
 ];
 
 @NgModule({
