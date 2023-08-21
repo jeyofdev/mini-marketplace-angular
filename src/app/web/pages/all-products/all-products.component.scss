@@ -13,12 +13,45 @@
 	font-weight: bold;
 }
 
-:host ::ng-deep .p-panel-content {
+:host ::ng-deep .sizes-box {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 
 	app-button {
 		width: calc(33.333333% - 0.5rem);
+	}
+}
+
+:host ::ng-deep .colors-box {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	.color-item {
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+		cursor: pointer;
+	}
+
+	.color-red {
+		background-color: var(--red-300);
+	}
+
+	.color-green {
+		background-color: var(--green-300);
+	}
+
+	.color-blue {
+		background-color: var(--blue-300);
+	}
+
+	.color-yellow {
+		background-color: var(--yellow-300);
+	}
+
+	.color-purple {
+		background-color: var(--purple-300);
 	}
 }

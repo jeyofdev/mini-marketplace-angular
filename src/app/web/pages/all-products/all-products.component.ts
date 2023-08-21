@@ -8,7 +8,10 @@ import {
 	getWebProductsSelector,
 } from '../../state/selectors/web-product.selectors';
 import { DataService } from '../../../shared/service/data.service';
-import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
+import {
+	IColorCheckbox,
+	ISelectItem,
+} from 'src/app/shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-all-products',
@@ -20,6 +23,7 @@ export class AllProductsComponent implements OnInit {
 	products!: IProduct[];
 	filteredProducts!: IProduct[];
 	sizes!: ISelectItem[];
+	colors!: IColorCheckbox[];
 	filters!: { sizes: string[] };
 
 	constructor(
@@ -29,6 +33,7 @@ export class AllProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.sizes = this.dataService.getAllSizes();
+		this.colors = this.dataService.getAllColors();
 		this.filters = {
 			sizes: [],
 		};
