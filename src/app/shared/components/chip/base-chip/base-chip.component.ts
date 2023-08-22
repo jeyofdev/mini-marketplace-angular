@@ -10,6 +10,7 @@ export class BaseChipComponent implements OnInit {
 	@Input() removable!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large';
 	@Input() color!: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+	@Input() outlined!: boolean;
 
 	styleClass!: string;
 
@@ -26,6 +27,10 @@ export class BaseChipComponent implements OnInit {
 
 		if (this.size) {
 			this.styleClass += ` p-chip-${this.size}`;
+		}
+
+		if (this.outlined) {
+			this.styleClass += ` p-chip-outlined`;
 		}
 	}
 }
