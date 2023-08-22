@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-ship',
-	templateUrl: './ship.component.html',
-	styleUrls: ['./ship.component.scss'],
+	selector: 'app-chip',
+	templateUrl: './chip.component.html',
+	styleUrls: ['./chip.component.scss'],
 })
-export class ShipComponent implements OnInit {
+export class ChipComponent implements OnInit {
 	@Input() label!: string | number;
 	@Input() size!: 'small' | 'large';
 	@Input() severity!: 'primary' | 'success' | 'info' | 'warning' | 'danger';

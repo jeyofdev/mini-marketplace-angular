@@ -23,11 +23,11 @@
 				</td>
 
 				<td *ngIf="col.field === 'status'">
-					<app-ship
+					<app-chip
 						[label]="data[col.field] ?? 'inactive'"
 						size="small"
 						[severity]="data[col.field] === 'active' ? 'info' : 'warning'"
-					></app-ship>
+					></app-chip>
 				</td>
 			</ng-container>
 

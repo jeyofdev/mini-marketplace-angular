@@ -1,0 +1,120 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-button {
+	min-width: 2.25rem;
+	border-radius: 10px;
+	padding: 0.5rem 0.5rem;
+	box-shadow: none;
+	border: 2px solid rgba($primary, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($primary, 0.1);
+	box-shadow: none;
+}
+
+:host ::ng-deep .p-button.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button .p-button-label  {
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-button.p-button-success.p-button-outlined {
+	border: 2px solid rgba($success, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-success.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-success.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-success.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($success, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-success.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-success.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button.p-button-success .p-button-label  {
+	color: var(--success-800);
+}
+
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined {
+	border: 2px solid rgba($warning, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($warning, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-warning.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button.p-button-warning .p-button-label  {
+	color: var(--warning-800);
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined {
+	border: 2px solid rgba($danger, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($danger, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button.p-button-danger .p-button-label  {
+	color: var(--danger-800);
+}
+
+:host ::ng-deep .p-button.p-button-info.p-button-outlined {
+	border: 2px solid rgba($info, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-info.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-info.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-info.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($info, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-info.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-info.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button.p-button-info .p-button-label  {
+	color: var(--info-800);
+}
+
+:host ::ng-deep .p-button.p-button-help.p-button-outlined {
+	border: 2px solid rgba($help, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-help.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-help.p-button-outlined:enabled:hover,
+:host ::ng-deep .p-button.p-button-help.p-button-outlined:enabled:focus {
+	border: 2px solid rgba($help, 0.1);
+}
+
+:host ::ng-deep .p-button.p-button-help.p-button-outlined:enabled:active,
+:host ::ng-deep .p-button.p-button-help.p-button-outlined:enabled:focus {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-button.p-button-help .p-button-label  {
+	color: var(--help-800);
+}

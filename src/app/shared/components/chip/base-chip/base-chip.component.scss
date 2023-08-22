@@ -1,0 +1,99 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-chip {
+	display: flex;
+	justify-content: center;
+}
+
+:host ::ng-deep .p-chip.p-chip-small {
+	padding: 0 0.5rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-small .p-chip-text {
+	margin: 0;
+}
+
+:host ::ng-deep .p-chip.p-chip-normal {
+	padding: 0 1rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-normal .p-chip-text {
+	margin: 0rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-large {
+	padding: 0 1rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-large .p-chip-text {
+	margin: 0.2rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-primary {
+	background-color: var(--primary-500);
+}
+
+:host ::ng-deep .p-chip.p-chip-success {
+	background-color: $success;
+	color: var(--green-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-warning {
+	background-color: $warning;
+	color: var(--yellow-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-info {
+	background-color: $info;
+	color: var(--blue-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-danger {
+	background-color: $danger;
+	color: var(--red-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-help {
+	background-color: $help;
+	color: var(--purple-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-primary.p-chip-outlined {
+	border: 1px solid var(--primary-500);
+	color: var(--primary-50);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip.p-chip-success.p-chip-outlined {
+	border: 1px solid $success;
+	color: var(--green-800);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip.p-chip-warning.p-chip-outlined {
+	border: 1px solid $warning;
+	color: var(--yellow-800);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip.p-chip-info.p-chip-outlined {
+	border: 1px solid $info;
+	color: var(--blue-800);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip.p-chip-danger.p-chip-outlined {
+	border: 1px solid $danger;
+	color: var(--red-800);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip.p-chip-help.p-chip-outlined {
+	border: 1px solid $help;
+	color: var(--purple-800);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip .pi-chip-remove-icon {
+	margin-left: 0.25rem;
+}

@@ -1,0 +1,48 @@
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+	selector: 'app-button-circle',
+	templateUrl: './button-circle.component.html',
+	styleUrls: ['./button-circle.component.scss'],
+})
+export class ButtonCircleComponent implements OnInit {
+	@Input() label!: string;
+	@Input() selected!: boolean;
+	@Input() size!: 'normal' | 'small' | 'large';
+	@Input() color!:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'warning'
+		| 'danger'
+		| 'info'
+		| 'help';
+	styleClass!: string;
+	circleClass!: string;
+
+	ngOnInit(): void {
+		this.setStyleClass();
+		this.setCircleClass();
+	}
+
+	onClick(): void {
+		this.selected = !this.selected;
+		this.setCircleClass();
+	}
+
+	private setStyleClass(): void {
+		this.styleClass = 'p-button-rounded';
+
+		if (this.color) {
+			this.styleClass += ` p-button-${this.color}`;
+		}
+	}
+
+	private setCircleClass(): void {
+		this.circleClass = 'circle';
+
+		if (this.selected && this.color) {
+			this.circleClass += ` circle-${this.color}`;
+		}
+	}
+}

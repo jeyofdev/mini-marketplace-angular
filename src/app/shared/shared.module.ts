@@ -23,11 +23,16 @@ import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confi
 import { BadgeColorComponent } from './components/badge-color/badge-color.component';
 import { PriceComponent } from './components/price/price.component';
 import { TagComponent } from './components/tag/tag.component';
-import { ShipComponent } from './components/ship/ship.component';
 import { RadioComponent } from './components/input/radio/radio.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 import { PanelComponent } from './components/panel/panel.component';
+import { ButtonRoundedComponent } from './components/button/button-rounded/button-rounded.component';
+import { ButtonCircleComponent } from './components/button/button-circle/button-circle.component';
+import { ChipComponent } from './components/chip/chip/chip.component';
+import { BaseChipComponent } from './components/chip/base-chip/base-chip.component';
+import { ButtonCircularRadiusComponent } from './components/button/button-circular-radius/button-circular-radius.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
 	declarations: [
@@ -51,10 +56,15 @@ import { PanelComponent } from './components/panel/panel.component';
 		BadgeColorComponent,
 		PriceComponent,
 		TagComponent,
-		ShipComponent,
+		ChipComponent,
 		RadioComponent,
 		LogoComponent,
 		PanelComponent,
+		ButtonRoundedComponent,
+		ButtonCircleComponent,
+		BaseChipComponent,
+		ButtonCircularRadiusComponent,
+		RatingComponent,
 	],
 	imports: [
 		CommonModule,
@@ -88,11 +98,16 @@ import { PanelComponent } from './components/panel/panel.component';
 		BadgeColorComponent,
 		PriceComponent,
 		TagComponent,
-		ShipComponent,
+		ChipComponent,
 		RadioComponent,
 		LogoComponent,
 		ConvertToStringPipe,
 		PanelComponent,
+		ButtonRoundedComponent,
+		ButtonCircleComponent,
+		BaseChipComponent,
+		ButtonCircularRadiusComponent,
+		RatingComponent,
 	],
 })
 export class SharedModule {}
