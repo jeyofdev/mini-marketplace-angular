@@ -13,3 +13,8 @@ export const getWebProductsSelector = createSelector(
 	SELECT_WEB_FEATURE,
 	(state: IWebState) => state.products.data,
 );
+
+export const getWebCurrentProductSelector = createSelector(
+	SELECT_WEB_FEATURE,
+	(state: IWebState) => state.products.current,
+);

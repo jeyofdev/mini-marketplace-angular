@@ -6,6 +6,7 @@ export const webProductFeatureKey = 'products';
 
 export interface IWebProductState {
 	data: IProduct[];
+	current: IProduct | null;
 	loading: boolean;
 }
 
@@ -15,6 +16,7 @@ export interface State {
 
 export const initialProductState: IWebProductState = {
 	data: [],
+	current: null,
 	loading: false,
 };
 
@@ -32,6 +34,21 @@ export const productReducer = createReducer(
 		return {
 			...state,
 			data: actions.payload.data,
+			loading: false,
+		};
+	}),
+
+	on(WebActions.products.loadProduct, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
+
+	on(WebActions.products.loadProductSuccess, (state, actions) => {
+		return {
+			...state,
+			current: actions.payload.data,
 			loading: false,
 		};
 	}),

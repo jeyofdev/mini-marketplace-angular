@@ -1,6 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../shared/service/data.service';
-import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
+import { Store, select } from '@ngrx/store';
+import { WebActions } from '../../state/actions/web-index.actions';
+import { IProduct } from '../../../shared/model/product.model';
+import { map } from 'rxjs';
+import { getWebCurrentProductSelector } from '../../state/selectors/web-product.selectors';
 
 @Component({
 	selector: 'app-product',
@@ -8,17 +12,27 @@ import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
 	styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-	sizes!: ISelectItem[];
+	currentProduct!: IProduct;
 
-	public receivedRating!: string;
-
-	constructor(private dataService: DataService) {}
+	constructor(
+		private activatedRoute: ActivatedRoute,
+		private store: Store,
+	) {}
 
 	ngOnInit(): void {
-		this.sizes = this.dataService.getAllSizes();
-	}
+		const { productId } = this.activatedRoute.snapshot.params;
 
-	public receiveRatingClick(message: string): void {
-		this.receivedRating = message;
+		this.store.dispatch(
+			WebActions.products.loadProduct({ payload: { id: productId } }),
+		);
+
+		this.store
+			.pipe(
+				select(getWebCurrentProductSelector),
+				map(product => {
+					this.currentProduct = product as IProduct;
+				}),
+			)
+			.subscribe();
 	}
 }
