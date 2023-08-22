@@ -1,1 +1,7 @@
-<app-layout> </app-layout>
+<app-layout>
+	<app-loader [loading]="loading$ | async"></app-loader>
+
+	<div class="image-box"></div>
+
+	<div class="content-primary"></div>
+</app-layout>

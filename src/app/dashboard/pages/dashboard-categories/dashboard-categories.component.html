@@ -12,11 +12,7 @@
 			>
 		</app-header>
 
-		<div class="loading-box">
-			<p-progressSpinner
-				*ngIf="(loading$ | async) === true"
-			></p-progressSpinner>
-		</div>
+		<app-loader [loading]="loading$ | async"></app-loader>
 
 		<div class="list-container" *ngIf="(loading$ | async) === false">
 			<div class="no-result-box" *ngIf="categories.length <= 0">

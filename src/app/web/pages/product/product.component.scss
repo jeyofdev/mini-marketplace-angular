@@ -1,3 +1,12 @@
-:host ::ng-deep div {
+:host ::ng-deep app-loader {
 	grid-column: 1 / span 12;
+}
+
+:host ::ng-deep .image-box {
+	grid-column: 1 / span 5;
+	padding-left: 1rem;
+}
+
+:host ::ng-deep .content-primary {
+	grid-column: auto / span 7;
 }

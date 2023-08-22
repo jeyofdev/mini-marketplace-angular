@@ -3,8 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { WebActions } from '../../state/actions/web-index.actions';
 import { IProduct } from '../../../shared/model/product.model';
-import { map } from 'rxjs';
-import { getWebCurrentProductSelector } from '../../state/selectors/web-product.selectors';
+import { Observable, map } from 'rxjs';
+import {
+	getWebCurrentProductLoadingSelector,
+	getWebCurrentProductSelector,
+} from '../../state/selectors/web-product.selectors';
 
 @Component({
 	selector: 'app-product',
@@ -13,6 +16,7 @@ import { getWebCurrentProductSelector } from '../../state/selectors/web-product.
 })
 export class ProductComponent implements OnInit {
 	currentProduct!: IProduct;
+	loading$!: Observable<boolean>;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -24,6 +28,9 @@ export class ProductComponent implements OnInit {
 
 		this.store.dispatch(
 			WebActions.products.loadProduct({ payload: { id: productId } }),
+		);
+		this.loading$ = this.store.pipe(
+			select(getWebCurrentProductLoadingSelector),
 		);
 
 		this.store
