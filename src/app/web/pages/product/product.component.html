@@ -1,1 +1,9 @@
-<app-layout> </app-layout>
+<app-layout>
+	<ng-container *ngFor="let size of sizes">
+		<app-button-rounded
+			[label]="size.label"
+			color="help"
+			[outlined]="true"
+		></app-button-rounded>
+	</ng-container>
+</app-layout>

@@ -28,6 +28,7 @@ import { RadioComponent } from './components/input/radio/radio.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 import { PanelComponent } from './components/panel/panel.component';
+import { ButtonRoundedComponent } from './components/button/button-rounded/button-rounded.component';
 
 @NgModule({
 	declarations: [
@@ -55,6 +56,7 @@ import { PanelComponent } from './components/panel/panel.component';
 		RadioComponent,
 		LogoComponent,
 		PanelComponent,
+		ButtonRoundedComponent,
 	],
 	imports: [
 		CommonModule,
@@ -93,6 +95,7 @@ import { PanelComponent } from './components/panel/panel.component';
 		LogoComponent,
 		ConvertToStringPipe,
 		PanelComponent,
+		ButtonRoundedComponent,
 	],
 })
 export class SharedModule {}
