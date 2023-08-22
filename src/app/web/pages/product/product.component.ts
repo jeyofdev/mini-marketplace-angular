@@ -8,6 +8,9 @@ import {
 	getWebCurrentProductLoadingSelector,
 	getWebCurrentProductSelector,
 } from '../../state/selectors/web-product.selectors';
+import { IImage } from '../../../shared/model/image.model';
+import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
+import { BreakpointService } from '../../../shared/service/breakpoint.service';
 
 @Component({
 	selector: 'app-product',
@@ -17,10 +20,17 @@ import {
 export class ProductComponent implements OnInit {
 	currentProduct!: IProduct;
 	loading$!: Observable<boolean>;
+	image!: IImage;
+
+	windowSize!: number;
+	breakpoint!: BreakpointEnum;
+	currentBreakpoint!: string;
+	containerMaxHeight!: string;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private store: Store,
+		private breakpointService: BreakpointService,
 	) {}
 
 	ngOnInit(): void {
@@ -41,5 +51,28 @@ export class ProductComponent implements OnInit {
 				}),
 			)
 			.subscribe();
+
+		this.containerMaxHeight = '740px';
+		this.initImage();
+	}
+
+	private initImage(): void {
+		this.image = {
+			src: 'assets/img/auth/login.jpg',
+			alt: '',
+			position: 'top',
+		};
+	}
+
+	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
+		return this.breakpointService.getMinValueByBreakpoint(Breakpoint);
+	}
+
+	getMaxHeightContainer(): string {
+		if (this.windowSize >= this.minValueByBreakpoint('md')) {
+			return this.containerMaxHeight;
+		}
+
+		return 'none';
 	}
 }

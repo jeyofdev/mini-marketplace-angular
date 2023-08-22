@@ -1,7 +1,13 @@
 <app-layout>
 	<app-loader [loading]="loading$ | async"></app-loader>
 
-	<div class="image-box"></div>
+	<div class="image-box" [style.maxHeight]="getMaxHeightContainer()">
+		<app-image-full-height
+			[src]="image.src"
+			[alt]="image.alt"
+			[position]="image.position"
+		></app-image-full-height>
+	</div>
 
 	<div class="content-primary"></div>
 </app-layout>
