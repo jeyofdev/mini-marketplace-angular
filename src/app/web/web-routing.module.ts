@@ -5,6 +5,7 @@ import { ChildrenComponent } from './pages/children/children.component';
 import { MenComponent } from './pages/men/men.component';
 import { WomenComponent } from './pages/women/women.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
+import { ProductComponent } from './pages/product/product.component';
 
 const routes: Routes = [
 	{
@@ -31,6 +32,10 @@ const routes: Routes = [
 	{
 		path: 'products',
 		component: AllProductsComponent,
+	},
+	{
+		path: 'products/:productId',
+		component: ProductComponent,
 	},
 ];
 
