@@ -29,6 +29,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 import { PanelComponent } from './components/panel/panel.component';
 import { ButtonRoundedComponent } from './components/button/button-rounded/button-rounded.component';
+import { ButtonCircleComponent } from './components/button/button-circle/button-circle.component';
 
 @NgModule({
 	declarations: [
@@ -57,6 +58,7 @@ import { ButtonRoundedComponent } from './components/button/button-rounded/butto
 		LogoComponent,
 		PanelComponent,
 		ButtonRoundedComponent,
+		ButtonCircleComponent,
 	],
 	imports: [
 		CommonModule,
@@ -96,6 +98,7 @@ import { ButtonRoundedComponent } from './components/button/button-rounded/butto
 		ConvertToStringPipe,
 		PanelComponent,
 		ButtonRoundedComponent,
+		ButtonCircleComponent,
 	],
 })
 export class SharedModule {}

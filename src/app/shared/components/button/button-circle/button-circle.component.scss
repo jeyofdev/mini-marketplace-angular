@@ -1,0 +1,54 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .btn-circle-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+:host ::ng-deep p {
+	text-align: center;
+}
+
+:host ::ng-deep .circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.15rem;
+	border-radius: 100%;
+	border: 2.5px solid transparent;
+	width: 2.4rem;
+	height: 2.4rem;
+}
+
+:host ::ng-deep .circle.circle-primary {
+	border: 2.5px solid rgba($primary, 0.4);
+}
+
+:host ::ng-deep .circle.circle-success {
+	border: 2.5px solid rgba($success, 0.4);
+}
+
+:host ::ng-deep .circle.circle-warning {
+	border: 2.5px solid rgba($warning, 0.4);
+}
+
+:host ::ng-deep .circle.circle-info {
+	border: 2.5px solid rgba($info, 0.4);
+}
+
+:host ::ng-deep .circle.circle-danger {
+	border: 2.5px solid rgba($danger, 0.4);
+}
+
+:host ::ng-deep .circle.circle-help {
+	border: 2.5px solid rgba($help, 0.4);
+}
+
+:host ::ng-deep .p-button {
+	min-width: 1.85rem;
+	min-height: 1.85rem;
+	border-radius: 100%;
+	padding: 0.5rem 0.5rem;
+}
