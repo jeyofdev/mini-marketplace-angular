@@ -1,0 +1,60 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+.rating-container {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.icons-box {
+	height: 20px;
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+}
+
+.icons-wrapper {
+	width: 80px;
+	cursor: pointer;
+
+	&.icons-fill-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+}
+
+:host ::ng-deep .icon {
+	font-size: 1rem;
+}
+
+:host ::ng-deep .icon-empty-primary,
+:host ::ng-deep .icon-fill-primary {
+	color: var(--primary-500);
+}
+
+:host ::ng-deep .icon-empty-success,
+:host ::ng-deep .icon-fill-success {
+	color: $success;
+}
+
+:host ::ng-deep .icon-empty-warning,
+:host ::ng-deep .icon-fill-warning {
+	color: $warning;
+}
+
+:host ::ng-deep .icon-empty-info,
+:host ::ng-deep .icon-fill-info {
+	color: $info;
+}
+
+:host ::ng-deep .icon-empty-danger,
+:host ::ng-deep .icon-fill-danger {
+	color: $danger;
+}
+
+:host ::ng-deep .icon-empty-help,
+:host ::ng-deep .icon-fill-help {
+	color: $help;
+}

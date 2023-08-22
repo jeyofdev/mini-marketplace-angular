@@ -1,19 +1,34 @@
 <app-layout>
-	<ng-container *ngFor="let size of sizes">
-		<app-base-chip
-			size="small"
+	<div>
+		<app-rating
+			[value]="2.5"
+			iconEmpty="pi pi-star"
+			iconFill="pi pi-star-fill"
+			color="warning"
+			size="normal"
+			(starRatingClicked)="receiveRatingClick($event)"
+		></app-rating>
+	</div>
+
+	<div>
+		<app-rating
+			[value]="3"
+			iconEmpty="pi pi-star"
+			iconFill="pi pi-star-fill"
 			color="danger"
-			[label]="size.label"
-			[outlined]="true"
-		></app-base-chip>
-	</ng-container>
-	<ng-container *ngFor="let size of sizes">
-		<app-button-circular-radius
-			[label]="size.label"
-			color="danger"
-			[outlined]="false"
-			icon="pi pi-check"
+			size="large"
+			(starRatingClicked)="receiveRatingClick($event)"
+		></app-rating>
+	</div>
+
+	<div>
+		<app-rating
+			[value]="4.5"
+			iconEmpty="pi pi-star"
+			iconFill="pi pi-star-fill"
+			color="primary"
 			size="small"
-		></app-button-circular-radius>
-	</ng-container>
+			(starRatingClicked)="receiveRatingClick($event)"
+		></app-rating>
+	</div>
 </app-layout>

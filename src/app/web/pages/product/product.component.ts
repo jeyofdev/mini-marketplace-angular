@@ -10,9 +10,15 @@ import { ISelectItem } from 'src/app/shared/interfaces/input.interface';
 export class ProductComponent implements OnInit {
 	sizes!: ISelectItem[];
 
+	public receivedRating!: string;
+
 	constructor(private dataService: DataService) {}
 
 	ngOnInit(): void {
 		this.sizes = this.dataService.getAllSizes();
+	}
+
+	public receiveRatingClick(message: string): void {
+		this.receivedRating = message;
 	}
 }
