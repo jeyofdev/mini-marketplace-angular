@@ -1,5 +1,10 @@
 <app-layout>
 	<ng-container *ngFor="let size of sizes">
-		<app-button-circle [label]="size.label" color="help"></app-button-circle>
+		<app-base-chip
+			[removable]="true"
+			size="large"
+			color="danger"
+			[label]="size.label"
+		></app-base-chip>
 	</ng-container>
 </app-layout>

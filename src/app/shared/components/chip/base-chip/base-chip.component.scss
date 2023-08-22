@@ -1,0 +1,58 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-chip.p-chip-small {
+	padding: 0 0.5rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-small .p-chip-text {
+	margin: 0;
+}
+
+:host ::ng-deep .p-chip.p-chip-normal {
+	padding: 0 1rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-normal .p-chip-text {
+	margin: 0rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-large {
+	padding: 0 1rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-large .p-chip-text {
+	margin: 0.25rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-primary {
+	background-color: var(--primary-500);
+}
+
+:host ::ng-deep .p-chip.p-chip-success {
+	background-color: $success;
+	color: var(--green-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-warning {
+	background-color: $warning;
+	color: var(--yellow-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-info {
+	background-color: $info;
+	color: var(--blue-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-danger {
+	background-color: $danger;
+	color: var(--red-50);
+}
+
+:host ::ng-deep .p-chip.p-chip-help {
+	background-color: $help;
+	color: var(--purple-50);
+}
+
+:host ::ng-deep .p-chip .pi-chip-remove-icon {
+	margin-left: 0.25rem;
+}
