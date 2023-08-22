@@ -31,6 +31,7 @@ import { ButtonRoundedComponent } from './components/button/button-rounded/butto
 import { ButtonCircleComponent } from './components/button/button-circle/button-circle.component';
 import { ChipComponent } from './components/chip/chip/chip.component';
 import { BaseChipComponent } from './components/chip/base-chip/base-chip.component';
+import { ButtonCircularRadiusComponent } from './components/button/button-circular-radius/button-circular-radius.component';
 
 @NgModule({
 	declarations: [
@@ -61,6 +62,7 @@ import { BaseChipComponent } from './components/chip/base-chip/base-chip.compone
 		ButtonRoundedComponent,
 		ButtonCircleComponent,
 		BaseChipComponent,
+		ButtonCircularRadiusComponent,
 	],
 	imports: [
 		CommonModule,
@@ -102,6 +104,7 @@ import { BaseChipComponent } from './components/chip/base-chip/base-chip.compone
 		ButtonRoundedComponent,
 		ButtonCircleComponent,
 		BaseChipComponent,
+		ButtonCircularRadiusComponent,
 	],
 })
 export class SharedModule {}

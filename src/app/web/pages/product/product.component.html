@@ -1,10 +1,11 @@
 <app-layout>
 	<ng-container *ngFor="let size of sizes">
-		<app-base-chip
-			[removable]="true"
-			size="large"
-			color="danger"
+		<app-button-circular-radius
 			[label]="size.label"
-		></app-base-chip>
+			color="danger"
+			[outlined]="false"
+			icon="pi pi-check"
+			size="large"
+		></app-button-circular-radius>
 	</ng-container>
 </app-layout>
