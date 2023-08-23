@@ -1,0 +1,183 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .radio-box {
+	position: relative;
+}
+
+:host ::ng-deep .p-element {
+	min-width: 2.25rem;
+	min-height: 2.25rem;
+	border-radius: 10px;
+}
+
+:host ::ng-deep p-radiobutton {
+	justify-content: center;
+}
+
+:host ::ng-deep .p-radiobutton {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0 !important;
+	height: 0 !important;
+	box-shadow: none !important;
+}
+
+:host ::ng-deep .p-radiobutton-label {
+	margin-left: 0;
+	z-index: 100;
+	cursor: pointer;
+
+	&.p-radiobutton-label-active {
+		color: var(--primary-50);
+	}
+}
+
+:host ::ng-deep .p-radiobutton .p-radiobutton-box {
+	min-width: 2.25rem;
+	min-height: 2.25rem;
+	border-radius: 10px;
+	padding: 0.25rem 0.25rem;
+	box-shadow: none;
+	border: 2px solid rgba($primary, 0.1);
+	cursor: pointer;
+}
+
+:host ::ng-deep .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled),
+:host
+	::ng-deep
+	.p-radiobutton
+	.p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+	background-color: $primary;
+}
+
+:host
+	::ng-deep
+	.p-radiobutton
+	.p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
+	border-color: rgba($primary, 0.1);
+}
+
+:host ::ng-deep .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-radiobutton.p-radiobutton-danger .p-radiobutton-box {
+	border-color: rgba($danger, 0.1);
+
+	&.p-highlight:not(.p-disabled):not(.p-highlight):hover {
+		border-color: rgba($danger, 0.1);
+	}
+}
+
+:host
+	::ng-deep
+	.p-radiobutton.p-radiobutton-danger
+	.p-radiobutton-box.p-highlight:not(.p-disabled) {
+	background-color: $danger;
+	border-color: rgba($danger, 1);
+
+	&:hover {
+		background-color: $danger;
+	}
+}
+
+:host ::ng-deep .p-radiobutton.p-radiobutton-success .p-radiobutton-box {
+	border-color: rgba($success, 0.1);
+
+	&.p-highlight:not(.p-disabled):not(.p-highlight):hover {
+		border-color: rgba($success, 0.1);
+	}
+}
+
+:host
+	::ng-deep
+	.p-radiobutton.p-radiobutton-success
+	.p-radiobutton-box.p-highlight:not(.p-disabled) {
+	background-color: $success;
+	border-color: rgba($success, 1);
+
+	&:hover {
+		background-color: $success;
+	}
+}
+
+:host ::ng-deep .p-radiobutton.p-radiobutton-info .p-radiobutton-box {
+	border-color: rgba($info, 0.1);
+
+	&.p-highlight:not(.p-disabled):not(.p-highlight):hover {
+		border-color: rgba($info, 0.1);
+	}
+}
+
+:host
+	::ng-deep
+	.p-radiobutton.p-radiobutton-info
+	.p-radiobutton-box.p-highlight:not(.p-disabled) {
+	background-color: $info;
+	border-color: rgba($info, 1);
+
+	&:hover {
+		background-color: $info;
+	}
+}
+:host ::ng-deep .p-radiobutton.p-radiobutton-warning .p-radiobutton-box {
+	border-color: rgba($warning, 0.1);
+
+	&.p-highlight:not(.p-disabled):not(.p-highlight):hover {
+		border-color: rgba($warning, 0.1);
+	}
+}
+
+:host
+	::ng-deep
+	.p-radiobutton.p-radiobutton-warning
+	.p-radiobutton-box.p-highlight:not(.p-disabled) {
+	background-color: $warning;
+	border-color: rgba($warning, 1);
+
+	&:hover {
+		background-color: $warning;
+	}
+}
+:host ::ng-deep .p-radiobutton.p-radiobutton-help .p-radiobutton-box {
+	border-color: rgba($help, 0.1);
+
+	&.p-highlight:not(.p-disabled):not(.p-highlight):hover {
+		border-color: rgba($help, 0.1);
+	}
+}
+
+:host
+	::ng-deep
+	.p-radiobutton.p-radiobutton-help
+	.p-radiobutton-box.p-highlight:not(.p-disabled) {
+	background-color: $help;
+	border-color: rgba($help, 1);
+
+	&:hover {
+		background-color: $help;
+	}
+}
+
+// :host ::ng-deep .p-button-danger.p-radiobutton-checked .p-radiobutton-box,
+// :host ::ng-deep .p-button-danger.p-radiobutton-checked .p-radiobutton-box:hover,
+// :host
+// 	::ng-deep
+// 	.p-button-danger.p-radiobutton-checked
+// 	.p-radiobutton-box:focus {
+// 	border-color: rgba($danger, 1) !important;
+// }
+
+// :host ::ng-deep .p-button-danger.p-radiobutton-checked .p-radiobutton-box,
+// :host ::ng-deep .p-button-danger.p-radiobutton-checked .p-radiobutton-box:hover,
+// :host
+// 	::ng-deep
+// 	.p-button-danger.p-radiobutton-checked
+// 	.p-radiobutton-box:focus
+// 	:host
+// 	::ng-deep
+// 	.p-button-danger.p-button-bg-danger
+// 	.p-radiobutton-box {
+// 	background-color: $danger;
+// }

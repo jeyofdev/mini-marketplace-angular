@@ -66,13 +66,13 @@
 
 				<div class="radio-box">
 					<ng-container *ngFor="let item of status">
-						<app-radio
+						<app-base-radio
 							label="Status"
 							name="status"
 							[item]="item"
 							formControlName="status"
 							[parentForm]="mainForm"
-						></app-radio>
+						></app-base-radio>
 					</ng-container>
 				</div>
 			</div>

@@ -1,28 +1,36 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { IRadioButtonItem } from '../../../interfaces/input.interface';
-import { getFormControl } from '../../../utils/form.utils';
+import { IRadioButtonItem } from '../../../../interfaces/input.interface';
+import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
-	selector: 'app-radio',
-	templateUrl: './radio.component.html',
-	styleUrls: ['./radio.component.scss'],
+	selector: 'app-square-radio',
+	templateUrl: './square-radio-radio.component.html',
+	styleUrls: ['./square-radio-radio.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => RadioComponent),
+			useExisting: forwardRef(() => SquareRadioComponent),
 			multi: true,
 		},
 	],
 })
-export class RadioComponent implements ControlValueAccessor {
+export class SquareRadioComponent implements OnInit, ControlValueAccessor {
 	@Input() item!: IRadioButtonItem;
 	@Input() name!: string;
+	@Input() color!:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'warning'
+		| 'danger'
+		| 'info'
+		| 'help';
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
@@ -30,8 +38,14 @@ export class RadioComponent implements ControlValueAccessor {
 	value!: string;
 	disabled!: boolean;
 
+	styleClass!: string;
+
 	onChanged!: (value: string) => void;
 	onTouched!: () => void;
+
+	ngOnInit(): void {
+		this.setStyleClass();
+	}
 
 	selectionChanged(event: RadioButtonClickEvent) {
 		this.onChanged(event.value);
@@ -60,5 +74,17 @@ export class RadioComponent implements ControlValueAccessor {
 
 	get formControl() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
+	}
+
+	private setStyleClass(): void {
+		this.styleClass = '';
+
+		if (this.color) {
+			this.styleClass += `p-radiobutton-${this.color} `;
+		}
+
+		if (this.value === this.item.key) {
+			this.styleClass += `p-radiobutton-bg-${this.color}`;
+		}
 	}
 }

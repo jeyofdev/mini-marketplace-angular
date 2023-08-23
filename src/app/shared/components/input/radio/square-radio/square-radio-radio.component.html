@@ -1,0 +1,11 @@
+<div class="radio-box">
+	<p-radioButton
+		label="mr"
+		[inputId]="item.key"
+		[value]="item.key"
+		[disabled]="disabled"
+		(onClick)="selectionChanged($event)"
+		(blur)="onTouched()"
+		[styleClass]="styleClass"
+	></p-radioButton>
+</div>

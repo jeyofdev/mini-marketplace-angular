@@ -23,7 +23,6 @@ import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confi
 import { BadgeColorComponent } from './components/badge-color/badge-color.component';
 import { PriceComponent } from './components/price/price.component';
 import { TagComponent } from './components/tag/tag.component';
-import { RadioComponent } from './components/input/radio/radio.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ConvertToStringPipe } from './pipe/convert-to-string.pipe';
 import { PanelComponent } from './components/panel/panel.component';
@@ -38,6 +37,8 @@ import { ChipCircleComponent } from './components/chip/chip-circle/chip-circle.c
 import { OptionComponent } from './components/option/option.component';
 import { SelectMultipleComponent } from './components/input/select-multiple/select-multiple.component';
 import { CheckboxColorBorderComponent } from './components/input/checkbox/checkbox-color-border/checkbox-color-border.component';
+import { BaseRadioComponent } from './components/input/radio/base-radio/base-radio.component';
+import { SquareRadioComponent } from './components/input/radio/square-radio/square-radio-radio.component';
 
 @NgModule({
 	declarations: [
@@ -63,7 +64,7 @@ import { CheckboxColorBorderComponent } from './components/input/checkbox/checkb
 		PriceComponent,
 		TagComponent,
 		ChipComponent,
-		RadioComponent,
+		BaseRadioComponent,
 		LogoComponent,
 		PanelComponent,
 		ButtonRoundedComponent,
@@ -75,6 +76,7 @@ import { CheckboxColorBorderComponent } from './components/input/checkbox/checkb
 		LoaderComponent,
 		SelectMultipleComponent,
 		OptionComponent,
+		SquareRadioComponent,
 	],
 	imports: [
 		CommonModule,
@@ -110,7 +112,7 @@ import { CheckboxColorBorderComponent } from './components/input/checkbox/checkb
 		PriceComponent,
 		TagComponent,
 		ChipComponent,
-		RadioComponent,
+		BaseRadioComponent,
 		LogoComponent,
 		ConvertToStringPipe,
 		PanelComponent,
@@ -123,6 +125,7 @@ import { CheckboxColorBorderComponent } from './components/input/checkbox/checkb
 		ChipCircleComponent,
 		OptionComponent,
 		SelectMultipleComponent,
+		SquareRadioComponent,
 	],
 })
 export class SharedModule {}
