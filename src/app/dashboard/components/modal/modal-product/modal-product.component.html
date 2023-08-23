@@ -97,13 +97,22 @@
 						<label>Available colors</label>
 						<div class="colors-box">
 							<ng-container *ngFor="let color of colors">
-								<app-checkbox-color
+								<!-- <app-checkbox-color
 									[name]="color.name"
 									[color]="color"
 									[formControlName]="color.name"
 									groupName="colorsForm"
 									[parentForm]="mainForm"
-								></app-checkbox-color>
+								></app-checkbox-color> -->
+
+								<app-checkbox-color-border
+									[name]="color.name"
+									[color]="color.severity"
+									[formControlName]="color.name"
+									groupName="colorsForm"
+									[parentForm]="mainForm"
+									[hasBorder]="true"
+								></app-checkbox-color-border>
 							</ng-container>
 						</div>
 					</div>

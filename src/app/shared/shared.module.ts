@@ -37,6 +37,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ChipCircleComponent } from './components/chip/chip-circle/chip-circle.component';
 import { OptionComponent } from './components/option/option.component';
 import { SelectMultipleComponent } from './components/input/select-multiple/select-multiple.component';
+import { CheckboxColorBorderComponent } from './components/input/checkbox/checkbox-color-border/checkbox-color-border.component';
 
 @NgModule({
 	declarations: [
@@ -52,6 +53,7 @@ import { SelectMultipleComponent } from './components/input/select-multiple/sele
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
+		CheckboxColorBorderComponent,
 		ErrorFieldComponent,
 		NumberFieldComponent,
 		PasswordFieldComponent,
@@ -97,6 +99,7 @@ import { SelectMultipleComponent } from './components/input/select-multiple/sele
 		SelectComponent,
 		SliderWithValueComponent,
 		CheckboxColorComponent,
+		CheckboxColorBorderComponent,
 		ButtonComponent,
 		ErrorFieldComponent,
 		NumberFieldComponent,
