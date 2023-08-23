@@ -18,6 +18,6 @@ label {
 	background-color: #fff;
 }
 
-.p-inputtext.ng-dirty.ng-invalid {
-	color: $dangerColor;
+:host ::ng-deep .p-inputtext.ng-dirty.ng-invalid {
+	color: $danger;
 }

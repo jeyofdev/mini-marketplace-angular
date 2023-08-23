@@ -1,0 +1,41 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+label {
+	margin-bottom: 0.2rem;
+}
+
+:host ::ng-deep .p-multiselect {
+	width: 100%;
+}
+
+:host
+	::ng-deep
+	.p-multiselect-panel
+	.p-multiselect-items
+	.p-multiselect-item
+	.p-checkbox {
+	display: none;
+}
+
+:host
+	::ng-deep
+	.p-inputwrapper-filled
+	.p-multiselect.p-multiselect-chip
+	.p-multiselect-label {
+	display: flex;
+	gap: 0rem 0.25rem;
+}
+
+:host ::ng-deep .p-multiselect .p-multiselect-trigger {
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .ng-invalid .p-multiselect-trigger {
+	color: $danger;
+}

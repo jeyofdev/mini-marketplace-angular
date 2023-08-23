@@ -36,6 +36,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ChipCircleComponent } from './components/chip/chip-circle/chip-circle.component';
 import { OptionComponent } from './components/option/option.component';
+import { SelectMultipleComponent } from './components/input/select-multiple/select-multiple.component';
 
 @NgModule({
 	declarations: [
@@ -70,6 +71,7 @@ import { OptionComponent } from './components/option/option.component';
 		RatingComponent,
 		ChipCircleComponent,
 		LoaderComponent,
+		SelectMultipleComponent,
 		OptionComponent,
 	],
 	imports: [
@@ -117,6 +119,7 @@ import { OptionComponent } from './components/option/option.component';
 		LoaderComponent,
 		ChipCircleComponent,
 		OptionComponent,
+		SelectMultipleComponent,
 	],
 })
 export class SharedModule {}

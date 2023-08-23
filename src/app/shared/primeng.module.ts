@@ -30,6 +30,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
 	exports: [
@@ -64,6 +65,7 @@ import { PanelModule } from 'primeng/panel';
 		DataViewModule,
 		CardModule,
 		PanelModule,
+		MultiSelectModule,
 	],
 })
 export class PrimengModule {}

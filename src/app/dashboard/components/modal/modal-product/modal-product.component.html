@@ -68,7 +68,7 @@
 
 				<div [formGroup]="detailsForm">
 					<div class="form-row">
-						<app-select
+						<app-select-multiple
 							[items]="categories"
 							label="Category *"
 							name="category"
@@ -77,11 +77,11 @@
 							formControlName="category"
 							[parentForm]="mainForm"
 							[validationMessages]="inputsValidationMessages.category"
-						></app-select>
+						></app-select-multiple>
 					</div>
 
 					<div class="form-row">
-						<app-select
+						<app-select-multiple
 							[items]="sizes"
 							label="Size *"
 							name="size"
@@ -90,7 +90,7 @@
 							formControlName="size"
 							[parentForm]="mainForm"
 							[validationMessages]="inputsValidationMessages.sizes"
-						></app-select>
+						></app-select-multiple>
 					</div>
 
 					<div class="form-row row-checkbox" [formGroup]="colorsForm">
