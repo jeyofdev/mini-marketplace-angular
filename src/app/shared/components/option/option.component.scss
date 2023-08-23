@@ -1,0 +1,16 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .option {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+
+	.option-text {
+		font-weight: normal;
+	}
+}
+
+:host ::ng-deep .p-chip {
+	background-color: lighten($primary, 48);
+}

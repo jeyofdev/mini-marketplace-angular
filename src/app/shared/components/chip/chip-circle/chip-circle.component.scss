@@ -3,6 +3,17 @@
 :host ::ng-deep .p-chip {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	border-radius: 100%;
+	width: 35px;
+	height: 35px;
+	padding: 0;
+}
+
+:host ::ng-deep .p-chip .p-chip-icon {
+	font-size: 0.9rem;
+	margin: 0;
+	color: var(--primary-800);
 }
 
 :host ::ng-deep .p-chip .p-chip-text {
@@ -31,32 +42,55 @@
 
 :host ::ng-deep .p-chip.p-chip-primary {
 	background-color: var(--primary-500);
+
+	.p-chip-icon {
+		color: var(--primary-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-success {
 	background-color: $success;
 	color: var(--green-50);
+
+	.p-chip-icon {
+		color: var(--green-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-warning {
 	background-color: $warning;
 	color: var(--yellow-50);
+
+	.p-chip-icon {
+		color: var(--yellow-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-info {
 	background-color: $info;
 	color: var(--blue-50);
+
+	.p-chip-icon {
+		color: var(--blue-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-danger {
 	background-color: $danger;
-
 	color: var(--red-50);
+
+	.p-chip-icon {
+		color: var(--red-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-help {
 	background-color: $help;
 	color: var(--purple-50);
+
+	.p-chip-icon {
+		color: var(--purple-50);
+	}
 }
 
 :host ::ng-deep .p-chip.p-chip-primary.p-chip-outlined {

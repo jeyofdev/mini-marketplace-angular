@@ -1,11 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	Input,
-	Output,
-	OnChanges,
-	OnInit,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-rating',
@@ -25,9 +18,6 @@ export class RatingComponent implements OnInit, OnChanges {
 	classIconFill!: string;
 	classIconEmpty!: string;
 
-	@Output() starRatingClicked: EventEmitter<string> =
-		new EventEmitter<string>();
-
 	ngOnInit(): void {
 		this.iconNumberArr = Array(5).fill(5);
 		this.classIconEmpty = `${this.iconEmpty} icon`;
@@ -45,10 +35,6 @@ export class RatingComponent implements OnInit, OnChanges {
 	}
 
 	ngOnChanges(): void {
-		this.iconsContainerWidth = (this.value * 80) / 5;
-	}
-
-	sendRating(): void {
-		this.starRatingClicked.emit(`La note est de ${this.value}`);
+		this.iconsContainerWidth = (this.value * 106) / 5;
 	}
 }

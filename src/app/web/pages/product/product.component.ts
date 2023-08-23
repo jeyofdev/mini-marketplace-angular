@@ -11,6 +11,11 @@ import {
 import { IImage } from '../../../shared/model/image.model';
 import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
 import { BreakpointService } from '../../../shared/service/breakpoint.service';
+import {
+	IChoiceItem,
+	IColorItem,
+} from '../../../shared/interfaces/item.interface';
+import { DataService } from '../../../shared/service/data.service';
 
 @Component({
 	selector: 'app-product',
@@ -27,10 +32,18 @@ export class ProductComponent implements OnInit {
 	currentBreakpoint!: string;
 	containerMaxHeight!: string;
 
+	rating = 3.5;
+	messages = [];
+
+	sizes!: IChoiceItem[];
+	colors!: IColorItem[];
+	price!: string;
+
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private store: Store,
 		private breakpointService: BreakpointService,
+		private dataService: DataService,
 	) {}
 
 	ngOnInit(): void {
@@ -54,14 +67,10 @@ export class ProductComponent implements OnInit {
 
 		this.containerMaxHeight = '740px';
 		this.initImage();
-	}
 
-	private initImage(): void {
-		this.image = {
-			src: 'assets/img/auth/login.jpg',
-			alt: '',
-			position: 'top',
-		};
+		this.sizes = this.dataService.getAllSizes();
+		this.colors = this.dataService.getAllColors();
+		this.price = '25';
 	}
 
 	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
@@ -74,5 +83,13 @@ export class ProductComponent implements OnInit {
 		}
 
 		return 'none';
+	}
+
+	private initImage(): void {
+		this.image = {
+			src: 'assets/img/auth/login.jpg',
+			alt: '',
+			position: 'top',
+		};
 	}
 }

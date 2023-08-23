@@ -1,14 +1,9 @@
-export interface ISelectItem {
+export interface IChoiceItem {
 	value: string;
 	label: string;
 }
 
-export interface IRadioButtonItem {
-	label: string;
-	key: string;
-}
-
-export interface IColorCheckbox {
+export interface IColorItem {
 	color: string;
 	label: string;
 	name: string;

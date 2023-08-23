@@ -13,12 +13,13 @@ import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
 import { StatusEnum } from '../enum/form.enum';
+import { IChoiceItem, IColorItem } from '../interfaces/item.interface';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class DataService {
-	getAllSizes(): ISelectItem[] {
+	getAllSizes(): ISelectItem[] | IChoiceItem[] {
 		return [
 			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
 			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
@@ -40,32 +41,37 @@ export class DataService {
 		];
 	}
 
-	getAllColors(): IColorCheckbox[] {
+	getAllColors(): IColorCheckbox[] | IColorItem[] {
 		return [
 			{
 				color: '#f87575',
 				label: 'red',
 				name: 'red',
+				severity: 'danger',
 			},
 			{
 				color: '#5c95ff',
 				label: 'blue',
 				name: 'blue',
+				severity: 'info',
 			},
 			{
 				color: '#2EC12B',
 				label: 'green',
 				name: 'green',
+				severity: 'success',
 			},
 			{
 				color: '#FFFF5C',
 				label: 'yellow',
 				name: 'yellow',
+				severity: 'warning',
 			},
 			{
 				color: '#952265',
 				label: 'purple',
 				name: 'purple',
+				severity: 'help',
 			},
 		];
 	}

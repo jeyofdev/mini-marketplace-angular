@@ -3,5 +3,5 @@
 		<p-button [styleClass]="styleClass" (click)="onClick()"></p-button>
 	</div>
 
-	<p>{{ label }}</p>
+	<p *ngIf="showLabel">{{ label }}</p>
 </div>

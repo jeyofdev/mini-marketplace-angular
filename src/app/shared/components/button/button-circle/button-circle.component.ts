@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonCircleComponent implements OnInit {
 	@Input() label!: string;
+	@Input() showLabel!: boolean;
 	@Input() selected!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large';
 	@Input() color!:
