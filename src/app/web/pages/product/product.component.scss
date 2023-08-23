@@ -1,20 +1,57 @@
+@import '../../../../theme/scss/light/theme/theme';
+
 :host ::ng-deep app-loader {
 	grid-column: 1 / span 12;
 }
 
 :host ::ng-deep .image-box {
-	grid-column: 1 / span 5;
-	padding-left: 1rem;
+	grid-column: 1 / span 12;
+	padding: 0;
+	width: calc(100% - 2rem);
+	max-width: 400px;
+	margin: 0 auto;
+	height: 100%;
+	margin-bottom: 1.5rem;
+
+	@media (min-width: $sm) {
+		max-width: 500px;
+		padding: 0 1rem;
+	}
+
+	@media (min-width: $md) {
+		grid-column: auto / span 5;
+		max-width: none;
+	}
 }
 
 :host ::ng-deep .content-primary {
-	grid-column: auto / span 7;
-	padding: 0rem 4rem 0rem;
+	grid-column: auto / span 12;
+	padding: 0;
+	width: calc(100% - (2 * 1rem));
+	max-width: 400px;
+	margin: 0 auto;
+	margin-bottom: 1.5rem;
+	height: 100%;
+
+	@media (min-width: $sm) {
+		max-width: 500px;
+		padding: 0 1rem;
+	}
+
+	@media (min-width: $md) {
+		grid-column: auto / span 7;
+		padding: 0rem 4rem;
+		max-width: none;
+	}
 }
 
 :host ::ng-deep .title-box {
 	width: 100%;
 	max-width: 500px;
+
+	@media (max-width: $md) {
+		margin-top: 1rem;
+	}
 
 	h1 {
 		font-size: 1.75rem;
@@ -33,6 +70,11 @@
 	display: flex;
 	gap: 2rem;
 	margin-top: 2.25rem;
+
+	@media (max-width: $sm) {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 }
 
 :host ::ng-deep .comment-box {
@@ -61,6 +103,10 @@
 		flex-direction: row;
 		align-items: flex-start;
 		gap: 0.5rem;
+
+		@media (max-width: $sm) {
+			flex-direction: column;
+		}
 	}
 
 	.section-title {
@@ -71,17 +117,30 @@
 :host ::ng-deep .section-btns-box {
 	display: flex;
 	justify-content: flex-start;
-	gap: 1rem;
+	flex-wrap: wrap;
+	gap: 0.5rem 0.5rem;
+
+	&.section-btns-box {
+		gap: 0.5rem 1rem;
+	}
 }
 
 :host ::ng-deep .content-option {
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	gap: 1.75rem 0rem;
+	gap: 1rem 0rem;
 	max-width: 400px;
+
+	@media (min-width: $sm) {
+		gap: 1.75rem 0rem;
+	}
 }
 
 :host ::ng-deep app-option {
-	width: 50%;
+	width: 100%;
+
+	@media (min-width: $sm) {
+		width: 50%;
+	}
 }
