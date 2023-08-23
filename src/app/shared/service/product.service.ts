@@ -6,6 +6,7 @@ import {
 	addDoc,
 	collectionData,
 	doc,
+	getDoc,
 	deleteDoc,
 	updateDoc,
 	DocumentReference,
@@ -28,6 +29,17 @@ export class ProductService {
 		return collectionData(this.collectionInstance, {
 			idField: 'id',
 		}) as Observable<IProduct[]>;
+	}
+
+	async getById(productId: string) {
+		const docInstance = doc(this.firestore, 'products', productId);
+		const docRef = await getDoc(docInstance);
+
+		if (docRef.exists()) {
+			return docRef.data() as Promise<IProduct>;
+		} else {
+			throw new Error('Document does not exist');
+		}
 	}
 
 	add(newProduct: IProduct): Promise<DocumentReference<IProduct>> {

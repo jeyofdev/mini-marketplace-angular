@@ -1,20 +1,29 @@
 @import '../../../../theme/scss/light/theme/theme';
 
-.rating-container {
+:host ::ng-deep .rating-box {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+:host ::ng-deep .rating-container {
 	position: relative;
 	overflow: hidden;
 	cursor: pointer;
 }
 
-.icons-box {
+:host ::ng-deep .icons-box {
 	height: 20px;
 	position: absolute;
 	top: 0;
 	overflow: hidden;
 }
 
-.icons-wrapper {
-	width: 80px;
+:host ::ng-deep .icons-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	gap: 0.15rem;
+	width: 106px;
 	cursor: pointer;
 
 	&.icons-fill-wrapper {
@@ -26,7 +35,7 @@
 }
 
 :host ::ng-deep .icon {
-	font-size: 1rem;
+	font-size: 1.2rem;
 }
 
 :host ::ng-deep .icon-empty-primary,
@@ -57,4 +66,8 @@
 :host ::ng-deep .icon-empty-help,
 :host ::ng-deep .icon-fill-help {
 	color: $help;
+}
+
+:host ::ng-deep .rating-text {
+	font-weight: initial;
 }

@@ -7,5 +7,9 @@ export const WebProductActions = createActionGroup({
 		'Load products': emptyProps(),
 		'Load products Success': props<{ payload: { data: IProduct[] } }>(),
 		'Load products Failure': props<{ payload: { error: unknown } }>(),
+
+		'Load product': props<{ payload: { id: string } }>(),
+		'Load product Success': props<{ payload: { data: IProduct } }>(),
+		'Load product Failure': props<{ payload: { error: unknown } }>(),
 	},
 });

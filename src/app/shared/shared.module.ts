@@ -33,6 +33,9 @@ import { ChipComponent } from './components/chip/chip/chip.component';
 import { BaseChipComponent } from './components/chip/base-chip/base-chip.component';
 import { ButtonCircularRadiusComponent } from './components/button/button-circular-radius/button-circular-radius.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ChipCircleComponent } from './components/chip/chip-circle/chip-circle.component';
+import { OptionComponent } from './components/option/option.component';
 
 @NgModule({
 	declarations: [
@@ -65,6 +68,9 @@ import { RatingComponent } from './components/rating/rating.component';
 		BaseChipComponent,
 		ButtonCircularRadiusComponent,
 		RatingComponent,
+		ChipCircleComponent,
+		LoaderComponent,
+		OptionComponent,
 	],
 	imports: [
 		CommonModule,
@@ -108,6 +114,9 @@ import { RatingComponent } from './components/rating/rating.component';
 		BaseChipComponent,
 		ButtonCircularRadiusComponent,
 		RatingComponent,
+		LoaderComponent,
+		ChipCircleComponent,
+		OptionComponent,
 	],
 })
 export class SharedModule {}

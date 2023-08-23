@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-base-chip',
-	templateUrl: './base-chip.component.html',
-	styleUrls: ['./base-chip.component.scss'],
+	selector: 'app-chip-circle',
+	templateUrl: './chip-circle.component.html',
+	styleUrls: ['./chip-circle.component.scss'],
 })
-export class BaseChipComponent implements OnInit {
+export class ChipCircleComponent implements OnInit {
 	@Input() label!: string;
-	@Input() removable!: boolean;
+	@Input() icon!: string;
 	@Input() size!: 'normal' | 'small' | 'large' | 'xlarge';
 	@Input() color!: 'primary' | 'success' | 'info' | 'warning' | 'danger';
 	@Input() outlined!: boolean;

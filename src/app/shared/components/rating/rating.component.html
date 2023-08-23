@@ -1,16 +1,14 @@
-<div
-	class="rating-container"
-	[title]="value"
-	(click)="sendRating()"
-	[style.width.px]="80"
->
-	<div class="icons-wrapper">
-		<i *ngFor="let num of iconNumberArr" [class]="classIconEmpty"></i>
-	</div>
+<div class="rating-box">
+	<div class="rating-container" [style.width.px]="106">
+		<div class="icons-wrapper">
+			<i *ngFor="let num of iconNumberArr" [class]="classIconEmpty"></i>
+		</div>
 
-	<div class="icons-box" [style.width.px]="iconsContainerWidth">
-		<div class="icons-wrapper icons-fill-wrapper">
-			<i *ngFor="let num of iconNumberArr" [class]="classIconFill"></i>
+		<div class="icons-box" [style.width.px]="iconsContainerWidth">
+			<div class="icons-wrapper icons-fill-wrapper">
+				<i *ngFor="let num of iconNumberArr" [class]="classIconFill"></i>
+			</div>
 		</div>
 	</div>
+	<p class="rating-text">{{ value }}</p>
 </div>
