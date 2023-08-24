@@ -56,10 +56,14 @@
 
 						<div class="section-btns-box">
 							<ng-container *ngFor="let color of colors">
-								<app-button-circle
+								<app-radio-color
+									name="color"
+									[item]="color"
 									[color]="color.severity"
-									[label]="color.label"
-								></app-button-circle>
+									formControlName="color"
+									[parentForm]="mainForm"
+									[hasBorder]="true"
+								></app-radio-color>
 							</ng-container>
 						</div>
 					</div>

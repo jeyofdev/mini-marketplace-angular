@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IColorCheckbox, ChoiceItemType } from '../interfaces/input.interface';
+import { ChoiceItemType, ColorItemType } from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
 import {
 	ITableColumns,
@@ -9,7 +9,6 @@ import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
 import { StatusEnum } from '../enum/form.enum';
-import { IColorItem } from '../interfaces/item.interface';
 
 @Injectable({
 	providedIn: 'root',
@@ -17,10 +16,26 @@ import { IColorItem } from '../interfaces/item.interface';
 export class DataService {
 	getAllSizes(): ChoiceItemType[] {
 		return [
-			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
-			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
-			{ value: ProductSizeEnum.S, label: ProductSizeEnum.S },
-			{ value: ProductSizeEnum.XL, label: ProductSizeEnum.XL },
+			{
+				name: ProductSizeEnum.M,
+				value: ProductSizeEnum.M,
+				label: ProductSizeEnum.M,
+			},
+			{
+				name: ProductSizeEnum.L,
+				value: ProductSizeEnum.L,
+				label: ProductSizeEnum.L,
+			},
+			{
+				name: ProductSizeEnum.S,
+				value: ProductSizeEnum.S,
+				label: ProductSizeEnum.S,
+			},
+			{
+				name: ProductSizeEnum.XL,
+				value: ProductSizeEnum.XL,
+				label: ProductSizeEnum.XL,
+			},
 		];
 	}
 
@@ -28,45 +43,52 @@ export class DataService {
 		return [
 			{
 				id: StatusEnum.INACTIVE,
+				name: StatusEnum.INACTIVE,
 				label: StatusEnum.INACTIVE,
 				value: StatusEnum.INACTIVE,
 			},
 			{
 				id: StatusEnum.ACTIVE,
+				name: StatusEnum.ACTIVE,
 				label: StatusEnum.ACTIVE,
 				value: StatusEnum.ACTIVE,
 			},
 		];
 	}
 
-	getAllColors(): IColorCheckbox[] | IColorItem[] {
+	getAllColors(): ColorItemType[] {
 		return [
 			{
 				color: '#f87575',
+				value: 'red',
 				label: 'red',
 				name: 'red',
 				severity: 'danger',
 			},
 			{
 				color: '#5c95ff',
+				value: 'blue',
 				label: 'blue',
 				name: 'blue',
 				severity: 'info',
 			},
 			{
 				color: '#2EC12B',
+				value: 'green',
 				label: 'green',
 				name: 'green',
 				severity: 'success',
 			},
 			{
 				color: '#FFFF5C',
+				value: 'yellow',
 				label: 'yellow',
 				name: 'yellow',
 				severity: 'warning',
 			},
 			{
 				color: '#952265',
+				value: 'purple',
 				label: 'purple',
 				name: 'purple',
 				severity: 'help',

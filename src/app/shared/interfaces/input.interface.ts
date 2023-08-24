@@ -1,17 +1,22 @@
 export interface IInputComplexItem {
-	name?: string;
+	name: string;
 	value: string;
 	label: string;
 }
 
-export type ChoiceItemType = Pick<IInputComplexItem, 'value' | 'label'> & {
+export type ChoiceItemType = Pick<
+	IInputComplexItem,
+	'name' | 'value' | 'label'
+> & {
 	id?: string;
 };
 
-export interface IColorCheckbox {
+export type ColorItemType = Pick<
+	IInputComplexItem,
+	'name' | 'value' | 'label'
+> & {
+	id?: string;
 	color: string;
-	label: string;
-	name: string;
 	severity:
 		| 'primary'
 		| 'success'
@@ -20,4 +25,4 @@ export interface IColorCheckbox {
 		| 'danger'
 		| 'secondary'
 		| 'help';
-}
+};

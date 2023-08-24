@@ -11,9 +11,11 @@ import {
 import { IImage } from '../../../shared/model/image.model';
 import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
 import { BreakpointService } from '../../../shared/service/breakpoint.service';
-import { IColorItem } from '../../../shared/interfaces/item.interface';
 import { DataService } from '../../../shared/service/data.service';
-import { ChoiceItemType } from '../../../shared/interfaces/input.interface';
+import {
+	ChoiceItemType,
+	ColorItemType,
+} from '../../../shared/interfaces/input.interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -35,11 +37,12 @@ export class ProductComponent implements OnInit {
 	messages = [];
 
 	sizes!: ChoiceItemType[];
-	colors!: IColorItem[];
+	colors!: ColorItemType[];
 	price!: string;
 
 	mainForm!: FormGroup;
 	sizeCtrl!: FormControl<string | null>;
+	colorCtrl!: FormControl<string | null>;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -99,11 +102,13 @@ export class ProductComponent implements OnInit {
 	private initMainForm() {
 		this.mainForm = this.formBuilder.group({
 			size: this.sizeCtrl,
+			color: this.colorCtrl,
 		});
 	}
 
 	private initFormControls(): void {
 		this.sizeCtrl = this.formBuilder.control('', []);
+		this.colorCtrl = this.formBuilder.control('', []);
 	}
 
 	private initImage(): void {

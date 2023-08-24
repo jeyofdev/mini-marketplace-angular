@@ -5,25 +5,26 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { ChoiceItemType } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
+import { ColorItemType } from '../../../../interfaces/input.interface';
 
 @Component({
-	selector: 'app-radio-square',
-	templateUrl: './radio-square.component.html',
-	styleUrls: ['./radio-square.component.scss'],
+	selector: 'app-radio-color',
+	templateUrl: './radio-color.component.html',
+	styleUrls: ['./radio-color.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => RadioSquareComponent),
+			useExisting: forwardRef(() => RadioColorComponent),
 			multi: true,
 		},
 	],
 })
-export class RadioSquareComponent implements OnInit, ControlValueAccessor {
-	@Input() label!: string;
-	@Input() item!: ChoiceItemType;
+export class RadioColorComponent implements OnInit, ControlValueAccessor {
+	@Input() isChecked!: boolean;
+	@Input() item!: ColorItemType;
 	@Input() name!: string;
+	@Input() hasBorder!: boolean;
 	@Input() color!:
 		| 'primary'
 		| 'secondary'
@@ -40,6 +41,7 @@ export class RadioSquareComponent implements OnInit, ControlValueAccessor {
 	disabled!: boolean;
 
 	styleClass!: string;
+	borderClass!: string;
 
 	onChanged!: (value: string) => void;
 	onTouched!: () => void;
@@ -69,9 +71,9 @@ export class RadioSquareComponent implements OnInit, ControlValueAccessor {
 		this.disabled = isDisabled;
 	}
 
-	// markAsTouched(): void {
-	// 	this.onTouched();
-	// }
+	markAsTouched(): void {
+		this.onTouched();
+	}
 
 	get formControl() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
@@ -82,10 +84,6 @@ export class RadioSquareComponent implements OnInit, ControlValueAccessor {
 
 		if (this.color) {
 			this.styleClass += `p-radiobutton-${this.color} `;
-		}
-
-		if (this.value === this.item.value) {
-			this.styleClass += `p-radiobutton-bg-${this.color}`;
 		}
 	}
 }

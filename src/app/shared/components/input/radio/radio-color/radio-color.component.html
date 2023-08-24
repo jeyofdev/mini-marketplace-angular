@@ -1,0 +1,49 @@
+<div class="radio-circle-container" *ngIf="hasBorder">
+	<div
+		[class]="'border '"
+		[ngClass]="{
+			'border-danger':
+				parentForm.value.color === 'red' &&
+				parentForm.value.color === item.value,
+			'border-info':
+				parentForm.value.color === 'blue' &&
+				parentForm.value.color === item.value,
+			'border-success':
+				parentForm.value.color === 'green' &&
+				parentForm.value.color === item.value,
+			'border-warning':
+				parentForm.value.color === 'yellow' &&
+				parentForm.value.color === item.value,
+			'border-help':
+				parentForm.value.color === 'purple' &&
+				parentForm.value.color === item.value
+		}"
+	>
+		<div class="radio-box">
+			<p-radioButton
+				[name]="name"
+				[inputId]="item.id"
+				[value]="item.value"
+				[disabled]="disabled"
+				(onClick)="selectionChanged($event)"
+				(blur)="onTouched()"
+				[styleClass]="styleClass"
+			>
+			</p-radioButton>
+		</div>
+	</div>
+</div>
+
+<div class="radio-box" *ngIf="!hasBorder">
+	<p-radioButton
+		[name]="name"
+		*ngIf="!hasBorder"
+		[inputId]="item.id"
+		[value]="item.value"
+		[disabled]="disabled"
+		(onClick)="selectionChanged($event)"
+		(blur)="onTouched()"
+		[styleClass]="styleClass"
+	>
+	</p-radioButton>
+</div>

@@ -10,7 +10,7 @@ import {
 import { DataService } from '../../../shared/service/data.service';
 import {
 	ChoiceItemType,
-	IColorCheckbox,
+	ColorItemType,
 } from '../../../shared/interfaces/input.interface';
 
 @Component({
@@ -23,7 +23,7 @@ export class AllProductsComponent implements OnInit {
 	products!: IProduct[];
 	filteredProducts!: IProduct[];
 	sizes!: ChoiceItemType[];
-	colors!: IColorCheckbox[];
+	colors!: ColorItemType[];
 	filters!: { sizes: string[]; colors: string[] };
 
 	constructor(
@@ -65,9 +65,9 @@ export class AllProductsComponent implements OnInit {
 		}
 	}
 
-	colorSelected(currentColor: IColorCheckbox): void {
-		if (!this.filters.colors.includes(currentColor.name)) {
-			this.filters.colors.push(currentColor.name);
+	colorSelected(currentColor: ColorItemType): void {
+		if (!this.filters.colors.includes(currentColor.name as string)) {
+			this.filters.colors.push(currentColor.name as string);
 			this.filteredProducts = this.getFilteredProducts(this.products);
 		} else {
 			this.filters.colors = this.filters.colors.filter(
