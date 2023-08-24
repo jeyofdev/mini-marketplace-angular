@@ -8,7 +8,7 @@ export const toastSuccess = (
 	messageService: MessageService,
 	message: string,
 	form: FormGroup,
-	onClose: (arg: boolean) => void,
+	onClose?: (arg: boolean) => void,
 ): void => {
 	messageService.add({
 		severity: 'success',
@@ -16,7 +16,10 @@ export const toastSuccess = (
 	});
 
 	form.reset();
-	onClose(false);
+
+	if (onClose) {
+		onClose(false);
+	}
 };
 
 export const toastError = (
@@ -37,7 +40,7 @@ export const addSubscriptionAndShowToast = (
 	messageService: MessageService,
 	message: string,
 	form: FormGroup,
-	onClose: (arg: boolean) => void,
+	onClose?: (arg: boolean) => void,
 ) => {
 	subscription.add(
 		actionsSubject.pipe(ofType(actionSuccess)).subscribe(() => {

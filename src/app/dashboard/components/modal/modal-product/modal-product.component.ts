@@ -20,7 +20,7 @@ import { FillFormWithCurrentProductFnType } from '../../../../shared/types/index
 import { ProductColorEnum } from '../../../../shared/enum/product.enum';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
-import { addSubscriptionAndShowToast } from '../../../../dashboard/utils/components.util';
+import { addSubscriptionAndShowToast } from '../../../../shared/utils/toast';
 
 @Component({
 	selector: 'app-modal-product',

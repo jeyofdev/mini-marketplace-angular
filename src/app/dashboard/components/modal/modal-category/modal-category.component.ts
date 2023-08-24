@@ -14,7 +14,7 @@ import { ChoiceItemType } from '../../../../shared/interfaces/input.interface';
 import { Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
-import { addSubscriptionAndShowToast } from 'src/app/dashboard/utils/components.util';
+import { addSubscriptionAndShowToast } from '../../../../shared/utils/toast';
 
 @Component({
 	selector: 'app-modal-category',
