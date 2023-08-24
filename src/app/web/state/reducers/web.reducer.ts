@@ -13,23 +13,32 @@ import {
 	webCategoryFeatureKey,
 	initialCategoryState,
 } from './web-category.reducer';
+import {
+	IWebCartState,
+	cartReducer,
+	initialCartState,
+	webCartFeatureKey,
+} from './web-cart.reducer';
 
 export const webFeatureKey = 'web';
 
 export interface IWebState {
 	[webCategoryFeatureKey]: IWebCategoryState;
 	[webProductFeatureKey]: IWebProductState;
+	[webCartFeatureKey]: IWebCartState;
 }
 
 export const initialWebState: IWebState = {
 	[webCategoryFeatureKey]: initialCategoryState,
 	[webProductFeatureKey]: initialProductState,
+	[webCartFeatureKey]: initialCartState,
 };
 
 export const reducers = combineReducers(
 	{
 		[webCategoryFeatureKey]: categoryReducer,
 		[webProductFeatureKey]: productReducer,
+		[webCartFeatureKey]: cartReducer,
 	},
 	initialWebState,
 );

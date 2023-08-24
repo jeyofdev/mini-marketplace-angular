@@ -22,6 +22,7 @@ import { WebCategoryEffects } from './state/effects/web-category.effects';
 import { WebProductEffects } from './state/effects/web-product.effects';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductComponent } from './pages/product/product.component';
+import { WebCartEffects } from './state/effects/web-cart.effects';
 
 @NgModule({
 	declarations: [
@@ -47,7 +48,11 @@ import { ProductComponent } from './pages/product/product.component';
 		StoreModule.forFeature(fromWeb.webFeatureKey, fromWeb.reducers, {
 			metaReducers: fromWeb.metaReducers,
 		}),
-		EffectsModule.forFeature([WebCategoryEffects, WebProductEffects]),
+		EffectsModule.forFeature([
+			WebCategoryEffects,
+			WebProductEffects,
+			WebCartEffects,
+		]),
 	],
 })
 export class WebModule {}
