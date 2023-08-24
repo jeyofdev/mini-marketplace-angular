@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormGroup,
@@ -9,28 +9,20 @@ import { IRadioButtonItem } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
-	selector: 'app-square-radio',
-	templateUrl: './square-radio-radio.component.html',
-	styleUrls: ['./square-radio-radio.component.scss'],
+	selector: 'app-radio-base',
+	templateUrl: './radio-base.component.html',
+	styleUrls: ['./radio-base.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => SquareRadioComponent),
+			useExisting: forwardRef(() => RadioBaseComponent),
 			multi: true,
 		},
 	],
 })
-export class SquareRadioComponent implements OnInit, ControlValueAccessor {
+export class RadioBaseComponent implements ControlValueAccessor {
 	@Input() item!: IRadioButtonItem;
 	@Input() name!: string;
-	@Input() color!:
-		| 'primary'
-		| 'secondary'
-		| 'success'
-		| 'warning'
-		| 'danger'
-		| 'info'
-		| 'help';
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
@@ -38,14 +30,8 @@ export class SquareRadioComponent implements OnInit, ControlValueAccessor {
 	value!: string;
 	disabled!: boolean;
 
-	styleClass!: string;
-
 	onChanged!: (value: string) => void;
 	onTouched!: () => void;
-
-	ngOnInit(): void {
-		this.setStyleClass();
-	}
 
 	selectionChanged(event: RadioButtonClickEvent) {
 		this.onChanged(event.value);
@@ -74,17 +60,5 @@ export class SquareRadioComponent implements OnInit, ControlValueAccessor {
 
 	get formControl() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
-	}
-
-	private setStyleClass(): void {
-		this.styleClass = '';
-
-		if (this.color) {
-			this.styleClass += `p-radiobutton-${this.color} `;
-		}
-
-		if (this.value === this.item.key) {
-			this.styleClass += `p-radiobutton-bg-${this.color}`;
-		}
 	}
 }
