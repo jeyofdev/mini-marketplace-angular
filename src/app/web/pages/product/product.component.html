@@ -1,98 +1,112 @@
 <app-layout>
 	<app-loader [loading]="loading$ | async"></app-loader>
 
-	<div class="image-box" [style.maxHeight]="getMaxHeightContainer()">
-		<app-image-full-height
-			[src]="image.src"
-			[alt]="image.alt"
-			[position]="image.position"
-		></app-image-full-height>
-	</div>
-
-	<div class="content-primary">
-		<div class="title-box">
-			<h1>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, alias!
-			</h1>
+	<ng-container *ngIf="(loading$ | async) === false">
+		<div class="image-box" [style.maxHeight]="getMaxHeightContainer()">
+			<app-image-full-height
+				[src]="image.src"
+				[alt]="image.alt"
+				[position]="image.position"
+			></app-image-full-height>
 		</div>
 
-		<div class="content-body">
-			<div class="info-top-box">
-				<app-rating
-					[value]="2.5"
-					iconEmpty="pi pi-star"
-					iconFill="pi pi-star-fill"
-					color="warning"
-					size="normal"
-				></app-rating>
-
-				<div class="comment-box">
-					<i class="icon icon-comment fa-regular fa-comment-dots"></i>
-					<p class="comment-text">{{ messages.length }} comments</p>
-				</div>
+		<div class="content-primary">
+			<div class="title-box">
+				<h1>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, alias!
+				</h1>
 			</div>
 
-			<div class="section-box">
-				<h5 class="section-title">Select size</h5>
+			<div class="content-body">
+				<div class="info-top-box">
+					<app-rating
+						[value]="2.5"
+						iconEmpty="pi pi-star"
+						iconFill="pi pi-star-fill"
+						color="warning"
+						size="normal"
+					></app-rating>
 
-				<div class="section-btns-box section-btns-box-sizes">
-					<ng-container *ngFor="let size of sizes">
-						<app-button-rounded
-							[label]="size.label"
+					<div class="comment-box">
+						<i class="icon icon-comment fa-regular fa-comment-dots"></i>
+						<p class="comment-text">{{ messages.length }} comments</p>
+					</div>
+				</div>
+
+				<form [formGroup]="mainForm" (ngSubmit)="onMainFormSubmit()">
+					<div class="section-box">
+						<h5 class="section-title">Select size</h5>
+
+						<div class="section-btns-box section-btns-box-sizes">
+							<ng-container *ngFor="let size of sizes">
+								<app-radio-square
+									[label]="size.label"
+									name="size"
+									color="primary"
+									[item]="size"
+									formControlName="size"
+									[parentForm]="mainForm"
+								></app-radio-square>
+							</ng-container>
+						</div>
+					</div>
+
+					<div class="section-box">
+						<h5 class="section-title">Colors available</h5>
+
+						<div class="section-btns-box">
+							<ng-container *ngFor="let color of colors">
+								<app-radio-color
+									name="color"
+									[item]="color"
+									[color]="color.severity"
+									formControlName="color"
+									[parentForm]="mainForm"
+									[hasBorder]="true"
+								></app-radio-color>
+							</ng-container>
+						</div>
+					</div>
+
+					<div class="section-box section-btn">
+						<app-button-circular-radius
+							label="Add to cart"
+							color="primary"
+							[outlined]="false"
+							icon="fa-solid fa-cart-shopping"
+							size="large"
+						></app-button-circular-radius>
+
+						<app-base-chip
+							[label]="price"
+							size="xlarge"
 							color="primary"
 							[outlined]="true"
-						></app-button-rounded>
-					</ng-container>
-				</div>
+						></app-base-chip>
+					</div>
+				</form>
 			</div>
 
-			<div class="section-box">
-				<h5 class="section-title">Colors available</h5>
+			<app-divider></app-divider>
 
-				<div class="section-btns-box">
-					<ng-container *ngFor="let color of colors">
-						<app-button-circle
-							[color]="color.severity"
-							[label]="color.label"
-						></app-button-circle>
-					</ng-container>
-				</div>
-			</div>
+			<div class="content-option">
+				<app-option
+					icon="fa-regular fa-credit-card"
+					label="Secure payment"
+				></app-option>
 
-			<div class="section-box section-btn">
-				<app-button-circular-radius
-					label="Add to cart"
-					color="primary"
-					[outlined]="false"
-					icon="fa-solid fa-cart-shopping"
-					size="large"
-				></app-button-circular-radius>
+				<app-option icon="fa-solid fa-tags" label="Size & fit"></app-option>
 
-				<app-base-chip
-					[label]="price"
-					size="xlarge"
-					color="primary"
-					[outlined]="true"
-				></app-base-chip>
+				<app-option
+					icon="fa-solid fa-receipt"
+					label="Free shipping"
+				></app-option>
+
+				<app-option
+					icon="fa-regular fa-credit-card"
+					label="Free shipping & returns"
+				></app-option>
 			</div>
 		</div>
-
-		<app-divider></app-divider>
-
-		<div class="content-option">
-			<app-option
-				icon="fa-regular fa-credit-card"
-				label="Secure payment"
-			></app-option>
-
-			<app-option icon="fa-solid fa-tags" label="Size & fit"></app-option>
-
-			<app-option icon="fa-solid fa-receipt" label="Free shipping"></app-option>
-
-			<app-option
-				icon="fa-regular fa-credit-card"
-				label="Free shipping & returns"
-			></app-option>
-		</div>
-	</div>
+	</ng-container>
 </app-layout>

@@ -11,9 +11,12 @@ import {
 import { IImage } from '../../../shared/model/image.model';
 import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
 import { BreakpointService } from '../../../shared/service/breakpoint.service';
-import { IColorItem } from '../../../shared/interfaces/item.interface';
 import { DataService } from '../../../shared/service/data.service';
-import { ChoiceItemType } from '../../../shared/interfaces/input.interface';
+import {
+	ChoiceItemType,
+	ColorItemType,
+} from '../../../shared/interfaces/input.interface';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
 	selector: 'app-product',
@@ -34,14 +37,19 @@ export class ProductComponent implements OnInit {
 	messages = [];
 
 	sizes!: ChoiceItemType[];
-	colors!: IColorItem[];
+	colors!: ColorItemType[];
 	price!: string;
+
+	mainForm!: FormGroup;
+	sizeCtrl!: FormControl<string | null>;
+	colorCtrl!: FormControl<string | null>;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private store: Store,
 		private breakpointService: BreakpointService,
 		private dataService: DataService,
+		private formBuilder: FormBuilder,
 	) {}
 
 	ngOnInit(): void {
@@ -69,6 +77,14 @@ export class ProductComponent implements OnInit {
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();
 		this.price = '25';
+
+		this.initFormControls();
+		this.initMainForm();
+	}
+
+	onMainFormSubmit(): void {
+		// eslint-disable-next-line no-console
+		console.log(this.mainForm.value);
 	}
 
 	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
@@ -81,6 +97,18 @@ export class ProductComponent implements OnInit {
 		}
 
 		return 'none';
+	}
+
+	private initMainForm() {
+		this.mainForm = this.formBuilder.group({
+			size: this.sizeCtrl,
+			color: this.colorCtrl,
+		});
+	}
+
+	private initFormControls(): void {
+		this.sizeCtrl = this.formBuilder.control('', []);
+		this.colorCtrl = this.formBuilder.control('', []);
 	}
 
 	private initImage(): void {

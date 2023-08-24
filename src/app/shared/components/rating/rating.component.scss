@@ -9,7 +9,6 @@
 :host ::ng-deep .rating-container {
 	position: relative;
 	overflow: hidden;
-	cursor: pointer;
 }
 
 :host ::ng-deep .icons-box {
@@ -24,7 +23,6 @@
 	justify-content: flex-start;
 	gap: 0.15rem;
 	width: 106px;
-	cursor: pointer;
 
 	&.icons-fill-wrapper {
 		position: absolute;

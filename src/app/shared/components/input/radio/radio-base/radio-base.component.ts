@@ -5,7 +5,10 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { ChoiceItemType } from '../../../../interfaces/input.interface';
+import {
+	ChoiceItemType,
+	ColorItemType,
+} from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
@@ -21,7 +24,7 @@ import { getFormControl } from '../../../../utils/form.utils';
 	],
 })
 export class RadioBaseComponent implements ControlValueAccessor {
-	@Input() item!: ChoiceItemType;
+	@Input() item!: ChoiceItemType | ColorItemType;
 	@Input() name!: string;
 
 	@Input() parentForm!: FormGroup;

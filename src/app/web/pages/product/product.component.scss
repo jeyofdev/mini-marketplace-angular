@@ -60,7 +60,8 @@
 	}
 }
 
-:host ::ng-deep .content-body {
+:host ::ng-deep .content-body,
+:host ::ng-deep form {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;

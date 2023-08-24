@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonCircularRadiusComponent implements OnInit {
 	@Input() label!: string;
+	@Input() type!: 'button' | 'submit' | 'reset';
 	@Input() icon!: string;
 	@Input() outlined!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large';

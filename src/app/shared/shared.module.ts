@@ -39,6 +39,7 @@ import { SelectMultipleComponent } from './components/input/select-multiple/sele
 import { CheckboxColorBorderComponent } from './components/input/checkbox/checkbox-color-border/checkbox-color-border.component';
 import { RadioBaseComponent } from './components/input/radio/radio-base/radio-base.component';
 import { RadioSquareComponent } from './components/input/radio/radio-square/radio-square.component';
+import { RadioColorComponent } from './components/input/radio/radio-color/radio-color.component';
 
 @NgModule({
 	declarations: [
@@ -77,6 +78,7 @@ import { RadioSquareComponent } from './components/input/radio/radio-square/radi
 		SelectMultipleComponent,
 		OptionComponent,
 		RadioSquareComponent,
+		RadioColorComponent,
 	],
 	imports: [
 		CommonModule,
@@ -126,6 +128,7 @@ import { RadioSquareComponent } from './components/input/radio/radio-square/radi
 		OptionComponent,
 		SelectMultipleComponent,
 		RadioSquareComponent,
+		RadioColorComponent,
 	],
 })
 export class SharedModule {}

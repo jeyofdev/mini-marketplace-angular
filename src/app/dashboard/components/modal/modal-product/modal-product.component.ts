@@ -8,8 +8,8 @@ import {
 import { Subscription, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../../shared/service/category.service';
 import {
-	IColorCheckbox,
 	ChoiceItemType,
+	ColorItemType,
 } from '../../../../shared/interfaces/input.interface';
 import { ICategory } from '../../../../shared/model/category.model';
 import { IProduct } from '../../../../shared/model/product.model';
@@ -53,7 +53,7 @@ export class ModalProductComponent implements OnInit {
 
 	categories!: ChoiceItemType[];
 	sizes!: ChoiceItemType[];
-	colors!: IColorCheckbox[];
+	colors!: ColorItemType[];
 	status!: ChoiceItemType[];
 
 	submitBtnLabel!: string;
@@ -92,8 +92,6 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// console.log(this.mainForm.value.infos);
-
 		if (!this.currentProduct) {
 			this.addProduct();
 		} else {
@@ -213,6 +211,7 @@ export class ModalProductComponent implements OnInit {
 			.pipe(
 				mergeMap((categories: ICategory[]) => categories),
 				map((category: ICategory) => ({
+					name: category.name,
 					label: category.name,
 					value: category.name.split(' ').join('-').toLowerCase(),
 				})),
