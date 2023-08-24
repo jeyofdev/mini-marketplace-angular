@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { IProduct } from '../../../shared/model/product.model';
 import { WebActions } from '../actions/web-index.actions';
+import { ICartProduct } from 'src/app/shared/model/cart.model';
 
 export const webCartFeatureKey = 'cart';
 
 export interface IWebCartState {
-	products: Partial<IProduct>[];
+	products: Partial<ICartProduct>[];
 	loading: boolean;
 }
 

@@ -7,7 +7,7 @@ import {
 	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IProduct } from '../model/product.model';
+import { ICartProduct } from '../model/cart.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -20,10 +20,10 @@ export class CartService {
 	}
 
 	addItemToCart(
-		product: Partial<IProduct>,
-	): Promise<DocumentReference<Partial<IProduct>>> {
+		product: ICartProduct,
+	): Promise<DocumentReference<ICartProduct>> {
 		const docRef = addDoc(this.collectionInstance, product);
 
-		return docRef as Promise<DocumentReference<IProduct>>;
+		return docRef as Promise<DocumentReference<ICartProduct>>;
 	}
 }

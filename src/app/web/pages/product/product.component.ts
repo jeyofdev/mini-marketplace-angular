@@ -19,6 +19,7 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '../../../shared/utils/toast';
+import { ICartProduct } from 'src/app/shared/model/cart.model';
 
 @Component({
 	selector: 'app-product',
@@ -27,6 +28,7 @@ import { addSubscriptionAndShowToast } from '../../../shared/utils/toast';
 	providers: [MessageService],
 })
 export class ProductComponent implements OnInit {
+	currentProductId!: string;
 	currentProduct!: IProduct;
 	loading$!: Observable<boolean>;
 	image!: IImage;
@@ -60,10 +62,12 @@ export class ProductComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		const { productId } = this.activatedRoute.snapshot.params;
+		this.currentProductId = this.activatedRoute.snapshot.params['productId'];
 
 		this.store.dispatch(
-			WebActions.products.loadProduct({ payload: { id: productId } }),
+			WebActions.products.loadProduct({
+				payload: { id: this.currentProductId },
+			}),
 		);
 		this.loading$ = this.store.pipe(
 			select(getWebCurrentProductLoadingSelector),
@@ -138,8 +142,9 @@ export class ProductComponent implements OnInit {
 		);
 	}
 
-	private formatProductDatas(): Partial<IProduct> {
+	private formatProductDatas(): ICartProduct {
 		return {
+			id: this.currentProductId,
 			brandName: this.currentProduct.brandName,
 			modelName: this.currentProduct.modelName,
 			price: this.currentProduct.price,
