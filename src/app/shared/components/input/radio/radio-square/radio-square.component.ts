@@ -21,6 +21,7 @@ import { getFormControl } from '../../../../utils/form.utils';
 	],
 })
 export class RadioSquareComponent implements OnInit, ControlValueAccessor {
+	@Input() label!: string;
 	@Input() item!: ChoiceItemType;
 	@Input() name!: string;
 	@Input() color!:
