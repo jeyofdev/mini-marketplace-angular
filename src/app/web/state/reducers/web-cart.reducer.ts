@@ -5,7 +5,7 @@ import { WebActions } from '../actions/web-index.actions';
 export const webCartFeatureKey = 'cart';
 
 export interface IWebCartState {
-	products: IProduct[];
+	products: Partial<IProduct>[];
 	loading: boolean;
 }
 

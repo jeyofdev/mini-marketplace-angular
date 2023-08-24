@@ -19,7 +19,9 @@ export class CartService {
 		this.collectionInstance = collection(this.firestore, 'cart');
 	}
 
-	addItemToCart(product: IProduct): Promise<DocumentReference<IProduct>> {
+	addItemToCart(
+		product: Partial<IProduct>,
+	): Promise<DocumentReference<Partial<IProduct>>> {
 		const docRef = addDoc(this.collectionInstance, product);
 
 		return docRef as Promise<DocumentReference<IProduct>>;
