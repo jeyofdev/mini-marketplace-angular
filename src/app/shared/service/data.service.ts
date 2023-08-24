@@ -35,6 +35,10 @@ export class DataService {
 				label: StatusEnum.INACTIVE,
 			},
 			{
+				key: 'S',
+				label: 'S',
+			},
+			{
 				key: StatusEnum.ACTIVE,
 				label: StatusEnum.ACTIVE,
 			},

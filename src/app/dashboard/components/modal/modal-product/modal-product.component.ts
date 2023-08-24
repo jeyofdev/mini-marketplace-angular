@@ -95,6 +95,8 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
+		// console.log(this.mainForm.value.infos);
+
 		if (!this.currentProduct) {
 			this.addProduct();
 		} else {

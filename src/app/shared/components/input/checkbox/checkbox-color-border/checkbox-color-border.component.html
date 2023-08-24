@@ -1,0 +1,30 @@
+<div class="btn-circle-container" *ngIf="hasBorder">
+	<div [class]="borderClass">
+		<p-checkbox
+			inputId="binary"
+			[class]="'color-' + color"
+			[disabled]="disabled"
+			[(ngModel)]="checked"
+			[binary]="true"
+			[pTooltip]="label | titlecase"
+			tooltipPosition="top"
+			(onChange)="selectionChanged($event)"
+			(blur)="onTouched()"
+		></p-checkbox>
+	</div>
+
+	<p *ngIf="showLabel">{{ label }}</p>
+</div>
+
+<p-checkbox
+	*ngIf="!hasBorder"
+	inputId="binary"
+	[class]="'color-' + color"
+	[disabled]="disabled"
+	[(ngModel)]="checked"
+	[binary]="true"
+	[pTooltip]="label | titlecase"
+	tooltipPosition="top"
+	(onChange)="selectionChanged($event)"
+	(blur)="onTouched()"
+></p-checkbox>

@@ -1,0 +1,23 @@
+<div class="form-control">
+	<label>{{ label }}</label>
+
+	<p-multiSelect
+		[id]="name"
+		[name]="name"
+		[options]="items"
+		optionLabel="label"
+		[showHeader]="false"
+		display="chip"
+		[disabled]="disabled"
+		[placeholder]="placeholder"
+		[(ngModel)]="selectedItem"
+		(onChange)="selectionChanged($event)"
+		(focus)="markAsTouched()"
+		[class]="control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''"
+	></p-multiSelect>
+
+	<app-error-field
+		[control]="control"
+		[validationMessages]="validationMessages"
+	></app-error-field>
+</div>

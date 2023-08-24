@@ -56,13 +56,15 @@ label {
 
 app-text-field,
 app-select,
+app-select-multiple,
 app-slider-with-value,
 app-number-field {
 	width: 100%;
 	margin-bottom: 1rem;
 }
 
-app-radio {
+app-base-radio,
+app-square-radio {
 	margin-bottom: 1rem;
 }
 

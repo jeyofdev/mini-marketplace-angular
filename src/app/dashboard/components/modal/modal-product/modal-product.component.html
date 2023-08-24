@@ -68,7 +68,7 @@
 
 				<div [formGroup]="detailsForm">
 					<div class="form-row">
-						<app-select
+						<app-select-multiple
 							[items]="categories"
 							label="Category *"
 							name="category"
@@ -77,11 +77,11 @@
 							formControlName="category"
 							[parentForm]="mainForm"
 							[validationMessages]="inputsValidationMessages.category"
-						></app-select>
+						></app-select-multiple>
 					</div>
 
 					<div class="form-row">
-						<app-select
+						<app-select-multiple
 							[items]="sizes"
 							label="Size *"
 							name="size"
@@ -90,20 +90,21 @@
 							formControlName="size"
 							[parentForm]="mainForm"
 							[validationMessages]="inputsValidationMessages.sizes"
-						></app-select>
+						></app-select-multiple>
 					</div>
 
 					<div class="form-row row-checkbox" [formGroup]="colorsForm">
 						<label>Available colors</label>
 						<div class="colors-box">
 							<ng-container *ngFor="let color of colors">
-								<app-checkbox-color
+								<app-checkbox-color-border
 									[name]="color.name"
-									[color]="color"
+									[color]="color.severity"
 									[formControlName]="color.name"
 									groupName="colorsForm"
 									[parentForm]="mainForm"
-								></app-checkbox-color>
+									[hasBorder]="true"
+								></app-checkbox-color-border>
 							</ng-container>
 						</div>
 					</div>
@@ -140,13 +141,22 @@
 
 						<div class="radio-box">
 							<ng-container *ngFor="let item of status">
-								<app-radio
+								<!-- <app-base-radio
 									label="Status"
 									name="status"
 									[item]="item"
 									formControlName="status"
 									[parentForm]="mainForm"
-								></app-radio>
+								></app-base-radio> -->
+
+								<app-square-radio
+									label="Status"
+									name="status"
+									color="help"
+									[item]="item"
+									formControlName="status"
+									[parentForm]="mainForm"
+								></app-square-radio>
 							</ng-container>
 						</div>
 					</div>
