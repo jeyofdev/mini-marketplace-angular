@@ -1,12 +1,12 @@
-export interface ISelectItem {
+export interface IInputComplexItem {
+	name?: string;
 	value: string;
 	label: string;
 }
 
-export interface IRadioButtonItem {
-	label: string;
-	key: string;
-}
+export type ChoiceItemType = Pick<IInputComplexItem, 'value' | 'label'> & {
+	id?: string;
+};
 
 export interface IColorCheckbox {
 	color: string;

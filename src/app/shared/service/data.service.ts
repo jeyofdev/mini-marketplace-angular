@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-	IColorCheckbox,
-	IRadioButtonItem,
-	ISelectItem,
-} from '../interfaces/input.interface';
+import { IColorCheckbox, ChoiceItemType } from '../interfaces/input.interface';
 import { ProductSizeEnum } from '../enum/product.enum';
 import {
 	ITableColumns,
@@ -13,13 +9,13 @@ import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
 import { StatusEnum } from '../enum/form.enum';
-import { IChoiceItem, IColorItem } from '../interfaces/item.interface';
+import { IColorItem } from '../interfaces/item.interface';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class DataService {
-	getAllSizes(): ISelectItem[] | IChoiceItem[] {
+	getAllSizes(): ChoiceItemType[] {
 		return [
 			{ value: ProductSizeEnum.M, label: ProductSizeEnum.M },
 			{ value: ProductSizeEnum.L, label: ProductSizeEnum.L },
@@ -28,19 +24,17 @@ export class DataService {
 		];
 	}
 
-	getAllStatus(): IRadioButtonItem[] {
+	getAllStatus(): ChoiceItemType[] {
 		return [
 			{
-				key: StatusEnum.INACTIVE,
+				id: StatusEnum.INACTIVE,
 				label: StatusEnum.INACTIVE,
+				value: StatusEnum.INACTIVE,
 			},
 			{
-				key: 'S',
-				label: 'S',
-			},
-			{
-				key: StatusEnum.ACTIVE,
+				id: StatusEnum.ACTIVE,
 				label: StatusEnum.ACTIVE,
+				value: StatusEnum.ACTIVE,
 			},
 		];
 	}

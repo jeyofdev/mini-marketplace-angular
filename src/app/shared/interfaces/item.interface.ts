@@ -1,8 +1,3 @@
-export interface IChoiceItem {
-	value: string;
-	label: string;
-}
-
 export interface IColorItem {
 	color: string;
 	label: string;

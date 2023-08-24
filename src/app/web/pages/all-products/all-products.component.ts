@@ -9,9 +9,9 @@ import {
 } from '../../state/selectors/web-product.selectors';
 import { DataService } from '../../../shared/service/data.service';
 import {
+	ChoiceItemType,
 	IColorCheckbox,
-	ISelectItem,
-} from 'src/app/shared/interfaces/input.interface';
+} from '../../../shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-all-products',
@@ -22,7 +22,7 @@ export class AllProductsComponent implements OnInit {
 	loading$!: Observable<boolean>;
 	products!: IProduct[];
 	filteredProducts!: IProduct[];
-	sizes!: ISelectItem[];
+	sizes!: ChoiceItemType[];
 	colors!: IColorCheckbox[];
 	filters!: { sizes: string[]; colors: string[] };
 
@@ -53,7 +53,7 @@ export class AllProductsComponent implements OnInit {
 			.subscribe();
 	}
 
-	sizeSelected(currentSize: ISelectItem): void {
+	sizeSelected(currentSize: ChoiceItemType): void {
 		if (!this.filters.sizes.includes(currentSize.value)) {
 			this.filters.sizes.push(currentSize.value);
 			this.filteredProducts = this.getFilteredProducts(this.products);
@@ -77,7 +77,7 @@ export class AllProductsComponent implements OnInit {
 		}
 	}
 
-	getOutline(size: ISelectItem) {
+	getOutline(size: ChoiceItemType) {
 		return !this.filters.sizes.includes(size.value);
 	}
 

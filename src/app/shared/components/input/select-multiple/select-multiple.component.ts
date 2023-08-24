@@ -5,9 +5,9 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { ISelectItem } from '../../../interfaces/input.interface';
 import { IValidationMessage } from '../../../interfaces/validation-message.interface';
 import { MultiSelectChangeEvent } from 'primeng/multiselect';
+import { ChoiceItemType } from '../../../../shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-select-multiple',
@@ -25,7 +25,7 @@ export class SelectMultipleComponent implements ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
 	@Input() placeholder!: string;
-	@Input() items!: ISelectItem[];
+	@Input() items!: ChoiceItemType[];
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
@@ -35,9 +35,9 @@ export class SelectMultipleComponent implements ControlValueAccessor {
 	value!: string;
 	disabled!: boolean;
 
-	selectedItem: ISelectItem | undefined;
+	selectedItem: ChoiceItemType | undefined;
 
-	onChanged!: (selectedItem: ISelectItem) => void;
+	onChanged!: (selectedItem: ChoiceItemType) => void;
 	onTouched!: () => void;
 
 	selectionChanged(event: MultiSelectChangeEvent) {
@@ -48,11 +48,11 @@ export class SelectMultipleComponent implements ControlValueAccessor {
 		this.onTouched();
 	}
 
-	writeValue(selectedItem: ISelectItem): void {
+	writeValue(selectedItem: ChoiceItemType): void {
 		this.selectedItem = selectedItem;
 	}
 
-	registerOnChange(fn: (selectedItem: ISelectItem) => void): void {
+	registerOnChange(fn: (selectedItem: ChoiceItemType) => void): void {
 		this.onChanged = fn;
 	}
 

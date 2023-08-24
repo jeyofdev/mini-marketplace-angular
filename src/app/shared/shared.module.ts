@@ -37,8 +37,8 @@ import { ChipCircleComponent } from './components/chip/chip-circle/chip-circle.c
 import { OptionComponent } from './components/option/option.component';
 import { SelectMultipleComponent } from './components/input/select-multiple/select-multiple.component';
 import { CheckboxColorBorderComponent } from './components/input/checkbox/checkbox-color-border/checkbox-color-border.component';
-import { BaseRadioComponent } from './components/input/radio/base-radio/base-radio.component';
-import { SquareRadioComponent } from './components/input/radio/square-radio/square-radio-radio.component';
+import { RadioBaseComponent } from './components/input/radio/radio-base/radio-base.component';
+import { RadioSquareComponent } from './components/input/radio/radio-square/radio-square.component';
 
 @NgModule({
 	declarations: [
@@ -64,7 +64,7 @@ import { SquareRadioComponent } from './components/input/radio/square-radio/squa
 		PriceComponent,
 		TagComponent,
 		ChipComponent,
-		BaseRadioComponent,
+		RadioBaseComponent,
 		LogoComponent,
 		PanelComponent,
 		ButtonRoundedComponent,
@@ -76,7 +76,7 @@ import { SquareRadioComponent } from './components/input/radio/square-radio/squa
 		LoaderComponent,
 		SelectMultipleComponent,
 		OptionComponent,
-		SquareRadioComponent,
+		RadioSquareComponent,
 	],
 	imports: [
 		CommonModule,
@@ -112,7 +112,7 @@ import { SquareRadioComponent } from './components/input/radio/square-radio/squa
 		PriceComponent,
 		TagComponent,
 		ChipComponent,
-		BaseRadioComponent,
+		RadioBaseComponent,
 		LogoComponent,
 		ConvertToStringPipe,
 		PanelComponent,
@@ -125,7 +125,7 @@ import { SquareRadioComponent } from './components/input/radio/square-radio/squa
 		ChipCircleComponent,
 		OptionComponent,
 		SelectMultipleComponent,
-		SquareRadioComponent,
+		RadioSquareComponent,
 	],
 })
 export class SharedModule {}

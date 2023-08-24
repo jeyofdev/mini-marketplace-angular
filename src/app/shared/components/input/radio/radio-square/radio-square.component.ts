@@ -5,23 +5,23 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { IRadioButtonItem } from '../../../../interfaces/input.interface';
+import { ChoiceItemType } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
-	selector: 'app-square-radio',
-	templateUrl: './square-radio-radio.component.html',
-	styleUrls: ['./square-radio-radio.component.scss'],
+	selector: 'app-radio-square',
+	templateUrl: './radio-square.component.html',
+	styleUrls: ['./radio-square.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => SquareRadioComponent),
+			useExisting: forwardRef(() => RadioSquareComponent),
 			multi: true,
 		},
 	],
 })
-export class SquareRadioComponent implements OnInit, ControlValueAccessor {
-	@Input() item!: IRadioButtonItem;
+export class RadioSquareComponent implements OnInit, ControlValueAccessor {
+	@Input() item!: ChoiceItemType;
 	@Input() name!: string;
 	@Input() color!:
 		| 'primary'
@@ -83,7 +83,7 @@ export class SquareRadioComponent implements OnInit, ControlValueAccessor {
 			this.styleClass += `p-radiobutton-${this.color} `;
 		}
 
-		if (this.value === this.item.key) {
+		if (this.value === this.item.value) {
 			this.styleClass += `p-radiobutton-bg-${this.color}`;
 		}
 	}

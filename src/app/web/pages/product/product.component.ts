@@ -11,11 +11,9 @@ import {
 import { IImage } from '../../../shared/model/image.model';
 import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
 import { BreakpointService } from '../../../shared/service/breakpoint.service';
-import {
-	IChoiceItem,
-	IColorItem,
-} from '../../../shared/interfaces/item.interface';
+import { IColorItem } from '../../../shared/interfaces/item.interface';
 import { DataService } from '../../../shared/service/data.service';
+import { ChoiceItemType } from '../../../shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-product',
@@ -35,7 +33,7 @@ export class ProductComponent implements OnInit {
 	rating = 3.5;
 	messages = [];
 
-	sizes!: IChoiceItem[];
+	sizes!: ChoiceItemType[];
 	colors!: IColorItem[];
 	price!: string;
 

@@ -5,23 +5,23 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { IRadioButtonItem } from '../../../../interfaces/input.interface';
+import { ChoiceItemType } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
-	selector: 'app-base-radio',
-	templateUrl: './base-radio.component.html',
-	styleUrls: ['./base-radio.component.scss'],
+	selector: 'app-radio-base',
+	templateUrl: './radio-base.component.html',
+	styleUrls: ['./radio-base.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => BaseRadioComponent),
+			useExisting: forwardRef(() => RadioBaseComponent),
 			multi: true,
 		},
 	],
 })
-export class BaseRadioComponent implements ControlValueAccessor {
-	@Input() item!: IRadioButtonItem;
+export class RadioBaseComponent implements ControlValueAccessor {
+	@Input() item!: ChoiceItemType;
 	@Input() name!: string;
 
 	@Input() parentForm!: FormGroup;
