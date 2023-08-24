@@ -1,9 +1,9 @@
 <p-radioButton
-	[inputId]="item.key"
-	[value]="item.key"
+	[inputId]="item.id"
+	[value]="item.value"
 	[disabled]="disabled"
 	(onClick)="selectionChanged($event)"
 	(blur)="onTouched()"
 ></p-radioButton>
 
-<label [for]="item.key" class="radio-label">{{ item.label }}</label>
+<label [for]="item.id" class="radio-label">{{ item.label }}</label>

@@ -9,12 +9,10 @@ import { Subscription, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../../shared/service/category.service';
 import {
 	IColorCheckbox,
-	IRadioButtonItem,
-	ISelectItem,
+	ChoiceItemType,
 } from '../../../../shared/interfaces/input.interface';
 import { ICategory } from '../../../../shared/model/category.model';
 import { IProduct } from '../../../../shared/model/product.model';
-import { ProductService } from '../../../../shared/service/product.service';
 import { addProductValidationMessages } from '../../../validations/messages.validation';
 import { MessageService } from 'primeng/api';
 import { DataService } from '../../../../shared/service/data.service';
@@ -53,10 +51,10 @@ export class ModalProductComponent implements OnInit {
 	priceCtrl!: FormControl;
 	statusCtrl!: FormControl<string | null>;
 
-	categories!: ISelectItem[];
-	sizes!: ISelectItem[];
+	categories!: ChoiceItemType[];
+	sizes!: ChoiceItemType[];
 	colors!: IColorCheckbox[];
-	status!: IRadioButtonItem[];
+	status!: ChoiceItemType[];
 
 	submitBtnLabel!: string;
 
@@ -70,7 +68,6 @@ export class ModalProductComponent implements OnInit {
 	constructor(
 		private formBuilder: FormBuilder,
 		private categoryService: CategoryService,
-		private productService: ProductService,
 		private messageService: MessageService,
 		private dataService: DataService,
 		private store: Store,

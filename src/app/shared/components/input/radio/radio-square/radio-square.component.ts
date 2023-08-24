@@ -5,7 +5,7 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { IRadioButtonItem } from '../../../../interfaces/input.interface';
+import { ChoiceItemType } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
@@ -21,7 +21,7 @@ import { getFormControl } from '../../../../utils/form.utils';
 	],
 })
 export class RadioSquareComponent implements OnInit, ControlValueAccessor {
-	@Input() item!: IRadioButtonItem;
+	@Input() item!: ChoiceItemType;
 	@Input() name!: string;
 	@Input() color!:
 		| 'primary'
@@ -83,7 +83,7 @@ export class RadioSquareComponent implements OnInit, ControlValueAccessor {
 			this.styleClass += `p-radiobutton-${this.color} `;
 		}
 
-		if (this.value === this.item.key) {
+		if (this.value === this.item.value) {
 			this.styleClass += `p-radiobutton-bg-${this.color}`;
 		}
 	}

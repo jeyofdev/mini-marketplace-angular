@@ -5,7 +5,7 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { IRadioButtonItem } from '../../../../interfaces/input.interface';
+import { ChoiceItemType } from '../../../../interfaces/input.interface';
 import { getFormControl } from '../../../../utils/form.utils';
 
 @Component({
@@ -21,7 +21,7 @@ import { getFormControl } from '../../../../utils/form.utils';
 	],
 })
 export class RadioBaseComponent implements ControlValueAccessor {
-	@Input() item!: IRadioButtonItem;
+	@Input() item!: ChoiceItemType;
 	@Input() name!: string;
 
 	@Input() parentForm!: FormGroup;

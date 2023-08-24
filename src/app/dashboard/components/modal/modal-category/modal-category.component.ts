@@ -10,7 +10,7 @@ import { addCategoryValidationMessages } from '../../../validations/messages.val
 import { MessageService } from 'primeng/api';
 import { ICategory } from '../../../../shared/model/category.model';
 import { FillFormWithCurrentCategoryFnType } from '../../../../shared/types/index.type';
-import { IRadioButtonItem } from '../../../../shared/interfaces/input.interface';
+import { ChoiceItemType } from '../../../../shared/interfaces/input.interface';
 import { Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { DashboardActions } from '../../../state/actions/dashboard-index.actions';
@@ -39,7 +39,7 @@ export class ModalCategoryComponent implements OnInit {
 
 	submitBtnLabel!: string;
 
-	status!: IRadioButtonItem[];
+	status!: ChoiceItemType[];
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	addCategoryValidationMessages!: any;
