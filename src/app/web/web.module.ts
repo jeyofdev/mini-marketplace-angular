@@ -23,6 +23,7 @@ import { WebProductEffects } from './state/effects/web-product.effects';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { ProductComponent } from './pages/product/product.component';
 import { WebCartEffects } from './state/effects/web-cart.effects';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
 	declarations: [
@@ -40,6 +41,7 @@ import { WebCartEffects } from './state/effects/web-cart.effects';
 		ProductListComponent,
 		AllProductsComponent,
 		ProductComponent,
+		CartComponent,
 	],
 	imports: [
 		CommonModule,

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap } from 'rxjs';
+import { catchError, map, mergeMap, of } from 'rxjs';
 import { WebActions } from '../actions/web-index.actions';
 import { CartService } from '../../../shared/service/cart.service';
+import { ICartProduct } from '../../../shared/model/cart.model';
 
 @Injectable()
 export class WebCartEffects {
@@ -11,7 +12,7 @@ export class WebCartEffects {
 			ofType(WebActions.cart.addProductToCart),
 			mergeMap(async ({ payload: { data } }) =>
 				this.cartService
-					.addItemToCart(data)
+					.addProductToCart(data)
 					.then(() =>
 						WebActions.cart.addProductToCartSuccess({
 							payload: { data },
@@ -22,6 +23,28 @@ export class WebCartEffects {
 							payload: { error: error.body.error },
 						}),
 					),
+			),
+		);
+	});
+
+	getAllProductInCart$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(WebActions.cart.loadProductsInCart),
+			mergeMap(() =>
+				this.cartService.getAllProductsInCart().pipe(
+					map((products: ICartProduct[]) =>
+						WebActions.cart.loadProductsInCartSuccess({
+							payload: { data: products },
+						}),
+					),
+					catchError(error =>
+						of(
+							WebActions.cart.loadProductsInCartFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

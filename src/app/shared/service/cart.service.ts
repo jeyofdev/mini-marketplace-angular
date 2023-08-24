@@ -5,9 +5,11 @@ import {
 	Firestore,
 	addDoc,
 	DocumentReference,
+	collectionData,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { ICartProduct } from '../model/cart.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,7 +21,13 @@ export class CartService {
 		this.collectionInstance = collection(this.firestore, 'cart');
 	}
 
-	addItemToCart(
+	getAllProductsInCart(): Observable<ICartProduct[]> {
+		return collectionData(this.collectionInstance, {
+			idField: 'id',
+		}) as Observable<ICartProduct[]>;
+	}
+
+	addProductToCart(
 		product: ICartProduct,
 	): Promise<DocumentReference<ICartProduct>> {
 		const docRef = addDoc(this.collectionInstance, product);
