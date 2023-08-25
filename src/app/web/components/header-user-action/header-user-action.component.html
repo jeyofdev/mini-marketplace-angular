@@ -1,10 +1,17 @@
 <div [class]="class">
-	<p-menubar [model]="items"></p-menubar>
+	<div class="btns-box" *ngIf="!isMobile">
+		<app-button-circle
+			icon="fa-solid fa-cart-shopping"
+			(click)="toggleShowCart($event)"
+		></app-button-circle>
+
+		<app-button-circle icon="fa-solid fa-heart"></app-button-circle>
+	</div>
 
 	<span *ngIf="showSeparator" class="vertical-separator"></span>
 
 	<app-button
-		*ngIf="!connectedUser"
+		*ngIf="!connectedUser && !isMobile"
 		shape="circle"
 		variant="rounded"
 		(click)="menu.toggle($event)"
@@ -12,7 +19,9 @@
 	></app-button>
 
 	<div class="user-connected" *ngIf="connectedUser && !isMobile">
-		<h6 class="user-name">{{ connectedUser.displayName | fullname }}</h6>
+		<h6 class="user-name">
+			{{ connectedUser.displayName | fullname }}
+		</h6>
 		<p-avatar
 			size="large"
 			shape="circle"
@@ -21,4 +30,8 @@
 	</div>
 
 	<p-menu #menu [model]="userItems" [popup]="true"></p-menu>
+
+	<p-menubar *ngIf="isMobile" [model]="items"></p-menubar>
 </div>
+
+<app-cart></app-cart>

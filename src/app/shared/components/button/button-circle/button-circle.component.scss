@@ -23,27 +23,27 @@
 }
 
 :host ::ng-deep .circle.circle-primary {
-	border: 2.5px solid rgba($primary, 0.4);
+	border-color: rgba($primary, 0.4);
 }
 
 :host ::ng-deep .circle.circle-success {
-	border: 2.5px solid rgba($success, 0.4);
+	border-color: rgba($success, 0.4);
 }
 
 :host ::ng-deep .circle.circle-warning {
-	border: 2.5px solid rgba($warning, 0.4);
+	border-color: rgba($warning, 0.4);
 }
 
 :host ::ng-deep .circle.circle-info {
-	border: 2.5px solid rgba($info, 0.4);
+	border-color: rgba($info, 0.4);
 }
 
 :host ::ng-deep .circle.circle-danger {
-	border: 2.5px solid rgba($danger, 0.4);
+	border-color: rgba($danger, 0.4);
 }
 
 :host ::ng-deep .circle.circle-help {
-	border: 2.5px solid rgba($help, 0.4);
+	border-color: rgba($help, 0.4);
 }
 
 :host ::ng-deep .p-button {
@@ -51,4 +51,9 @@
 	min-height: 1.85rem;
 	border-radius: 100%;
 	padding: 0.5rem 0.5rem;
+}
+
+:host ::ng-deep .p-button.p-button-transparent {
+	background-color: transparent;
+	color: var(--primary-800);
 }

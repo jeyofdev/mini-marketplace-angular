@@ -5,7 +5,7 @@ import { ICartProduct } from 'src/app/shared/model/cart.model';
 export const webCartFeatureKey = 'cart';
 
 export interface IWebCartState {
-	products: Partial<ICartProduct>[];
+	products: ICartProduct[];
 	loading: boolean;
 }
 
@@ -20,6 +20,21 @@ export const initialCartState: IWebCartState = {
 
 export const cartReducer = createReducer(
 	initialCartState,
+
+	on(WebActions.cart.loadProductsInCart, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
+
+	on(WebActions.cart.loadProductsInCartSuccess, (state, actions) => {
+		return {
+			...state,
+			products: actions.payload.data,
+			loading: false,
+		};
+	}),
 
 	on(WebActions.cart.addProductToCart, (state, actions) => {
 		return {
