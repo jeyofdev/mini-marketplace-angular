@@ -9,7 +9,11 @@
 		<div class="item-info">
 			<p>
 				<span class="info-title">Size :</span>
-				<span>{{ product.size }}</span>
+				<app-chip-square
+					[label]="product.size"
+					color="danger"
+					size="xsmall"
+				></app-chip-square>
 			</p>
 
 			<p>
