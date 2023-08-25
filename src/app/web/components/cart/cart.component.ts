@@ -8,6 +8,8 @@ import {
 import { Observable, map } from 'rxjs';
 import { ICartProduct } from 'src/app/shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { DataService } from 'src/app/shared/service/data.service';
+import { ColorItemType } from 'src/app/shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-cart',
@@ -20,10 +22,18 @@ export class CartComponent implements OnInit {
 	cartProducts!: ICartProduct[];
 	loading$!: Observable<boolean>;
 
-	constructor(private store: Store) {}
+	colors!: ColorItemType[];
+	itemNumber!: number;
+
+	constructor(
+		private store: Store,
+		private dataService: DataService,
+	) {}
 
 	ngOnInit(): void {
+		this.itemNumber = 1;
 		this.store.dispatch(WebActions.cart.loadProductsInCart());
+		this.colors = this.dataService.getAllColors();
 
 		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));
 

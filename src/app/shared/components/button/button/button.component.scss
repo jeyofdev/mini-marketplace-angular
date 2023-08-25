@@ -1,3 +1,5 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
 :host ::ng-deep .p-button.p-button-icon-only.p-button-rounded {
 	height: auto;
 	width: 35px;
@@ -6,6 +8,10 @@
 
 .icon {
 	font-size: 1rem;
+}
+
+.button-label {
+	color: $light;
 }
 
 .mr {
@@ -25,21 +31,19 @@
 .p-button {
 	width: 100%;
 	border-radius: 6px;
+	color: var(--primary-50);
 }
 
 :host ::ng-deep .p-button-transparent {
 	background-color: transparent;
-	color: var(--primary-800);
 }
 
 :host ::ng-deep .p-button-white {
 	background-color: var(--primary-50);
-	color: var(--primary-800);
 }
 
 :host ::ng-deep .p-button-transparent:enabled:hover {
 	background-color: transparent;
-	color: var(--primary-800);
 }
 
 :host ::ng-deep .p-button-white:enabled:hover {

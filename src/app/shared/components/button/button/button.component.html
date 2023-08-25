@@ -12,7 +12,7 @@
 	<p-button [type]="type" [disabled]="disabled" [styleClass]="styleClass">
 		<div class="btn-content">
 			<i *ngIf="iconPrefix" [class]="'icon mr ' + iconPrefix"></i>
-			<h5 class="button">
+			<h5 class="button-label">
 				<ng-content></ng-content>
 			</h5>
 			<i *ngIf="iconSuffix" [class]="'icon ml ' + iconSuffix"></i>

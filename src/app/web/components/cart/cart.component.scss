@@ -1,0 +1,57 @@
+.content-box {
+	width: 100%;
+	min-width: 500px;
+}
+
+.content-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.item-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1rem;
+}
+
+.thumbs {
+	overflow: hidden;
+	border-radius: 10px;
+	width: 125px;
+
+	img {
+		width: 125px;
+		height: 125px;
+		object-fit: cover;
+		object-position: center top;
+		border-radius: 10px;
+	}
+}
+
+.item-title {
+	font-weight: normal;
+}
+
+.item-info {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.2rem;
+	margin-top: 1rem;
+
+	p {
+		display: flex;
+		gap: 0.25rem;
+	}
+}
+
+.info-title {
+	font-weight: inherit;
+	font-size: 0.9rem;
+}
+
+.price-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1rem;
+}

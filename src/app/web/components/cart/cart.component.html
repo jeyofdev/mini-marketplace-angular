@@ -1,3 +1,74 @@
-<p-overlayPanel>
-	<h3>Cart</h3>
-</p-overlayPanel>
+<div class="cart">
+	<p-overlayPanel
+		[style]="{
+			borderRadius: '10px',
+			boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+		}"
+	>
+		<ng-template pTemplate="content">
+			<div class="content-box">
+				<div class="content-header">
+					<h3>Cart ({{ cartProducts.length }})</h3>
+					<app-button-empty
+						label="Remove all"
+						icon="fa-solid fa-trash-can"
+						color="danger"
+					></app-button-empty>
+				</div>
+
+				<app-divider></app-divider>
+
+				<div class="item-box">
+					<div class="thumbs">
+						<img src="assets/img/auth/login.jpg" alt="" />
+					</div>
+
+					<div class="item-description">
+						<h4 class="item-title">Lorem ipsum dolor sit amet.</h4>
+
+						<div class="item-info">
+							<p>
+								<span class="info-title">Size :</span>
+								<span>S</span>
+							</p>
+
+							<p>
+								<span class="info-title">Color :</span>
+								<span class="badge-colors-box">
+									<app-badge-color color="red" size="medium"></app-badge-color>
+								</span>
+							</p>
+						</div>
+
+						<div class="price-box">
+							<p-inputNumber
+								[(ngModel)]="itemNumber"
+								[showButtons]="true"
+								buttonLayout="horizontal"
+								spinnerMode="horizontal"
+								inputId="horizontal"
+								decrementButtonClass="p-button"
+								incrementButtonClass="p-button"
+								incrementButtonIcon="pi pi-plus"
+								decrementButtonIcon="pi pi-minus"
+							></p-inputNumber>
+
+							<h3>€ 15.50</h3>
+						</div>
+					</div>
+				</div>
+
+				<app-divider></app-divider>
+
+				<app-button
+					variant="raised"
+					shape="square"
+					color="primary"
+					size="medium"
+					iconPrefix="fa-solid fa-credit-card"
+					>Checkout</app-button
+				>
+			</div>
+		</ng-template>
+	</p-overlayPanel>
+</div>
