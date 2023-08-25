@@ -7,8 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class DividerComponent {
 	@Input() layout: 'vertical' | 'horizontal' = 'horizontal';
-	@Input() maxWidth!: number;
+	@Input() maxWidth!: string;
 	@Input() icon!: string;
 	@Input() label!: string;
 	@Input() backgroundColor!: string;
+	@Input() margin!: string;
 }
