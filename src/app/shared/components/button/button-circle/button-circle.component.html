@@ -1,6 +1,10 @@
 <div class="btn-circle-container">
 	<div [class]="circleClass">
-		<p-button [styleClass]="styleClass" (click)="onClick()"></p-button>
+		<p-button
+			[styleClass]="styleClass"
+			(click)="onClick()"
+			[icon]="icon"
+		></p-button>
 	</div>
 
 	<p *ngIf="showLabel">{{ label }}</p>

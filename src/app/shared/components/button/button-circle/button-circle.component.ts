@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonCircleComponent implements OnInit {
 	@Input() label!: string;
+	@Input() icon!: string;
 	@Input() showLabel!: boolean;
 	@Input() selected!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large';
@@ -27,8 +28,10 @@ export class ButtonCircleComponent implements OnInit {
 	}
 
 	onClick(): void {
-		this.selected = !this.selected;
-		this.setCircleClass();
+		if (this.selected) {
+			this.selected = !this.selected;
+			this.setCircleClass();
+		}
 	}
 
 	private setStyleClass(): void {
@@ -36,6 +39,8 @@ export class ButtonCircleComponent implements OnInit {
 
 		if (this.color) {
 			this.styleClass += ` p-button-${this.color}`;
+		} else {
+			this.styleClass += ' p-button-transparent';
 		}
 	}
 

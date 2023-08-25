@@ -14,6 +14,11 @@
 	}
 }
 
+:host ::ng-deep .btns-box {
+	display: flex;
+	gap: 0.4rem;
+}
+
 :host ::ng-deep .vertical-separator {
 	display: block;
 	width: 1px;

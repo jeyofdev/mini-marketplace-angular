@@ -18,6 +18,7 @@ export class HeaderUserActionComponent implements OnInit {
 	items!: MenuItem[];
 	userItems!: MenuItem[];
 	class!: string;
+	showCart!: boolean;
 
 	constructor(
 		private authService: AuthService,
@@ -27,6 +28,7 @@ export class HeaderUserActionComponent implements OnInit {
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
 		this.class = 'actions-box';
+		this.showCart = false;
 
 		if (this.connectedUser && !this.isMobile) {
 			this.items = this.dataService.getConnectedLinks();
@@ -51,6 +53,10 @@ export class HeaderUserActionComponent implements OnInit {
 		if (this.direction) {
 			this.class += ' ' + this.direction;
 		}
+	}
+
+	toggleShowCart(): void {
+		this.showCart = !this.showCart;
 	}
 
 	private filterItems(itemsMobile: MenuItem): MenuItem[] {
