@@ -31,6 +31,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
 	exports: [
@@ -66,6 +67,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 		CardModule,
 		PanelModule,
 		MultiSelectModule,
+		OverlayPanelModule,
 	],
 })
 export class PrimengModule {}

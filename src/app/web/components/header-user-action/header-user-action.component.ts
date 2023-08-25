@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { DataService } from '../../services/data.service';
 import { User } from '@angular/fire/auth';
 import { AuthService } from '../../../shared/service/auth.service';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
 	selector: 'app-header-user-action',
@@ -10,6 +11,7 @@ import { AuthService } from '../../../shared/service/auth.service';
 	styleUrls: ['./header-user-action.component.scss'],
 })
 export class HeaderUserActionComponent implements OnInit {
+	@ViewChild(CartComponent) cartPanel!: CartComponent;
 	@Input() showSeparator!: boolean;
 	@Input() direction!: 'row' | 'column';
 	@Input() isMobile!: boolean;
@@ -18,7 +20,6 @@ export class HeaderUserActionComponent implements OnInit {
 	items!: MenuItem[];
 	userItems!: MenuItem[];
 	class!: string;
-	showCart!: boolean;
 
 	constructor(
 		private authService: AuthService,
@@ -28,7 +29,6 @@ export class HeaderUserActionComponent implements OnInit {
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
 		this.class = 'actions-box';
-		this.showCart = false;
 
 		if (this.connectedUser && !this.isMobile) {
 			this.items = this.dataService.getConnectedLinks();
@@ -55,8 +55,8 @@ export class HeaderUserActionComponent implements OnInit {
 		}
 	}
 
-	toggleShowCart(): void {
-		this.showCart = !this.showCart;
+	toggleShowCart(event: Event): void {
+		this.cartPanel.toggle(event);
 	}
 
 	private filterItems(itemsMobile: MenuItem): MenuItem[] {

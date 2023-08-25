@@ -2,8 +2,9 @@
 	<div class="btns-box" *ngIf="!isMobile">
 		<app-button-circle
 			icon="fa-solid fa-cart-shopping"
-			(click)="toggleShowCart()"
+			(click)="toggleShowCart($event)"
 		></app-button-circle>
+
 		<app-button-circle icon="fa-solid fa-heart"></app-button-circle>
 	</div>
 
@@ -32,3 +33,5 @@
 
 	<p-menubar *ngIf="isMobile" [model]="items"></p-menubar>
 </div>
+
+<app-cart></app-cart>

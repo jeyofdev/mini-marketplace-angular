@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { WebActions } from '../../state/actions/web-index.actions';
 import {
@@ -7,6 +7,7 @@ import {
 } from '../../state/selectors/web-cart.selectors';
 import { Observable, map } from 'rxjs';
 import { ICartProduct } from 'src/app/shared/model/cart.model';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
 	selector: 'app-cart',
@@ -14,6 +15,8 @@ import { ICartProduct } from 'src/app/shared/model/cart.model';
 	styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+	@ViewChild(OverlayPanel) panel!: OverlayPanel;
+
 	cartProducts!: ICartProduct[];
 	loading$!: Observable<boolean>;
 
@@ -32,5 +35,9 @@ export class CartComponent implements OnInit {
 				}),
 			)
 			.subscribe();
+	}
+
+	toggle(event: Event): void {
+		this.panel.toggle(event);
 	}
 }
