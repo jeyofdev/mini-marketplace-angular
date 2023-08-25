@@ -13,7 +13,6 @@ import { NavigationLinkComponent } from './components/link/navigation-link/navig
 import { HeaderUserActionComponent } from './components/header-user-action/header-user-action.component';
 import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
 import { NavigationLinkMobileComponent } from './components/link/navigation-link-mobile/navigation-link-mobile.component';
-import { ProductCardListComponent } from './components/card/product-card-list/product-card-list.component';
 import { ProductListComponent } from './components/list/product-list/product-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -24,6 +23,8 @@ import { AllProductsComponent } from './pages/all-products/all-products.componen
 import { ProductComponent } from './pages/product/product.component';
 import { WebCartEffects } from './state/effects/web-cart.effects';
 import { CartComponent } from './components/cart/cart.component';
+import { CardProductCartComponent } from './components/card/card-product-cart/card-product-cart.component';
+import { CardProductListComponent } from './components/card/card-list-product/card-product-list.component';
 
 @NgModule({
 	declarations: [
@@ -37,11 +38,12 @@ import { CartComponent } from './components/cart/cart.component';
 		HeaderUserActionComponent,
 		NavMobileComponent,
 		NavigationLinkMobileComponent,
-		ProductCardListComponent,
+		CardProductListComponent,
 		ProductListComponent,
 		AllProductsComponent,
 		ProductComponent,
 		CartComponent,
+		CardProductCartComponent,
 	],
 	imports: [
 		CommonModule,

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BadgeColorComponent implements OnInit {
 	@Input() size!: 'small' | 'medium' | 'large' | 'xlarge';
-	@Input() color!: 'red' | 'green' | 'blue' | 'yellow' | 'purple';
+	@Input() color!: string;
 
 	class!: string;
 

@@ -7,7 +7,7 @@ export interface ICartProduct {
 	size: ProductSizeEnum;
 	quantity: number;
 	price: number;
-	colors: ProductColorEnum[];
+	color: ProductColorEnum;
 }
 
 export interface Icart {

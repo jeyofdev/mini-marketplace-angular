@@ -6,10 +6,11 @@ import {
 	getWebProductsCartSelector,
 } from '../../state/selectors/web-cart.selectors';
 import { Observable, map } from 'rxjs';
-import { ICartProduct } from 'src/app/shared/model/cart.model';
+import { ICartProduct } from '../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { DataService } from 'src/app/shared/service/data.service';
-import { ColorItemType } from 'src/app/shared/interfaces/input.interface';
+import { DataService } from '../../../shared/service/data.service';
+import { ColorItemType } from '../../../shared/interfaces/input.interface';
+import { IImage } from '../../../shared/model/image.model';
 
 @Component({
 	selector: 'app-cart',
@@ -23,7 +24,7 @@ export class CartComponent implements OnInit {
 	loading$!: Observable<boolean>;
 
 	colors!: ColorItemType[];
-	itemNumber!: number;
+	image!: IImage;
 
 	constructor(
 		private store: Store,
@@ -31,7 +32,8 @@ export class CartComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.itemNumber = 1;
+		this.initImage();
+
 		this.store.dispatch(WebActions.cart.loadProductsInCart());
 		this.colors = this.dataService.getAllColors();
 
@@ -49,5 +51,13 @@ export class CartComponent implements OnInit {
 
 	toggle(event: Event): void {
 		this.panel.toggle(event);
+	}
+
+	private initImage(): void {
+		this.image = {
+			src: 'assets/img/auth/login.jpg',
+			alt: '',
+			position: 'top',
+		};
 	}
 }
