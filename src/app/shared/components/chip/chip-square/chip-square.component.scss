@@ -1,0 +1,96 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-chip {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	padding: 0;
+	border: 2px solid rgba($primary, 0.1);
+	background-color: transparent;
+}
+
+:host ::ng-deep .p-chip .p-chip-text {
+	margin: 0;
+}
+
+:host ::ng-deep .p-chip.p-chip-xsmall {
+	padding: 0 0.25rem;
+	min-width: 1.35rem;
+	min-height: 1.35rem;
+	border-radius: 8px;
+
+	.p-chip-text {
+		font-size: 0.8rem;
+	}
+}
+
+:host ::ng-deep .p-chip.p-chip-small {
+	padding: 0 0.35rem;
+	min-width: 1.45rem;
+	min-height: 1.45rem;
+	border-radius: 8px;
+
+	.p-chip-text {
+		font-size: 0.9rem;
+	}
+}
+
+:host ::ng-deep .p-chip.p-chip-normal {
+	padding: 0 0.5rem;
+	min-width: 1.6rem;
+	min-height: 1.6rem;
+	border-radius: 10px;
+
+	.p-chip-text {
+		font-size: 1rem;
+	}
+}
+
+:host ::ng-deep .p-chip.p-chip-large {
+	padding: 0 1rem;
+	min-width: 2.25rem;
+	min-height: 2.25rem;
+	border-radius: 10px;
+
+	.p-chip-text {
+		font-size: 1.5rem;
+	}
+}
+
+:host ::ng-deep .p-chip.p-chip-large .p-chip-text {
+	margin: 0.2rem;
+}
+
+:host ::ng-deep .p-chip.p-chip-primary {
+	background-color: var(--primary-500);
+
+	.p-chip-icon {
+		color: var(--primary-50);
+	}
+}
+
+:host ::ng-deep .p-chip.p-chip-success {
+	color: var(--green-800);
+	border-color: rgba($success, 0.1);
+}
+
+:host ::ng-deep .p-chip.p-chip-warning {
+	color: var(--yellow-800);
+	border-color: rgba($warning, 0.1);
+}
+
+:host ::ng-deep .p-chip.p-chip-info {
+	color: var(--blue-800);
+	border-color: rgba($info, 0.1);
+}
+
+:host ::ng-deep .p-chip.p-chip-danger {
+	color: var(--red-800);
+	border-color: rgba($danger, 0.1);
+}
+
+:host ::ng-deep .p-chip.p-chip-help {
+	color: var(--purple-800);
+	border-color: rgba($help, 0.1);
+}

@@ -1,7 +1,10 @@
 <p-divider
 	[layout]="layout"
-	align="center"
-	[ngStyle]="{ maxWidth: maxWidth ? maxWidth + 'px' : '100%' }"
+	[align]="'center'"
+	[ngStyle]="{
+		maxWidth: maxWidth ? maxWidth + 'px' : '100%',
+		margin: margin ? margin : '2.5rem auto'
+	}"
 >
 	<div class="content-box" [ngStyle]="{ backgroundColor }">
 		<ng-container *ngIf="icon">

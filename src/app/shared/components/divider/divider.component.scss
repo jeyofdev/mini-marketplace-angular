@@ -2,6 +2,10 @@
 	display: block;
 	margin: 2.5rem auto;
 	max-width: 250px;
+
+	.p-divider.p-divider-horizontal {
+		margin: 0;
+	}
 }
 
 :host ::ng-deep .p-divider-horizontal::before {

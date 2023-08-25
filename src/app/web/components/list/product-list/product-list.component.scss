@@ -6,7 +6,7 @@
 	gap: 1.5rem;
 }
 
-:host ::ng-deep app-product-card-list {
+:host ::ng-deep app-card-product-list {
 	grid-column: 1 / span 12;
 
 	@media (min-width: $sm) {

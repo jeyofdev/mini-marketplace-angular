@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtonRoundedComponent implements OnInit {
 	@Input() label!: string;
 	@Input() outlined!: boolean;
+	@Input() size!: 'full';
 	@Input() color!:
 		| 'primary'
 		| 'secondary'
@@ -37,6 +38,10 @@ export class ButtonRoundedComponent implements OnInit {
 
 		if (this.outlined) {
 			this.styleClass += ' p-button-outlined';
+		}
+
+		if (this.size) {
+			this.styleClass += ` p-button-${this.size}`;
 		}
 	}
 }

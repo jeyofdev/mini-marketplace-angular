@@ -1,3 +1,7 @@
+.p-overlaypanel .p-overlaypanel-content {
+	background-color: red;
+}
+
 .content-box {
 	width: 100%;
 	min-width: 500px;
@@ -9,49 +13,11 @@
 	gap: 1rem;
 }
 
-.item-box {
-	display: flex;
-	justify-content: flex-start;
-	gap: 1rem;
-}
-
-.thumbs {
-	overflow: hidden;
-	border-radius: 10px;
-	width: 125px;
-
-	img {
-		width: 125px;
-		height: 125px;
-		object-fit: cover;
-		object-position: center top;
-		border-radius: 10px;
-	}
-}
-
-.item-title {
+.content-title {
 	font-weight: normal;
 }
 
-.item-info {
+.product-cart-list {
 	display: flex;
-	justify-content: flex-start;
-	gap: 1.2rem;
-	margin-top: 1rem;
-
-	p {
-		display: flex;
-		gap: 0.25rem;
-	}
-}
-
-.info-title {
-	font-weight: inherit;
-	font-size: 0.9rem;
-}
-
-.price-box {
-	display: flex;
-	justify-content: flex-start;
-	gap: 1rem;
+	flex-direction: column;
 }
