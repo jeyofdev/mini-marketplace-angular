@@ -2,7 +2,8 @@
 	<p-overlayPanel
 		[style]="{
 			borderRadius: '10px',
-			boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+			boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
+			padding: '0rem'
 		}"
 	>
 		<ng-template pTemplate="content">
@@ -16,7 +17,7 @@
 					></app-button-empty>
 				</div>
 
-				<app-divider margin="1.65rem 0rem"></app-divider>
+				<app-divider margin="1.2rem 0rem 1.5rem"></app-divider>
 
 				<div class="item-box">
 					<div class="thumbs">
@@ -60,14 +61,13 @@
 
 				<app-divider margin="1.65rem 0rem"></app-divider>
 
-				<app-button
-					variant="raised"
-					shape="square"
+				<app-button-rounded
+					label="Add to cart"
 					color="primary"
-					size="medium"
-					iconPrefix="fa-solid fa-credit-card"
-					>Checkout</app-button
-				>
+					[outlined]="false"
+					icon="fa-solid fa-credit-card"
+					size="full"
+				></app-button-rounded>
 			</div>
 		</ng-template>
 	</p-overlayPanel>

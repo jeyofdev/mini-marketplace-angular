@@ -1,6 +1,8 @@
 @import '../../../../../theme/scss/light/theme/theme';
 
 :host ::ng-deep .p-button {
+	display: flex;
+	align-items: center;
 	min-width: 2.25rem;
 	border-radius: 10px;
 	padding: 0.5rem 0.5rem;
@@ -8,6 +10,16 @@
 	border: none;
 	background-color: transparent !important;
 	color: var(--primary-800);
+
+	.p-button-label {
+		font-weight: lighter;
+		line-height: 0.85;
+	}
+
+	.p-button-icon {
+		font-size: 0.95rem;
+		line-height: 1.1;
+	}
 
 	&.p-button-danger,
 	&.p-button-danger:enabled:hover,

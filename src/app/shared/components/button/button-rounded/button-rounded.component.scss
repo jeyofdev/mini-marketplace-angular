@@ -118,3 +118,7 @@
 :host ::ng-deep .p-button.p-button-help .p-button-label  {
 	color: var(--help-800);
 }
+
+:host ::ng-deep .p-button.p-button-full {
+	width: 100%;
+}
