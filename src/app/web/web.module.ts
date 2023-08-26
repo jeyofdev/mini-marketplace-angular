@@ -25,6 +25,7 @@ import { WebCartEffects } from './state/effects/web-cart.effects';
 import { CartComponent } from './components/cart/cart.component';
 import { CardProductCartComponent } from './components/card/card-product-cart/card-product-cart.component';
 import { CardProductListComponent } from './components/card/card-list-product/card-product-list.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 @NgModule({
 	declarations: [
@@ -44,6 +45,7 @@ import { CardProductListComponent } from './components/card/card-list-product/ca
 		ProductComponent,
 		CartComponent,
 		CardProductCartComponent,
+		CartPageComponent,
 	],
 	imports: [
 		CommonModule,
