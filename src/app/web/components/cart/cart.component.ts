@@ -8,9 +8,8 @@ import {
 import { Observable, map } from 'rxjs';
 import { ICartProduct } from '../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { DataService } from '../../../shared/service/data.service';
-import { ColorItemType } from '../../../shared/interfaces/input.interface';
 import { IImage } from '../../../shared/model/image.model';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-cart',
@@ -23,20 +22,17 @@ export class CartComponent implements OnInit {
 	cartProducts!: ICartProduct[];
 	loading$!: Observable<boolean>;
 
-	colors!: ColorItemType[];
 	image!: IImage;
 
 	constructor(
 		private store: Store,
-		private dataService: DataService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
 		this.initImage();
 
 		this.store.dispatch(WebActions.cart.loadProductsInCart());
-		this.colors = this.dataService.getAllColors();
-
 		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));
 
 		this.store
@@ -51,6 +47,10 @@ export class CartComponent implements OnInit {
 
 	toggle(event: Event): void {
 		this.panel.toggle(event);
+	}
+
+	goToCartPage(): void {
+		this.router.navigateByUrl('/cart');
 	}
 
 	private initImage(): void {

@@ -1,0 +1,40 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .page-title-box {
+	grid-column: 1 / span 12;
+	padding: 0 1rem;
+	margin-bottom: 2.5rem;
+}
+
+:host ::ng-deep .cart-products-list {
+	grid-column: 1 / span 8;
+	padding-left: 1rem;
+}
+
+:host ::ng-deep .cart-order-summary {
+	grid-column: auto / span 4;
+	padding-right: 1rem;
+	margin-left: 2rem;
+}
+
+:host ::ng-deep .section-title {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+:host ::ng-deep .cart-section {
+	background-color: $light;
+	border: 1px solid rgba($primary, 0.1);
+	padding: 1rem;
+	border-radius: 10px;
+}
+
+:host ::ng-deep .sub-total-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+:host ::ng-deep .order-btn {
+	margin-top: 1.25rem;
+}

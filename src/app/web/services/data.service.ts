@@ -3,6 +3,7 @@ import { INavLink } from '../../shared/interfaces/link.interface';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../shared/service/auth.service';
 import { Router } from '@angular/router';
+import { ITableColumns } from '../../shared/interfaces/table.interface';
 
 @Injectable({
 	providedIn: 'root',
@@ -107,6 +108,31 @@ export class DataService {
 						},
 					},
 				],
+			},
+		];
+	}
+
+	getColsProducts(): ITableColumns[] {
+		return [
+			{
+				field: 'brandName',
+				header: 'Brand name',
+			},
+			{
+				field: 'size',
+				header: 'Size',
+			},
+			{
+				field: 'quantity',
+				header: 'Quantity',
+			},
+			{
+				field: 'price',
+				header: 'Price',
+			},
+			{
+				field: 'color',
+				header: 'Color',
 			},
 		];
 	}

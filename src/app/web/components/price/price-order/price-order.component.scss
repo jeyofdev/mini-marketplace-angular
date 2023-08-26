@@ -1,0 +1,19 @@
+:host ::ng-deep .price-box {
+	display: flex;
+	justify-content: space-between;
+}
+
+:host ::ng-deep .price-title {
+	color: var(--gray-500);
+	font-weight: initial;
+}
+
+:host ::ng-deep .price-label {
+	color: var(--primary-700);
+	font-weight: bold;
+}
+
+:host ::ng-deep app-loader .p-progress-spinner {
+	width: 25px;
+	height: 25px;
+}

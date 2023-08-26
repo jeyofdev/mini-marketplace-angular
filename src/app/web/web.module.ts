@@ -25,6 +25,9 @@ import { WebCartEffects } from './state/effects/web-cart.effects';
 import { CartComponent } from './components/cart/cart.component';
 import { CardProductCartComponent } from './components/card/card-product-cart/card-product-cart.component';
 import { CardProductListComponent } from './components/card/card-list-product/card-product-list.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { PriceOrderComponent } from './components/price/price-order/price-order.component';
+import { TableCartProductsComponent } from './components/table-cart-products/table-cart-products.component';
 
 @NgModule({
 	declarations: [
@@ -44,6 +47,9 @@ import { CardProductListComponent } from './components/card/card-list-product/ca
 		ProductComponent,
 		CartComponent,
 		CardProductCartComponent,
+		CartPageComponent,
+		PriceOrderComponent,
+		TableCartProductsComponent,
 	],
 	imports: [
 		CommonModule,
