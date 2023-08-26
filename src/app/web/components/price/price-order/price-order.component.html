@@ -1,6 +1,10 @@
 <div class="price-box">
 	<p class="price-title">{{ title }}</p>
 	<p class="price-label">
-		{{ price | currency: 'EUR' : 'symbol' : '1.2-2' }}
+		<app-loader [loading]="loading"></app-loader>
+
+		<ng-container *ngIf="!loading">
+			{{ price | currency: 'EUR' : 'symbol' : '1.2-2' }}
+		</ng-container>
 	</p>
 </div>

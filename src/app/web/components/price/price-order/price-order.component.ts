@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class PriceOrderComponent {
 	@Input() price!: number;
 	@Input() title!: string;
+	@Input() loading!: boolean;
 }

@@ -12,3 +12,8 @@
 	color: var(--primary-700);
 	font-weight: bold;
 }
+
+:host ::ng-deep app-loader .p-progress-spinner {
+	width: 25px;
+	height: 25px;
+}

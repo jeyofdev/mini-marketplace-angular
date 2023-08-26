@@ -8,8 +8,6 @@ import {
 import { Observable, map } from 'rxjs';
 import { ICartProduct } from '../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { DataService } from '../../../shared/service/data.service';
-import { ColorItemType } from '../../../shared/interfaces/input.interface';
 import { IImage } from '../../../shared/model/image.model';
 import { Router } from '@angular/router';
 
@@ -24,12 +22,10 @@ export class CartComponent implements OnInit {
 	cartProducts!: ICartProduct[];
 	loading$!: Observable<boolean>;
 
-	colors!: ColorItemType[];
 	image!: IImage;
 
 	constructor(
 		private store: Store,
-		private dataService: DataService,
 		private router: Router,
 	) {}
 
@@ -37,8 +33,6 @@ export class CartComponent implements OnInit {
 		this.initImage();
 
 		this.store.dispatch(WebActions.cart.loadProductsInCart());
-		this.colors = this.dataService.getAllColors();
-
 		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));
 
 		this.store

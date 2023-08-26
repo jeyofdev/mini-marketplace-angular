@@ -10,6 +10,7 @@ export class ButtonCircularRadiusComponent implements OnInit {
 	@Input() type!: 'button' | 'submit' | 'reset';
 	@Input() icon!: string;
 	@Input() outlined!: boolean;
+	@Input() disabled!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large' | 'full';
 	@Input() color!:
 		| 'primary'

@@ -29,3 +29,28 @@
 :host ::ng-deep .p-button-full {
 	width: 100%;
 }
+
+:host ::ng-deep .p-button:disabled {
+	background-color: var(--primary-100) !important;
+	opacity: 0.5;
+}
+
+:host ::ng-deep .p-button-danger.p-button:disabled {
+	background-color: var(--red-100) !important;
+}
+
+:host ::ng-deep .p-button-success.p-button:disabled {
+	background-color: var(--green-100) !important;
+}
+
+:host ::ng-deep .p-button-warning.p-button:disabled {
+	background-color: var(--yellow-100) !important;
+}
+
+:host ::ng-deep .p-button-info.p-button:disabled {
+	background-color: var(--blue-100) !important;
+}
+
+:host ::ng-deep .p-button-help.p-button:disabled {
+	background-color: var(--purple-100) !important;
+}
