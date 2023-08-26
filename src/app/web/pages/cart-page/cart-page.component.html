@@ -6,7 +6,15 @@
 	<div class="cart-products-list">
 		<h6 class="section-title">Products list</h6>
 
-		<div class="cart-section">section</div>
+		<div class="cart-section">
+			<app-table-cart-products
+				[products]="cartProducts"
+				[paginator]="true"
+				[rows]="2"
+				[rowsPerPageOptions]="rowsPerPageOptions"
+				[first]="1"
+			></app-table-cart-products>
+		</div>
 	</div>
 
 	<div class="cart-order-summary">

@@ -8,6 +8,8 @@ import {
 	getWebProductsCartLoadingSelector,
 	getWebProductsCartSelector,
 } from '../../state/selectors/web-cart.selectors';
+import { IRowsPerPageSelectOptions } from '../../../shared/interfaces/table.interface';
+import { DataService } from '../../../shared/service/data.service';
 
 @Component({
 	selector: 'app-cart-page',
@@ -22,13 +24,19 @@ export class CartPageComponent implements OnInit {
 	totalDelivery!: number;
 	totalCart!: number;
 
+	rowsPerPageOptions!: IRowsPerPageSelectOptions[];
+
 	image!: IImage;
 
-	constructor(private store: Store) {}
+	constructor(
+		private store: Store,
+		private dataService: DataService,
+	) {}
 
 	ngOnInit(): void {
 		this.initImage();
 		this.totalDelivery = 0;
+		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
 
 		this.store.dispatch(WebActions.cart.loadProductsInCart());
 		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));

@@ -27,6 +27,7 @@ import { CardProductCartComponent } from './components/card/card-product-cart/ca
 import { CardProductListComponent } from './components/card/card-list-product/card-product-list.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { PriceOrderComponent } from './components/price/price-order/price-order.component';
+import { TableCartProductsComponent } from './components/table-cart-products/table-cart-products.component';
 
 @NgModule({
 	declarations: [
@@ -48,6 +49,7 @@ import { PriceOrderComponent } from './components/price/price-order/price-order.
 		CardProductCartComponent,
 		CartPageComponent,
 		PriceOrderComponent,
+		TableCartProductsComponent,
 	],
 	imports: [
 		CommonModule,
