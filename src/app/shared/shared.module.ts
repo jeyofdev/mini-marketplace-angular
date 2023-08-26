@@ -42,6 +42,7 @@ import { RadioSquareComponent } from './components/input/radio/radio-square/radi
 import { RadioColorComponent } from './components/input/radio/radio-color/radio-color.component';
 import { ButtonEmptyComponent } from './components/button/button-empty/button-empty.component';
 import { ChipSquareComponent } from './components/chip/chip-square/chip-square.component';
+import { NumberFieldWithButtonComponent } from './components/input/number-field-with-button/number-field-with-button.component';
 
 @NgModule({
 	declarations: [
@@ -83,6 +84,7 @@ import { ChipSquareComponent } from './components/chip/chip-square/chip-square.c
 		RadioColorComponent,
 		ButtonEmptyComponent,
 		ChipSquareComponent,
+		NumberFieldWithButtonComponent,
 	],
 	imports: [
 		CommonModule,
@@ -135,6 +137,7 @@ import { ChipSquareComponent } from './components/chip/chip-square/chip-square.c
 		RadioColorComponent,
 		ButtonEmptyComponent,
 		ChipSquareComponent,
+		NumberFieldWithButtonComponent,
 	],
 })
 export class SharedModule {}

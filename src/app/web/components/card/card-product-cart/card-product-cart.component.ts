@@ -11,9 +11,19 @@ export class CardProductCartComponent implements OnInit {
 	@Input() image!: IImage;
 	@Input() product!: ICartProduct;
 
-	itemNumber!: number;
+	productPriceTotal!: number;
+	productNumber!: number;
 
 	ngOnInit(): void {
-		this.itemNumber = 1;
+		this.productNumber = this.product.quantity;
+		this.setProductPriceTotal();
+	}
+
+	onChange(): void {
+		this.setProductPriceTotal();
+	}
+
+	private setProductPriceTotal(): void {
+		this.productPriceTotal = this.product.price * this.productNumber;
 	}
 }

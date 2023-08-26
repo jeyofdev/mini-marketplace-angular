@@ -1,0 +1,60 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep p-inputnumber,
+:host ::ng-deep .p-inputnumber {
+	display: flex;
+	gap: 0.2rem;
+	width: 170px;
+}
+
+:host ::ng-deep .p-button {
+	border: 2px solid rgba($primary, 0.1);
+	background-color: transparent;
+	border-radius: 10px;
+
+	&.p-button.p-button-icon-only {
+		padding: 0 0.5rem;
+		width: auto;
+		height: 40px;
+	}
+
+	&:enabled:hover,
+	&:enabled:active,
+	&:enabled:focus {
+		background-color: transparent;
+		border: 2px solid rgba($primary, 0.1);
+	}
+
+	span {
+		font-size: 1.2rem;
+		color: var(--primary-800);
+	}
+}
+
+:host
+	::ng-deep
+	.p-inputnumber-buttons-horizontal
+	.p-button.p-inputnumber-button-down {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+:host
+	::ng-deep
+	.p-inputnumber-buttons-horizontal
+	.p-button.p-inputnumber-button-up {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-inputnumber-input {
+	border: 2px solid rgba($primary, 0.1);
+	border-radius: 10px;
+	height: 40px;
+	padding: 0.5rem 1rem;
+	width: 90px;
+
+	&.p-inputtext:enabled:focus {
+		box-shadow: none;
+	}
+}
