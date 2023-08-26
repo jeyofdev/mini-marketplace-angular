@@ -26,19 +26,19 @@
 		</div>
 
 		<div class="price-box">
-			<p-inputNumber
-				[(ngModel)]="itemNumber"
-				[showButtons]="true"
-				buttonLayout="horizontal"
-				spinnerMode="horizontal"
-				inputId="horizontal"
-				decrementButtonClass="p-button"
-				incrementButtonClass="p-button"
-				incrementButtonIcon="pi pi-plus"
-				decrementButtonIcon="pi pi-minus"
-			></p-inputNumber>
+			<div class="price-input-box">
+				<app-number-field-with-button
+					buttonLayout="horizontal"
+					inputId="productNumber"
+					[itemNumber]="productNumber"
+					[(ngModel)]="productNumber"
+					(ngModelChange)="onChange()"
+				></app-number-field-with-button>
+			</div>
 
-			<h3>€ 15.50</h3>
+			<h4 class="price">
+				{{ productPriceTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
+			</h4>
 		</div>
 	</div>
 </div>

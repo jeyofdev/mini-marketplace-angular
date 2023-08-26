@@ -18,6 +18,10 @@
 	}
 }
 
+.item-description {
+	width: 100%;
+}
+
 .item-title {
 	font-weight: normal;
 }
@@ -42,11 +46,17 @@
 
 .price-box {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
+	align-items: center;
 	gap: 1rem;
 	margin-top: 1rem;
+	width: 100%;
 }
 
 app-badge-color {
 	height: 15px;
+}
+
+.price-input-box {
+	width: 170px;
 }
