@@ -21,8 +21,11 @@ import { InputNumberInputEvent } from 'primeng/inputnumber';
 	],
 })
 export class NumberFieldComponent implements ControlValueAccessor {
+	@Input() inputId!: string;
 	@Input() name!: string;
 	@Input() label!: string;
+	@Input() mode!: 'decimal' | 'currency';
+	@Input() currency!: 'EUR' | 'USD' | undefined;
 
 	@Input() validationMessages!: IValidationMessage;
 

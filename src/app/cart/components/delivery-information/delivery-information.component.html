@@ -1,0 +1,120 @@
+<h6 class="section-title">Delivery informations</h6>
+
+<div class="cart-section">
+	<form
+		novalidate
+		class="delivery-form"
+		[formGroup]="mainForm"
+		(ngSubmit)="onMainFormSubmit()"
+	>
+		<div [formGroup]="infosForm">
+			<div class="form-row">
+				<div class="control control-firstname">
+					<app-text-field
+						type="text"
+						name="firstname"
+						label="Firstname *"
+						groupName="infosForm"
+						formControlName="firstname"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="control control-lastname">
+					<app-text-field
+						type="text"
+						name="lastname"
+						label="Lastname *"
+						groupName="infosForm"
+						formControlName="lastname"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="control control-phone">
+					<app-text-field
+						type="text"
+						name="phone"
+						label="Phone number *"
+						groupName="infosForm"
+						formControlName="phone"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="control control-email">
+					<app-text-field
+						type="text"
+						name="email"
+						label="Email *"
+						groupName="infosForm"
+						formControlName="email"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+		</div>
+
+		<div [formGroup]="addressForm">
+			<div class="form-row">
+				<div class="control control-city">
+					<app-text-field
+						type="text"
+						name="city"
+						label="City *"
+						groupName="addressForm"
+						formControlName="city"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="control control-country">
+					<app-text-field
+						type="text"
+						name="country"
+						label="Country *"
+						groupName="addressForm"
+						formControlName="country"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="control control-postalCode">
+					<app-number-field
+						inputId="postalCode"
+						name="postalCode"
+						label="Postal code *"
+						groupName="addressForm"
+						formControlName="postalCode"
+						[parentForm]="mainForm"
+					></app-number-field>
+				</div>
+
+				<div class="control control-address">
+					<app-text-field
+						type="text"
+						name="address"
+						label="Address *"
+						groupName="addressForm"
+						formControlName="address"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<app-button
+				type="submit"
+				variant="raised"
+				shape="square"
+				color="primary"
+				size="medium"
+				[disabled]="!mainForm.valid"
+				>Confirm</app-button
+			>
+		</div>
+	</form>
+</div>

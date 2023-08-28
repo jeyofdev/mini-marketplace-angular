@@ -9,6 +9,7 @@ import { PriceOrderComponent } from './components/price/price-order/price-order.
 import { CoreModule } from '../core/core.module';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { DeliveryInformationComponent } from './components/delivery-information/delivery-information.component';
 
 @NgModule({
 	declarations: [
@@ -17,6 +18,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 		ProductsListComponent,
 		PriceOrderComponent,
 		OrderSummaryComponent,
+		DeliveryInformationComponent,
 	],
 	imports: [CommonModule, CartRoutingModule, SharedModule, CoreModule],
 })
