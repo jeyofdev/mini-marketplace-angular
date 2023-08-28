@@ -39,6 +39,12 @@
 			<h4 class="price">
 				{{ productPriceTotal | currency: 'EUR' : 'symbol' : '1.2-2' }}
 			</h4>
+
+			<app-button-empty
+				icon="fa-solid fa-trash-can"
+				color="danger"
+				(click)="deleteProductInCart(product.id)"
+			></app-button-empty>
 		</div>
 	</div>
 </div>

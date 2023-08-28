@@ -15,5 +15,9 @@ export const WebCartActions = createActionGroup({
 			payload: { data: ICartProduct };
 		}>(),
 		'Add product to cart Failure': props<{ payload: { error: unknown } }>(),
+
+		'Delete product to cart': props<{ payload: { id: string } }>(),
+		'Delete product to cart Success': props<{ payload: { id: string } }>(),
+		'Delete product to cart Failure': props<{ payload: { error: unknown } }>(),
 	},
 });

@@ -43,4 +43,13 @@ export const cartReducer = createReducer(
 			loading: false,
 		};
 	}),
+
+	on(WebActions.cart.deleteProductToCartSuccess, (state, actions) => {
+		return {
+			...state,
+			products: state.products.filter(
+				product => product.id !== actions.payload.id,
+			),
+		};
+	}),
 );

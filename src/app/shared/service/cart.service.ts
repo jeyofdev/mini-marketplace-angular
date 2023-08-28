@@ -6,6 +6,8 @@ import {
 	addDoc,
 	DocumentReference,
 	collectionData,
+	doc,
+	deleteDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { ICartProduct } from '../model/cart.model';
@@ -34,4 +36,9 @@ export class CartService {
 
 		return docRef as Promise<DocumentReference<ICartProduct>>;
 	}
+
+	deleteProductById = (productId: string): Promise<void> => {
+		const docInstance = doc(this.firestore, 'cart', productId);
+		return deleteDoc(docInstance);
+	};
 }
