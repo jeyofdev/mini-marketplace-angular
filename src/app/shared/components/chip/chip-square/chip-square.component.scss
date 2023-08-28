@@ -8,6 +8,7 @@
 	padding: 0;
 	border: 2px solid rgba($primary, 0.1);
 	background-color: transparent;
+	width: fit-content;
 }
 
 :host ::ng-deep .p-chip .p-chip-text {
@@ -63,11 +64,8 @@
 }
 
 :host ::ng-deep .p-chip.p-chip-primary {
-	background-color: var(--primary-500);
-
-	.p-chip-icon {
-		color: var(--primary-50);
-	}
+	color: var(--primary-800);
+	border-color: rgba($primary, 0.1);
 }
 
 :host ::ng-deep .p-chip.p-chip-success {

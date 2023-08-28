@@ -43,6 +43,7 @@ import { RadioColorComponent } from './components/input/radio/radio-color/radio-
 import { ButtonEmptyComponent } from './components/button/button-empty/button-empty.component';
 import { ChipSquareComponent } from './components/chip/chip-square/chip-square.component';
 import { NumberFieldWithButtonComponent } from './components/input/number-field-with-button/number-field-with-button.component';
+import { TablePaginatorComponent } from './paginator/table-paginator/table-paginator.component';
 
 @NgModule({
 	declarations: [
@@ -85,6 +86,7 @@ import { NumberFieldWithButtonComponent } from './components/input/number-field-
 		ButtonEmptyComponent,
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
+		TablePaginatorComponent,
 	],
 	imports: [
 		CommonModule,
@@ -138,6 +140,7 @@ import { NumberFieldWithButtonComponent } from './components/input/number-field-
 		ButtonEmptyComponent,
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
+		TablePaginatorComponent,
 	],
 })
 export class SharedModule {}

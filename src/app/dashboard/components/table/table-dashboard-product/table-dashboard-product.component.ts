@@ -21,14 +21,13 @@ export class TableDashboardProductComponent implements OnInit {
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;
-	@Input() currentPageReportTemplate!: string;
 	@Input() rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 	@Input() first!: number;
 	@Input() totalRecords!: number;
 
 	currencyEnum = CurrencyEnum;
 
-	myPaginationString!: string;
+	paginationString!: string;
 
 	sidebarVisible = false;
 
@@ -42,12 +41,12 @@ export class TableDashboardProductComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.totalRecords = this.items.length;
-		this.myPaginationString = `showing ${this.first + 1} to ${
+		this.paginationString = `showing ${this.first + 1} to ${
 			this.first + this.rows
 		} of ${this.totalRecords} entries`;
 	}
 
-	setMyPagination(event: PaginatorState) {
+	setPaginationString(event: PaginatorState) {
 		this.first = event.first as number;
 		this.rows = event.rows as number;
 
@@ -56,7 +55,7 @@ export class TableDashboardProductComponent implements OnInit {
 				? this.rows + this.first
 				: this.totalRecords;
 
-		this.myPaginationString = `showing ${this.first + 1} to ${last} of ${
+		this.paginationString = `showing ${this.first + 1} to ${last} of ${
 			this.totalRecords
 		} entries`;
 	}
@@ -64,7 +63,7 @@ export class TableDashboardProductComponent implements OnInit {
 	onRowSelect(event: number) {
 		this.first = 1;
 		this.rows = event;
-		this.myPaginationString = `showing ${this.first} to ${this.rows} of ${this.totalRecords} entries`;
+		this.paginationString = `showing ${this.first} to ${this.rows} of ${this.totalRecords} entries`;
 	}
 
 	onAffich(showConfirmDialogFn: ShowConfirmDialogFnType) {

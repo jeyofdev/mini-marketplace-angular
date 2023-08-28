@@ -49,6 +49,26 @@ export class WebCartEffects {
 		);
 	});
 
+	deleteProductInCart$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(WebActions.cart.deleteProductToCart),
+			mergeMap(async ({ payload: { id } }) =>
+				this.cartService
+					.deleteProductById(id)
+					.then(() =>
+						WebActions.cart.deleteProductToCartSuccess({
+							payload: { id },
+						}),
+					)
+					.catch(error =>
+						WebActions.cart.deleteProductToCartFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private cartService: CartService,
