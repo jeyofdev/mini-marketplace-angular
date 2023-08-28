@@ -140,12 +140,12 @@ export class DataService {
 				header: 'Quantity',
 			},
 			{
-				field: 'price',
-				header: 'Price',
-			},
-			{
 				field: 'color',
 				header: 'Color',
+			},
+			{
+				field: 'price',
+				header: 'Price',
 			},
 			{
 				field: 'status',

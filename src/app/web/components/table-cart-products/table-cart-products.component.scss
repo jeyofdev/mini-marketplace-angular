@@ -1,5 +1,23 @@
 @import '../../../../theme/scss/light/theme/theme';
 
+.actions-btn {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+}
+
+p-table th,
+p-table tr {
+	background-color: transparent;
+	color: var(--primary-700);
+}
+
+p-table th {
+	font-size: 0.95rem;
+	border: none;
+}
+
 :host ::ng-deep .p-paginator {
 	background-color: transparent;
 	border: none;

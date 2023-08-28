@@ -10,26 +10,53 @@
 			<ng-container *ngFor="let col of cols">
 				<th>{{ col.header }}</th>
 			</ng-container>
-			<th>Actions</th>
+
+			<th></th>
 		</tr>
 	</ng-template>
 
 	<ng-template pTemplate="body" let-data>
 		<tr>
 			<ng-container *ngFor="let col of cols">
-				<td>
+				<td
+					*ngIf="
+						col.field !== 'size' &&
+						col.field !== 'color' &&
+						col.field !== 'price'
+					"
+				>
 					{{ data[col.field] }}
+				</td>
+
+				<td *ngIf="col.field === 'size'">
+					<app-chip-square
+						[label]="data[col.field]"
+						color="primary"
+						size="small"
+					></app-chip-square>
+				</td>
+
+				<td *ngIf="col.field === 'color'">
+					<app-badge-color
+						[color]="data[col.field]"
+						size="medium"
+					></app-badge-color>
+				</td>
+
+				<td *ngIf="col.field === 'price'">
+					<app-price
+						[value]="data[col.field]"
+						[prefix]="true"
+						[currency]="currencyEnum.EUR"
+					></app-price>
 				</td>
 			</ng-container>
 
 			<td class="actions-btn">
-				<app-button
-					variant="rounded"
-					shape="circle"
-					color="danger"
+				<app-button-empty
 					icon="fa-solid fa-trash-can"
-					>Delete</app-button
-				>
+					color="danger"
+				></app-button-empty>
 			</td>
 		</tr>
 	</ng-template>
