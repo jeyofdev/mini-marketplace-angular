@@ -1,1 +1,17 @@
-<p>cart-delivery-adress works!</p>
+<app-layout>
+	<div class="page-title-box">
+		<h1>Your shopping cart</h1>
+	</div>
+
+	<div class="cart-products-list"></div>
+
+	<div class="cart-order-summary">
+		<app-order-summary
+			[loading]="(loading$ | async) === true"
+			[totalProducts]="cartProducts.length"
+			[totalCart]="totalCart"
+			[totalDelivery]="totalDelivery"
+			[totalPriceProducts]="totalPriceProducts"
+		></app-order-summary>
+	</div>
+</app-layout>

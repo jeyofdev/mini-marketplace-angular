@@ -7,11 +7,11 @@ import { Store } from '@ngrx/store';
 import { CartActions } from '../../../core/state/actions/cart-index.actions';
 
 @Component({
-	selector: 'app-table-cart-products',
-	templateUrl: './table-cart-products.component.html',
-	styleUrls: ['./table-cart-products.component.scss'],
+	selector: 'app-products-list',
+	templateUrl: './products-list.component.html',
+	styleUrls: ['./products-list.component.scss'],
 })
-export class TableCartProductsComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
 	@Input() products!: ICartProduct[];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;

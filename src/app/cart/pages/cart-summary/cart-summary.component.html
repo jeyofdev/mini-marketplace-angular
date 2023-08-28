@@ -4,57 +4,22 @@
 	</div>
 
 	<div class="cart-products-list">
-		<h6 class="section-title">Products list</h6>
-
-		<div class="cart-section">
-			<app-table-cart-products
-				[products]="cartProducts"
-				[paginator]="true"
-				[rows]="5"
-				[rowsPerPageOptions]="rowsPerPageOptions"
-				[first]="1"
-			></app-table-cart-products>
-		</div>
+		<app-products-list
+			[products]="cartProducts"
+			[paginator]="true"
+			[rows]="5"
+			[rowsPerPageOptions]="rowsPerPageOptions"
+			[first]="1"
+		></app-products-list>
 	</div>
 
 	<div class="cart-order-summary">
-		<h6 class="section-title">Order summary</h6>
-
-		<div class="cart-section">
-			<div class="sub-total-box">
-				<app-price-order
-					title="Subtotal"
-					[price]="totalPriceProducts"
-					[loading]="(loading$ | async) === true"
-				></app-price-order>
-
-				<app-price-order
-					title="Delivery"
-					[price]="totalDelivery"
-					[loading]="(loading$ | async) === true"
-				></app-price-order>
-			</div>
-
-			<app-divider margin="1.25rem 0rem"></app-divider>
-
-			<div class="sub-total-box">
-				<app-price-order
-					title="Total (EUR)"
-					[price]="totalCart"
-					[loading]="(loading$ | async) === true"
-				></app-price-order>
-			</div>
-
-			<div class="order-btn">
-				<app-button-circular-radius
-					label="Confirm"
-					color="primary"
-					[outlined]="false"
-					icon="fa-solid fa-credit-card"
-					size="full"
-					[disabled]="(loading$ | async) === true"
-				></app-button-circular-radius>
-			</div>
-		</div>
+		<app-order-summary
+			[loading]="(loading$ | async) === true"
+			[totalProducts]="cartProducts.length"
+			[totalCart]="totalCart"
+			[totalDelivery]="totalDelivery"
+			[totalPriceProducts]="totalPriceProducts"
+		></app-order-summary>
 	</div>
 </app-layout>
