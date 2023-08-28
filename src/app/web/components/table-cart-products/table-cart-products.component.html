@@ -35,14 +35,12 @@
 	</ng-template>
 
 	<ng-template pTemplate="paginatorleft" let-state>
-		<div class="pagination-left-box">
-			<p-dropdown
-				[options]="rowsPerPageOptions"
-				optionLabel="label"
-				optionValue="value"
-				[(ngModel)]="rows"
-				(ngModelChange)="onRowSelect($event)"
-			></p-dropdown>
-		</div>
+		<app-table-paginator
+			[showCurrentPageReport]="false"
+			[rowsPerPageOptions]="rowsPerPageOptions"
+			[rows]="rows"
+			[first]="first"
+			[totalRecords]="totalRecords"
+		></app-table-paginator>
 	</ng-template>
 </p-table>

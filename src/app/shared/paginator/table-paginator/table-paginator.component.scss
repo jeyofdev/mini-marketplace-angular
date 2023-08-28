@@ -1,0 +1,37 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+.pagination-left-box {
+	display: flex;
+	align-items: center;
+
+	.p-paginator-current {
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .p-dropdown {
+	height: 30px;
+}
+
+:host ::ng-deep .p-dropdown {
+	background-color: var(--primary-50);
+}
+
+:host ::ng-deep .p-dropdown .p-inputtext {
+	padding: 0.25rem 0rem 0.25rem 1rem;
+	color: var(--primary-800);
+}
+
+:host ::ng-deep .p-dropdown .p-inputtext,
+:host ::ng-deep .p-dropdown .p-dropdown-trigger {
+	color: var(--primary-800);
+	height: 35px;
+}
+
+:host
+	::ng-deep
+	.p-dropdown-panel
+	.p-dropdown-items
+	.p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+	background-color: var(--primary-50);
+}

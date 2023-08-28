@@ -17,6 +17,7 @@ export class TableCartProductsComponent implements OnInit {
 	@Input() first!: number;
 
 	cols!: { header: string; field: string }[];
+	totalRecords!: number;
 
 	currencyEnum = CurrencyEnum;
 
@@ -24,6 +25,7 @@ export class TableCartProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.cols = this.dataService.getColsProducts();
+		this.totalRecords = this.products.length;
 	}
 
 	onRowSelect(event: number) {

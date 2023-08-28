@@ -1,0 +1,33 @@
+@import '../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-paginator {
+	background-color: transparent;
+	border: none;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+
+	&:not(.p-highlight):hover {
+		background-color: light;
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+	background-color: var(--primary-500);
+	color: $light;
+	min-width: 2.25rem;
+	height: 2.25rem;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+}

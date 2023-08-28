@@ -1,0 +1,14 @@
+<div class="pagination-left-box" *ngIf="showCurrentPageReport">
+	<span class="p-paginator-current">
+		{{ paginationString }}
+	</span>
+
+	<p-dropdown
+		[options]="rowsPerPageOptions"
+		optionLabel="label"
+		optionValue="value"
+		[(ngModel)]="rows"
+	></p-dropdown>
+</div>
+
+<!-- (ngModelChange)="onRowSelect($event)" -->
