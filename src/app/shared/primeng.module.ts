@@ -32,6 +32,7 @@ import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
 	exports: [
@@ -68,6 +69,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 		PanelModule,
 		MultiSelectModule,
 		OverlayPanelModule,
+		InputMaskModule,
 	],
 })
 export class PrimengModule {}

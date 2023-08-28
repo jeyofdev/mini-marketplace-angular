@@ -9,7 +9,7 @@
 	>
 		<div [formGroup]="infosForm">
 			<div class="form-row">
-				<div class="control control-firstname">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="firstname"
@@ -20,7 +20,7 @@
 					></app-text-field>
 				</div>
 
-				<div class="control control-lastname">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="lastname"
@@ -33,18 +33,21 @@
 			</div>
 
 			<div class="form-row">
-				<div class="control control-phone">
-					<app-text-field
+				<div class="control">
+					<app-input-mask
 						type="text"
 						name="phone"
 						label="Phone number *"
+						mask="99-99-99-99-99"
+						placeholder="99-99-99-99-99"
 						groupName="infosForm"
 						formControlName="phone"
 						[parentForm]="mainForm"
-					></app-text-field>
+					>
+					</app-input-mask>
 				</div>
 
-				<div class="control control-email">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="email"
@@ -59,7 +62,7 @@
 
 		<div [formGroup]="addressForm">
 			<div class="form-row">
-				<div class="control control-city">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="city"
@@ -70,7 +73,7 @@
 					></app-text-field>
 				</div>
 
-				<div class="control control-country">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="country"
@@ -83,18 +86,21 @@
 			</div>
 
 			<div class="form-row">
-				<div class="control control-postalCode">
-					<app-number-field
-						inputId="postalCode"
+				<div class="control">
+					<app-input-mask
+						type="text"
 						name="postalCode"
 						label="Postal code *"
+						mask="99999"
+						placeholder="33000"
 						groupName="addressForm"
 						formControlName="postalCode"
 						[parentForm]="mainForm"
-					></app-number-field>
+					>
+					</app-input-mask>
 				</div>
 
-				<div class="control control-address">
+				<div class="control">
 					<app-text-field
 						type="text"
 						name="address"
