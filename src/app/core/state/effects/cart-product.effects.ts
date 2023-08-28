@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { WebActions } from '../actions/web-index.actions';
 import { CartService } from '../../../shared/service/cart.service';
-import { ICartProduct } from '../../../shared/model/cart.model';
+import { CartActions } from '../actions/cart-index.actions';
 
 @Injectable()
-export class WebCartEffects {
+export class CartEffects {
 	addProductToCart$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(WebActions.cart.addProductToCart),
+			ofType(CartActions.products.addProductToCart),
 			mergeMap(async ({ payload: { data } }) =>
 				this.cartService
 					.addProductToCart(data)
 					.then(() =>
-						WebActions.cart.addProductToCartSuccess({
+						CartActions.products.addProductToCartSuccess({
 							payload: { data },
 						}),
 					)
 					.catch(error =>
-						WebActions.cart.addProductToCartFailure({
+						CartActions.products.addProductToCartFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -29,17 +28,17 @@ export class WebCartEffects {
 
 	getAllProductInCart$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(WebActions.cart.loadProductsInCart),
+			ofType(CartActions.products.loadProductsInCart),
 			mergeMap(() =>
 				this.cartService.getAllProductsInCart().pipe(
-					map((products: ICartProduct[]) =>
-						WebActions.cart.loadProductsInCartSuccess({
+					map(products =>
+						CartActions.products.loadProductsInCartSuccess({
 							payload: { data: products },
 						}),
 					),
 					catchError(error =>
 						of(
-							WebActions.cart.loadProductsInCartFailure({
+							CartActions.products.loadProductsInCartFailure({
 								payload: { error: error.body.error },
 							}),
 						),
@@ -51,17 +50,17 @@ export class WebCartEffects {
 
 	deleteProductInCart$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(WebActions.cart.deleteProductToCart),
+			ofType(CartActions.products.deleteProductToCart),
 			mergeMap(async ({ payload: { id } }) =>
 				this.cartService
 					.deleteProductById(id)
 					.then(() =>
-						WebActions.cart.deleteProductToCartSuccess({
+						CartActions.products.deleteProductToCartSuccess({
 							payload: { id },
 						}),
 					)
 					.catch(error =>
-						WebActions.cart.deleteProductToCartFailure({
+						CartActions.products.deleteProductToCartFailure({
 							payload: { error: error.body.error },
 						}),
 					),

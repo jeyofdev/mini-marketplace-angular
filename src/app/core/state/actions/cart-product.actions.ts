@@ -1,8 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { ICartProduct } from 'src/app/shared/model/cart.model';
+import { ICartProduct } from '../../../shared/model/cart.model';
 
-export const WebCartActions = createActionGroup({
-	source: 'Web Cart',
+export const CartProductActions = createActionGroup({
+	source: 'Cart',
 	events: {
 		'Load products in cart': emptyProps(),
 		'Load products in cart Success': props<{

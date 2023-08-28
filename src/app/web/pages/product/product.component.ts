@@ -19,7 +19,8 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '../../../shared/utils/toast';
-import { ICartProduct } from 'src/app/shared/model/cart.model';
+import { ICartProduct } from '../../../shared/model/cart.model';
+import { CartActions } from '../../../core/state/actions/cart-index.actions';
 
 @Component({
 	selector: 'app-product',
@@ -131,13 +132,13 @@ export class ProductComponent implements OnInit {
 
 	private addCurrentProductToUserCart(): void {
 		this.store.dispatch(
-			WebActions.cart.addProductToCart({
+			CartActions.products.addProductToCart({
 				payload: { data: this.formatProductDatas() },
 			}),
 		);
 
 		this.addSubscription(
-			WebActions.cart.addProductToCartSuccess,
+			CartActions.products.addProductToCartSuccess,
 			`The article '${this.currentProduct.brandName}' has been successfully added to the cart.`,
 		);
 	}

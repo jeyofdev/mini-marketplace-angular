@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
+import { DataService } from '../../../../web/services/data.service';
 import { INavLink } from '../../../../shared/interfaces/link.interface';
 
 @Component({
-	selector: 'app-navigation-link-mobile',
-	templateUrl: './navigation-link-mobile.component.html',
-	styleUrls: ['./navigation-link-mobile.component.scss'],
+	selector: 'app-nav-mobile',
+	templateUrl: './nav-mobile.component.html',
+	styleUrls: ['./nav-mobile.component.scss'],
 })
-export class NavigationLinkMobileComponent implements OnInit {
+export class NavMobileComponent implements OnInit {
+	sidebarVisible!: boolean;
 	navLinks!: INavLink[];
 
 	constructor(private dataService: DataService) {}
 
 	ngOnInit(): void {
+		this.sidebarVisible = false;
 		this.navLinks = this.dataService.getNavigationLinks();
 	}
 }
