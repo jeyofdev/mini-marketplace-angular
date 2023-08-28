@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ICartProduct } from '../../../shared/model/cart.model';
-import { Observable, map } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { IImage } from '../../../shared/model/image.model';
-import { WebActions } from '../../state/actions/web-index.actions';
-import {
-	getWebProductsCartLoadingSelector,
-	getWebProductsCartSelector,
-} from '../../state/selectors/web-cart.selectors';
 import { IRowsPerPageSelectOptions } from '../../../shared/interfaces/table.interface';
+
+import { Observable, map } from 'rxjs';
+import { ICartProduct } from '../../../shared/model/cart.model';
 import { DataService } from '../../../shared/service/data.service';
+import { IImage } from '../../../shared/model/image.model';
+import {
+	getCartProductsLoadingSelector,
+	getCartProductsSelector,
+} from '../../../core/state/selectors/cart-product.selectors';
+import { CartActions } from '../../../core/state/actions/cart-index.actions';
 
 @Component({
-	selector: 'app-cart-page',
-	templateUrl: './cart-page.component.html',
-	styleUrls: ['./cart-page.component.scss'],
+	selector: 'app-cart-summary',
+	templateUrl: './cart-summary.component.html',
+	styleUrls: ['./cart-summary.component.scss'],
 })
-export class CartPageComponent implements OnInit {
+export class CartSummaryComponent implements OnInit {
 	cartProducts!: ICartProduct[];
 	loading$!: Observable<boolean>;
 
@@ -38,12 +39,12 @@ export class CartPageComponent implements OnInit {
 		this.totalDelivery = 0;
 		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
 
-		this.store.dispatch(WebActions.cart.loadProductsInCart());
-		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));
+		this.store.dispatch(CartActions.products.loadProductsInCart());
+		this.loading$ = this.store.pipe(select(getCartProductsLoadingSelector));
 
 		this.store
 			.pipe(
-				select(getWebProductsCartSelector),
+				select(getCartProductsSelector),
 				map(cartProducts => {
 					this.cartProducts = cartProducts;
 					this.totalPriceProducts = this.getTotalPriceProducts(cartProducts);

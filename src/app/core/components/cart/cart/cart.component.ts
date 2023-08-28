@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { WebActions } from '../../state/actions/web-index.actions';
-import {
-	getWebProductsCartLoadingSelector,
-	getWebProductsCartSelector,
-} from '../../state/selectors/web-cart.selectors';
 import { Observable, map } from 'rxjs';
-import { ICartProduct } from '../../../shared/model/cart.model';
+import { ICartProduct } from '../../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { IImage } from '../../../shared/model/image.model';
+import { IImage } from '../../../../shared/model/image.model';
 import { Router } from '@angular/router';
+import { CartActions } from '../../../state/actions/cart-index.actions';
+import {
+	getCartProductsLoadingSelector,
+	getCartProductsSelector,
+} from '../../../state/selectors/cart-product.selectors';
 
 @Component({
 	selector: 'app-cart',
@@ -32,12 +32,12 @@ export class CartComponent implements OnInit {
 	ngOnInit(): void {
 		this.initImage();
 
-		this.store.dispatch(WebActions.cart.loadProductsInCart());
-		this.loading$ = this.store.pipe(select(getWebProductsCartLoadingSelector));
+		this.store.dispatch(CartActions.products.loadProductsInCart());
+		this.loading$ = this.store.pipe(select(getCartProductsLoadingSelector));
 
 		this.store
 			.pipe(
-				select(getWebProductsCartSelector),
+				select(getCartProductsSelector),
 				map(cartProducts => {
 					this.cartProducts = cartProducts;
 				}),
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
 	}
 
 	goToCartPage(): void {
-		this.router.navigateByUrl('/cart');
+		this.router.navigateByUrl('/cart/summary');
 	}
 
 	private initImage(): void {

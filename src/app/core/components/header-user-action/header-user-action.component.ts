@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../web/services/data.service';
 import { User } from '@angular/fire/auth';
 import { AuthService } from '../../../shared/service/auth.service';
-import { CartComponent } from '../cart/cart.component';
+import { CartComponent } from '../cart/cart/cart.component';
 
 @Component({
 	selector: 'app-header-user-action',
