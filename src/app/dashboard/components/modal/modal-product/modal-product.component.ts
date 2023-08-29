@@ -214,6 +214,15 @@ export class ModalProductComponent implements OnInit {
 			yellow: this.currentProduct.color.includes(ProductColorEnum.YELLOW),
 			purple: this.currentProduct.color.includes(ProductColorEnum.PURPLE),
 		});
+
+		this.optionsForm.patchValue({
+			securePayment: this.currentProduct.options.includes('securePayment'),
+			sizeAndFit: this.currentProduct.options.includes('sizeAndFit'),
+			freeShipping: this.currentProduct.options.includes('freeShipping'),
+			freeShippingAndReturns: this.currentProduct.options.includes(
+				'freeShippingAndReturns',
+			),
+		});
 	}
 
 	private initCategories(): void {
