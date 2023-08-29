@@ -1,0 +1,23 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+label {
+	margin-bottom: 0.2rem;
+}
+
+:host ::ng-deep p-inputMask {
+	width: 100%;
+
+	.p-inputtext {
+		width: 100%;
+	}
+
+	> span {
+		width: 100%;
+	}
+}

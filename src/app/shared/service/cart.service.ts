@@ -10,7 +10,7 @@ import {
 	deleteDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { ICartProduct } from '../model/cart.model';
+import { ICartDelivery, ICartProduct } from '../model/cart.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -41,4 +41,12 @@ export class CartService {
 		const docInstance = doc(this.firestore, 'cart', productId);
 		return deleteDoc(docInstance);
 	};
+
+	addDeliveryToCart(
+		delivery: ICartDelivery,
+	): Promise<DocumentReference<ICartDelivery>> {
+		const docRef = addDoc(this.collectionInstance, delivery);
+
+		return docRef as Promise<DocumentReference<ICartDelivery>>;
+	}
 }

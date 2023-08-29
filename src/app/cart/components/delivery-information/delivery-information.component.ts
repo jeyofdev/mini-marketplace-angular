@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { CartActions } from '../../../core/state/actions/cart-index.actions';
 
 @Component({
 	selector: 'app-delivery-information',
@@ -20,7 +22,10 @@ export class DeliveryInformationComponent implements OnInit {
 	postalCodeCtrl!: FormControl<string | null>;
 	addressCtrl!: FormControl<string | null>;
 
-	constructor(private formBuilder: FormBuilder) {}
+	constructor(
+		private formBuilder: FormBuilder,
+		private store: Store,
+	) {}
 
 	ngOnInit(): void {
 		this.initFormControls();
@@ -29,8 +34,7 @@ export class DeliveryInformationComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
+		this.addDelivery();
 	}
 
 	private initMainForm() {
@@ -66,5 +70,13 @@ export class DeliveryInformationComponent implements OnInit {
 		this.countryCtrl = this.formBuilder.control('', []);
 		this.postalCodeCtrl = this.formBuilder.control('', []);
 		this.addressCtrl = this.formBuilder.control('', []);
+	}
+
+	private addDelivery(): void {
+		this.store.dispatch(
+			CartActions.delivery.addDeliveryToCart({
+				payload: { data: this.mainForm.value },
+			}),
+		);
 	}
 }

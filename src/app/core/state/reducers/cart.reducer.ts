@@ -7,20 +7,29 @@ import {
 	initialCartProductState,
 	productReducer,
 } from './cart-product.reducer';
+import {
+	CartDeliveryFeatureKey,
+	ICartDeliveryState,
+	deliveryReducer,
+	initialCartDeliveryState,
+} from './cart-delivery.reducer';
 
 export const cartFeatureKey = 'cart';
 
 export interface ICartState {
 	[CartProductFeatureKey]: ICartProductState;
+	[CartDeliveryFeatureKey]: ICartDeliveryState;
 }
 
 export const initialCartState: ICartState = {
 	[CartProductFeatureKey]: initialCartProductState,
+	[CartDeliveryFeatureKey]: initialCartDeliveryState,
 };
 
 export const reducers = combineReducers(
 	{
 		[CartProductFeatureKey]: productReducer,
+		[CartDeliveryFeatureKey]: deliveryReducer,
 	},
 	initialCartState,
 );
