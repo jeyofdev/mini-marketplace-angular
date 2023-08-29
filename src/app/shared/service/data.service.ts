@@ -8,7 +8,7 @@ import {
 import { ISocialProvider } from '../model/social-provider.model';
 import { ProviderEnum } from '../enum/provider.enum';
 import { INavLink } from '../interfaces/link.interface';
-import { StatusEnum } from '../enum/form.enum';
+import { OptionsEnum, StatusEnum } from '../enum/form.enum';
 
 @Injectable({
 	providedIn: 'root',
@@ -72,6 +72,35 @@ export class DataService {
 				name: StatusEnum.ACTIVE,
 				label: StatusEnum.ACTIVE,
 				value: StatusEnum.ACTIVE,
+			},
+		];
+	}
+
+	getAllOptions(): ChoiceItemType[] {
+		return [
+			{
+				id: 'securePayment',
+				name: 'securePayment',
+				label: OptionsEnum.SECURE_PAYMENT,
+				value: 'securePayment',
+			},
+			{
+				id: 'sizeAndFit',
+				name: 'sizeAndFit',
+				label: OptionsEnum.SIZE_AND_FIT,
+				value: 'sizeAndFit',
+			},
+			{
+				id: 'freeShipping',
+				name: 'freeShipping',
+				label: OptionsEnum.FREE_SHIPPING,
+				value: 'freeShipping',
+			},
+			{
+				id: 'freeShippingAndReturns',
+				name: 'freeShippingAndReturns',
+				label: OptionsEnum.FREE_SHIPPING_AND_RETURN,
+				value: 'freeShippingAndReturns',
 			},
 		];
 	}

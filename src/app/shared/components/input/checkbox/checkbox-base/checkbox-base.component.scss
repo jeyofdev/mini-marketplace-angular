@@ -1,0 +1,27 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-checkbox {
+	min-width: 1.3rem;
+	min-height: 1.3rem;
+
+	.p-checkbox-box {
+		border-radius: 5px;
+		width: 100%;
+		height: 100%;
+		border: 2px solid var(--primary-100);
+		background-color: transparent;
+
+		&:not(.p-disabled):hover {
+			border-color: var(--primary-500);
+		}
+
+		&.p-highlight {
+			background-color: var(--primary-500);
+			border-color: var(--primary-500);
+		}
+	}
+}
+
+:host ::ng-deep .p-checkbox-label {
+	color: var(--primary-800);
+}

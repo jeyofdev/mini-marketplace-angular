@@ -95,7 +95,7 @@
 
 					<div class="form-row row-checkbox" [formGroup]="colorsForm">
 						<label>Available colors</label>
-						<div class="colors-box">
+						<div class="checkboxes-box">
 							<ng-container *ngFor="let color of colors">
 								<app-checkbox-color-border
 									[name]="color.name"
@@ -107,6 +107,22 @@
 								></app-checkbox-color-border>
 							</ng-container>
 						</div>
+					</div>
+				</div>
+
+				<div class="form-row row-checkbox" [formGroup]="optionsForm">
+					<label>Available options</label>
+					<div class="checkboxes-box column">
+						<ng-container *ngFor="let option of options">
+							<app-checkbox-base
+								[label]="option.label"
+								[name]="option.name"
+								checkboxIcon="fa-solid fa-check"
+								[formControlName]="option.name"
+								groupName="optionsForm"
+								[parentForm]="mainForm"
+							></app-checkbox-base>
+						</ng-container>
 					</div>
 				</div>
 

@@ -1,0 +1,10 @@
+<p-checkbox
+	[inputId]="name"
+	[label]="label"
+	[disabled]="disabled"
+	[(ngModel)]="checked"
+	[binary]="true"
+	[checkboxIcon]="checkboxIcon"
+	(onChange)="selectionChanged($event)"
+	(blur)="onTouched()"
+></p-checkbox>

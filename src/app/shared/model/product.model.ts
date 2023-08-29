@@ -10,5 +10,6 @@ export interface IProduct {
 	quantity: number;
 	price: number;
 	color: ProductColorEnum[];
+	options: string[];
 	status: string;
 }

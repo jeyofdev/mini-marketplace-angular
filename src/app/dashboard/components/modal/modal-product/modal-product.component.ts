@@ -39,6 +39,7 @@ export class ModalProductComponent implements OnInit {
 
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
+	optionsForm!: FormGroup;
 	nameForm!: FormGroup;
 	detailsForm!: FormGroup;
 	infosForm!: FormGroup;
@@ -55,6 +56,7 @@ export class ModalProductComponent implements OnInit {
 	sizes!: ChoiceItemType[];
 	colors!: ColorItemType[];
 	status!: ChoiceItemType[];
+	options!: ChoiceItemType[];
 
 	submitBtnLabel!: string;
 
@@ -79,6 +81,7 @@ export class ModalProductComponent implements OnInit {
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();
 		this.status = this.dataService.getAllStatus();
+		this.options = this.dataService.getAllOptions();
 
 		this.inputsValidationMessages = addProductValidationMessages;
 
@@ -117,6 +120,7 @@ export class ModalProductComponent implements OnInit {
 			details: this.detailsForm,
 			infos: this.infosForm,
 			colors: this.colorsForm,
+			options: this.optionsForm,
 		});
 	}
 
@@ -127,6 +131,13 @@ export class ModalProductComponent implements OnInit {
 			green: [false],
 			yellow: [false],
 			purple: [false],
+		});
+
+		this.optionsForm = this.formBuilder.group({
+			securePayment: [false],
+			sizeAndFit: [false],
+			freeShipping: [false],
+			freeShippingAndReturns: [false],
 		});
 
 		this.nameForm = this.formBuilder.group({
@@ -203,6 +214,15 @@ export class ModalProductComponent implements OnInit {
 			yellow: this.currentProduct.color.includes(ProductColorEnum.YELLOW),
 			purple: this.currentProduct.color.includes(ProductColorEnum.PURPLE),
 		});
+
+		this.optionsForm.patchValue({
+			securePayment: this.currentProduct.options.includes('securePayment'),
+			sizeAndFit: this.currentProduct.options.includes('sizeAndFit'),
+			freeShipping: this.currentProduct.options.includes('freeShipping'),
+			freeShippingAndReturns: this.currentProduct.options.includes(
+				'freeShippingAndReturns',
+			),
+		});
 	}
 
 	private initCategories(): void {
@@ -258,6 +278,9 @@ export class ModalProductComponent implements OnInit {
 			color: Object.entries(this.mainForm.value.colors)
 				.filter(color => color[1])
 				.map(color => color[0]),
+			options: Object.entries(this.mainForm.value.options)
+				.filter(option => option[1])
+				.map(option => option[0]),
 		};
 	}
 
