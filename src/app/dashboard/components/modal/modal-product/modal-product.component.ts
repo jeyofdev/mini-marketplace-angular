@@ -95,14 +95,11 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		// eslint-disable-next-line no-console
-		console.log(this.mainForm.value);
-
-		// if (!this.currentProduct) {
-		// 	this.addProduct();
-		// } else {
-		// 	this.updateProduct();
-		// }
+		if (!this.currentProduct) {
+			this.addProduct();
+		} else {
+			this.updateProduct();
+		}
 	}
 
 	fillFormWithCurrentProduct = (product: IProduct) => {
@@ -272,6 +269,9 @@ export class ModalProductComponent implements OnInit {
 			color: Object.entries(this.mainForm.value.colors)
 				.filter(color => color[1])
 				.map(color => color[0]),
+			options: Object.entries(this.mainForm.value.options)
+				.filter(option => option[1])
+				.map(option => option[0]),
 		};
 	}
 

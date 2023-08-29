@@ -91,18 +91,25 @@
 
 			<div class="content-option">
 				<app-option
+					*ngIf="currentProduct.options.includes('securePayment')"
 					icon="fa-regular fa-credit-card"
 					label="Secure payment"
 				></app-option>
 
-				<app-option icon="fa-solid fa-tags" label="Size & fit"></app-option>
+				<app-option
+					*ngIf="currentProduct.options.includes('sizeAndFit')"
+					icon="fa-solid fa-tags"
+					label="Size & fit"
+				></app-option>
 
 				<app-option
+					*ngIf="currentProduct.options.includes('freeShipping')"
 					icon="fa-solid fa-receipt"
 					label="Free shipping"
 				></app-option>
 
 				<app-option
+					*ngIf="currentProduct.options.includes('freeShippingAndReturns')"
 					icon="fa-regular fa-credit-card"
 					label="Free shipping & returns"
 				></app-option>
