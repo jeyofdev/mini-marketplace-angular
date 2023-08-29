@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
 	ConfirmEventType,
 	ConfirmationService,
@@ -12,6 +12,9 @@ import { ShowCartConfirmDialogFnType } from '../../../../shared/types/index.type
 	styleUrls: ['./confirm-delivery.component.scss'],
 })
 export class ConfirmDeliveryComponent implements OnInit {
+	@Input() title!: string;
+	@Input() itemName!: string;
+
 	@Output() showConfirmDialog = new EventEmitter<ShowCartConfirmDialogFnType>();
 
 	ngOnInit(): void {
@@ -23,8 +26,6 @@ export class ConfirmDeliveryComponent implements OnInit {
 		messageService: MessageService,
 	) {
 		confirmationService.confirm({
-			message: 'Are you sure that you want to proceed?',
-			icon: 'pi pi-exclamation-triangle',
 			accept: () => {
 				messageService.add({
 					severity: 'info',

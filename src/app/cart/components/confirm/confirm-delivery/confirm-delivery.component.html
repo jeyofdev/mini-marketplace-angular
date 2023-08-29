@@ -1,23 +1,22 @@
-<p-toast></p-toast>
 <p-confirmDialog #cd [style]="{ width: '50vw' }">
-	<ng-template pTemplate="header">
-		<h3>Header Content</h3>
-	</ng-template>
+	<ng-template pTemplate="header"> </ng-template>
+
 	<ng-template pTemplate="footer">
-		<button
-			type="button"
-			pButton
-			icon="pi pi-times"
-			label="No"
-			(click)="cd.reject()"
-		></button>
-		<button
-			type="button"
-			pButton
-			icon="pi pi-check"
-			label="Yes"
-			(click)="cd.accept()"
-		></button>
+		<app-alert
+			severity="success"
+			icon="fa-solid fa-check"
+			message="Your order is validated."
+		></app-alert>
+
+		<div class="btn-box">
+			<app-button
+				variant="raised"
+				shape="square"
+				color="success"
+				size="medium"
+				(click)="cd.reject()"
+				>Close</app-button
+			>
+		</div>
 	</ng-template>
 </p-confirmDialog>
-<!-- <p-button (click)="confirm()" icon="pi pi-check" label="Confirm"></p-button> -->
