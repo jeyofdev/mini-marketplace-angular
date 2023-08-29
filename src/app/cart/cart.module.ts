@@ -10,6 +10,7 @@ import { CoreModule } from '../core/core.module';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { DeliveryInformationComponent } from './components/delivery-information/delivery-information.component';
+import { ConfirmDeliveryComponent } from './components/confirm/confirm-delivery/confirm-delivery.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { DeliveryInformationComponent } from './components/delivery-information/
 		PriceOrderComponent,
 		OrderSummaryComponent,
 		DeliveryInformationComponent,
+		ConfirmDeliveryComponent,
 	],
 	imports: [CommonModule, CartRoutingModule, SharedModule, CoreModule],
 })
