@@ -82,6 +82,15 @@
 				<app-button
 					variant="rounded"
 					shape="circle"
+					color="info"
+					icon="fa-solid fa-eye"
+					(click)="redirectToPageProduct(data.id)"
+					>view</app-button
+				>
+
+				<app-button
+					variant="rounded"
+					shape="circle"
 					color="success"
 					icon="fa-solid fa-pencil"
 					(click)="openModalUpdateProduct(data)"
