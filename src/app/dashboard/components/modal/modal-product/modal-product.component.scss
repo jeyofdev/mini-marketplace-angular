@@ -42,12 +42,18 @@
 	gap: 0rem;
 }
 
-.colors-box {
+.checkboxes-box {
 	display: flex;
 	justify-content: flex-start;
 	gap: 1.25rem;
 	width: 100%;
 	padding-left: 0.85rem;
+	margin-top: 0.5rem;
+
+	&.column {
+		flex-direction: column;
+		gap: 0rem;
+	}
 }
 
 label {
@@ -68,7 +74,8 @@ app-radio-square {
 	margin-bottom: 1rem;
 }
 
-app-checkbox-color-border {
+app-checkbox-color-border,
+app-checkbox-base {
 	margin-bottom: 1rem;
 }
 

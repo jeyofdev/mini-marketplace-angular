@@ -29,22 +29,31 @@ import { CheckboxChangeEvent } from 'primeng/checkbox';
 export class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
+	@Input() checkboxIcon!: string;
+	@Input() color!:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'warning'
+		| 'danger'
+		| 'info'
+		| 'help';
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
-
-	@Input() color!: { color: string; label: string };
 
 	@Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	checked!: boolean;
 	disabled!: boolean;
+	borderClass!: string;
 
 	onChanged!: (checked: boolean) => void;
 	onTouched!: () => void;
 
 	ngOnInit(): void {
 		this.checked = false;
+		this.setBorderClass();
 	}
 
 	selectionChanged(event: CheckboxChangeEvent) {
@@ -75,5 +84,13 @@ export class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
 
 	get formControl() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
+	}
+
+	private setBorderClass(): void {
+		this.borderClass = 'border';
+
+		if (this.color) {
+			this.borderClass += ` border-${this.color}`;
+		}
 	}
 }
