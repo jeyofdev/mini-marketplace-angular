@@ -1,9 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-	ConfirmEventType,
-	ConfirmationService,
-	MessageService,
-} from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { ShowCartConfirmDialogFnType } from '../../../../shared/types/index.type';
 
 @Component({
@@ -21,36 +17,7 @@ export class ConfirmDeliveryComponent implements OnInit {
 		this.showConfirmDialog.emit(this.confirm);
 	}
 
-	confirm(
-		confirmationService: ConfirmationService,
-		messageService: MessageService,
-	) {
-		confirmationService.confirm({
-			accept: () => {
-				messageService.add({
-					severity: 'info',
-					summary: 'Confirmed',
-					detail: 'You have accepted',
-				});
-			},
-			reject: (type: ConfirmEventType) => {
-				switch (type) {
-					case ConfirmEventType.REJECT:
-						messageService.add({
-							severity: 'error',
-							summary: 'Rejected',
-							detail: 'You have rejected',
-						});
-						break;
-					case ConfirmEventType.CANCEL:
-						messageService.add({
-							severity: 'warn',
-							summary: 'Cancelled',
-							detail: 'You have cancelled',
-						});
-						break;
-				}
-			},
-		});
+	confirm(confirmationService: ConfirmationService) {
+		confirmationService.confirm({});
 	}
 }

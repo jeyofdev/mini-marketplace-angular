@@ -16,5 +16,4 @@ export type FillFormWithCurrentProductFnType = (product: IProduct) => void;
 
 export type ShowCartConfirmDialogFnType = (
 	confirmationService: ConfirmationService,
-	messageService: MessageService,
 ) => void;

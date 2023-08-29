@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ActionsSubject, Store } from '@ngrx/store';
 import { CartActions } from '../../../core/state/actions/cart-index.actions';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { ShowCartConfirmDialogFnType } from '../../../shared/types/index.type';
+import { Subscription } from 'rxjs';
+import { ofType } from '@ngrx/effects';
 
 @Component({
 	selector: 'app-delivery-information',
 	templateUrl: './delivery-information.component.html',
 	styleUrls: ['./delivery-information.component.scss'],
-	providers: [ConfirmationService, MessageService],
+	providers: [ConfirmationService],
 })
 export class DeliveryInformationComponent implements OnInit {
 	mainForm!: FormGroup;
@@ -26,13 +27,15 @@ export class DeliveryInformationComponent implements OnInit {
 	postalCodeCtrl!: FormControl<string | null>;
 	addressCtrl!: FormControl<string | null>;
 
+	private subscription: Subscription = new Subscription();
+
 	showConfirmDialogFn!: ShowCartConfirmDialogFnType;
 
 	constructor(
 		private formBuilder: FormBuilder,
 		private store: Store,
 		private confirmationService: ConfirmationService,
-		private messageService: MessageService,
+		private actionsSubject: ActionsSubject,
 	) {}
 
 	ngOnInit(): void {
@@ -86,14 +89,20 @@ export class DeliveryInformationComponent implements OnInit {
 
 	private addDelivery(): void {
 		// eslint-disable-next-line no-console
-		console.log(
-			this.showConfirmDialogFn(this.confirmationService, this.messageService),
+		console.log(this.showConfirmDialogFn(this.confirmationService));
+
+		this.store.dispatch(
+			CartActions.delivery.addDeliveryToCart({
+				payload: { data: this.mainForm.value },
+			}),
 		);
 
-		// this.store.dispatch(
-		// 	CartActions.delivery.addDeliveryToCart({
-		// 		payload: { data: this.mainForm.value },
-		// 	}),
-		// );
+		this.subscription.add(
+			this.actionsSubject
+				.pipe(ofType(CartActions.delivery.addDeliveryToCartSuccess))
+				.subscribe(() => {
+					this.onAffich(this.showConfirmDialogFn);
+				}),
+		);
 	}
 }
