@@ -29,6 +29,28 @@ export class WebProductEffects {
 		);
 	});
 
+	getAllActiveProducts$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(WebActions.products.loadProductsActive),
+			mergeMap(() =>
+				this.productService.getAll().pipe(
+					map((products: IProduct[]) =>
+						WebActions.products.loadProductsActiveSuccess({
+							payload: { data: products },
+						}),
+					),
+					catchError(error =>
+						of(
+							WebActions.products.loadProductsActiveFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
+			),
+		);
+	});
+
 	getCurrentProduct$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(WebActions.products.loadProduct),

@@ -9,6 +9,7 @@ import {
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CurrencyEnum } from '../../../../shared/enum/properties.enum';
 import { DashboardActions } from 'src/app/dashboard/state/actions/dashboard-index.actions';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-table-dashboard-product',
@@ -37,6 +38,7 @@ export class TableDashboardProductComponent implements OnInit {
 	constructor(
 		private confirmationService: ConfirmationService,
 		private messageService: MessageService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
@@ -89,5 +91,11 @@ export class TableDashboardProductComponent implements OnInit {
 	openModalUpdateProduct(product: IProduct): void {
 		this.fillFormWithCurrentProductFn(product);
 		this.sidebarVisible = true;
+	}
+
+	redirectToPageProduct(productId: string): void {
+		this.router.navigate([]).then(() => {
+			window.open(`/products/${productId}`, '_blank');
+		});
 	}
 }

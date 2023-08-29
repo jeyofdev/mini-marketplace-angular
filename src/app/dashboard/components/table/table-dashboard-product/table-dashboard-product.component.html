@@ -30,19 +30,27 @@
 				</td>
 
 				<td *ngIf="col.field === 'category'">
-					<app-chip
-						[label]="data[col.field].value"
-						size="small"
-						severity="primary"
-					></app-chip>
+					<div class="list-box">
+						<ng-container *ngFor="let category of data[col.field]">
+							<app-chip
+								[label]="category.label"
+								size="small"
+								severity="primary"
+							></app-chip>
+						</ng-container>
+					</div>
 				</td>
 
 				<td *ngIf="col.field === 'size'">
-					<app-tag
-						[value]="data[col.field].value"
-						variant="raised"
-						severity="primary"
-					></app-tag>
+					<div class="list-box">
+						<ng-container *ngFor="let size of data[col.field]">
+							<app-chip-square
+								[label]="size.label"
+								color="primary"
+								size="small"
+							></app-chip-square>
+						</ng-container>
+					</div>
 				</td>
 
 				<td *ngIf="col.field === 'price'">
@@ -72,11 +80,19 @@
 
 			<td class="actions-btn">
 				<app-button
-					variant="raised"
-					shape="square"
+					variant="rounded"
+					shape="circle"
+					color="info"
+					icon="fa-solid fa-eye"
+					(click)="redirectToPageProduct(data.id)"
+					>view</app-button
+				>
+
+				<app-button
+					variant="rounded"
+					shape="circle"
 					color="success"
-					size="medium"
-					iconPrefix="fa-solid fa-pencil"
+					icon="fa-solid fa-pencil"
 					(click)="openModalUpdateProduct(data)"
 					>Edit</app-button
 				>

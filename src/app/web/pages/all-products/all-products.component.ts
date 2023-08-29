@@ -4,8 +4,8 @@ import { Observable, map } from 'rxjs';
 import { IProduct } from 'src/app/shared/model/product.model';
 import { WebActions } from '../../state/actions/web-index.actions';
 import {
-	getWebProductsLoadingSelector,
-	getWebProductsSelector,
+	getWebProductsActiveLoadingSelector,
+	getWebProductsActiveSelector,
 } from '../../state/selectors/web-product.selectors';
 import { DataService } from '../../../shared/service/data.service';
 import {
@@ -39,12 +39,14 @@ export class AllProductsComponent implements OnInit {
 			colors: [],
 		};
 
-		this.store.dispatch(WebActions.products.loadProducts());
-		this.loading$ = this.store.pipe(select(getWebProductsLoadingSelector));
+		this.store.dispatch(WebActions.products.loadProductsActive());
+		this.loading$ = this.store.pipe(
+			select(getWebProductsActiveLoadingSelector),
+		);
 
 		this.store
 			.pipe(
-				select(getWebProductsSelector),
+				select(getWebProductsActiveSelector),
 				map(products => {
 					this.products = products;
 					this.filteredProducts = this.getFilteredProducts(products);

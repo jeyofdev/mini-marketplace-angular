@@ -38,6 +38,21 @@ export const productReducer = createReducer(
 		};
 	}),
 
+	on(WebActions.products.loadProductsActive, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
+
+	on(WebActions.products.loadProductsActiveSuccess, (state, actions) => {
+		return {
+			...state,
+			data: actions.payload.data.filter(product => product.status === 'active'),
+			loading: false,
+		};
+	}),
+
 	on(WebActions.products.loadProduct, state => {
 		return {
 			...state,
