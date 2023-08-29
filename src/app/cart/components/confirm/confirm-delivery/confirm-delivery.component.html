@@ -1,0 +1,22 @@
+<p-confirmDialog #cd [style]="{ width: '50vw' }">
+	<ng-template pTemplate="header"> </ng-template>
+
+	<ng-template pTemplate="footer">
+		<app-alert
+			severity="success"
+			icon="fa-solid fa-check"
+			message="Your order is validated."
+		></app-alert>
+
+		<div class="btn-box">
+			<app-button
+				variant="raised"
+				shape="square"
+				color="success"
+				size="medium"
+				(click)="cd.accept()"
+				>Close</app-button
+			>
+		</div>
+	</ng-template>
+</p-confirmDialog>

@@ -13,3 +13,7 @@ export type ShowConfirmDialogFnType = (
 
 export type FillFormWithCurrentCategoryFnType = (category: ICategory) => void;
 export type FillFormWithCurrentProductFnType = (product: IProduct) => void;
+
+export type ShowCartConfirmDialogFnType = (
+	confirmationService: ConfirmationService,
+) => void;

@@ -13,6 +13,7 @@ import * as fromWeb from '../core/state/reducers/cart.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from '../core/state/effects/cart-product.effects';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
+import { CartDeliveryEffects } from './state/effects/cart-delivery.effects';
 
 @NgModule({
 	declarations: [
@@ -31,7 +32,7 @@ import { NavigationLinkComponent } from './components/link/navigation-link/navig
 		StoreModule.forFeature(fromWeb.cartFeatureKey, fromWeb.reducers, {
 			metaReducers: fromWeb.metaReducers,
 		}),
-		EffectsModule.forFeature([CartEffects]),
+		EffectsModule.forFeature([CartEffects, CartDeliveryEffects]),
 	],
 	exports: [LayoutComponent],
 })

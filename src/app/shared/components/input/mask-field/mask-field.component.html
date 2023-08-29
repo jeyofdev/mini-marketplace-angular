@@ -1,0 +1,14 @@
+<div class="form-control">
+	<label [htmlFor]="name">{{ label }}</label>
+	<p-inputMask
+		[type]="type"
+		[id]="name"
+		[mask]="mask"
+		slotChar=""
+		[placeholder]="placeholder"
+		[disabled]="disabled"
+		[(ngModel)]="value"
+		(onInput)="onInputChange($event)"
+		(focus)="markAsTouched()"
+	></p-inputMask>
+</div>
