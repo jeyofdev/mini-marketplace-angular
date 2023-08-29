@@ -4,9 +4,8 @@
 	<p-inputNumber
 		[id]="name"
 		[name]="name"
-		inputId="currency-france"
-		mode="currency"
-		currency="EUR"
+		[mode]="mode"
+		[currency]="currency"
 		[disabled]="disabled"
 		[(ngModel)]="value"
 		(onInput)="onInputNumberChange($event)"

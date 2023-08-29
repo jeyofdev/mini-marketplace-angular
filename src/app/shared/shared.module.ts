@@ -44,6 +44,7 @@ import { ButtonEmptyComponent } from './components/button/button-empty/button-em
 import { ChipSquareComponent } from './components/chip/chip-square/chip-square.component';
 import { NumberFieldWithButtonComponent } from './components/input/number-field-with-button/number-field-with-button.component';
 import { TablePaginatorComponent } from './paginator/table-paginator/table-paginator.component';
+import { InputMaskComponent } from './components/input/input-mask/input-mask.component';
 
 @NgModule({
 	declarations: [
@@ -87,6 +88,7 @@ import { TablePaginatorComponent } from './paginator/table-paginator/table-pagin
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
 		TablePaginatorComponent,
+		InputMaskComponent,
 	],
 	imports: [
 		CommonModule,
@@ -140,6 +142,7 @@ import { TablePaginatorComponent } from './paginator/table-paginator/table-pagin
 		ButtonEmptyComponent,
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
+		InputMaskComponent,
 		TablePaginatorComponent,
 	],
 })

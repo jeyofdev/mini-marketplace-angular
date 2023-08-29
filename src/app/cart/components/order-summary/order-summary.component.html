@@ -1,0 +1,39 @@
+<h6 class="section-title">Order summary</h6>
+
+<div class="cart-section">
+	<div class="sub-total-box">
+		<app-price-order
+			title="Subtotal"
+			[price]="totalPriceProducts"
+			[loading]="loading"
+		></app-price-order>
+
+		<app-price-order
+			title="Delivery"
+			[price]="totalDelivery"
+			[loading]="loading"
+		></app-price-order>
+	</div>
+
+	<app-divider margin="1.25rem 0rem"></app-divider>
+
+	<div class="sub-total-box">
+		<app-price-order
+			title="Total (EUR)"
+			[price]="totalCart"
+			[loading]="loading"
+		></app-price-order>
+	</div>
+
+	<div class="order-btn">
+		<app-button-circular-radius
+			label="Confirm"
+			color="primary"
+			[outlined]="false"
+			icon="fa-solid fa-credit-card"
+			size="full"
+			[disabled]="loading || totalProducts === 0"
+			(click)="onRedirect()"
+		></app-button-circular-radius>
+	</div>
+</div>

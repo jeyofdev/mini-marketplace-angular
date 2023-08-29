@@ -127,8 +127,11 @@
 
 					<div class="form-row">
 						<app-number-field
+							inputId="price"
 							name="price"
 							label="Price *"
+							mode="currency"
+							currency="EUR"
 							groupName="infosForm"
 							formControlName="price"
 							[parentForm]="mainForm"

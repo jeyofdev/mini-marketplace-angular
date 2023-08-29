@@ -1,0 +1,126 @@
+<h6 class="section-title">Delivery informations</h6>
+
+<div class="cart-section">
+	<form
+		novalidate
+		class="delivery-form"
+		[formGroup]="mainForm"
+		(ngSubmit)="onMainFormSubmit()"
+	>
+		<div [formGroup]="infosForm">
+			<div class="form-row">
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="firstname"
+						label="Firstname *"
+						groupName="infosForm"
+						formControlName="firstname"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="lastname"
+						label="Lastname *"
+						groupName="infosForm"
+						formControlName="lastname"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="control">
+					<app-input-mask
+						type="text"
+						name="phone"
+						label="Phone number *"
+						mask="99-99-99-99-99"
+						placeholder="99-99-99-99-99"
+						groupName="infosForm"
+						formControlName="phone"
+						[parentForm]="mainForm"
+					>
+					</app-input-mask>
+				</div>
+
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="email"
+						label="Email *"
+						groupName="infosForm"
+						formControlName="email"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+		</div>
+
+		<div [formGroup]="addressForm">
+			<div class="form-row">
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="city"
+						label="City *"
+						groupName="addressForm"
+						formControlName="city"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="country"
+						label="Country *"
+						groupName="addressForm"
+						formControlName="country"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="control">
+					<app-input-mask
+						type="text"
+						name="postalCode"
+						label="Postal code *"
+						mask="99999"
+						placeholder="33000"
+						groupName="addressForm"
+						formControlName="postalCode"
+						[parentForm]="mainForm"
+					>
+					</app-input-mask>
+				</div>
+
+				<div class="control">
+					<app-text-field
+						type="text"
+						name="address"
+						label="Address *"
+						groupName="addressForm"
+						formControlName="address"
+						[parentForm]="mainForm"
+					></app-text-field>
+				</div>
+			</div>
+
+			<app-button
+				type="submit"
+				variant="raised"
+				shape="square"
+				color="primary"
+				size="medium"
+				[disabled]="!mainForm.valid"
+				>Confirm</app-button
+			>
+		</div>
+	</form>
+</div>
