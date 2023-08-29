@@ -32,6 +32,12 @@ p-table th {
 	}
 }
 
+.list-box {
+	display: flex;
+	gap: 0.3rem;
+	flex-wrap: wrap;
+}
+
 :host ::ng-deep .p-disabled,
 :host ::ng-deep .p-component:disabled {
 	opacity: 0.45;

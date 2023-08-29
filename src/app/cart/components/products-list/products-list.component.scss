@@ -12,11 +12,11 @@
 	border-radius: 10px;
 }
 
-.actions-btn {
+:host ::ng-deep .actions-btn {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 1rem;
+	gap: 0.5rem;
 }
 
 p-table th,
