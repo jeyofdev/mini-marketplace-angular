@@ -8,6 +8,10 @@ export const WebProductActions = createActionGroup({
 		'Load products Success': props<{ payload: { data: IProduct[] } }>(),
 		'Load products Failure': props<{ payload: { error: unknown } }>(),
 
+		'Load products active': emptyProps(),
+		'Load products active Success': props<{ payload: { data: IProduct[] } }>(),
+		'Load products active Failure': props<{ payload: { error: unknown } }>(),
+
 		'Load product': props<{ payload: { id: string } }>(),
 		'Load product Success': props<{ payload: { data: IProduct } }>(),
 		'Load product Failure': props<{ payload: { error: unknown } }>(),

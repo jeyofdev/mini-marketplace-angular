@@ -5,7 +5,7 @@ import {
 	FormGroup,
 	Validators,
 } from '@angular/forms';
-import { Subscription, map, mergeMap, tap } from 'rxjs';
+import { Subscription, filter, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '../../../../shared/service/category.service';
 import {
 	ChoiceItemType,
@@ -210,6 +210,7 @@ export class ModalProductComponent implements OnInit {
 			.getAll()
 			.pipe(
 				mergeMap((categories: ICategory[]) => categories),
+				filter(category => category.status === 'active'),
 				map((category: ICategory) => ({
 					name: category.name,
 					label: category.name,

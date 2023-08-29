@@ -17,6 +17,21 @@ export class DataService {
 	getAllSizes(): ChoiceItemType[] {
 		return [
 			{
+				name: ProductSizeEnum.XXS,
+				value: ProductSizeEnum.XXS,
+				label: ProductSizeEnum.XXS,
+			},
+			{
+				name: ProductSizeEnum.XS,
+				value: ProductSizeEnum.XS,
+				label: ProductSizeEnum.XS,
+			},
+			{
+				name: ProductSizeEnum.S,
+				value: ProductSizeEnum.S,
+				label: ProductSizeEnum.S,
+			},
+			{
 				name: ProductSizeEnum.M,
 				value: ProductSizeEnum.M,
 				label: ProductSizeEnum.M,
@@ -27,14 +42,19 @@ export class DataService {
 				label: ProductSizeEnum.L,
 			},
 			{
-				name: ProductSizeEnum.S,
-				value: ProductSizeEnum.S,
-				label: ProductSizeEnum.S,
-			},
-			{
 				name: ProductSizeEnum.XL,
 				value: ProductSizeEnum.XL,
 				label: ProductSizeEnum.XL,
+			},
+			{
+				name: ProductSizeEnum.XXL,
+				value: ProductSizeEnum.XXL,
+				label: ProductSizeEnum.XXL,
+			},
+			{
+				name: ProductSizeEnum.XXXL,
+				value: ProductSizeEnum.XXXL,
+				label: ProductSizeEnum.XXXL,
 			},
 		];
 	}
