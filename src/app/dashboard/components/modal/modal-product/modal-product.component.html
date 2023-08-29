@@ -110,6 +110,20 @@
 					</div>
 				</div>
 
+				<div class="form-row row-checkbox" [formGroup]="optionsForm">
+					<label>Available options</label>
+					<div class="colors-box">
+						<ng-container *ngFor="let option of options">
+							<app-checkbox-base
+								[name]="option.name"
+								[formControlName]="option.name"
+								groupName="optionsForm"
+								[parentForm]="mainForm"
+							></app-checkbox-base>
+						</ng-container>
+					</div>
+				</div>
+
 				<div [formGroup]="infosForm">
 					<div class="form-row">
 						<app-slider-with-value

@@ -39,6 +39,7 @@ export class ModalProductComponent implements OnInit {
 
 	mainForm!: FormGroup;
 	colorsForm!: FormGroup;
+	optionsForm!: FormGroup;
 	nameForm!: FormGroup;
 	detailsForm!: FormGroup;
 	infosForm!: FormGroup;
@@ -55,6 +56,7 @@ export class ModalProductComponent implements OnInit {
 	sizes!: ChoiceItemType[];
 	colors!: ColorItemType[];
 	status!: ChoiceItemType[];
+	options!: ChoiceItemType[];
 
 	submitBtnLabel!: string;
 
@@ -79,6 +81,7 @@ export class ModalProductComponent implements OnInit {
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();
 		this.status = this.dataService.getAllStatus();
+		this.options = this.dataService.getAllOptions();
 
 		this.inputsValidationMessages = addProductValidationMessages;
 
@@ -92,11 +95,14 @@ export class ModalProductComponent implements OnInit {
 	}
 
 	onMainFormSubmit(): void {
-		if (!this.currentProduct) {
-			this.addProduct();
-		} else {
-			this.updateProduct();
-		}
+		// eslint-disable-next-line no-console
+		console.log(this.mainForm.value);
+
+		// if (!this.currentProduct) {
+		// 	this.addProduct();
+		// } else {
+		// 	this.updateProduct();
+		// }
 	}
 
 	fillFormWithCurrentProduct = (product: IProduct) => {
@@ -117,6 +123,7 @@ export class ModalProductComponent implements OnInit {
 			details: this.detailsForm,
 			infos: this.infosForm,
 			colors: this.colorsForm,
+			options: this.optionsForm,
 		});
 	}
 
@@ -127,6 +134,13 @@ export class ModalProductComponent implements OnInit {
 			green: [false],
 			yellow: [false],
 			purple: [false],
+		});
+
+		this.optionsForm = this.formBuilder.group({
+			securePayment: [false],
+			sizeAndFit: [false],
+			freeShipping: [false],
+			freeShippingAndReturns: [false],
 		});
 
 		this.nameForm = this.formBuilder.group({

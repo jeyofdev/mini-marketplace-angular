@@ -1,0 +1,8 @@
+<p-checkbox
+	inputId="binary"
+	[disabled]="disabled"
+	[(ngModel)]="checked"
+	[binary]="true"
+	(onChange)="selectionChanged($event)"
+	(blur)="onTouched()"
+></p-checkbox>
