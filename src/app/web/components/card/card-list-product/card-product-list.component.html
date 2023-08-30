@@ -1,5 +1,13 @@
-<a [routerLink]="['/products', product.id]">
-	<div class="product-card-box">
+<div class="product-card-box">
+	<app-button-circle
+		icon="fa-regular fa-heart"
+		class="add-wish-list-btn"
+		color="danger"
+		[outlined]="true"
+		(click)="addOrRemoveProductForUserList()"
+	></app-button-circle>
+
+	<a [routerLink]="['/products', product.id]">
 		<p-card>
 			<ng-template pTemplate="header">
 				<img
@@ -7,13 +15,6 @@
 					alt="Card"
 					src="assets/img/auth/login.jpg"
 				/>
-				<app-button
-					shape="circle"
-					variant="rounded"
-					color="white"
-					icon="fa-regular fa-heart"
-					class="add-wish-list-btn"
-				></app-button>
 			</ng-template>
 
 			<ng-template pTemplate="body">
@@ -36,5 +37,5 @@
 				></app-chip>
 			</ng-template>
 		</p-card>
-	</div>
-</a>
+	</a>
+</div>

@@ -1,6 +1,14 @@
 :host ::ng-deep .product-card-box {
 	border-radius: 10px;
 	overflow: hidden;
+	position: relative;
+
+	.p-button {
+		min-width: 1rem;
+		min-height: 1rem;
+		height: 2rem;
+		width: 2rem;
+	}
 }
 
 :host ::ng-deep .p-card-header {
@@ -15,6 +23,7 @@
 	position: absolute;
 	top: 1rem;
 	left: 1rem;
+	z-index: 100;
 }
 
 :host ::ng-deep .p-card-body {

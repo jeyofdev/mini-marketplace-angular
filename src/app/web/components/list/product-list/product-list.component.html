@@ -1,13 +1,16 @@
 <app-loader [loading]="loading"></app-loader>
 
 <p-dataView
+	*ngIf="!loading"
 	#dv
 	[value]="products"
 	[rows]="5"
 	[paginator]="true"
-	*ngIf="!loading"
 >
 	<ng-template let-product pTemplate="listItem">
-		<app-card-product-list [product]="product"></app-card-product-list>
+		<app-card-product-list
+			[product]="product"
+			[productsList]="productsList"
+		></app-card-product-list>
 	</ng-template>
 </p-dataView>

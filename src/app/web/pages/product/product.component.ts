@@ -1,13 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ActionsSubject, Store, select } from '@ngrx/store';
-import { WebActions } from '../../state/actions/web-index.actions';
+import { WebActions } from '../../../core/state/web/actions/web-index.actions';
 import { IProduct } from '../../../shared/model/product.model';
 import { Observable, Subscription, map } from 'rxjs';
-import {
-	getWebCurrentProductLoadingSelector,
-	getWebCurrentProductSelector,
-} from '../../state/selectors/web-product.selectors';
+
 import { IImage } from '../../../shared/model/image.model';
 import { BreakpointEnum } from '../../../shared/enum/breakpoint.enum';
 import { BreakpointService } from '../../../shared/service/breakpoint.service';
@@ -20,7 +17,11 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '../../../shared/utils/toast';
 import { ICartProduct } from '../../../shared/model/cart.model';
-import { CartActions } from '../../../core/state/actions/cart-index.actions';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
+import {
+	getWebCurrentProductLoadingSelector,
+	getWebCurrentProductSelector,
+} from '../../../core/state/web/selectors/web-product.selectors';
 
 @Component({
 	selector: 'app-product',

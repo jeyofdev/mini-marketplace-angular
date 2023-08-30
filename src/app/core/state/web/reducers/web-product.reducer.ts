@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IProduct } from '../../../shared/model/product.model';
+import { IProduct } from '../../../../shared/model/product.model';
 import { WebActions } from '../actions/web-index.actions';
 
 export const webProductFeatureKey = 'products';

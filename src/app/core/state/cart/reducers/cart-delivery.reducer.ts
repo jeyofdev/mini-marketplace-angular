@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { ICartDelivery } from '../../../shared/model/cart.model';
+import { ICartDelivery } from '../../../../shared/model/cart.model';
 import { CartActions } from '../actions/cart-index.actions';
 
 export const CartDeliveryFeatureKey = 'delivery';

@@ -5,11 +5,11 @@ import { ICartProduct } from '../../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { IImage } from '../../../../shared/model/image.model';
 import { Router } from '@angular/router';
-import { CartActions } from '../../../state/actions/cart-index.actions';
+import { CartActions } from '../../../state/cart/actions/cart-index.actions';
 import {
 	getCartProductsLoadingSelector,
 	getCartProductsSelector,
-} from '../../../state/selectors/cart-product.selectors';
+} from '../../../state/cart/selectors/cart-product.selectors';
 
 @Component({
 	selector: 'app-cart',

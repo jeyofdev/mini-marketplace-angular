@@ -9,11 +9,16 @@ import { NavigationLinkMobileComponent } from './components/link/navigation-link
 import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
 import { NavigationComponent } from './components/nav/navigation/navigation.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromWeb from '../core/state/reducers/cart.reducer';
+import * as fromCart from '../core/state/cart/reducers/cart.reducer';
+import * as fromUser from '../core/state/user/reducers/user.reducer';
+import * as fromWeb from '../core/state/web/reducers/web.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { CartEffects } from '../core/state/effects/cart-product.effects';
+import { CartEffects } from '../core/state/cart/effects/cart-product.effects';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
-import { CartDeliveryEffects } from './state/effects/cart-delivery.effects';
+import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects';
+import { UserListEffects } from './state/user/effects/user-list.effects';
+import { WebCategoryEffects } from './state/web/effects/web-category.effects';
+import { WebProductEffects } from './state/web/effects/web-product.effects';
 
 @NgModule({
 	declarations: [
@@ -29,10 +34,22 @@ import { CartDeliveryEffects } from './state/effects/cart-delivery.effects';
 	imports: [
 		CommonModule,
 		SharedModule,
-		StoreModule.forFeature(fromWeb.cartFeatureKey, fromWeb.reducers, {
+		StoreModule.forFeature(fromCart.cartFeatureKey, fromCart.reducers, {
+			metaReducers: fromCart.metaReducers,
+		}),
+		StoreModule.forFeature(fromWeb.webFeatureKey, fromWeb.reducers, {
 			metaReducers: fromWeb.metaReducers,
 		}),
-		EffectsModule.forFeature([CartEffects, CartDeliveryEffects]),
+		StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducers, {
+			metaReducers: fromUser.metaReducers,
+		}),
+		EffectsModule.forFeature([
+			CartEffects,
+			CartDeliveryEffects,
+			UserListEffects,
+			WebCategoryEffects,
+			WebProductEffects,
+		]),
 	],
 	exports: [LayoutComponent],
 })

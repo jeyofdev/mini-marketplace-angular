@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActionsSubject, Store } from '@ngrx/store';
-import { CartActions } from '../../../core/state/actions/cart-index.actions';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
 import { ConfirmationService } from 'primeng/api';
 import { ShowCartConfirmDialogFnType } from '../../../shared/types/index.type';
 import { Subscription } from 'rxjs';

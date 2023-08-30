@@ -4,7 +4,7 @@ import { DataService } from '../../../web/services/data.service';
 import { CurrencyEnum } from '../../../shared/enum/properties.enum';
 import { IRowsPerPageSelectOptions } from '../../../shared/interfaces/table.interface';
 import { Store } from '@ngrx/store';
-import { CartActions } from '../../../core/state/actions/cart-index.actions';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
 
 @Component({
 	selector: 'app-products-list',
