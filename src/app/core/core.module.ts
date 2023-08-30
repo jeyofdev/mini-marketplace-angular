@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from '../core/state/cart/effects/cart-product.effects';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
 import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects';
+import { UserListEffects } from './state/user/effects/user-list.effects';
 
 @NgModule({
 	declarations: [
@@ -36,7 +37,11 @@ import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects'
 		StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducers, {
 			metaReducers: fromUser.metaReducers,
 		}),
-		EffectsModule.forFeature([CartEffects, CartDeliveryEffects]),
+		EffectsModule.forFeature([
+			CartEffects,
+			CartDeliveryEffects,
+			UserListEffects,
+		]),
 	],
 	exports: [LayoutComponent],
 })

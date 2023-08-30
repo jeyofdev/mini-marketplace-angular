@@ -10,6 +10,7 @@ export class ButtonCircleComponent implements OnInit {
 	@Input() icon!: string;
 	@Input() showLabel!: boolean;
 	@Input() selected!: boolean;
+	@Input() outlined!: boolean;
 	@Input() size!: 'normal' | 'small' | 'large';
 	@Input() color!:
 		| 'primary'
@@ -37,8 +38,10 @@ export class ButtonCircleComponent implements OnInit {
 	private setStyleClass(): void {
 		this.styleClass = 'p-button-rounded';
 
-		if (this.color) {
+		if (this.color && !this.outlined) {
 			this.styleClass += ` p-button-${this.color}`;
+		} else if (this.color && this.outlined) {
+			this.styleClass += ` p-button-outlined p-button-${this.color}`;
 		} else {
 			this.styleClass += ' p-button-transparent';
 		}
