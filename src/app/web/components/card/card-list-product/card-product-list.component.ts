@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CurrencyEnum } from '../../../../shared/enum/properties.enum';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
@@ -9,23 +9,25 @@ import { IProduct } from '../../../../shared/model/product.model';
 	templateUrl: './card-product-list.component.html',
 	styleUrls: ['./card-product-list.component.scss'],
 })
-export class CardProductListComponent implements OnInit {
+export class CardProductListComponent {
 	@Input() product!: IProduct;
+	@Input() productsList!: IProduct[];
 
 	currencyEnum = CurrencyEnum;
 
 	constructor(private store: Store) {}
 
-	ngOnInit(): void {
-		// eslint-disable-next-line no-console
-		console.log('get');
-	}
-
 	addOrRemoveProductForUserList() {
-		this.store.dispatch(
-			UserActions.list.addProductToUserList({
-				payload: { data: this.product },
-			}),
+		const productsModelName = this.productsList.map(
+			product => product.modelName,
 		);
+
+		if (!productsModelName.includes(this.product.modelName)) {
+			this.store.dispatch(
+				UserActions.list.addProductInUserList({
+					payload: { data: this.product },
+				}),
+			);
+		}
 	}
 }

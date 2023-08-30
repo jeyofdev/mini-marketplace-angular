@@ -21,10 +21,25 @@ export const initialUserListState: IUserListState = {
 export const listReducer = createReducer(
 	initialUserListState,
 
-	on(UserActions.list.addProductToUserList, (state, actions) => {
+	on(UserActions.list.addProductInUserList, (state, actions) => {
 		return {
 			...state,
 			products: [...state.products, actions.payload.data],
+			loading: false,
+		};
+	}),
+
+	on(UserActions.list.loadProductsInUserList, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
+
+	on(UserActions.list.loadProductsInUserListSuccess, (state, actions) => {
+		return {
+			...state,
+			products: actions.payload.data,
 			loading: false,
 		};
 	}),

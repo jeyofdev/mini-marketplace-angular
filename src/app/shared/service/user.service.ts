@@ -5,9 +5,11 @@ import {
 	Firestore,
 	addDoc,
 	DocumentReference,
+	collectionData,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { IProduct } from '../model/product.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,7 +21,13 @@ export class UserService {
 		this.collectionInstance = collection(this.firestore, 'users');
 	}
 
-	addProductToList(product: IProduct): Promise<DocumentReference<IProduct>> {
+	getAllProductInList(): Observable<IProduct[]> {
+		return collectionData(this.collectionInstance, {
+			idField: 'id',
+		}) as Observable<IProduct[]>;
+	}
+
+	addProductInList(product: IProduct): Promise<DocumentReference<IProduct>> {
 		const docRef = addDoc(this.collectionInstance, product);
 
 		return docRef as Promise<DocumentReference<IProduct>>;

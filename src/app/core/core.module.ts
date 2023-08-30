@@ -11,11 +11,14 @@ import { NavigationComponent } from './components/nav/navigation/navigation.comp
 import { StoreModule } from '@ngrx/store';
 import * as fromCart from '../core/state/cart/reducers/cart.reducer';
 import * as fromUser from '../core/state/user/reducers/user.reducer';
+import * as fromWeb from '../core/state/web/reducers/web.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from '../core/state/cart/effects/cart-product.effects';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
 import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects';
 import { UserListEffects } from './state/user/effects/user-list.effects';
+import { WebCategoryEffects } from './state/web/effects/web-category.effects';
+import { WebProductEffects } from './state/web/effects/web-product.effects';
 
 @NgModule({
 	declarations: [
@@ -34,6 +37,9 @@ import { UserListEffects } from './state/user/effects/user-list.effects';
 		StoreModule.forFeature(fromCart.cartFeatureKey, fromCart.reducers, {
 			metaReducers: fromCart.metaReducers,
 		}),
+		StoreModule.forFeature(fromWeb.webFeatureKey, fromWeb.reducers, {
+			metaReducers: fromWeb.metaReducers,
+		}),
 		StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducers, {
 			metaReducers: fromUser.metaReducers,
 		}),
@@ -41,6 +47,8 @@ import { UserListEffects } from './state/user/effects/user-list.effects';
 			CartEffects,
 			CartDeliveryEffects,
 			UserListEffects,
+			WebCategoryEffects,
+			WebProductEffects,
 		]),
 	],
 	exports: [LayoutComponent],

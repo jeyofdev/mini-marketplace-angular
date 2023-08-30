@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { IProduct } from 'src/app/shared/model/product.model';
-import { WebActions } from '../../state/actions/web-index.actions';
-import {
-	getWebProductsActiveLoadingSelector,
-	getWebProductsActiveSelector,
-} from '../../state/selectors/web-product.selectors';
+import { WebActions } from '../../../core/state/web/actions/web-index.actions';
 import { DataService } from '../../../shared/service/data.service';
 import {
 	ChoiceItemType,
 	ColorItemType,
 } from '../../../shared/interfaces/input.interface';
+import {
+	getWebProductsActiveLoadingSelector,
+	getWebProductsActiveSelector,
+} from '../../../core/state/web/selectors/web-product.selectors';
 
 @Component({
 	selector: 'app-all-products',
