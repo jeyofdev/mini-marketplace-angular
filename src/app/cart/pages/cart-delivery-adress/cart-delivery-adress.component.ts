@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { CartActions } from 'src/app/core/state/actions/cart-index.actions';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
 import {
 	getCartProductsLoadingSelector,
 	getCartProductsSelector,
-} from 'src/app/core/state/selectors/cart-product.selectors';
-import { ICartProduct } from 'src/app/shared/model/cart.model';
+} from '../../../core/state/cart/selectors/cart-product.selectors';
+import { ICartProduct } from '../../../shared/model/cart.model';
 
 @Component({
 	selector: 'app-cart-delivery-adress',

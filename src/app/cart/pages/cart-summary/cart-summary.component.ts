@@ -9,8 +9,8 @@ import { IImage } from '../../../shared/model/image.model';
 import {
 	getCartProductsLoadingSelector,
 	getCartProductsSelector,
-} from '../../../core/state/selectors/cart-product.selectors';
-import { CartActions } from '../../../core/state/actions/cart-index.actions';
+} from '../../../core/state/cart/selectors/cart-product.selectors';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
 
 @Component({
 	selector: 'app-cart-summary',

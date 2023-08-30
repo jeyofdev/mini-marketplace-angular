@@ -20,7 +20,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '../../../shared/utils/toast';
 import { ICartProduct } from '../../../shared/model/cart.model';
-import { CartActions } from '../../../core/state/actions/cart-index.actions';
+import { CartActions } from '../../../core/state/cart/actions/cart-index.actions';
 
 @Component({
 	selector: 'app-product',

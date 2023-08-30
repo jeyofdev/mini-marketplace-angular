@@ -9,11 +9,12 @@ import { NavigationLinkMobileComponent } from './components/link/navigation-link
 import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
 import { NavigationComponent } from './components/nav/navigation/navigation.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromWeb from '../core/state/reducers/cart.reducer';
+import * as fromCart from '../core/state/cart/reducers/cart.reducer';
+import * as fromUser from '../core/state/user/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { CartEffects } from '../core/state/effects/cart-product.effects';
+import { CartEffects } from '../core/state/cart/effects/cart-product.effects';
 import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
-import { CartDeliveryEffects } from './state/effects/cart-delivery.effects';
+import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects';
 
 @NgModule({
 	declarations: [
@@ -29,8 +30,11 @@ import { CartDeliveryEffects } from './state/effects/cart-delivery.effects';
 	imports: [
 		CommonModule,
 		SharedModule,
-		StoreModule.forFeature(fromWeb.cartFeatureKey, fromWeb.reducers, {
-			metaReducers: fromWeb.metaReducers,
+		StoreModule.forFeature(fromCart.cartFeatureKey, fromCart.reducers, {
+			metaReducers: fromCart.metaReducers,
+		}),
+		StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducers, {
+			metaReducers: fromUser.metaReducers,
 		}),
 		EffectsModule.forFeature([CartEffects, CartDeliveryEffects]),
 	],
