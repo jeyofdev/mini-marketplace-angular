@@ -4,12 +4,7 @@ import { IUserState, userFeatureKey } from '../reducers/user.reducer';
 export const SELECT_USER_FEATURE =
 	createFeatureSelector<IUserState>(userFeatureKey);
 
-export const getUserListLoadingSelector = createSelector(
+export const getWebCurrentProductSelector = createSelector(
 	SELECT_USER_FEATURE,
-	(state: IUserState) => state.list.loading,
-);
-
-export const getUserListSelector = createSelector(
-	SELECT_USER_FEATURE,
-	(state: IUserState) => state.list.products,
+	(state: IUserState) => state.data,
 );

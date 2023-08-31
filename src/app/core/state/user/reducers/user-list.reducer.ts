@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { IProduct } from '../../../../shared/model/product.model';
 import { UserActions } from '../actions/user-index.actions';
 
-export const UserListFeatureKey = 'lists';
+export const UserListFeatureKey = 'list';
 
 export interface IUserListState {
 	products: IProduct[];

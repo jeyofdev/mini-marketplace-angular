@@ -8,22 +8,31 @@ import {
 	initialUserListState,
 	listReducer,
 } from './user-list.reducer';
+import {
+	IUserInitState,
+	UserInitFeatureKey,
+	initialUserInitState,
+	userInitReducer,
+} from './user-init.reducer';
 
 export const userFeatureKey = 'user';
 
 export interface IUserState {
 	[UserListFeatureKey]: IUserListState;
+	[UserInitFeatureKey]: IUserInitState;
 }
 
-export const initialCartState: IUserState = {
+export const initialUserState: IUserState = {
 	[UserListFeatureKey]: initialUserListState,
+	[UserInitFeatureKey]: initialUserInitState,
 };
 
 export const reducers = combineReducers(
 	{
 		[UserListFeatureKey]: listReducer,
+		[UserInitFeatureKey]: userInitReducer,
 	},
-	initialCartState,
+	initialUserState,
 );
 
 export const metaReducers: MetaReducer[] = isDevMode() ? [log] : [];

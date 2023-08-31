@@ -12,6 +12,11 @@ import { inputEqualValidator } from '../../../../shared/validators/input-equal.v
 import { Observable, map } from 'rxjs';
 import { AuthService } from '../../../../shared/service/auth.service';
 import { DataService } from '../../../../shared/service/data.service';
+import { IUser } from '../../../../core/model/user.model';
+import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
 	selector: 'app-register',
@@ -43,6 +48,8 @@ export class RegisterComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
 		private dataService: DataService,
+		private router: Router,
+		private store: Store,
 	) {}
 
 	ngOnInit(): void {
@@ -62,19 +69,44 @@ export class RegisterComponent implements OnInit {
 		this.registerWithEmail();
 	}
 
-	async registerWithEmail() {
-		await this.authService.register(
-			this.mainForm.value.email,
-			this.mainForm.value.password.password,
-			`${this.mainForm.value.personnalInfos.firstname} ${this.mainForm.value.personnalInfos.lastname}`,
-		);
+	registerWithEmail() {
+		this.authService
+			.register(
+				this.mainForm.value.email,
+				this.mainForm.value.password.password,
+			)
+			.then(currentUser => {
+				const newUser: IUser = {
+					account: {
+						createdAt: currentUser.user.metadata.creationTime ?? '',
+						lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
+					},
+					profile: {
+						firstname: this.mainForm.value.personnalInfos.firstname,
+						lastname: this.mainForm.value.personnalInfos.lastname,
+						username: this.mainForm.value.personnalInfos.username,
+						email: currentUser.user.email ?? '',
+						phone: currentUser.user.phoneNumber ?? '',
+						avatar: currentUser.user.photoURL ?? '',
+					},
+					list: [],
+				};
 
-		if (this.authService.errorMessage) {
-			this.formErrorMessage = this.authService.errorMessage;
-		} else {
-			this.formErrorMessage = null;
-			this.mainForm.reset();
-		}
+				this.store.dispatch(
+					UserActions.init.addUser({
+						payload: { userId: currentUser.user.uid, data: newUser },
+					}),
+				);
+
+				this.formErrorMessage = null;
+				this.mainForm.reset();
+				this.router.navigateByUrl('/home');
+			})
+			.catch((error: unknown) => {
+				if (error instanceof FirebaseError) {
+					this.formErrorMessage = this.authService.setErrorMessage(error.code);
+				}
+			});
 	}
 
 	private initMainForm(): void {

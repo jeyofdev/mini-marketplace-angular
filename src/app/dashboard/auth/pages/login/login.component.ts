@@ -10,6 +10,10 @@ import { IImage } from '../../../../shared/model/image.model';
 import { ISocialProvider } from '../../../../shared/model/social-provider.model';
 import { loginValidationMessages } from '../../validations/messages.validation';
 import { AuthService } from '../../../../shared/service/auth.service';
+import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
 	selector: 'app-login',
@@ -26,7 +30,7 @@ export class LoginComponent implements OnInit {
 	emailCtrl!: FormControl<string | null>;
 	passwordCtrl!: FormControl<string | null>;
 
-	formErrorMessage!: string;
+	formErrorMessage!: string | null;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	inputsValidationMessages!: any;
 
@@ -34,6 +38,8 @@ export class LoginComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
 		private dataService: DataService,
+		private router: Router,
+		private store: Store,
 	) {}
 
 	ngOnInit(): void {
@@ -50,17 +56,25 @@ export class LoginComponent implements OnInit {
 		this.loginWithEmail();
 	}
 
-	async loginWithEmail() {
-		await this.authService.login(
-			this.mainForm.value.email,
-			this.mainForm.value.password,
-		);
+	loginWithEmail() {
+		this.authService
+			.login(this.mainForm.value.email, this.mainForm.value.password)
+			.then(currentUser => {
+				this.store.dispatch(
+					UserActions.init.loadUser({
+						payload: { userId: currentUser.user.uid },
+					}),
+				);
 
-		if (this.authService.errorMessage) {
-			this.formErrorMessage = this.authService.errorMessage;
-		} else {
-			this.mainForm.reset();
-		}
+				this.formErrorMessage = null;
+				this.mainForm.reset();
+				this.router.navigateByUrl('/home');
+			})
+			.catch((error: unknown) => {
+				if (error instanceof FirebaseError) {
+					this.formErrorMessage = this.authService.setErrorMessage(error.code);
+				}
+			});
 	}
 
 	private initMainForm() {
