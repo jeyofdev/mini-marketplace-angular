@@ -21,7 +21,9 @@ export const initialUserInitState: IUserInitState = {
 		createdAt: '',
 	},
 	profile: {
-		displayName: '',
+		firstname: '',
+		lastname: '',
+		username: '',
 		email: '',
 		phone: '',
 		avatar: '',

@@ -79,7 +79,9 @@ export class AuthLayoutComponent implements OnInit {
 					lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
 				},
 				profile: {
-					displayName: currentUser.user.displayName ?? '',
+					firstname: '',
+					lastname: '',
+					username: currentUser.user.displayName ?? '',
 					email: currentUser.user.email ?? '',
 					phone: currentUser.user.phoneNumber ?? '',
 					avatar: currentUser.user.photoURL ?? '',

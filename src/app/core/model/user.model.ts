@@ -7,7 +7,9 @@ export interface IUser {
 }
 
 export interface IUserProfile {
-	displayName: string;
+	firstname: string;
+	lastname: string;
+	username: string;
 	email: string;
 	phone: string;
 	avatar: string;

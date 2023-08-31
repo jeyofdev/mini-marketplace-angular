@@ -67,22 +67,8 @@ export class AuthService {
 		}
 	}
 
-	async register(email: string, password: string, displayName: string) {
-		this.resetErrorMessage();
-
-		await createUserWithEmailAndPassword(this.auth, email, password)
-			.then((result: any) => {
-				this.updateUser(result.user, { displayName });
-
-				this.ngZone.run(() => {
-					this.router.navigateByUrl('/dashboard/home');
-				});
-			})
-			.catch((error: unknown) => {
-				if (error instanceof FirebaseError) {
-					this.setErrorMessage(error.code);
-				}
-			});
+	register(email: string, password: string): Promise<UserCredential> {
+		return createUserWithEmailAndPassword(this.auth, email, password);
 	}
 
 	logout() {
@@ -97,7 +83,7 @@ export class AuthService {
 		return user;
 	}
 
-	private setErrorMessage(errorCode: string) {
+	setErrorMessage(errorCode: string) {
 		if (
 			errorCode === 'auth/wrong-password' ||
 			errorCode === 'auth/user-not-found'
@@ -107,6 +93,8 @@ export class AuthService {
 		} else if (errorCode === 'auth/email-already-in-use') {
 			this.errorMessage = 'Email is invalid or already taken';
 		}
+
+		return this.errorMessage;
 	}
 
 	private resetErrorMessage(): void {
