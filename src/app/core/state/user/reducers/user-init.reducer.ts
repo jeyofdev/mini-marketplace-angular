@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import { UserActions } from '../actions/user-index.actions';
 import { IProduct } from 'src/app/shared/model/product.model';
 
-export const UserInitFeatureKey = 'profile';
+export const UserInitFeatureKey = 'data';
 
 export interface IUserInitState {
 	account: IUserAccount;

@@ -11,6 +11,8 @@ import { AuthService } from '../../../../shared/service/auth.service';
 import { UserService } from '../../../../core/service/user.service';
 import { Router } from '@angular/router';
 import { IUser } from '../../../../core/model/user.model';
+import { Store } from '@ngrx/store';
+import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
 
 @Component({
 	selector: 'app-auth-layout',
@@ -36,6 +38,7 @@ export class AuthLayoutComponent implements OnInit {
 		private authService: AuthService,
 		private userService: UserService,
 		private router: Router,
+		private store: Store,
 	) {}
 
 	ngOnInit(): void {
@@ -84,7 +87,11 @@ export class AuthLayoutComponent implements OnInit {
 				list: [],
 			};
 
-			this.userService.addUser(currentUser.user.uid, newUser);
+			this.store.dispatch(
+				UserActions.init.addUser({
+					payload: { userId: currentUser.user.uid, data: newUser },
+				}),
+			);
 
 			this.router.navigateByUrl('/home');
 		});
