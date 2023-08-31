@@ -12,6 +12,7 @@ import {
 	signOut,
 	updateProfile,
 	User,
+	UserCredential,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -39,9 +40,10 @@ export class AuthService {
 		});
 	}
 
-	async loginWithPopup(provider: GoogleAuthProvider | GithubAuthProvider) {
-		await signInWithPopup(this.auth, provider);
-		this.router.navigateByUrl('/dashboard/home');
+	loginWithPopup(
+		provider: GoogleAuthProvider | GithubAuthProvider,
+	): Promise<UserCredential> {
+		return signInWithPopup(this.auth, provider);
 	}
 
 	async login(email: string, password: string) {

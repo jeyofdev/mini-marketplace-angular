@@ -6,10 +6,10 @@ export const SELECT_USER_FEATURE =
 
 export const getUserListLoadingSelector = createSelector(
 	SELECT_USER_FEATURE,
-	(state: IUserState) => state.lists.loading,
+	(state: IUserState) => state.list.loading,
 );
 
 export const getUserListSelector = createSelector(
 	SELECT_USER_FEATURE,
-	(state: IUserState) => state.lists.products,
+	(state: IUserState) => state.list.products,
 );

@@ -6,10 +6,13 @@ import {
 	addDoc,
 	DocumentReference,
 	collectionData,
+	doc,
+	setDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IProduct } from '../model/product.model';
 import { Observable } from 'rxjs';
+import { IProduct } from '../../shared/model/product.model';
+import { IUser } from '../model/user.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,6 +22,10 @@ export class UserService {
 
 	constructor(private firestore: Firestore) {
 		this.collectionInstance = collection(this.firestore, 'users');
+	}
+
+	async addUser(userId: string, newUser: IUser) {
+		return setDoc(doc(this.firestore, 'users', userId), newUser);
 	}
 
 	getAllProductInList(): Observable<IProduct[]> {
