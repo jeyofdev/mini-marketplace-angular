@@ -2,7 +2,7 @@ import { createActionGroup, props } from '@ngrx/store';
 import { IUser } from '../../../../core/model/user.model';
 
 export const UserInitActions = createActionGroup({
-	source: 'User profile',
+	source: 'User init',
 	events: {
 		'Add user': props<{
 			payload: { userId: string; data: IUser };
@@ -13,5 +13,9 @@ export const UserInitActions = createActionGroup({
 		'Add user Failure': props<{
 			payload: { error: unknown };
 		}>(),
+
+		'Load user': props<{ payload: { userId: string } }>(),
+		'Load user Success': props<{ payload: { data: IUser } }>(),
+		'Load user Failure': props<{ payload: { error: unknown } }>(),
 	},
 });

@@ -46,25 +46,8 @@ export class AuthService {
 		return signInWithPopup(this.auth, provider);
 	}
 
-	async login(email: string, password: string) {
-		this.resetErrorMessage();
-
-		try {
-			const result = await signInWithEmailAndPassword(
-				this.auth,
-				email,
-				password,
-			);
-
-			this.userData = result.user;
-			this.ngZone.run(() => {
-				this.router.navigateByUrl('/dashboard/home');
-			});
-		} catch (error: unknown) {
-			if (error instanceof FirebaseError) {
-				this.setErrorMessage(error.code);
-			}
-		}
+	login(email: string, password: string): Promise<UserCredential> {
+		return signInWithEmailAndPassword(this.auth, email, password);
 	}
 
 	register(email: string, password: string): Promise<UserCredential> {

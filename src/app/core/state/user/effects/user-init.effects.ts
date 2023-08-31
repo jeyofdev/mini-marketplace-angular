@@ -26,6 +26,26 @@ export class UserInitEffects {
 		);
 	});
 
+	getUser$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(UserActions.init.loadUser),
+			mergeMap(({ payload: { userId } }) =>
+				this.userService
+					.getUserById(userId)
+					.then(data =>
+						UserActions.init.loadUserSuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error =>
+						UserActions.init.loadUserFailure({
+							payload: { error: error.body.error },
+						}),
+					),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private userService: UserService,

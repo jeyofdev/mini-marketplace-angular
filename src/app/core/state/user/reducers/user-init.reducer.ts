@@ -42,4 +42,13 @@ export const userInitReducer = createReducer(
 			list: actions.payload.data.list,
 		};
 	}),
+
+	on(UserActions.init.loadUserSuccess, (state, actions) => {
+		return {
+			...state,
+			account: actions.payload.data.account,
+			profile: actions.payload.data.profile,
+			list: actions.payload.data.list,
+		};
+	}),
 );

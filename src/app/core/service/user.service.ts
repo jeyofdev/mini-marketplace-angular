@@ -8,6 +8,7 @@ import {
 	collectionData,
 	doc,
 	setDoc,
+	getDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
@@ -24,7 +25,18 @@ export class UserService {
 		this.collectionInstance = collection(this.firestore, 'users');
 	}
 
-	async addUser(userId: string, newUser: IUser) {
+	async getUserById(userId: string): Promise<IUser> {
+		const docInstance = doc(this.firestore, 'users', userId);
+		const docRef = await getDoc(docInstance);
+
+		if (docRef.exists()) {
+			return docRef.data() as Promise<IUser>;
+		} else {
+			throw new Error('User does not exist');
+		}
+	}
+
+	async addUser(userId: string, newUser: IUser): Promise<void> {
 		return setDoc(doc(this.firestore, 'users', userId), newUser);
 	}
 
