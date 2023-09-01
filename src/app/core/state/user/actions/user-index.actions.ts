@@ -1,7 +1,7 @@
-import { UserInitActions } from './user-init.actions';
+import { UserInformationsActions } from './user-informations.actions';
 import { UserListActions } from './user-list.actions';
 
 export const UserActions = {
-	init: UserInitActions,
+	informations: UserInformationsActions,
 	list: UserListActions,
 };

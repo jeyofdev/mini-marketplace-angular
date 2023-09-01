@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
 				};
 
 				this.store.dispatch(
-					UserActions.init.addUser({
+					UserActions.informations.addUser({
 						payload: { userId: currentUser.user.uid, data: newUser },
 					}),
 				);

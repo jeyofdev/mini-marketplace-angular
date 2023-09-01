@@ -1,7 +1,7 @@
 import { createActionGroup, props } from '@ngrx/store';
 import { IUser } from '../../../../core/model/user.model';
 
-export const UserInitActions = createActionGroup({
+export const UserInformationsActions = createActionGroup({
 	source: 'User init',
 	events: {
 		'Add user': props<{

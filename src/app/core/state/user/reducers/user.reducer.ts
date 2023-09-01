@@ -9,28 +9,28 @@ import {
 	listReducer,
 } from './user-list.reducer';
 import {
-	IUserInitState,
-	UserInitFeatureKey,
-	initialUserInitState,
-	userInitReducer,
-} from './user-init.reducer';
+	IUserInformationsState,
+	UserInformationsFeatureKey,
+	initialUserInformationsState,
+	userInformationsReducer,
+} from './user-informations.reducer';
 
 export const userFeatureKey = 'user';
 
 export interface IUserState {
 	[UserListFeatureKey]: IUserListState;
-	[UserInitFeatureKey]: IUserInitState;
+	[UserInformationsFeatureKey]: IUserInformationsState;
 }
 
 export const initialUserState: IUserState = {
 	[UserListFeatureKey]: initialUserListState,
-	[UserInitFeatureKey]: initialUserInitState,
+	[UserInformationsFeatureKey]: initialUserInformationsState,
 };
 
 export const reducers = combineReducers(
 	{
 		[UserListFeatureKey]: listReducer,
-		[UserInitFeatureKey]: userInitReducer,
+		[UserInformationsFeatureKey]: userInformationsReducer,
 	},
 	initialUserState,
 );

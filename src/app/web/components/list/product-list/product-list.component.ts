@@ -1,12 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../../../../shared/model/product.model';
-import { Store, select } from '@ngrx/store';
-import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
-import {
-	getUserListLoadingSelector,
-	getUserListSelector,
-} from '../../../../core/state/user/selectors/user-list.selectors';
-import { map } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
 	selector: 'app-product-list',
@@ -23,17 +17,18 @@ export class ProductListComponent implements OnInit {
 	constructor(private store: Store) {}
 
 	ngOnInit(): void {
-		this.store.dispatch(UserActions.list.loadProductsInUserList());
+		// eslint-disable-next-line no-console
+		console.log('ok');
 
-		this.store.pipe(select(getUserListLoadingSelector));
-
-		this.store
-			.pipe(
-				select(getUserListSelector),
-				map(products => {
-					this.productsList = products;
-				}),
-			)
-			.subscribe();
+		// this.store.dispatch(UserActions.list.loadProductsInUserList());
+		// this.store.pipe(select(getUserListLoadingSelector));
+		// this.store
+		// 	.pipe(
+		// 		select(getUserListSelector),
+		// 		map(products => {
+		// 			this.productsList = products;
+		// 		}),
+		// 	)
+		// 	.subscribe();
 	}
 }
