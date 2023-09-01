@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs';
 import { UserActions } from '../actions/user-index.actions';
-import { UserService } from '../../../service/user.service';
+import { UserInformationsService } from '../../../../core/service/user-informations.service';
 
 @Injectable()
 export class UserInformationsEffects {
@@ -10,7 +10,7 @@ export class UserInformationsEffects {
 		return this.actions$.pipe(
 			ofType(UserActions.informations.addUser),
 			mergeMap(async ({ payload: { userId, data } }) =>
-				this.userService
+				this.userInformationsService
 					.addUser(userId, data)
 					.then(() =>
 						UserActions.informations.addUserSuccess({
@@ -30,7 +30,7 @@ export class UserInformationsEffects {
 		return this.actions$.pipe(
 			ofType(UserActions.informations.loadUser),
 			mergeMap(({ payload: { userId } }) =>
-				this.userService
+				this.userInformationsService
 					.getUserById(userId)
 					.then(data =>
 						UserActions.informations.loadUserSuccess({
@@ -48,6 +48,6 @@ export class UserInformationsEffects {
 
 	constructor(
 		private actions$: Actions,
-		private userService: UserService,
+		private userInformationsService: UserInformationsService,
 	) {}
 }

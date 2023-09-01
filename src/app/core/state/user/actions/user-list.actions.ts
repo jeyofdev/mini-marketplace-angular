@@ -1,4 +1,5 @@
-import { createActionGroup } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
+import { IProduct } from 'src/app/shared/model/product.model';
 
 export const UserListActions = createActionGroup({
 	source: 'User list',
@@ -10,12 +11,15 @@ export const UserListActions = createActionGroup({
 		// 'Load products in user list Failure': props<{
 		// 	payload: { error: unknown };
 		// }>(),
-		// 'Add product in user list': props<{ payload: { data: IProduct } }>(),
-		// 'Add product in user list Success': props<{
-		// 	payload: { data: IProduct };
-		// }>(),
-		// 'Add product in user list Failure': props<{
-		// 	payload: { error: unknown };
-		// }>(),
+
+		'Add product in user list': props<{
+			payload: { userId: string; newProduct: IProduct };
+		}>(),
+		'Add product in user list Success': props<{
+			payload: { userId: string; newProduct: IProduct };
+		}>(),
+		'Add product in user list Failure': props<{
+			payload: { error: unknown };
+		}>(),
 	},
 });
