@@ -27,6 +27,46 @@ export class UserListEffects {
 		);
 	});
 
+	getAllProductInList$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(UserActions.list.loadUserList),
+			mergeMap(({ payload: { userId } }) =>
+				this.userListService
+					.getListProductsByUserId(userId)
+					.then(data =>
+						UserActions.list.loadUserListSuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error => {
+						return UserActions.list.loadUserListFailure({
+							payload: { error: error.body.error },
+						});
+					}),
+			),
+		);
+	});
+
+	deleteProductInList$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(UserActions.list.deleteProductInUserList),
+			mergeMap(async ({ payload: { userId, product } }) =>
+				this.userListService
+					.deleteProductInList(userId, product)
+					.then(() =>
+						UserActions.list.deleteProductInUserListSuccess({
+							payload: { userId, product },
+						}),
+					)
+					.catch(error => {
+						return UserActions.list.deleteProductInUserListFailure({
+							payload: { error: error.body.error },
+						});
+					}),
+			),
+		);
+	});
+
 	constructor(
 		private actions$: Actions,
 		private userListService: UserListService,

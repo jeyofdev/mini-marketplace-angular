@@ -28,10 +28,23 @@ export class CardProductListComponent implements OnInit {
 	}
 
 	addOrRemoveProductForUserList() {
-		this.store.dispatch(
-			UserActions.list.addProductInUserList({
-				payload: { userId: this.connectedUser.uid, newProduct: this.product },
-			}),
-		);
+		const productsListIds = this.productsList.map(product => product.id);
+
+		if (!productsListIds.includes(this.product.id)) {
+			this.store.dispatch(
+				UserActions.list.addProductInUserList({
+					payload: { userId: this.connectedUser.uid, newProduct: this.product },
+				}),
+			);
+		} else {
+			this.store.dispatch(
+				UserActions.list.deleteProductInUserList({
+					payload: {
+						userId: this.connectedUser.uid,
+						product: this.product,
+					},
+				}),
+			);
+		}
 	}
 }

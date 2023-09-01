@@ -28,4 +28,22 @@ export const listReducer = createReducer(
 			loading: false,
 		};
 	}),
+
+	on(UserActions.list.loadUserListSuccess, (state, actions) => {
+		return {
+			...state,
+			products: actions.payload.data,
+			loading: false,
+		};
+	}),
+
+	on(UserActions.list.deleteProductInUserList, (state, actions) => {
+		return {
+			...state,
+			products: state.products.filter(
+				product => product.id !== actions.payload.product.id,
+			),
+			loading: false,
+		};
+	}),
 );

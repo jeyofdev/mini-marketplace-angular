@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../../../../shared/model/product.model';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { AuthService } from '../../../../shared/service/auth.service';
+import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
+import { getUserListSelector } from '../../../../core/state/user/selectors/user-list.selectors';
+import { map } from 'rxjs';
 
 @Component({
 	selector: 'app-product-list',
@@ -14,21 +18,28 @@ export class ProductListComponent implements OnInit {
 
 	productsList!: IProduct[];
 
-	constructor(private store: Store) {}
+	constructor(
+		private store: Store,
+		private authService: AuthService,
+	) {}
 
 	ngOnInit(): void {
-		// eslint-disable-next-line no-console
-		console.log('ok');
+		const connectedUser = this.authService.getAuthLocal();
 
-		// this.store.dispatch(UserActions.list.loadProductsInUserList());
-		// this.store.pipe(select(getUserListLoadingSelector));
-		// this.store
-		// 	.pipe(
-		// 		select(getUserListSelector),
-		// 		map(products => {
-		// 			this.productsList = products;
-		// 		}),
-		// 	)
-		// 	.subscribe();
+		this.store.dispatch(
+			UserActions.list.loadUserList({
+				payload: { userId: connectedUser?.uid },
+			}),
+		);
+
+		this.store.pipe(select(getUserListSelector));
+		this.store
+			.pipe(
+				select(getUserListSelector),
+				map(products => {
+					this.productsList = products;
+				}),
+			)
+			.subscribe();
 	}
 }
