@@ -12,6 +12,7 @@ import { AllProductsComponent } from './pages/all-products/all-products.componen
 import { ProductComponent } from './pages/product/product.component';
 import { CardProductListComponent } from './components/card/card-list-product/card-product-list.component';
 import { CoreModule } from '../core/core.module';
+import { WishListComponent } from './pages/wish-list/wish-list.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,7 @@ import { CoreModule } from '../core/core.module';
 		ProductListComponent,
 		AllProductsComponent,
 		ProductComponent,
+		WishListComponent,
 	],
 	imports: [CommonModule, WebRoutingModule, SharedModule, CoreModule],
 })

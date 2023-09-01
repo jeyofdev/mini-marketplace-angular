@@ -1,0 +1,10 @@
+.side {
+	grid-column: 1 / span 3;
+	padding-left: 1rem;
+	align-items: flex-start;
+}
+
+.content-list {
+	grid-column: auto / span 9;
+	padding: 1rem 1rem;
+}

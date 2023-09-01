@@ -1,0 +1,12 @@
+<app-layout>
+	<div class="side"></div>
+
+	<div class="content-list">
+		<h4 class="page-title">My wish list</h4>
+
+		<app-product-list
+			[loading]="(loading$ | async) === true"
+			[products]="filteredProducts"
+		></app-product-list>
+	</div>
+</app-layout>
