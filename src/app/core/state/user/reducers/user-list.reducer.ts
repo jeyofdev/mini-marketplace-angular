@@ -29,6 +29,13 @@ export const listReducer = createReducer(
 		};
 	}),
 
+	on(UserActions.list.addProductInUserList, state => {
+		return {
+			...state,
+			loading: true,
+		};
+	}),
+
 	on(UserActions.list.loadUserListSuccess, (state, actions) => {
 		return {
 			...state,

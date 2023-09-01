@@ -4,6 +4,7 @@ import { DataService } from '../../../web/services/data.service';
 import { User } from '@angular/fire/auth';
 import { AuthService } from '../../../shared/service/auth.service';
 import { CartComponent } from '../cart/cart/cart.component';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-header-user-action',
@@ -24,6 +25,7 @@ export class HeaderUserActionComponent implements OnInit {
 	constructor(
 		private authService: AuthService,
 		private dataService: DataService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
@@ -57,6 +59,10 @@ export class HeaderUserActionComponent implements OnInit {
 
 	toggleShowCart(event: Event): void {
 		this.cartPanel.toggle(event);
+	}
+
+	goToWishListPage(): void {
+		this.router.navigateByUrl('/wish-list');
 	}
 
 	private filterItems(itemsMobile: MenuItem): MenuItem[] {

@@ -5,7 +5,10 @@
 			(click)="toggleShowCart($event)"
 		></app-button-circle>
 
-		<app-button-circle icon="fa-solid fa-heart"></app-button-circle>
+		<app-button-circle
+			icon="fa-solid fa-heart"
+			(click)="goToWishListPage()"
+		></app-button-circle>
 	</div>
 
 	<span *ngIf="showSeparator" class="vertical-separator"></span>

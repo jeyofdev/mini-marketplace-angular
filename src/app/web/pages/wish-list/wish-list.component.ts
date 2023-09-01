@@ -1,12 +1,13 @@
+import { AuthService } from './../../../shared/service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { WebActions } from '../../../core/state/web/actions/web-index.actions';
 import { IProduct } from '../../../shared/model/product.model';
 import { Store, select } from '@ngrx/store';
+import { UserActions } from '../../../core/state/user/actions/user-index.actions';
 import {
-	getWebProductsActiveLoadingSelector,
-	getWebProductsActiveSelector,
-} from '../../../core/state/web/selectors/web-product.selectors';
+	getUserListLoadingSelector,
+	getUserListSelector,
+} from '../../../core/state/user/selectors/user-list.selectors';
 
 @Component({
 	selector: 'app-wish-list',
@@ -18,17 +19,25 @@ export class WishListComponent implements OnInit {
 	products!: IProduct[];
 	filteredProducts!: IProduct[];
 
-	constructor(private store: Store) {}
+	constructor(
+		private store: Store,
+		private authService: AuthService,
+	) {}
 
 	ngOnInit(): void {
-		this.store.dispatch(WebActions.products.loadProductsActive());
-		this.loading$ = this.store.pipe(
-			select(getWebProductsActiveLoadingSelector),
+		const connectedUser = this.authService.getAuthLocal();
+
+		this.store.dispatch(
+			UserActions.list.loadUserList({
+				payload: { userId: connectedUser?.uid },
+			}),
 		);
+
+		this.loading$ = this.store.pipe(select(getUserListLoadingSelector));
 
 		this.store
 			.pipe(
-				select(getWebProductsActiveSelector),
+				select(getUserListSelector),
 				map(products => {
 					this.products = products;
 					this.filteredProducts = this.getFilteredProducts(products);
