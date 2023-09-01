@@ -20,6 +20,7 @@ import { UserListEffects } from './state/user/effects/user-list.effects';
 import { WebCategoryEffects } from './state/web/effects/web-category.effects';
 import { WebProductEffects } from './state/web/effects/web-product.effects';
 import { UserInformationsEffects } from './state/user/effects/user-informations.effects';
+import { NoResultComponent } from './components/no-result/no-result.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { UserInformationsEffects } from './state/user/effects/user-informations.
 		CardProductCartComponent,
 		NavigationLinkMobileComponent,
 		NavigationLinkComponent,
+		NoResultComponent,
 	],
 	imports: [
 		CommonModule,
@@ -53,6 +55,6 @@ import { UserInformationsEffects } from './state/user/effects/user-informations.
 			WebProductEffects,
 		]),
 	],
-	exports: [LayoutComponent],
+	exports: [LayoutComponent, NoResultComponent],
 })
 export class CoreModule {}

@@ -1,4 +1,4 @@
-<app-layout>
+<app-dashboard-layout>
 	<div class="container">
 		<app-header pageTitle="Products">
 			<app-button
@@ -15,10 +15,7 @@
 		<app-loader [loading]="loading$ | async"></app-loader>
 
 		<div class="list-container" *ngIf="(loading$ | async) === false">
-			<div class="no-result-box" *ngIf="products.length <= 0">
-				<i class="no-result-icon fa-regular fa-face-frown-open"></i>
-				<h2>No result found</h2>
-
+			<app-no-result [items]="products">
 				<app-button
 					variant="raised"
 					shape="square"
@@ -28,7 +25,7 @@
 					(click)="openModalAddNewProduct()"
 					>Add new product</app-button
 				>
-			</div>
+			</app-no-result>
 
 			<ng-container *ngIf="products.length > 0">
 				<app-table-dashboard-product
@@ -45,7 +42,7 @@
 			</ng-container>
 		</div>
 	</div>
-</app-layout>
+</app-dashboard-layout>
 
 <app-modal-product
 	title="New product"

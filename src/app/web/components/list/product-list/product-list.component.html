@@ -1,7 +1,22 @@
 <app-loader [loading]="loading"></app-loader>
 
+<ng-container *ngIf="!loading && products.length < 1">
+	<app-no-result [items]="products">
+		<app-button
+			*ngIf="showBtn"
+			variant="raised"
+			shape="square"
+			color="primary"
+			size="medium"
+			iconPrefix="fa-solid fa-plus"
+			(click)="goToAllProducts()"
+			>Back to products list</app-button
+		>
+	</app-no-result>
+</ng-container>
+
 <p-dataView
-	*ngIf="!loading"
+	*ngIf="!loading && products.length >= 1"
 	#dv
 	[value]="products"
 	[rows]="5"

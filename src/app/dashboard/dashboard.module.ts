@@ -18,7 +18,8 @@ import { ModalProductComponent } from './components/modal/modal-product/modal-pr
 import { TableDashboardCategoryComponent } from './components/table/table-dashboard-category/table-dashboard-category.component';
 import { TableDashboardProductComponent } from './components/table/table-dashboard-product/table-dashboard-product.component';
 import { AuthLayoutComponent } from './components/layout/auth-layout/auth-layout.component';
-import { LayoutComponent } from './components/layout/layout/layout.component';
+import { CoreModule } from '../core/core.module';
+import { DashboardLayoutComponent } from './components/layout/dashboard-layout/dashboard-layout.component';
 
 @NgModule({
 	declarations: [
@@ -31,12 +32,13 @@ import { LayoutComponent } from './components/layout/layout/layout.component';
 		TableDashboardCategoryComponent,
 		TableDashboardProductComponent,
 		AuthLayoutComponent,
-		LayoutComponent,
+		DashboardLayoutComponent,
 	],
 	imports: [
 		CommonModule,
 		DashboardRoutingModule,
 		SharedModule,
+		CoreModule,
 		StoreModule.forFeature(
 			fromDashboard.dashboardFeatureKey,
 			fromDashboard.reducers,
@@ -49,7 +51,7 @@ import { LayoutComponent } from './components/layout/layout/layout.component';
 			DashboardProductEffects,
 		]),
 	],
-	exports: [AuthLayoutComponent, LayoutComponent],
+	exports: [AuthLayoutComponent],
 	providers: [CategoryService],
 })
 export class DashboardModule {}
