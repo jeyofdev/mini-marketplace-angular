@@ -5,6 +5,7 @@ import { AuthService } from '../../../../shared/service/auth.service';
 import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
 import { getUserListSelector } from '../../../../core/state/user/selectors/user-list.selectors';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-product-list',
@@ -15,12 +16,14 @@ export class ProductListComponent implements OnInit {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	@Input() products!: any | IProduct;
 	@Input() loading!: boolean;
+	@Input() showBtn!: boolean;
 
 	productsList!: IProduct[];
 
 	constructor(
 		private store: Store,
 		private authService: AuthService,
+		private router: Router,
 	) {}
 
 	ngOnInit(): void {
@@ -41,5 +44,9 @@ export class ProductListComponent implements OnInit {
 				}),
 			)
 			.subscribe();
+	}
+
+	goToAllProducts(): void {
+		this.router.navigateByUrl('/products');
 	}
 }

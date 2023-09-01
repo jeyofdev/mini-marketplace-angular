@@ -10,11 +10,11 @@ import { MenuItem } from 'primeng/api';
 import { DataService } from '../../../../shared/service/data.service';
 
 @Component({
-	selector: 'app-layout',
-	templateUrl: './layout.component.html',
-	styleUrls: ['./layout.component.scss'],
+	selector: 'app-dashboard-layout',
+	templateUrl: './dashboard-layout.component.html',
+	styleUrls: ['./dashboard-layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class DashboardLayoutComponent implements OnInit {
 	connectedUser!: User;
 	logoutIcon!: IconDefinition;
 	navLinks!: INavLink[];
