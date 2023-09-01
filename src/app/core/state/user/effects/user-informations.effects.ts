@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs';
 import { UserActions } from '../actions/user-index.actions';
-import { UserService } from '../../../service/user.service';
+import { UserInformationsService } from '../../../../core/service/user-informations.service';
 
 @Injectable()
-export class UserInitEffects {
+export class UserInformationsEffects {
 	addProfile$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(UserActions.init.addUser),
+			ofType(UserActions.informations.addUser),
 			mergeMap(async ({ payload: { userId, data } }) =>
-				this.userService
+				this.userInformationsService
 					.addUser(userId, data)
 					.then(() =>
-						UserActions.init.addUserSuccess({
+						UserActions.informations.addUserSuccess({
 							payload: { userId, data },
 						}),
 					)
 					.catch(error =>
-						UserActions.init.addUserFailure({
+						UserActions.informations.addUserFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -28,17 +28,17 @@ export class UserInitEffects {
 
 	getUser$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(UserActions.init.loadUser),
+			ofType(UserActions.informations.loadUser),
 			mergeMap(({ payload: { userId } }) =>
-				this.userService
+				this.userInformationsService
 					.getUserById(userId)
 					.then(data =>
-						UserActions.init.loadUserSuccess({
+						UserActions.informations.loadUserSuccess({
 							payload: { data },
 						}),
 					)
 					.catch(error =>
-						UserActions.init.loadUserFailure({
+						UserActions.informations.loadUserFailure({
 							payload: { error: error.body.error },
 						}),
 					),
@@ -48,6 +48,6 @@ export class UserInitEffects {
 
 	constructor(
 		private actions$: Actions,
-		private userService: UserService,
+		private userInformationsService: UserInformationsService,
 	) {}
 }

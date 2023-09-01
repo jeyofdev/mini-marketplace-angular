@@ -8,11 +8,11 @@ import { ISocialProvider } from '../../../../shared/model/social-provider.model'
 import { BreakpointService } from '../../../../shared/service/breakpoint.service';
 import { ResizeService } from '../../../../shared/service/resize.service';
 import { AuthService } from '../../../../shared/service/auth.service';
-import { UserService } from '../../../../core/service/user.service';
 import { Router } from '@angular/router';
 import { IUser } from '../../../../core/model/user.model';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../../../../core/state/user/actions/user-index.actions';
+import { UserInformationsService } from '../../../../core/service/user-informations.service';
 
 @Component({
 	selector: 'app-auth-layout',
@@ -36,7 +36,7 @@ export class AuthLayoutComponent implements OnInit {
 		private resizeService: ResizeService,
 		private breakpointService: BreakpointService,
 		private authService: AuthService,
-		private userService: UserService,
+		private userInformationsService: UserInformationsService,
 		private router: Router,
 		private store: Store,
 	) {}
@@ -90,7 +90,7 @@ export class AuthLayoutComponent implements OnInit {
 			};
 
 			this.store.dispatch(
-				UserActions.init.addUser({
+				UserActions.informations.addUser({
 					payload: { userId: currentUser.user.uid, data: newUser },
 				}),
 			);

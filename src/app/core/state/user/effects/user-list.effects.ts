@@ -1,55 +1,74 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
+
 import { UserActions } from '../actions/user-index.actions';
-import { UserService } from '../../../service/user.service';
+import { mergeMap } from 'rxjs';
+import { UserListService } from 'src/app/core/service/user-list.service';
 
 @Injectable()
 export class UserListEffects {
 	addProductInList$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(UserActions.list.addProductInUserList),
-			mergeMap(async ({ payload: { data } }) =>
-				this.userService
-					.addProductInList(data)
+			mergeMap(async ({ payload: { userId, newProduct } }) =>
+				this.userListService
+					.addProductInList(userId, newProduct)
 					.then(() =>
 						UserActions.list.addProductInUserListSuccess({
-							payload: { data },
+							payload: { userId, newProduct },
 						}),
 					)
-					.catch(error =>
-						UserActions.list.addProductInUserListFailure({
+					.catch(error => {
+						return UserActions.list.addProductInUserListFailure({
 							payload: { error: error.body.error },
-						}),
-					),
+						});
+					}),
 			),
 		);
 	});
 
 	getAllProductInList$ = createEffect(() => {
 		return this.actions$.pipe(
-			ofType(UserActions.list.loadProductsInUserList),
-			mergeMap(() =>
-				this.userService.getAllProductInList().pipe(
-					map(products => {
-						return UserActions.list.loadProductsInUserListSuccess({
-							payload: { data: products },
+			ofType(UserActions.list.loadUserList),
+			mergeMap(({ payload: { userId } }) =>
+				this.userListService
+					.getListProductsByUserId(userId)
+					.then(data =>
+						UserActions.list.loadUserListSuccess({
+							payload: { data },
+						}),
+					)
+					.catch(error => {
+						return UserActions.list.loadUserListFailure({
+							payload: { error: error.body.error },
 						});
 					}),
-					catchError(error =>
-						of(
-							UserActions.list.loadProductsInUserListFailure({
-								payload: { error: error.body.error },
-							}),
-						),
-					),
-				),
+			),
+		);
+	});
+
+	deleteProductInList$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(UserActions.list.deleteProductInUserList),
+			mergeMap(async ({ payload: { userId, product } }) =>
+				this.userListService
+					.deleteProductInList(userId, product)
+					.then(() =>
+						UserActions.list.deleteProductInUserListSuccess({
+							payload: { userId, product },
+						}),
+					)
+					.catch(error => {
+						return UserActions.list.deleteProductInUserListFailure({
+							payload: { error: error.body.error },
+						});
+					}),
 			),
 		);
 	});
 
 	constructor(
 		private actions$: Actions,
-		private userService: UserService,
+		private userListService: UserListService,
 	) {}
 }

@@ -24,22 +24,32 @@ export const listReducer = createReducer(
 	on(UserActions.list.addProductInUserList, (state, actions) => {
 		return {
 			...state,
-			products: [...state.products, actions.payload.data],
+			products: [...state.products, actions.payload.newProduct],
 			loading: false,
 		};
 	}),
 
-	on(UserActions.list.loadProductsInUserList, state => {
+	on(UserActions.list.addProductInUserList, state => {
 		return {
 			...state,
 			loading: true,
 		};
 	}),
 
-	on(UserActions.list.loadProductsInUserListSuccess, (state, actions) => {
+	on(UserActions.list.loadUserListSuccess, (state, actions) => {
 		return {
 			...state,
 			products: actions.payload.data,
+			loading: false,
+		};
+	}),
+
+	on(UserActions.list.deleteProductInUserList, (state, actions) => {
+		return {
+			...state,
+			products: state.products.filter(
+				product => product.id !== actions.payload.product.id,
+			),
 			loading: false,
 		};
 	}),

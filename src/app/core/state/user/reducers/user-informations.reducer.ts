@@ -1,21 +1,19 @@
 import { IUserAccount, IUserProfile } from './../../../model/user.model';
 import { createReducer, on } from '@ngrx/store';
 import { UserActions } from '../actions/user-index.actions';
-import { IProduct } from 'src/app/shared/model/product.model';
 
-export const UserInitFeatureKey = 'data';
+export const UserInformationsFeatureKey = 'informations';
 
-export interface IUserInitState {
+export interface IUserInformationsState {
 	account: IUserAccount;
 	profile: IUserProfile;
-	list: IProduct[];
 }
 
 export interface State {
-	readonly [UserInitFeatureKey]: IUserInitState;
+	readonly [UserInformationsFeatureKey]: IUserInformationsState;
 }
 
-export const initialUserInitState: IUserInitState = {
+export const initialUserInformationsState: IUserInformationsState = {
 	account: {
 		lastLogin: '',
 		createdAt: '',
@@ -28,13 +26,12 @@ export const initialUserInitState: IUserInitState = {
 		phone: '',
 		avatar: '',
 	},
-	list: [],
 };
 
-export const userInitReducer = createReducer(
-	initialUserInitState,
+export const userInformationsReducer = createReducer(
+	initialUserInformationsState,
 
-	on(UserActions.init.addUser, (state, actions) => {
+	on(UserActions.informations.addUser, (state, actions) => {
 		return {
 			...state,
 			account: actions.payload.data.account,
@@ -43,7 +40,7 @@ export const userInitReducer = createReducer(
 		};
 	}),
 
-	on(UserActions.init.loadUserSuccess, (state, actions) => {
+	on(UserActions.informations.loadUserSuccess, (state, actions) => {
 		return {
 			...state,
 			account: actions.payload.data.account,

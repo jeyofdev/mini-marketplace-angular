@@ -43,6 +43,9 @@ export class DataService {
 		return [
 			{
 				icon: 'fa-solid fa-cart-shopping',
+				command: () => {
+					this.router.navigateByUrl('/cart/summary');
+				},
 			},
 		];
 	}
@@ -52,6 +55,9 @@ export class DataService {
 			...this.getUserActionsLinks(),
 			{
 				icon: 'fa-solid fa-heart',
+				command: () => {
+					this.router.navigateByUrl('/wish-list');
+				},
 			},
 		];
 	}

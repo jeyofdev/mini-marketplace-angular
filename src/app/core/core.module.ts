@@ -19,7 +19,7 @@ import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects'
 import { UserListEffects } from './state/user/effects/user-list.effects';
 import { WebCategoryEffects } from './state/web/effects/web-category.effects';
 import { WebProductEffects } from './state/web/effects/web-product.effects';
-import { UserInitEffects } from './state/user/effects/user-init.effects';
+import { UserInformationsEffects } from './state/user/effects/user-informations.effects';
 
 @NgModule({
 	declarations: [
@@ -47,7 +47,7 @@ import { UserInitEffects } from './state/user/effects/user-init.effects';
 		EffectsModule.forFeature([
 			CartEffects,
 			CartDeliveryEffects,
-			UserInitEffects,
+			UserInformationsEffects,
 			UserListEffects,
 			WebCategoryEffects,
 			WebProductEffects,

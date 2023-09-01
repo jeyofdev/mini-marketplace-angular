@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 			.login(this.mainForm.value.email, this.mainForm.value.password)
 			.then(currentUser => {
 				this.store.dispatch(
-					UserActions.init.loadUser({
+					UserActions.informations.loadUser({
 						payload: { userId: currentUser.user.uid },
 					}),
 				);
