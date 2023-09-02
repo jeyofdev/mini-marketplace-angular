@@ -1,9 +1,9 @@
 <div class="product-card-box">
 	<app-button-circle
-		icon="fa-regular fa-heart"
+		[icon]="productInUserList ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
 		class="add-wish-list-btn"
-		color="danger"
-		[outlined]="true"
+		color="primary"
+		[outlined]="false"
 		(click)="addOrRemoveProductForUserList()"
 	></app-button-circle>
 
