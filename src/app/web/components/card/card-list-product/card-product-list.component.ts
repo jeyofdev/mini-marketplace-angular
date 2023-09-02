@@ -17,6 +17,8 @@ export class CardProductListComponent implements OnInit {
 
 	currencyEnum = CurrencyEnum;
 	connectedUser!: User;
+	productsListIds!: (string | undefined)[];
+	productInUserList!: boolean;
 
 	constructor(
 		private store: Store,
@@ -25,17 +27,20 @@ export class CardProductListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
+		this.productsListIds = this.productsList.map(product => product.id);
+
+		this.productInUserList = this.productsListIds.includes(this.product.id);
 	}
 
 	addOrRemoveProductForUserList() {
-		const productsListIds = this.productsList.map(product => product.id);
-
-		if (!productsListIds.includes(this.product.id)) {
+		if (!this.productsListIds.includes(this.product.id)) {
 			this.store.dispatch(
 				UserActions.list.addProductInUserList({
 					payload: { userId: this.connectedUser.uid, newProduct: this.product },
 				}),
 			);
+
+			this.productsListIds = [...this.productsListIds, this.product.id];
 		} else {
 			this.store.dispatch(
 				UserActions.list.deleteProductInUserList({
@@ -45,6 +50,12 @@ export class CardProductListComponent implements OnInit {
 					},
 				}),
 			);
+
+			this.productsListIds = this.productsListIds.filter(
+				productId => productId !== this.product.id,
+			);
 		}
+
+		this.productInUserList = !this.productInUserList;
 	}
 }
