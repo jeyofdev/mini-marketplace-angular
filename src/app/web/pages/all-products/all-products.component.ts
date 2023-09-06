@@ -64,17 +64,17 @@ export class AllProductsComponent implements OnInit {
 			.subscribe();
 	}
 
-	// sizeSelected(currentSize: ChoiceItemType): void {
-	// 	if (!this.filters.sizes.includes(currentSize.value)) {
-	// 		this.filters.sizes.push(currentSize.value);
-	// 		this.filteredProducts = this.getFilteredProducts(this.products);
-	// 	} else {
-	// 		this.filters.sizes = this.filters.sizes.filter(
-	// 			(size: string) => size !== currentSize.value,
-	// 		);
-	// 		this.filteredProducts = this.getFilteredProducts(this.products);
-	// 	}
-	// }
+	sizeSelected(currentSize: string): void {
+		if (!this.filters.sizes.includes(currentSize)) {
+			this.filters.sizes = [...this.filters.sizes, currentSize];
+		} else {
+			this.filters.sizes = this.filters.sizes.filter((size: string) => {
+				return size !== currentSize;
+			});
+		}
+
+		this.filteredProducts = this.getFilteredProducts();
+	}
 
 	colorSelected(currentColor: string): void {
 		if (!this.filters.colors.includes(currentColor)) {
@@ -92,8 +92,21 @@ export class AllProductsComponent implements OnInit {
 		return !this.filters.sizes.includes(size.value);
 	}
 
-	getFilteredProducts() {
+	private getFilteredProducts() {
 		let result: IProduct[] = this.products;
+
+		if (this.filters.sizes.length > 0) {
+			result = result.filter((product: IProduct) => {
+				if (Array.isArray(product.size)) {
+					const productSize = product.size.map(p => p.value);
+
+					return (
+						productSize.some(s => this.filters.sizes.indexOf(s) >= 0) && product
+					);
+				}
+				return;
+			});
+		}
 
 		if (this.filters.colors.length > 0) {
 			result = result.filter(product =>

@@ -11,6 +11,7 @@
 							[formControlName]="size.name"
 							groupName="sizesForm"
 							[parentForm]="filterForm"
+							(click)="sizeSelected(size.value)"
 						></app-checkbox-chip>
 					</ng-container>
 				</div>
