@@ -28,6 +28,7 @@ export class AllProductsComponent implements OnInit {
 	filters!: { sizes: string[]; colors: string[] };
 
 	filterForm!: FormGroup;
+	sizesForm!: FormGroup;
 	colorsForm!: FormGroup;
 
 	constructor(
@@ -106,6 +107,7 @@ export class AllProductsComponent implements OnInit {
 	private initFilterForm(): void {
 		this.filterForm = this.formBuilder.group({
 			colors: this.colorsForm,
+			sizes: this.sizesForm,
 		});
 	}
 
@@ -117,5 +119,13 @@ export class AllProductsComponent implements OnInit {
 			yellow: [false],
 			purple: [false],
 		});
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const sizeGroup: any = {};
+		this.sizes.forEach(size => {
+			sizeGroup[size.name] = [false];
+		});
+
+		this.sizesForm = this.formBuilder.group(sizeGroup);
 	}
 }

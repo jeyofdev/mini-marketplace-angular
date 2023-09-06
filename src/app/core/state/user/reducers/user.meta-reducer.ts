@@ -32,8 +32,6 @@ export const hydration = (
 
 			if (storageValue) {
 				try {
-					console.log(JSON.parse(storageValue));
-
 					return JSON.parse(storageValue);
 				} catch {
 					localStorage.removeItem('marketplaceUser');

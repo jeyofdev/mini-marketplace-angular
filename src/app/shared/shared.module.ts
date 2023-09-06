@@ -46,6 +46,7 @@ import { NumberFieldWithButtonComponent } from './components/input/number-field-
 import { TablePaginatorComponent } from './paginator/table-paginator/table-paginator.component';
 import { InputMaskComponent } from './components/input/input-mask/input-mask.component';
 import { CheckboxBaseComponent } from './components/input/checkbox/checkbox-base/checkbox-base.component';
+import { CheckboxChipComponent } from './components/input/checkbox/checkbox-chip/checkbox-chip.component';
 
 @NgModule({
 	declarations: [
@@ -91,6 +92,7 @@ import { CheckboxBaseComponent } from './components/input/checkbox/checkbox-base
 		TablePaginatorComponent,
 		InputMaskComponent,
 		CheckboxBaseComponent,
+		CheckboxChipComponent,
 	],
 	imports: [
 		CommonModule,
@@ -146,6 +148,7 @@ import { CheckboxBaseComponent } from './components/input/checkbox/checkbox-base
 		NumberFieldWithButtonComponent,
 		InputMaskComponent,
 		CheckboxBaseComponent,
+		CheckboxChipComponent,
 		TablePaginatorComponent,
 	],
 })
