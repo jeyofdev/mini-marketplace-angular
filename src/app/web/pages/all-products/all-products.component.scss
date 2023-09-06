@@ -55,3 +55,14 @@
 		background-color: var(--purple-300);
 	}
 }
+
+:host ::ng-deep .categories-box {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+
+	.p-checkbox {
+		display: flex;
+		min-width: 4.25rem;
+	}
+}

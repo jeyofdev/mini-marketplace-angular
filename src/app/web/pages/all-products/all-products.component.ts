@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { IProduct } from 'src/app/shared/model/product.model';
+import { IProduct } from '../../../shared/model/product.model';
 import { WebActions } from '../../../core/state/web/actions/web-index.actions';
 import { DataService } from '../../../shared/service/data.service';
 import {
@@ -13,6 +13,8 @@ import {
 	getWebProductsActiveSelector,
 } from '../../../core/state/web/selectors/web-product.selectors';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CategoryService } from 'src/app/shared/service/category.service';
+import { ICategory } from '../../../shared/model/category.model';
 
 @Component({
 	selector: 'app-all-products',
@@ -25,26 +27,32 @@ export class AllProductsComponent implements OnInit {
 	filteredProducts!: IProduct[];
 	sizes!: ChoiceItemType[];
 	colors!: ColorItemType[];
-	filters!: { sizes: string[]; colors: string[] };
+	categories!: ChoiceItemType[];
+	filters!: { sizes: string[]; colors: string[]; categories: string[] };
 
 	filterForm!: FormGroup;
 	sizesForm!: FormGroup;
 	colorsForm!: FormGroup;
+	categoriesForm!: FormGroup;
 
 	constructor(
 		private store: Store,
 		private dataService: DataService,
 		private formBuilder: FormBuilder,
+		private categoryService: CategoryService,
 	) {}
 
 	ngOnInit(): void {
+		this.categories = [];
 		this.sizes = this.dataService.getAllSizes();
 		this.colors = this.dataService.getAllColors();
 		this.filters = {
 			sizes: [],
 			colors: [],
+			categories: [],
 		};
 
+		this.initCategories();
 		this.initFormGroups();
 		this.initFilterForm();
 
@@ -88,6 +96,20 @@ export class AllProductsComponent implements OnInit {
 		this.filteredProducts = this.getFilteredProducts();
 	}
 
+	categoriesSelected(currentCategory: string): void {
+		if (!this.filters.categories.includes(currentCategory)) {
+			this.filters.categories.push(currentCategory);
+		} else {
+			this.filters.categories = this.filters.categories.filter(
+				(size: string) => {
+					return size !== currentCategory;
+				},
+			);
+		}
+
+		this.filteredProducts = this.getFilteredProducts();
+	}
+
 	getOutline(size: ChoiceItemType) {
 		return !this.filters.sizes.includes(size.value);
 	}
@@ -114,6 +136,21 @@ export class AllProductsComponent implements OnInit {
 			);
 		}
 
+		if (this.filters.categories.length > 0) {
+			result = result.filter((product: IProduct) => {
+				if (Array.isArray(product.category)) {
+					const productCategory = product.category.map(p => p.value);
+
+					return (
+						productCategory.some(
+							c => this.filters.categories.indexOf(c) >= 0,
+						) && product
+					);
+				}
+				return;
+			});
+		}
+
 		return result;
 	}
 
@@ -121,6 +158,7 @@ export class AllProductsComponent implements OnInit {
 		this.filterForm = this.formBuilder.group({
 			colors: this.colorsForm,
 			sizes: this.sizesForm,
+			categories: this.categoriesForm,
 		});
 	}
 
@@ -140,5 +178,27 @@ export class AllProductsComponent implements OnInit {
 		});
 
 		this.sizesForm = this.formBuilder.group(sizeGroup);
+
+		this.categoriesForm = this.formBuilder.group({
+			pull: [false],
+			pantalon: [false],
+		});
+	}
+
+	private initCategories(): void {
+		this.categoryService
+			.getAll()
+			.pipe(
+				map((categories: ICategory[]) => {
+					this.categories = categories
+						.filter(category => category.status === 'active')
+						.map(c => ({
+							name: c.name.split(' ').join('-').toLowerCase(),
+							label: c.name,
+							value: c.name.split(' ').join('-').toLowerCase(),
+						}));
+				}),
+			)
+			.subscribe();
 	}
 }
