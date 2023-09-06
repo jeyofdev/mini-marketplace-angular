@@ -1,6 +1,15 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .btn-circle-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 :host ::ng-deep .p-checkbox {
-	width: 25px;
-	height: 25px;
+	min-width: 1.85rem;
+	min-height: 1.85rem;
 
 	.p-checkbox-box {
 		border-radius: 100%;
@@ -9,67 +18,119 @@
 	}
 }
 
-:host ::ng-deep .p-checkbox .p-checkbox-box.p-highlight,
-:host ::ng-deep .color-blue {
-	.p-checkbox .p-checkbox-box.p-highlight,
-	.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-		background-color: var(--blue-500);
-		border-color: var(--blue-500);
-	}
-
-	.p-checkbox .p-checkbox-box {
-		border-color: var(--blue-500);
-	}
+:host ::ng-deep .border {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.15rem;
+	border-radius: 100%;
+	border: 2.5px solid transparent;
+	width: 2.4rem;
+	height: 2.4rem;
 }
 
-:host ::ng-deep .color-red {
-	.p-checkbox .p-checkbox-box.p-highlight,
-	.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-		background-color: var(--red-500);
-		border-color: var(--red-500);
-	}
-
-	.p-checkbox .p-checkbox-box {
-		border-color: var(--red-500);
-	}
+:host ::ng-deep .checked-border-primary {
+	border-color: rgba($primary, 0.4);
 }
 
-:host ::ng-deep .color-green {
-	.p-checkbox .p-checkbox-box.p-highlight,
-	.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-		background-color: var(--green-500);
-		border-color: var(--green-500);
-	}
-
-	.p-checkbox .p-checkbox-box {
-		border-color: var(--green-500);
-	}
+:host ::ng-deep .checked-border-success {
+	border-color: rgba($success, 0.4);
 }
 
-:host ::ng-deep .color-yellow {
-	.p-checkbox .p-checkbox-box.p-highlight,
-	.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-		background-color: var(--yellow-500);
-		border-color: var(--yellow-500);
-	}
-
-	.p-checkbox .p-checkbox-box {
-		border-color: var(--yellow-500);
-	}
+:host ::ng-deep .checked-border-warning {
+	border-color: rgba($warning, 0.4);
 }
 
-:host ::ng-deep .color-purple {
-	.p-checkbox .p-checkbox-box.p-highlight,
-	.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-		background-color: var(--purple-500);
-		border-color: var(--purple-500);
-	}
+:host ::ng-deep .checked-border-info {
+	border-color: rgba($info, 0.4);
+}
 
-	.p-checkbox .p-checkbox-box {
-		border-color: var(--purple-500);
-	}
+:host ::ng-deep .checked-border-danger {
+	border-color: rgba($danger, 0.4);
+}
+
+:host ::ng-deep .checked-border-help {
+	border-color: rgba($help, 0.4);
+}
+
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+	border: none;
+}
+
+:host ::ng-deep .p-checkbox-danger .p-checkbox-box,
+:host
+	::ng-deep
+	.p-checkbox-danger:not(.p-checkbox-disabled)
+	.p-checkbox-box:hover,
+:host ::ng-deep .p-checkbox-danger .p-checkbox-box.p-highlight,
+:host
+	::ng-deep
+	.p-checkbox-danger:not(.p-checkbox-disabled)
+	.p-checkbox-box.p-highlight:hover {
+	background-color: $danger;
+}
+
+:host ::ng-deep .p-checkbox-success .p-checkbox-box,
+:host
+	::ng-deep
+	.p-checkbox-success:not(.p-checkbox-disabled)
+	.p-checkbox-box:hover,
+:host ::ng-deep .p-checkbox-success .p-checkbox-box.p-highlight,
+:host
+	::ng-deep
+	.p-checkbox-success:not(.p-checkbox-disabled)
+	.p-checkbox-box.p-highlight:hover {
+	background-color: $success;
+}
+
+:host ::ng-deep .p-checkbox-info .p-checkbox-box,
+:host
+	::ng-deep
+	.p-checkbox-info:not(.p-checkbox-disabled)
+	.p-checkbox-box:hover,
+:host ::ng-deep .p-checkbox-info .p-checkbox-box.p-highlight,
+:host
+	::ng-deep
+	.p-checkbox-info:not(.p-checkbox-disabled)
+	.p-checkbox-box.p-highlight:hover {
+	background-color: $info;
+}
+
+:host ::ng-deep .p-checkbox-warning .p-checkbox-box,
+:host
+	::ng-deep
+	.p-checkbox-warning:not(.p-checkbox-disabled)
+	.p-checkbox-box:hover,
+:host ::ng-deep .p-checkbox-warning .p-checkbox-box.p-highlight,
+:host
+	::ng-deep
+	.p-checkbox-warning:not(.p-checkbox-disabled)
+	.p-checkbox-box.p-highlight:hover {
+	background-color: $warning;
+}
+
+:host ::ng-deep .p-checkbox-help .p-checkbox-box,
+:host
+	::ng-deep
+	.p-checkbox-help:not(.p-checkbox-disabled)
+	.p-checkbox-box:hover,
+:host ::ng-deep .p-checkbox-help .p-checkbox-box.p-highlight,
+:host
+	::ng-deep
+	.p-checkbox-help:not(.p-checkbox-disabled)
+	.p-checkbox-box.p-highlight:hover {
+	background-color: $help;
 }
 
 :host ::ng-deep .p-element.p-icon-wrapper.ng-star-inserted {
 	display: none;
+}
+
+:host ::ng-deep .p-checkbox:not(.p-checkbox-disabled):hover,
+:host ::ng-deep .p-checkbox.p-checkbox-checked:not(.p-checkbox-disabled):hover,
+:host ::ng-deep .p-checkbox:not(.p-checkbox-disabled).p-checkbox-focused,
+:host
+	::ng-deep
+	.p-checkbox.p-checkbox-checked:not(.p-checkbox-disabled).p-checkbox-focused {
+	box-shadow: none;
 }

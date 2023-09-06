@@ -1,6 +1,7 @@
 <app-layout>
 	<div class="side">
-		<app-panel title="Sizes">
+		<form novalidate [formGroup]="filterForm">
+			<!-- <app-panel title="Sizes">
 			<div class="sizes-box">
 				<ng-container *ngFor="let size of sizes">
 					<app-button
@@ -14,17 +15,23 @@
 					>
 				</ng-container>
 			</div>
-		</app-panel>
-		<app-panel title="Colors">
-			<div class="colors-box">
-				<ng-container *ngFor="let color of colors">
-					<div
-						[class]="'color-item color-' + color.name"
-						(click)="colorSelected(color)"
-					></div>
-				</ng-container>
-			</div>
-		</app-panel>
+		</app-panel> -->
+
+			<app-panel title="Colors" [formGroup]="colorsForm">
+				<div class="colors-box">
+					<ng-container *ngFor="let color of colors">
+						<app-checkbox-color
+							[name]="color.name"
+							[color]="color.severity"
+							[formControlName]="color.name"
+							groupName="colorsForm"
+							[parentForm]="filterForm"
+							(click)="colorSelected(color.name)"
+						></app-checkbox-color>
+					</ng-container>
+				</div>
+			</app-panel>
+		</form>
 	</div>
 
 	<div class="content-list">

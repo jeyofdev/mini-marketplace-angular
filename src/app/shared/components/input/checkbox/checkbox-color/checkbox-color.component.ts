@@ -29,28 +29,41 @@ import { CheckboxChangeEvent } from 'primeng/checkbox';
 export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
+	@Input() showLabel!: boolean;
 
 	@Input() parentForm!: FormGroup;
 	@Input() groupName!: string;
 
-	@Input() color!: { color: string; label: string };
+	@Input() color!:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'warning'
+		| 'danger'
+		| 'info'
+		| 'help';
 
 	@Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	checked!: boolean;
 	disabled!: boolean;
+	borderClass!: string;
+	styleClass!: string;
 
 	onChanged!: (checked: boolean) => void;
 	onTouched!: () => void;
 
 	ngOnInit(): void {
 		this.checked = false;
+		this.setBorderClass();
+		this.setStyleClass();
 	}
 
 	selectionChanged(event: CheckboxChangeEvent) {
 		this.valueChange.emit(event.checked);
 		this.onChanged(event.checked);
 		this.onTouched();
+		this.setBorderClass();
 	}
 
 	writeValue(checked: boolean): void {
@@ -75,5 +88,21 @@ export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 
 	get formControl() {
 		return getFormControl(this.groupName, this.parentForm, this.name);
+	}
+
+	private setStyleClass(): void {
+		this.styleClass = '';
+
+		if (this.color) {
+			this.styleClass += `p-checkbox-${this.color}`;
+		}
+	}
+
+	private setBorderClass(): void {
+		this.borderClass = 'border';
+
+		if (this.color && this.checked) {
+			this.borderClass += ` checked-border-${this.color}`;
+		}
 	}
 }
