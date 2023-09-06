@@ -1,0 +1,16 @@
+<div class="checkbox-box">
+	<p-checkbox
+		[inputId]="name"
+		[name]="name"
+		[label]="label"
+		[disabled]="disabled"
+		[(ngModel)]="checked"
+		[binary]="true"
+		(onChange)="selectionChanged($event)"
+		(blur)="onTouched()"
+		[styleClass]="styleClass"
+		[labelStyleClass]="labelStyleClass"
+	></p-checkbox>
+
+	<!-- <label [for]="name" [class]="labelClass">{{ label }}</label> -->
+</div>

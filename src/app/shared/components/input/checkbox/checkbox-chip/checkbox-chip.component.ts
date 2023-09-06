@@ -15,24 +15,20 @@ import { getFormControl } from '../../../../utils/form.utils';
 import { CheckboxChangeEvent } from 'primeng/checkbox';
 
 @Component({
-	selector: 'app-checkbox-color',
-	templateUrl: './checkbox-color.component.html',
-	styleUrls: ['./checkbox-color.component.scss'],
+	selector: 'app-checkbox-chip',
+	templateUrl: './checkbox-chip.component.html',
+	styleUrls: ['./checkbox-chip.component.scss'],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => CheckboxColorComponent),
+			useExisting: forwardRef(() => CheckboxChipComponent),
 			multi: true,
 		},
 	],
 })
-export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
+export class CheckboxChipComponent implements OnInit, ControlValueAccessor {
 	@Input() name!: string;
 	@Input() label!: string;
-	@Input() showLabel!: boolean;
-
-	@Input() parentForm!: FormGroup;
-	@Input() groupName!: string;
 
 	@Input() color!:
 		| 'primary'
@@ -43,27 +39,33 @@ export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 		| 'info'
 		| 'help';
 
+	@Input() parentForm!: FormGroup;
+	@Input() groupName!: string;
+
 	@Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	checked!: boolean;
 	disabled!: boolean;
-	borderClass!: string;
+
 	styleClass!: string;
+	borderClass!: string;
+	labelStyleClass!: string;
 
 	onChanged!: (checked: boolean) => void;
 	onTouched!: () => void;
 
 	ngOnInit(): void {
 		this.checked = false;
+
 		this.setBorderClass();
 		this.setStyleClass();
+		this.setLabelStyleClass();
 	}
 
 	selectionChanged(event: CheckboxChangeEvent) {
 		this.valueChange.emit(event.checked);
 		this.onChanged(event.checked);
 		this.onTouched();
-		this.setBorderClass();
 	}
 
 	writeValue(checked: boolean): void {
@@ -90,19 +92,27 @@ export class CheckboxColorComponent implements OnInit, ControlValueAccessor {
 		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 
+	private setBorderClass(): void {
+		this.borderClass = 'border';
+
+		if (this.color) {
+			this.borderClass += ` border-${this.color}`;
+		}
+	}
+
 	private setStyleClass(): void {
 		this.styleClass = '';
 
 		if (this.color) {
-			this.styleClass += `p-checkbox-${this.color}`;
+			this.styleClass += `p-checkbox-${this.color} `;
 		}
 	}
 
-	private setBorderClass(): void {
-		this.borderClass = 'border';
+	private setLabelStyleClass(): void {
+		this.labelStyleClass = '';
 
-		if (this.color && this.checked) {
-			this.borderClass += ` checked-border-${this.color}`;
+		if (this.color) {
+			this.labelStyleClass += ` label-${this.color} `;
 		}
 	}
 }

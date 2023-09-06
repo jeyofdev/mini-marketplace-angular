@@ -1,11 +1,17 @@
-<p-checkbox
-	inputId="binary"
-	[class]="'color-' + color.label"
-	[disabled]="disabled"
-	[(ngModel)]="checked"
-	[binary]="true"
-	[pTooltip]="color.label | titlecase"
-	tooltipPosition="top"
-	(onChange)="selectionChanged($event)"
-	(blur)="onTouched()"
-></p-checkbox>
+<div class="btn-circle-container">
+	<div [class]="borderClass">
+		<p-checkbox
+			inputId="binary"
+			[class]="styleClass"
+			[disabled]="disabled"
+			[(ngModel)]="checked"
+			[binary]="true"
+			[pTooltip]="label | titlecase"
+			tooltipPosition="top"
+			(onChange)="selectionChanged($event)"
+			(blur)="onTouched()"
+		></p-checkbox>
+	</div>
+
+	<p *ngIf="showLabel">{{ label }}</p>
+</div>

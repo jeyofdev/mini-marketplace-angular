@@ -1,30 +1,56 @@
 <app-layout>
 	<div class="side">
-		<app-panel title="Sizes">
-			<div class="sizes-box">
-				<ng-container *ngFor="let size of sizes">
-					<app-button
-						variant="raised"
-						shape="square"
-						[outline]="getOutline(size)"
-						color="primary"
-						size="small"
-						(click)="sizeSelected(size)"
-						>{{ size.value }}</app-button
-					>
-				</ng-container>
-			</div>
-		</app-panel>
-		<app-panel title="Colors">
-			<div class="colors-box">
-				<ng-container *ngFor="let color of colors">
-					<div
-						[class]="'color-item color-' + color.name"
-						(click)="colorSelected(color)"
-					></div>
-				</ng-container>
-			</div>
-		</app-panel>
+		<form novalidate [formGroup]="filterForm">
+			<app-panel title="Sizes" [formGroup]="sizesForm">
+				<div class="sizes-box">
+					<ng-container *ngFor="let size of sizes">
+						<app-checkbox-chip
+							[name]="size.name"
+							[label]="size.label"
+							color="primary"
+							[formControlName]="size.name"
+							groupName="sizesForm"
+							[parentForm]="filterForm"
+							(click)="sizeSelected(size.value)"
+						></app-checkbox-chip>
+					</ng-container>
+				</div>
+			</app-panel>
+
+			<app-panel title="Colors" [formGroup]="colorsForm">
+				<div class="colors-box">
+					<ng-container *ngFor="let color of colors">
+						<app-checkbox-color
+							[name]="color.name"
+							[color]="color.severity"
+							[formControlName]="color.name"
+							groupName="colorsForm"
+							[parentForm]="filterForm"
+							(click)="colorSelected(color.name)"
+						></app-checkbox-color>
+					</ng-container>
+				</div>
+			</app-panel>
+
+			<app-panel title="Categories" [formGroup]="categoriesForm">
+				<div class="categories-box">
+					<ng-container *ngFor="let category of categories">
+						<app-checkbox-chip
+							[name]="category.name"
+							[label]="category.value"
+							color="primary"
+							[formControlName]="category.name"
+							groupName="categoriesForm"
+							[parentForm]="filterForm"
+							(click)="categoriesSelected(category.name)"
+						></app-checkbox-chip>
+					</ng-container>
+				</div>
+			</app-panel>
+		</form>
+
+		<pre>{{ filters | json }}</pre>
+		<pre>{{ filterForm.value | json }}</pre>
 	</div>
 
 	<div class="content-list">

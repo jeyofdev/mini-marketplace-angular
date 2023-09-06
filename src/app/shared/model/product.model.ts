@@ -6,7 +6,7 @@ export interface IProduct {
 	brandName: string;
 	modelName: string;
 	category: ChoiceItemType;
-	size: ChoiceItemType;
+	size: ChoiceItemType | ChoiceItemType[];
 	quantity: number;
 	price: number;
 	color: ProductColorEnum[];
