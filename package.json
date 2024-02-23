@@ -13,7 +13,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeyofdev/starter-angular-eslint.git"
+    "url": "git+https://github.com/jeyofdev/mini-marketplace-angular.git"
   },
   "keywords": [
     "javascript",
@@ -25,7 +25,7 @@
   "author": "jeyofdev <jgregoire.pro@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jeyofdev/starter-angular-eslint.git/issues"
+    "url": "https://github.com/jeyofdev/mini-marketplace-angular/issues"
   },
   "dependencies": {
     "@angular-builders/custom-webpack": "^16.0.0",
