@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionsSubject, Store, select } from '@ngrx/store';
 import { WebActions } from '@core/state/web/actions/web-index.actions';
 import { IProduct } from '@shared/model/product.model';
-import { Observable, Subscription, map } from 'rxjs';
+import { Observable, Subscription, map, of, switchMap } from 'rxjs';
 
 import { IImage } from '@shared/model/image.model';
 import { BreakpointEnum } from '@shared/enum/breakpoint.enum';
@@ -99,16 +99,20 @@ export class ProductComponent implements OnInit {
 		this.addCurrentProductToUserCart();
 	}
 
-	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
+	minValueByBreakpoint(Breakpoint: BreakpointEnum) {
 		return this.breakpointService.getMinValueByBreakpoint(Breakpoint);
 	}
 
-	getMaxHeightContainer(): string {
-		if (this.windowSize >= this.minValueByBreakpoint('md')) {
-			return this.containerMaxHeight;
-		}
-
-		return 'none';
+	getMaxHeightContainer(): Observable<string> {
+		return this.minValueByBreakpoint(BreakpointEnum.MD).pipe(
+			switchMap(minBreakpointValue => {
+				if (this.windowSize >= minBreakpointValue) {
+					return of(this.containerMaxHeight);
+				} else {
+					return of();
+				}
+			}),
+		);
 	}
 
 	private initMainForm() {

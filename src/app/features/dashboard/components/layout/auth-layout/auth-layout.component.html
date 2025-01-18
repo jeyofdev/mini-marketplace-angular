@@ -1,7 +1,7 @@
 <div class="layout-container">
 	<div
 		class="grid"
-		[style.maxHeight]="getMaxHeightContainer()"
+		[style.maxHeight]="getMaxHeightContainer() | async"
 		(window:resize)="detectScreenSize()"
 	>
 		<div

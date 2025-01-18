@@ -13,7 +13,7 @@ import { IUser } from '@core/model/user.model';
 import { Store } from '@ngrx/store';
 import { UserActions } from '@core/state/user/actions/user-index.actions';
 import { UserInformationsService } from '@core/service/user-informations.service';
-import { map } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 
 @Component({
 	selector: 'app-auth-layout',
@@ -49,20 +49,31 @@ export class AuthLayoutComponent implements OnInit {
 
 	detectScreenSize() {
 		this.windowSize = this.resizeService.getScreenWidth();
-		this.breakpointValue =
-			window.innerWidth < this.minValueByBreakpoint('md') ? 1 : 2;
+
+		this.minValueByBreakpoint(BreakpointEnum.MD)
+			.pipe(
+				switchMap(minBreakpointValue => {
+					this.breakpointValue = window.innerWidth < minBreakpointValue ? 1 : 2;
+					return of(this.breakpointValue);
+				}),
+			)
+			.subscribe();
 	}
 
-	minValueByBreakpoint(Breakpoint: BreakpointEnum | string) {
+	minValueByBreakpoint(Breakpoint: BreakpointEnum) {
 		return this.breakpointService.getMinValueByBreakpoint(Breakpoint);
 	}
 
-	getMaxHeightContainer(): string {
-		if (this.windowSize >= this.minValueByBreakpoint('md')) {
-			return this.containerMaxHeight;
-		}
-
-		return 'none';
+	getMaxHeightContainer(): Observable<string> {
+		return this.minValueByBreakpoint(BreakpointEnum.MD).pipe(
+			switchMap(minBreakpointValue => {
+				if (this.windowSize >= minBreakpointValue) {
+					return of(this.containerMaxHeight);
+				} else {
+					return of();
+				}
+			}),
+		);
 	}
 
 	loginWithProvider(provider: ProviderEnum): void {
@@ -106,13 +117,11 @@ export class AuthLayoutComponent implements OnInit {
 		this.breakpointService
 			.getCurrentBreakpoint()
 			.subscribe((state: BreakpointState) => {
-				const currentBreakpoint =
-					this.breakpointService.getCurrentBreakpointValue(state);
-
-				if (currentBreakpoint) {
-					this.breakpoint =
-						this.breakpointService.getBreakpoint(currentBreakpoint);
-				}
+				this.breakpointService
+					.getCurrentBreakpointValue(state)
+					.subscribe(breakpointEnum => {
+						this.breakpoint = breakpointEnum;
+					});
 			});
 	}
 }
