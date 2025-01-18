@@ -2,7 +2,7 @@ import { ProductColorEnum } from '@shared/enum/product.enum';
 import { ChoiceItemType } from '@shared/interfaces/input.interface';
 
 export interface IProduct {
-	id?: string;
+	id: string;
 	brandName: string;
 	modelName: string;
 	category: ChoiceItemType;
@@ -13,3 +13,5 @@ export interface IProduct {
 	options: string[];
 	status: string;
 }
+
+export type ISaveProduct = Omit<IProduct, 'id'>;

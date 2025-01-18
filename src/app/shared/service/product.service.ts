@@ -11,9 +11,13 @@ import {
 	updateDoc,
 	DocumentReference,
 } from '@angular/fire/firestore';
-import { collection } from '@firebase/firestore';
-import { IProduct } from '@shared/model/product.model';
-import { Observable } from 'rxjs';
+import {
+	collection,
+	FirestoreDataConverter,
+	PartialWithFieldValue,
+} from '@firebase/firestore';
+import { IProduct, ISaveProduct } from '@shared/model/product.model';
+import { from, map, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -22,7 +26,10 @@ export class ProductService {
 	private collectionInstance!: CollectionReference<DocumentData>;
 
 	constructor(private firestore: Firestore) {
-		this.collectionInstance = collection(this.firestore, 'products');
+		this.collectionInstance = collection(
+			this.firestore,
+			'products',
+		).withConverter(this.productConverter());
 	}
 
 	getAll(): Observable<IProduct[]> {
@@ -42,22 +49,62 @@ export class ProductService {
 		}
 	}
 
-	add(newProduct: IProduct): Promise<DocumentReference<IProduct>> {
-		const docRef = addDoc(this.collectionInstance, newProduct);
+	add(newProduct: ISaveProduct): Observable<DocumentReference<IProduct>> {
+		const docRef: Promise<DocumentReference<DocumentData>> = addDoc(
+			this.collectionInstance,
+			newProduct,
+		);
 
-		return docRef as Promise<DocumentReference<IProduct>>;
+		return from(docRef).pipe(
+			map(ref => {
+				return ref as DocumentReference<IProduct>;
+			}),
+		);
 	}
 
-	deleteById = (productId: string): Promise<void> => {
+	deleteById = (productId: string): Observable<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
-		return deleteDoc(docInstance);
+		return from(deleteDoc(docInstance));
 	};
 
 	updateById = (
 		productId: string,
 		newDatas: Partial<IProduct>,
-	): Promise<void> => {
+	): Observable<void> => {
 		const docInstance = doc(this.firestore, 'products', productId);
-		return updateDoc(docInstance, newDatas);
+		return from(updateDoc(docInstance, newDatas));
 	};
+
+	private productConverter(): FirestoreDataConverter<IProduct> {
+		return {
+			toFirestore(product: PartialWithFieldValue<ISaveProduct>): DocumentData {
+				return {
+					brandName: product.brandName,
+					modelName: product.modelName,
+					category: product.category,
+					size: product.size,
+					quantity: product.quantity,
+					price: product.price,
+					color: product.color,
+					options: product.options,
+					status: product.status,
+				};
+			},
+			fromFirestore(snapshot): IProduct {
+				const data = snapshot.data();
+				return {
+					id: snapshot.id,
+					brandName: data['brandName'],
+					modelName: data['modelName'],
+					category: data['category'],
+					size: data['size'],
+					quantity: data['quantity'],
+					price: data['price'],
+					color: data['color'],
+					options: data['options'],
+					status: data['status'],
+				};
+			},
+		};
+	}
 }

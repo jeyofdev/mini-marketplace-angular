@@ -38,7 +38,7 @@ export class CategoryService {
 	}
 
 	add(newCategory: ISaveCategory): Observable<DocumentReference<ICategory>> {
-		const docRef: Promise<DocumentReference<ISaveCategory>> = addDoc(
+		const docRef: Promise<DocumentReference<DocumentData>> = addDoc(
 			this.collectionInstance,
 			newCategory,
 		);

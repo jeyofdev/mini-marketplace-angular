@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { IProduct } from '@shared/model/product.model';
+import { IProduct, ISaveProduct } from '@shared/model/product.model';
 
 export const DashboardProductActions = createActionGroup({
 	source: 'Product',
@@ -8,13 +8,13 @@ export const DashboardProductActions = createActionGroup({
 		'Load products Success': props<{ payload: { data: IProduct[] } }>(),
 		'Load products Failure': props<{ payload: { error: unknown } }>(),
 
-		'Add product': props<{ payload: { data: IProduct } }>(),
+		'Add product': props<{ payload: { data: ISaveProduct } }>(),
 		'Add product Success': props<{ payload: { data: IProduct } }>(),
 		'Add product Failure': props<{ payload: { error: unknown } }>(),
 
-		'Update Product': props<{ payload: { id: string; data: IProduct } }>(),
+		'Update Product': props<{ payload: { id: string; data: ISaveProduct } }>(),
 		'Update Product Success': props<{
-			payload: { id: string; data: IProduct };
+			payload: { id: string; data: ISaveProduct };
 		}>(),
 		'Update Product Failure': props<{ payload: { error: unknown } }>(),
 

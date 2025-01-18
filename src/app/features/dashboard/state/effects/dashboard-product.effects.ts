@@ -32,39 +32,21 @@ export class DashboardProductEffects {
 	addProducts$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(DashboardActions.products.addProduct),
-			mergeMap(async ({ payload: { data } }) =>
-				this.productService
-					.add(data)
-					.then(() =>
+			mergeMap(({ payload: { data } }) =>
+				this.productService.add(data).pipe(
+					map(docRef =>
 						DashboardActions.products.addProductSuccess({
-							payload: { data },
-						}),
-					)
-					.catch(error =>
-						DashboardActions.products.addProductFailure({
-							payload: { error: error.body.error },
+							payload: { data: { ...data, id: docRef.id } },
 						}),
 					),
-			),
-		);
-	});
-
-	deleteProducts$ = createEffect(() => {
-		return this.actions$.pipe(
-			ofType(DashboardActions.products.deleteProduct),
-			mergeMap(async ({ payload: { id } }) =>
-				this.productService
-					.deleteById(id)
-					.then(() =>
-						DashboardActions.products.deleteProductSuccess({
-							payload: { id },
-						}),
-					)
-					.catch(error =>
-						DashboardActions.products.deleteProductFailure({
-							payload: { error: error.body.error },
-						}),
+					catchError(error =>
+						of(
+							DashboardActions.products.addProductFailure({
+								payload: { error: error.body.error },
+							}),
+						),
 					),
+				),
 			),
 		);
 	});
@@ -72,19 +54,43 @@ export class DashboardProductEffects {
 	updateProducts$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(DashboardActions.products.updateProduct),
-			mergeMap(async ({ payload: { id, data } }) =>
-				this.productService
-					.updateById(id, data)
-					.then(() =>
+			mergeMap(({ payload: { id, data } }) =>
+				this.productService.updateById(id, data).pipe(
+					map(() =>
 						DashboardActions.products.updateProductSuccess({
 							payload: { id, data },
 						}),
-					)
-					.catch(error =>
-						DashboardActions.products.updateProductFailure({
-							payload: { error: error.body.error },
+					),
+					catchError(error =>
+						of(
+							DashboardActions.products.updateProductFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
+			),
+		);
+	});
+
+	deleteProducts$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(DashboardActions.products.deleteProduct),
+			mergeMap(({ payload: { id } }) =>
+				this.productService.deleteById(id).pipe(
+					map(() =>
+						DashboardActions.products.deleteProductSuccess({
+							payload: { id },
 						}),
 					),
+					catchError(error =>
+						of(
+							DashboardActions.products.deleteProductFailure({
+								payload: { error: error?.message },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

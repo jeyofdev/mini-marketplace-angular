@@ -53,10 +53,14 @@ export const productReducer = createReducer(
 
 	on(DashboardActions.products.updateProductSuccess, (state, actions) => {
 		const updateProduct: IProduct[] = state.data.map(
-			(existingProduct: IProduct) =>
-				existingProduct.id === actions.payload.data.id
-					? actions.payload.data
-					: existingProduct,
+			(existingProduct: IProduct) => {
+				return existingProduct.id === actions.payload.id
+					? {
+							...actions.payload.data,
+							id: existingProduct.id,
+						}
+					: existingProduct;
+			},
 		);
 
 		return {
