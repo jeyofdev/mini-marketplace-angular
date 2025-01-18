@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ShowCartConfirmDialogFnType } from '@shared/types/index.type';
 import { ConfirmationService } from 'primeng/api';
-import { ShowCartConfirmDialogFnType } from '../../../../shared/types/index.type';
 
 @Component({
 	selector: 'app-confirm-delivery',
