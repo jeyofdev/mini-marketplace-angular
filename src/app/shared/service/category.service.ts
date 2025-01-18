@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICategory } from '../model/category.model';
+import { ICategory } from '@shared/model/category.model';
 import {
 	CollectionReference,
 	DocumentData,

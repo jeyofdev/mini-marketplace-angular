@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { ActionReducer, UPDATE } from '@ngrx/store';
-import { IUserState } from './user.reducer';
+import { IUserState } from '@core/state/user/reducers/user.reducer';
 
 export const log = (
 	reducer: ActionReducer<IUserState>,

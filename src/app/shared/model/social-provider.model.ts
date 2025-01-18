@@ -1,4 +1,4 @@
-import { ProviderEnum } from '../enum/provider.enum';
+import { ProviderEnum } from '@shared/enum/provider.enum';
 
 export interface ISocialProvider {
 	label: string;

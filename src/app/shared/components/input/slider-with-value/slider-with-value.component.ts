@@ -11,7 +11,7 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { getFormControl } from '../../../utils/form.utils';
+import { getFormControl } from '@shared/utils/form.utils';
 import { SliderChangeEvent } from 'primeng/slider';
 
 @Component({

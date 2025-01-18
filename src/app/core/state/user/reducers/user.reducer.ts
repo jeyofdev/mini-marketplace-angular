@@ -6,14 +6,14 @@ import {
 	UserListFeatureKey,
 	initialUserListState,
 	listReducer,
-} from './user-list.reducer';
+} from '@core/state/user/reducers/user-list.reducer';
 import {
 	IUserInformationsState,
 	UserInformationsFeatureKey,
 	initialUserInformationsState,
 	userInformationsReducer,
-} from './user-informations.reducer';
-import { hydration, log } from './user.meta-reducer';
+} from '@core/state/user/reducers/user-informations.reducer';
+import { hydration, log } from '@core/state/user/reducers/user.meta-reducer';
 
 export const userFeatureKey = 'user';
 

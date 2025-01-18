@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { ICartDelivery } from 'src/app/shared/model/cart.model';
+import { ICartDelivery } from '@shared/model/cart.model';
 
 export const CartDeliveryActions = createActionGroup({
 	source: 'Cart delivery',

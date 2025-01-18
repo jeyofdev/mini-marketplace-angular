@@ -1,4 +1,4 @@
-import { ProductColorEnum, ProductSizeEnum } from '../enum/product.enum';
+import { ProductColorEnum, ProductSizeEnum } from '@shared/enum/product.enum';
 
 export interface ICartProduct {
 	id?: string;

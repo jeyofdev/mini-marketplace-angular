@@ -1,6 +1,6 @@
-import { IUserAccount, IUserProfile } from './../../../model/user.model';
+import { IUserAccount, IUserProfile } from '@core/model/user.model';
 import { createReducer, on } from '@ngrx/store';
-import { UserActions } from '../actions/user-index.actions';
+import { UserActions } from '@core/state/user/actions/user-index.actions';
 
 export const UserInformationsFeatureKey = 'informations';
 

@@ -1,13 +1,13 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { getFormControl } from '../../../utils/form.utils';
+import { getFormControl } from '@shared/utils/form.utils';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
 import { MultiSelectChangeEvent } from 'primeng/multiselect';
-import { ChoiceItemType } from '../../../../shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-select-multiple',

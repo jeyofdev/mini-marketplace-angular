@@ -4,8 +4,8 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
-import { getFormControl } from '../../../utils/form.utils';
+import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
+import { getFormControl } from '@shared/utils/form.utils';
 
 @Component({
 	selector: 'app-text-field',

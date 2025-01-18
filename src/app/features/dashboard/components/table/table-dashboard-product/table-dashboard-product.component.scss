@@ -1,0 +1,82 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .actions-btn {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+p-table th,
+p-table tr {
+	background-color: transparent;
+	color: var(--primary-700);
+}
+
+p-table th {
+	font-size: 0.95rem;
+	border: none;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+	border: 5px solid var(--primary-50);
+	border-width: 5px 0px;
+	background-color: $light;
+
+	&:first-child {
+		border-radius: 20px 0px 0px 20px;
+	}
+
+	&:last-child {
+		border-radius: 0px 20px 20px 0px;
+	}
+}
+
+.list-box {
+	display: flex;
+	gap: 0.3rem;
+	flex-wrap: wrap;
+}
+
+:host ::ng-deep .p-disabled,
+:host ::ng-deep .p-component:disabled {
+	opacity: 0.45;
+	color: var(--primary-800);
+}
+
+:host .badge-colors-box {
+	display: flex;
+	gap: 0.25rem;
+}
+
+:host ::ng-deep .p-paginator {
+	background-color: transparent;
+	border: none;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+
+	&:not(.p-highlight):hover {
+		background-color: light;
+		color: var(--primary-800);
+	}
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+	background-color: var(--primary-500);
+	color: $light;
+	min-width: 2.25rem;
+	height: 2.25rem;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-first,
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last {
+	color: var(--primary-800);
+	min-width: 2.25rem;
+	height: 2.25rem;
+}

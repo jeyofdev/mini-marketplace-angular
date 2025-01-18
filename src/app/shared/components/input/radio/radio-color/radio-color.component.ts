@@ -5,8 +5,8 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { getFormControl } from '../../../../utils/form.utils';
-import { ColorItemType } from '../../../../interfaces/input.interface';
+import { getFormControl } from '@shared/utils/form.utils';
+import { ColorItemType } from '@shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-radio-color',

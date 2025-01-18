@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { UserActions } from '../actions/user-index.actions';
+import { UserActions } from '@core/state/user/actions/user-index.actions';
 import { mergeMap } from 'rxjs';
-import { UserListService } from 'src/app/core/service/user-list.service';
+import { UserListService } from '@core/service/user-list.service';
 
 @Injectable()
 export class UserListEffects {

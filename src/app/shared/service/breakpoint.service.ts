@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import {
 	BreakpointEnum,
 	BreakpointMinValueEnum,
-} from '../enum/breakpoint.enum';
+} from '@shared/enum/breakpoint.enum';
 
 @Injectable({
 	providedIn: 'root',

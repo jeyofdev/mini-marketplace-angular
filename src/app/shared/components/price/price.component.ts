@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CurrencyEnum } from '../../enum/properties.enum';
+import { CurrencyEnum } from '@shared/enum/properties.enum';
 
 @Component({
 	selector: 'app-price',

@@ -1,18 +1,18 @@
 import { MetaReducer, combineReducers } from '@ngrx/store';
 import { isDevMode } from '@angular/core';
-import { log } from './cart.meta-reducer';
+import { log } from '@core/state/cart/reducers/cart.meta-reducer';
 import {
 	CartProductFeatureKey,
 	ICartProductState,
 	initialCartProductState,
 	productReducer,
-} from './cart-product.reducer';
+} from '@core/state/cart/reducers/cart-product.reducer';
 import {
 	CartDeliveryFeatureKey,
 	ICartDeliveryState,
 	deliveryReducer,
 	initialCartDeliveryState,
-} from './cart-delivery.reducer';
+} from '@core/state/cart/reducers/cart-delivery.reducer';
 
 export const cartFeatureKey = 'cart';
 

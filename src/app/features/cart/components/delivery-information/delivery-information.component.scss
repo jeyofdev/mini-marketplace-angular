@@ -1,0 +1,33 @@
+@import '../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .section-title {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+:host ::ng-deep .cart-section {
+	background-color: $light;
+	border: 1px solid rgba($primary, 0.1);
+	padding: 1rem;
+	border-radius: 10px;
+}
+
+:host ::ng-deep .delivery-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+:host ::ng-deep .form-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1.5rem;
+	width: 100%;
+
+	.control {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+}

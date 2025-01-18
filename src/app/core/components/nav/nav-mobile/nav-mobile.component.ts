@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../web/services/data.service';
-import { INavLink } from '../../../../shared/interfaces/link.interface';
+import { DataService } from '@web/services/data.service';
+import { INavLink } from '@shared/interfaces/link.interface';
 
 @Component({
 	selector: 'app-nav-mobile',

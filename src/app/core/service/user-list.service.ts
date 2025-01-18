@@ -10,7 +10,7 @@ import {
 	getDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IProduct } from '../../shared/model/product.model';
+import { IProduct } from '@shared/model/product.model';
 
 @Injectable({
 	providedIn: 'root',

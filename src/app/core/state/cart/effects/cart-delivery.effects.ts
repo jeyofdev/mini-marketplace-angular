@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs';
-import { CartService } from '../../../../shared/service/cart.service';
-import { CartActions } from '../actions/cart-index.actions';
+import { CartService } from '@shared/service/cart.service';
+import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 
 @Injectable()
 export class CartDeliveryEffects {

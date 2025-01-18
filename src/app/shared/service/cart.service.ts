@@ -10,7 +10,7 @@ import {
 	deleteDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { ICartDelivery, ICartProduct } from '../model/cart.model';
+import { ICartDelivery, ICartProduct } from '@shared/model/cart.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

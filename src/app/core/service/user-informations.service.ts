@@ -8,7 +8,7 @@ import {
 	getDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IUser } from '../model/user.model';
+import { IUser } from '@core/model/user.model';
 
 @Injectable({
 	providedIn: 'root',

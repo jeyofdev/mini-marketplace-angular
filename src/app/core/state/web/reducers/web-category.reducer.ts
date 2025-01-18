@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { WebActions } from '../actions/web-index.actions';
-import { ICategory } from '../../../../shared/model/category.model';
+import { WebActions } from '@core/state/web/actions/web-index.actions';
+import { ICategory } from '@shared/model/category.model';
 
 export const webCategoryFeatureKey = 'categories';
 

@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { IUser } from '../../../../core/model/user.model';
+import { IUser } from '@core/model/user.model';
 
 export const UserInformationsActions = createActionGroup({
 	source: 'User init',

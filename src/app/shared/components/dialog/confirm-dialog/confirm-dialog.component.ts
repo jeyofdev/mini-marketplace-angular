@@ -1,6 +1,6 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ShowConfirmDialogFnType } from '../../../types/index.type';
+import { ShowConfirmDialogFnType } from '@shared/types/index.type';
 import { Store } from '@ngrx/store';
 
 @Component({

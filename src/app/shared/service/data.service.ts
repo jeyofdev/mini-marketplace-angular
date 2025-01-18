@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ChoiceItemType, ColorItemType } from '../interfaces/input.interface';
-import { ProductSizeEnum } from '../enum/product.enum';
+import {
+	ChoiceItemType,
+	ColorItemType,
+} from '@shared/interfaces/input.interface';
+import { ProductSizeEnum } from '@shared/enum/product.enum';
 import {
 	ITableColumns,
 	IRowsPerPageSelectOptions,
-} from '../interfaces/table.interface';
-import { ISocialProvider } from '../model/social-provider.model';
-import { ProviderEnum } from '../enum/provider.enum';
-import { INavLink } from '../interfaces/link.interface';
-import { OptionsEnum, StatusEnum } from '../enum/form.enum';
+} from '@shared/interfaces/table.interface';
+import { ISocialProvider } from '@shared/model/social-provider.model';
+import { ProviderEnum } from '@shared/enum/provider.enum';
+import { INavLink } from '@shared/interfaces/link.interface';
+import { OptionsEnum, StatusEnum } from '@shared/enum/form.enum';
 
 @Injectable({
 	providedIn: 'root',

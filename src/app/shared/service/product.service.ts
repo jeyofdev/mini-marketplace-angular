@@ -12,7 +12,7 @@ import {
 	DocumentReference,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IProduct } from '../model/product.model';
+import { IProduct } from '@shared/model/product.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

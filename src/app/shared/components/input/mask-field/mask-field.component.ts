@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { getFormControl } from 'src/app/shared/utils/form.utils';
+import { getFormControl } from '@shared/utils/form.utils';
 
 @Component({
 	selector: 'app-mask-field',

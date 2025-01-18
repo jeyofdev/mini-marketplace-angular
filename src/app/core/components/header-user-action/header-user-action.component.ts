@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { DataService } from '../../../web/services/data.service';
+import { DataService } from '@web/services/data.service';
 import { User } from '@angular/fire/auth';
-import { AuthService } from '../../../shared/service/auth.service';
-import { CartComponent } from '../cart/cart/cart.component';
+import { AuthService } from '@shared/service/auth.service';
+import { CartComponent } from '@core/components/cart/cart/cart.component';
 import { Router } from '@angular/router';
 
 @Component({
