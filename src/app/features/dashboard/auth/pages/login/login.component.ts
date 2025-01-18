@@ -14,6 +14,7 @@ import { UserActions } from '@core/state/user/actions/user-index.actions';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FirebaseError } from '@angular/fire/app';
+import { catchError, map, of } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -59,22 +60,27 @@ export class LoginComponent implements OnInit {
 	loginWithEmail() {
 		this.authService
 			.login(this.mainForm.value.email, this.mainForm.value.password)
-			.then(currentUser => {
-				this.store.dispatch(
-					UserActions.informations.loadUser({
-						payload: { userId: currentUser.user.uid },
-					}),
-				);
+			.pipe(
+				map(currentUser => {
+					this.store.dispatch(
+						UserActions.informations.loadUser({
+							payload: { userId: currentUser.user.uid },
+						}),
+					);
 
-				this.formErrorMessage = null;
-				this.mainForm.reset();
-				this.router.navigateByUrl('/home');
-			})
-			.catch((error: unknown) => {
-				if (error instanceof FirebaseError) {
-					this.formErrorMessage = this.authService.setErrorMessage(error.code);
-				}
-			});
+					this.formErrorMessage = null;
+					this.mainForm.reset();
+					this.router.navigateByUrl('/home');
+				}),
+				catchError((error: unknown) => {
+					if (error instanceof FirebaseError) {
+						this.formErrorMessage = this.authService.setErrorMessage(
+							error.code,
+						);
+					}
+					return of(null);
+				}),
+			);
 	}
 
 	private initMainForm() {

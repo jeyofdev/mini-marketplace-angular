@@ -9,7 +9,7 @@ import { IImage } from '@shared/model/image.model';
 import { ISocialProvider } from '@shared/model/social-provider.model';
 import { registerValidationMessages } from '@dashboard/auth/validations/messages.validation';
 import { inputEqualValidator } from '@shared/validators/input-equal.validator';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { AuthService } from '@shared/service/auth.service';
 import { DataService } from '@shared/service/data.service';
 import { IUser } from '@core/model/user.model';
@@ -75,38 +75,43 @@ export class RegisterComponent implements OnInit {
 				this.mainForm.value.email,
 				this.mainForm.value.password.password,
 			)
-			.then(currentUser => {
-				const newUser: IUser = {
-					account: {
-						createdAt: currentUser.user.metadata.creationTime ?? '',
-						lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
-					},
-					profile: {
-						firstname: this.mainForm.value.personnalInfos.firstname,
-						lastname: this.mainForm.value.personnalInfos.lastname,
-						username: this.mainForm.value.personnalInfos.username,
-						email: currentUser.user.email ?? '',
-						phone: currentUser.user.phoneNumber ?? '',
-						avatar: currentUser.user.photoURL ?? '',
-					},
-					list: [],
-				};
+			.pipe(
+				map(currentUser => {
+					const newUser: IUser = {
+						account: {
+							createdAt: currentUser.user.metadata.creationTime ?? '',
+							lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
+						},
+						profile: {
+							firstname: this.mainForm.value.personnalInfos.firstname,
+							lastname: this.mainForm.value.personnalInfos.lastname,
+							username: this.mainForm.value.personnalInfos.username,
+							email: currentUser.user.email ?? '',
+							phone: currentUser.user.phoneNumber ?? '',
+							avatar: currentUser.user.photoURL ?? '',
+						},
+						list: [],
+					};
 
-				this.store.dispatch(
-					UserActions.informations.addUser({
-						payload: { userId: currentUser.user.uid, data: newUser },
-					}),
-				);
+					this.store.dispatch(
+						UserActions.informations.addUser({
+							payload: { userId: currentUser.user.uid, data: newUser },
+						}),
+					);
 
-				this.formErrorMessage = null;
-				this.mainForm.reset();
-				this.router.navigateByUrl('/home');
-			})
-			.catch((error: unknown) => {
-				if (error instanceof FirebaseError) {
-					this.formErrorMessage = this.authService.setErrorMessage(error.code);
-				}
-			});
+					this.formErrorMessage = null;
+					this.mainForm.reset();
+					this.router.navigateByUrl('/home');
+				}),
+				catchError((error: unknown) => {
+					if (error instanceof FirebaseError) {
+						this.formErrorMessage = this.authService.setErrorMessage(
+							error.code,
+						);
+					}
+					return of(null);
+				}),
+			);
 	}
 
 	private initMainForm(): void {

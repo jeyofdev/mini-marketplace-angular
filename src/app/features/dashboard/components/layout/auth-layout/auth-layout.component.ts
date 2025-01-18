@@ -13,6 +13,7 @@ import { IUser } from '@core/model/user.model';
 import { Store } from '@ngrx/store';
 import { UserActions } from '@core/state/user/actions/user-index.actions';
 import { UserInformationsService } from '@core/service/user-informations.service';
+import { map } from 'rxjs';
 
 @Component({
 	selector: 'app-auth-layout',
@@ -72,31 +73,33 @@ export class AuthLayoutComponent implements OnInit {
 			currentProvider = new GithubAuthProvider();
 		}
 
-		this.authService.loginWithPopup(currentProvider).then(currentUser => {
-			const newUser: IUser = {
-				account: {
-					createdAt: currentUser.user.metadata.creationTime ?? '',
-					lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
-				},
-				profile: {
-					firstname: '',
-					lastname: '',
-					username: currentUser.user.displayName ?? '',
-					email: currentUser.user.email ?? '',
-					phone: currentUser.user.phoneNumber ?? '',
-					avatar: currentUser.user.photoURL ?? '',
-				},
-				list: [],
-			};
+		this.authService.loginWithPopup(currentProvider).pipe(
+			map(currentUser => {
+				const newUser: IUser = {
+					account: {
+						createdAt: currentUser.user.metadata.creationTime ?? '',
+						lastLogin: currentUser.user.metadata.lastSignInTime ?? '',
+					},
+					profile: {
+						firstname: '',
+						lastname: '',
+						username: currentUser.user.displayName ?? '',
+						email: currentUser.user.email ?? '',
+						phone: currentUser.user.phoneNumber ?? '',
+						avatar: currentUser.user.photoURL ?? '',
+					},
+					list: [],
+				};
 
-			this.store.dispatch(
-				UserActions.informations.addUser({
-					payload: { userId: currentUser.user.uid, data: newUser },
-				}),
-			);
+				this.store.dispatch(
+					UserActions.informations.addUser({
+						payload: { userId: currentUser.user.uid, data: newUser },
+					}),
+				);
 
-			this.router.navigateByUrl('/home');
-		});
+				this.router.navigateByUrl('/home');
+			}),
+		);
 	}
 
 	private setResizeBreakpoint(): void {

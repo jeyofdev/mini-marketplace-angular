@@ -15,6 +15,7 @@ import {
 	UserCredential,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { catchError, from, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -42,31 +43,54 @@ export class AuthService {
 
 	loginWithPopup(
 		provider: GoogleAuthProvider | GithubAuthProvider,
-	): Promise<UserCredential> {
-		return signInWithPopup(this.auth, provider);
-	}
-
-	login(email: string, password: string): Promise<UserCredential> {
-		return signInWithEmailAndPassword(this.auth, email, password);
-	}
-
-	register(email: string, password: string): Promise<UserCredential> {
-		return createUserWithEmailAndPassword(this.auth, email, password);
-	}
-
-	logout() {
-		signOut(this.auth).then(() =>
-			this.router.navigateByUrl('/dashboard/auth/login'),
+	): Observable<UserCredential> {
+		return from(signInWithPopup(this.auth, provider)).pipe(
+			catchError(error => {
+				this.handleError(error);
+				return throwError(() => new Error('Login failed'));
+			}),
 		);
 	}
 
-	getAuthLocal() {
+	login(email: string, password: string): Observable<UserCredential> {
+		return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
+			catchError(error => {
+				this.handleError(error);
+				return throwError(() => new Error('Login failed'));
+			}),
+		);
+	}
+
+	register(email: string, password: string): Observable<UserCredential> {
+		return from(
+			createUserWithEmailAndPassword(this.auth, email, password),
+		).pipe(
+			catchError(error => {
+				this.handleError(error);
+				return throwError(() => new Error('Register failed'));
+			}),
+		);
+	}
+
+	logout(): Observable<void> {
+		return from(signOut(this.auth)).pipe(
+			map(() => {
+				this.router.navigateByUrl('/dashboard/auth/login');
+			}),
+			catchError(error => {
+				this.handleError(error);
+				return of();
+			}),
+		);
+	}
+
+	getAuthLocal(): any {
 		const token = localStorage.getItem('user');
 		const user = JSON.parse(token as string);
 		return user;
 	}
 
-	setErrorMessage(errorCode: string) {
+	setErrorMessage(errorCode: string): string | null {
 		if (
 			errorCode === 'auth/wrong-password' ||
 			errorCode === 'auth/user-not-found'
@@ -87,15 +111,19 @@ export class AuthService {
 	private updateUser(
 		user: User,
 		updatedDatas: { displayName?: string; photoURL?: string },
-	): void {
-		updateProfile(user, updatedDatas)
-			.then(updatedUser => {
-				this.userData = updatedUser;
-			})
-			.catch((error: unknown) => {
-				if (error instanceof FirebaseError) {
-					this.setErrorMessage(error.code);
-				}
-			});
+	): Observable<void> {
+		return from(updateProfile(user, updatedDatas)).pipe(
+			map(() => {
+				this.userData = { ...user, ...updatedDatas };
+			}),
+			catchError(error => this.handleError(error)),
+		);
+	}
+
+	private handleError(error: unknown): Observable<void> {
+		if (error instanceof FirebaseError) {
+			this.setErrorMessage(error.code);
+		}
+		return of();
 	}
 }
