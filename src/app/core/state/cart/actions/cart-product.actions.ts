@@ -1,12 +1,15 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { ICartProduct } from '@shared/model/cart.model';
+import {
+	ICartProduct,
+	ISaveCartProduct,
+} from '@shared/model/cart/cart-product.model';
 
 export const CartProductActions = createActionGroup({
 	source: 'Cart',
 	events: {
 		'Load products in cart': emptyProps(),
 		'Load products in cart Success': props<{
-			payload: { data: ICartProduct[] };
+			payload: { data: ISaveCartProduct[] };
 		}>(),
 		'Load products in cart Failure': props<{ payload: { error: unknown } }>(),
 

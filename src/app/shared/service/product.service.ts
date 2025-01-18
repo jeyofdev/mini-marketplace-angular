@@ -53,10 +53,7 @@ export class ProductService {
 	}
 
 	add(newProduct: ISaveProduct): Observable<DocumentReference<IProduct>> {
-		const docRef: Promise<DocumentReference<DocumentData>> = addDoc(
-			this.collectionInstance,
-			newProduct,
-		);
+		const docRef = addDoc(this.collectionInstance, newProduct);
 
 		return from(docRef).pipe(
 			map(ref => {

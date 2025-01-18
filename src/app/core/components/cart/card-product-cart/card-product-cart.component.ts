@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IImage } from '@shared/model/image.model';
-import { ICartProduct } from '@shared/model/cart.model';
 import { Store } from '@ngrx/store';
 import { CartActions } from '@core/state/cart/actions/cart-index.actions';
+import { ICartProduct } from '@shared/model/cart/cart-product.model';
 
 @Component({
 	selector: 'app-card-product-cart',

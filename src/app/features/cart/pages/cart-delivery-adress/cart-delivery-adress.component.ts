@@ -6,7 +6,7 @@ import {
 	getCartProductsLoadingSelector,
 	getCartProductsSelector,
 } from '@core/state/cart/selectors/cart-product.selectors';
-import { ICartProduct } from '@shared/model/cart.model';
+import { ICartProduct } from '@shared/model/cart/cart-product.model';
 
 @Component({
 	selector: 'app-cart-delivery-adress',

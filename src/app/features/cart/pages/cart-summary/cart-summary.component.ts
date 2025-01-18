@@ -3,7 +3,6 @@ import { Store, select } from '@ngrx/store';
 import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
 
 import { Observable, map } from 'rxjs';
-import { ICartProduct } from '@shared/model/cart.model';
 import { DataService } from '@shared/service/data.service';
 import { IImage } from '@shared/model/image.model';
 import {
@@ -11,6 +10,7 @@ import {
 	getCartProductsSelector,
 } from '@core/state/cart/selectors/cart-product.selectors';
 import { CartActions } from '@core/state/cart/actions/cart-index.actions';
+import { ICartProduct } from '@shared/model/cart/cart-product.model';
 
 @Component({
 	selector: 'app-cart-summary',

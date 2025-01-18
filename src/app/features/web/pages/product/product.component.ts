@@ -16,12 +16,12 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '@shared/utils/toast';
-import { ICartProduct } from '@shared/model/cart.model';
 import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 import {
 	getWebCurrentProductLoadingSelector,
 	getWebCurrentProductSelector,
 } from '@core/state/web/selectors/web-product.selectors';
+import { ICartProduct } from '@shared/model/cart/cart-product.model';
 
 @Component({
 	selector: 'app-product',
