@@ -32,19 +32,21 @@ export class DashboardCategoryEffects {
 	addCategory$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(DashboardActions.categories.addCategory),
-			mergeMap(async ({ payload: { data } }) =>
-				this.categoryService
-					.add(data)
-					.then(() =>
+			mergeMap(({ payload: { data } }) =>
+				this.categoryService.add(data).pipe(
+					map(docRef =>
 						DashboardActions.categories.addCategorySuccess({
-							payload: { data },
-						}),
-					)
-					.catch(error =>
-						DashboardActions.categories.addCategoryFailure({
-							payload: { error: error.body.error },
+							payload: { data: { ...data, id: docRef.id } },
 						}),
 					),
+					catchError(error =>
+						of(
+							DashboardActions.categories.addCategoryFailure({
+								payload: { error: error?.message },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});
@@ -52,19 +54,21 @@ export class DashboardCategoryEffects {
 	updateCategory$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(DashboardActions.categories.updateCategory),
-			mergeMap(async ({ payload: { id, data } }) =>
-				this.categoryService
-					.updateById(id, data)
-					.then(() =>
+			mergeMap(({ payload: { id, data } }) =>
+				this.categoryService.updateById(id, data).pipe(
+					map(() =>
 						DashboardActions.categories.updateCategorySuccess({
 							payload: { id, data },
 						}),
-					)
-					.catch(error =>
-						DashboardActions.categories.updateCategoryFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							DashboardActions.categories.updateCategoryFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});
@@ -72,19 +76,21 @@ export class DashboardCategoryEffects {
 	deleteCategory$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(DashboardActions.categories.deleteCategory),
-			mergeMap(async ({ payload: { id } }) =>
-				this.categoryService
-					.deleteById(id)
-					.then(() =>
+			mergeMap(({ payload: { id } }) =>
+				this.categoryService.deleteById(id).pipe(
+					map(() =>
 						DashboardActions.categories.deleteCategorySuccess({
 							payload: { id },
 						}),
-					)
-					.catch(error =>
-						DashboardActions.categories.deleteCategoryFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							DashboardActions.categories.addCategoryFailure({
+								payload: { error: error?.message },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

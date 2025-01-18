@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { addCategoryValidationMessages } from '@dashboard/validations/messages.validation';
 import { MessageService } from 'primeng/api';
-import { ICategory } from '@shared/model/category.model';
+import { ICategory, ISaveCategory } from '@shared/model/category.model';
 import { FillFormWithCurrentCategoryFnType } from '@shared/types/index.type';
 import { ChoiceItemType } from '@shared/interfaces/input.interface';
 import { Subscription } from 'rxjs';
@@ -142,7 +142,7 @@ export class ModalCategoryComponent implements OnInit {
 		);
 	}
 
-	private formatCategoryDatas(): ICategory {
+	private formatCategoryDatas(): ISaveCategory {
 		return {
 			name:
 				this.mainForm.value.name.slice(0, 1).toUpperCase() +

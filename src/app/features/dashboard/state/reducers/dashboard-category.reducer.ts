@@ -44,10 +44,14 @@ export const categoryReducer = createReducer(
 
 	on(DashboardActions.categories.updateCategorySuccess, (state, actions) => {
 		const updatedCategory: ICategory[] = state.data.map(
-			(existingCategory: ICategory) =>
-				existingCategory.id === actions.payload.data.id
-					? actions.payload.data
-					: existingCategory,
+			(existingCategory: ICategory) => {
+				return existingCategory.id === actions.payload.id
+					? {
+							...actions.payload.data,
+							id: existingCategory.id,
+						}
+					: existingCategory;
+			},
 		);
 
 		return {
