@@ -55,18 +55,20 @@ export class WebProductEffects {
 		return this.actions$.pipe(
 			ofType(WebActions.products.loadProduct),
 			mergeMap(({ payload: { id } }) =>
-				this.productService
-					.getById(id)
-					.then(data =>
+				this.productService.getById(id).pipe(
+					map((products: IProduct) =>
 						WebActions.products.loadProductSuccess({
-							payload: { data },
-						}),
-					)
-					.catch(error =>
-						WebActions.products.loadProductFailure({
-							payload: { error: error.body.error },
+							payload: { data: products },
 						}),
 					),
+					catchError(error =>
+						of(
+							WebActions.products.loadProductFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

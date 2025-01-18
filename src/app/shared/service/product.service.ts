@@ -38,15 +38,18 @@ export class ProductService {
 		}) as Observable<IProduct[]>;
 	}
 
-	async getById(productId: string) {
+	getById(productId: string): Observable<IProduct> {
 		const docInstance = doc(this.firestore, 'products', productId);
-		const docRef = await getDoc(docInstance);
 
-		if (docRef.exists()) {
-			return docRef.data() as Promise<IProduct>;
-		} else {
-			throw new Error('Document does not exist');
-		}
+		return from(
+			getDoc(docInstance).then(docRef => {
+				if (docRef.exists()) {
+					return docRef.data() as IProduct;
+				} else {
+					throw new Error('Document does not exist');
+				}
+			}),
+		);
 	}
 
 	add(newProduct: ISaveProduct): Observable<DocumentReference<IProduct>> {
