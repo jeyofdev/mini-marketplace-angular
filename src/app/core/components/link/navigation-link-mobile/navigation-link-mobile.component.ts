@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '@web/services/data.service';
 import { INavLink } from '@shared/interfaces/link.interface';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-navigation-link-mobile',
@@ -8,11 +9,11 @@ import { INavLink } from '@shared/interfaces/link.interface';
 	styleUrls: ['./navigation-link-mobile.component.scss'],
 })
 export class NavigationLinkMobileComponent implements OnInit {
-	navLinks!: INavLink[];
+	navLinks$!: Observable<INavLink[]>;
 
 	constructor(private dataService: DataService) {}
 
 	ngOnInit(): void {
-		this.navLinks = this.dataService.getNavigationLinks();
+		this.navLinks$ = this.dataService.getNavigationLinks();
 	}
 }

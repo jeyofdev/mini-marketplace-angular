@@ -10,7 +10,7 @@
 	>
 		<ng-template pTemplate="header">
 			<tr>
-				<ng-container *ngFor="let col of cols">
+				<ng-container *ngFor="let col of cols$ | async">
 					<th>{{ col.header }}</th>
 				</ng-container>
 
@@ -20,7 +20,7 @@
 
 		<ng-template pTemplate="body" let-data>
 			<tr>
-				<ng-container *ngFor="let col of cols">
+				<ng-container *ngFor="let col of cols$ | async">
 					<td
 						*ngIf="
 							col.field !== 'size' &&

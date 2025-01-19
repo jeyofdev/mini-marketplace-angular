@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/api';
 import { AuthService } from '@shared/service/auth.service';
 import { Router } from '@angular/router';
 import { ITableColumns } from '@shared/interfaces/table.interface';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -14,8 +15,8 @@ export class DataService {
 		private authService: AuthService,
 	) {}
 
-	getNavigationLinks(): INavLink[] {
-		return [
+	getNavigationLinks(): Observable<INavLink[]> {
+		return of([
 			{
 				label: 'Home',
 				routerLink: '/home',
@@ -36,38 +37,40 @@ export class DataService {
 				routerLink: '/children',
 				icon: 'fa-solid fa-child',
 			},
-		];
+		]);
 	}
 
-	getUserActionsLinks(): MenuItem[] {
-		return [
+	getUserActionsLinks(): Observable<MenuItem[]> {
+		return of([
 			{
 				icon: 'fa-solid fa-cart-shopping',
 				command: () => {
 					this.router.navigateByUrl('/cart/summary');
 				},
 			},
-		];
+		]);
 	}
 
-	getConnectedLinks(): MenuItem[] {
-		return [
-			...this.getUserActionsLinks(),
-			{
-				icon: 'fa-solid fa-heart',
-				command: () => {
-					this.router.navigateByUrl('/wish-list');
+	getConnectedLinks(): Observable<MenuItem[]> {
+		return this.getUserActionsLinks().pipe(
+			map(userActions => [
+				...userActions,
+				{
+					icon: 'fa-solid fa-heart',
+					command: () => {
+						this.router.navigateByUrl('/wish-list');
+					},
 				},
-			},
-		];
+			]),
+		);
 	}
 
-	getNotConnectedLinks(): MenuItem[] {
-		return [...this.getUserActionsLinks()];
+	getNotConnectedLinks(): Observable<MenuItem[]> {
+		return this.getUserActionsLinks();
 	}
 
-	getUserConnectedLinks(): MenuItem[] {
-		return [
+	getUserConnectedLinks(): Observable<MenuItem[]> {
+		return of([
 			{
 				icon: 'fa-solid fa-user',
 				items: [
@@ -88,11 +91,11 @@ export class DataService {
 					},
 				],
 			},
-		];
+		]);
 	}
 
-	getUserNotConnectedLinks(): MenuItem[] {
-		return [
+	getUserNotConnectedLinks(): Observable<MenuItem[]> {
+		return of([
 			{
 				icon: 'fa-solid fa-user',
 				items: [
@@ -115,11 +118,11 @@ export class DataService {
 					},
 				],
 			},
-		];
+		]);
 	}
 
-	getColsProducts(): ITableColumns[] {
-		return [
+	getColsProducts(): Observable<ITableColumns[]> {
+		return of([
 			{
 				field: 'brandName',
 				header: 'Brand name',
@@ -140,6 +143,6 @@ export class DataService {
 				field: 'price',
 				header: 'Price',
 			},
-		];
+		]);
 	}
 }

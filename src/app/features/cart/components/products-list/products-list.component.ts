@@ -5,6 +5,7 @@ import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
 import { Store } from '@ngrx/store';
 import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 import { ICartProduct } from '@shared/model/cart/cart-product.model';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-products-list',
@@ -18,7 +19,7 @@ export class ProductsListComponent implements OnInit {
 	@Input() rowsPerPageOptions!: IRowsPerPageSelectOptions[];
 	@Input() first!: number;
 
-	cols!: { header: string; field: string }[];
+	cols$!: Observable<{ header: string; field: string }[]>;
 	totalRecords!: number;
 
 	currencyEnum = CurrencyEnum;
@@ -29,7 +30,7 @@ export class ProductsListComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.cols = this.dataService.getColsProducts();
+		this.cols$ = this.dataService.getColsProducts();
 		this.totalRecords = this.products.length;
 	}
 
