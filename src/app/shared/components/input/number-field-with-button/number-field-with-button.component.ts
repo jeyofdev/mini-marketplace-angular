@@ -1,5 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractFormInput } from '@shared/utils/abstract-form-input';
 import { InputNumberInputEvent } from 'primeng/inputnumber';
 
 @Component({
@@ -14,45 +15,17 @@ import { InputNumberInputEvent } from 'primeng/inputnumber';
 		},
 	],
 })
-export class NumberFieldWithButtonComponent implements ControlValueAccessor {
-	@Input() name!: string;
-	@Input() label!: string;
+export class NumberFieldWithButtonComponent extends AbstractFormInput<number> {
 	@Input() buttonLayout!: 'horizontal' | 'vertical';
 	@Input() inputId!: string;
 	@Input() itemNumber!: number;
 
-	disabled!: boolean;
-	value!: number;
-
-	onChanged!: (value: number) => void;
-	onTouched!: () => void;
-
-	onInputNumberChange(event: InputNumberInputEvent): void {
+	onInputChange(event: InputNumberInputEvent): void {
 		if (this.disabled) {
 			return;
 		}
 
 		this.value = Number(event.value);
 		this.onChanged(this.value);
-	}
-
-	writeValue(value: number): void {
-		this.value = value;
-	}
-
-	registerOnChange(fn: (value: number) => void): void {
-		this.onChanged = fn;
-	}
-
-	registerOnTouched(fn: () => void): void {
-		this.onTouched = fn;
-	}
-
-	setDisabledState(isDisabled: boolean): void {
-		this.disabled = isDisabled;
-	}
-
-	markAsTouched(): void {
-		this.onTouched();
 	}
 }

@@ -6,7 +6,7 @@
 		[disabled]="disabled"
 		[(ngModel)]="checked"
 		[binary]="true"
-		(onChange)="selectionChanged($event)"
+		(onChange)="onInputChange($event)"
 		(blur)="onTouched()"
 		[styleClass]="styleClass"
 		[labelStyleClass]="labelStyleClass"

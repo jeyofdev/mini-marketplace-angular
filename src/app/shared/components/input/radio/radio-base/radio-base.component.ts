@@ -1,15 +1,11 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import {
-	ControlValueAccessor,
-	FormGroup,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
 import {
 	ChoiceItemType,
 	ColorItemType,
 } from '@shared/interfaces/input.interface';
-import { getFormControl } from '@shared/utils/form.utils';
+import { AbstractFormRadio } from '@shared/utils/abstract-form-radio';
 
 @Component({
 	selector: 'app-radio-base',
@@ -23,45 +19,11 @@ import { getFormControl } from '@shared/utils/form.utils';
 		},
 	],
 })
-export class RadioBaseComponent implements ControlValueAccessor {
-	@Input() item!: ChoiceItemType | ColorItemType;
-	@Input() name!: string;
-
-	@Input() parentForm!: FormGroup;
-	@Input() groupName!: string;
-
-	value!: string;
-	disabled!: boolean;
-
-	onChanged!: (value: string) => void;
-	onTouched!: () => void;
-
-	selectionChanged(event: RadioButtonClickEvent) {
+export class RadioBaseComponent extends AbstractFormRadio<
+	ChoiceItemType | ColorItemType
+> {
+	override onInputChange(event: RadioButtonClickEvent) {
 		this.onChanged(event.value);
 		this.onTouched();
-	}
-
-	writeValue(value: string): void {
-		this.value = value;
-	}
-
-	registerOnChange(fn: (value: string) => void): void {
-		this.onChanged = fn;
-	}
-
-	registerOnTouched(fn: () => void): void {
-		this.onTouched = fn;
-	}
-
-	setDisabledState(isDisabled: boolean): void {
-		this.disabled = isDisabled;
-	}
-
-	markAsTouched(): void {
-		this.onTouched();
-	}
-
-	get formControl() {
-		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

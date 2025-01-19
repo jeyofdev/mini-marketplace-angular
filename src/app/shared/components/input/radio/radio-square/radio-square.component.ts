@@ -1,12 +1,8 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
-import {
-	ControlValueAccessor,
-	FormGroup,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
 import { ChoiceItemType } from '@shared/interfaces/input.interface';
-import { getFormControl } from '@shared/utils/form.utils';
+import { AbstractFormRadio } from '@shared/utils/abstract-form-radio';
 
 @Component({
 	selector: 'app-radio-square',
@@ -20,61 +16,19 @@ import { getFormControl } from '@shared/utils/form.utils';
 		},
 	],
 })
-export class RadioSquareComponent implements OnInit, ControlValueAccessor {
-	@Input() label!: string;
-	@Input() item!: ChoiceItemType;
-	@Input() name!: string;
-	@Input() color!:
-		| 'primary'
-		| 'secondary'
-		| 'success'
-		| 'warning'
-		| 'danger'
-		| 'info'
-		| 'help';
-
-	@Input() parentForm!: FormGroup;
-	@Input() groupName!: string;
-
-	value!: string;
-	disabled!: boolean;
-
+export class RadioSquareComponent
+	extends AbstractFormRadio<ChoiceItemType>
+	implements OnInit
+{
 	styleClass!: string;
 
-	onChanged!: (value: string) => void;
-	onTouched!: () => void;
-
-	ngOnInit(): void {
+	override ngOnInit(): void {
 		this.setStyleClass();
 	}
 
-	selectionChanged(event: RadioButtonClickEvent) {
+	override onInputChange(event: RadioButtonClickEvent) {
 		this.onChanged(event.value);
 		this.onTouched();
-	}
-
-	writeValue(value: string): void {
-		this.value = value;
-	}
-
-	registerOnChange(fn: (value: string) => void): void {
-		this.onChanged = fn;
-	}
-
-	registerOnTouched(fn: () => void): void {
-		this.onTouched = fn;
-	}
-
-	setDisabledState(isDisabled: boolean): void {
-		this.disabled = isDisabled;
-	}
-
-	// markAsTouched(): void {
-	// 	this.onTouched();
-	// }
-
-	get formControl() {
-		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 
 	private setStyleClass(): void {

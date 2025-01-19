@@ -9,7 +9,7 @@
 		[rows]="rows"
 		[value]="value"
 		[disabled]="disabled"
-		(input)="onTextareaChange($event)"
+		(input)="onInputChange($event)"
 		(focus)="markAsTouched()"
 		[class]="control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''"
 	></textarea>

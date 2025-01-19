@@ -44,7 +44,7 @@ import { ButtonEmptyComponent } from '@shared/components/button/button-empty/but
 import { ChipSquareComponent } from '@shared/components/chip/chip-square/chip-square.component';
 import { NumberFieldWithButtonComponent } from '@shared/components/input/number-field-with-button/number-field-with-button.component';
 import { TablePaginatorComponent } from '@shared/paginator/table-paginator/table-paginator.component';
-import { InputMaskComponent } from '@shared/components/input/input-mask/input-mask.component';
+import { MaskFieldComponent } from '@shared/components/input/mask-field/mask-field.component';
 import { CheckboxBaseComponent } from '@shared/components/input/checkbox/checkbox-base/checkbox-base.component';
 import { CheckboxChipComponent } from '@shared/components/input/checkbox/checkbox-chip/checkbox-chip.component';
 
@@ -90,7 +90,7 @@ import { CheckboxChipComponent } from '@shared/components/input/checkbox/checkbo
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
 		TablePaginatorComponent,
-		InputMaskComponent,
+		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
 	],
@@ -146,7 +146,7 @@ import { CheckboxChipComponent } from '@shared/components/input/checkbox/checkbo
 		ButtonEmptyComponent,
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
-		InputMaskComponent,
+		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
 		TablePaginatorComponent,
