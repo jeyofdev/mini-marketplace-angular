@@ -1,7 +1,7 @@
 <app-auth-layout
 	pageTitle="Log in"
 	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
-	[socialProviders]="socialProviders"
+	[socialProviders]="(socialProviders$ | async) || []"
 	[image]="image"
 	containerMaxHeight="740px"
 >

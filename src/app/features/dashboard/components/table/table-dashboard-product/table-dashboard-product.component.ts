@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
+import {
+	IRowsPerPageSelectOptions,
+	ITableColumns,
+} from '@shared/interfaces/table.interface';
 import { IProduct } from '@shared/model/product.model';
 import {
 	FillFormWithCurrentProductFnType,
@@ -17,8 +20,8 @@ import { Router } from '@angular/router';
 	styleUrls: ['./table-dashboard-product.component.scss'],
 })
 export class TableDashboardProductComponent implements OnInit {
-	@Input() cols!: { header: string; field: string }[];
-	@Input() items: Array<IProduct> = [];
+	@Input() cols: ITableColumns[] = [];
+	@Input() items: IProduct[] = [];
 	@Input() paginator!: boolean;
 	@Input() rows!: number;
 	@Input() showCurrentPageReport!: boolean;

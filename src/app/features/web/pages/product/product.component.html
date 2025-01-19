@@ -38,7 +38,7 @@
 						<h5 class="section-title">Select size</h5>
 
 						<div class="section-btns-box section-btns-box-sizes">
-							<ng-container *ngFor="let size of sizes">
+							<ng-container *ngFor="let size of sizes$ | async">
 								<app-radio-square
 									[label]="size.label"
 									name="size"
@@ -55,7 +55,7 @@
 						<h5 class="section-title">Colors available</h5>
 
 						<div class="section-btns-box">
-							<ng-container *ngFor="let color of colors">
+							<ng-container *ngFor="let color of colors$ | async">
 								<app-radio-color
 									name="color"
 									[item]="color"

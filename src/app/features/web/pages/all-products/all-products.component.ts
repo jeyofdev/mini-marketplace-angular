@@ -25,8 +25,8 @@ export class AllProductsComponent implements OnInit {
 	loading$!: Observable<boolean>;
 	products!: IProduct[];
 	filteredProducts!: IProduct[];
-	sizes!: ChoiceItemType[];
-	colors!: ColorItemType[];
+	sizes$!: Observable<ChoiceItemType[]>;
+	colors$!: Observable<ColorItemType[]>;
 	categories!: ChoiceItemType[];
 	filters!: { sizes: string[]; colors: string[]; categories: string[] };
 
@@ -44,8 +44,8 @@ export class AllProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.categories = [];
-		this.sizes = this.dataService.getAllSizes();
-		this.colors = this.dataService.getAllColors();
+		this.sizes$ = this.dataService.getAllSizes();
+		this.colors$ = this.dataService.getAllColors();
 		this.filters = {
 			sizes: [],
 			colors: [],
@@ -163,25 +163,26 @@ export class AllProductsComponent implements OnInit {
 	}
 
 	private initFormGroups(): void {
-		this.colorsForm = this.formBuilder.group({
-			blue: [false],
-			red: [false],
-			green: [false],
-			yellow: [false],
-			purple: [false],
-		});
+		this.sizes$.subscribe((sizes: ChoiceItemType[]) => {
+			const sizeGroup: { [key: string]: boolean } = {};
+			sizes.forEach(size => {
+				sizeGroup[size.value] = false;
+			});
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const sizeGroup: any = {};
-		this.sizes.forEach(size => {
-			sizeGroup[size.name] = [false];
-		});
+			this.sizesForm = this.formBuilder.group(sizeGroup);
 
-		this.sizesForm = this.formBuilder.group(sizeGroup);
+			this.colorsForm = this.formBuilder.group({
+				blue: [false],
+				red: [false],
+				green: [false],
+				yellow: [false],
+				purple: [false],
+			});
 
-		this.categoriesForm = this.formBuilder.group({
-			pull: [false],
-			pantalon: [false],
+			this.categoriesForm = this.formBuilder.group({
+				pull: [false],
+				pantalon: [false],
+			});
 		});
 	}
 

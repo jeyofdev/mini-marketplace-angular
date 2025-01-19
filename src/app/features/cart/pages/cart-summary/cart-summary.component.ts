@@ -25,7 +25,7 @@ export class CartSummaryComponent implements OnInit {
 	totalDelivery!: number;
 	totalCart!: number;
 
-	rowsPerPageOptions!: IRowsPerPageSelectOptions[];
+	rowsPerPageOptions$!: Observable<IRowsPerPageSelectOptions[]>;
 
 	image!: IImage;
 
@@ -37,7 +37,7 @@ export class CartSummaryComponent implements OnInit {
 	ngOnInit(): void {
 		this.initImage();
 		this.totalDelivery = 0;
-		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
+		this.rowsPerPageOptions$ = this.dataService.getRowsPerPageSelectOptions();
 
 		this.store.dispatch(CartActions.products.loadProductsInCart());
 		this.loading$ = this.store.pipe(select(getCartProductsLoadingSelector));

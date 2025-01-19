@@ -8,7 +8,7 @@
 			[products]="cartProducts"
 			[paginator]="true"
 			[rows]="5"
-			[rowsPerPageOptions]="rowsPerPageOptions"
+			[rowsPerPageOptions]="(rowsPerPageOptions$ | async) || []"
 			[first]="1"
 		></app-products-list>
 	</div>

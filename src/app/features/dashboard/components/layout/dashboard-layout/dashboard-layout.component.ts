@@ -8,6 +8,7 @@ import { INavLink } from '@shared/interfaces/link.interface';
 import { AuthService } from '@shared/service/auth.service';
 import { MenuItem } from 'primeng/api';
 import { DataService } from '@shared/service/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-dashboard-layout',
@@ -17,7 +18,7 @@ import { DataService } from '@shared/service/data.service';
 export class DashboardLayoutComponent implements OnInit {
 	connectedUser!: User;
 	logoutIcon!: IconDefinition;
-	navLinks!: INavLink[];
+	navLinks$!: Observable<INavLink[]>;
 	sidebarVisible = false;
 
 	items: MenuItem[] | undefined;
@@ -30,7 +31,7 @@ export class DashboardLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.connectedUser = this.authService.getAuthLocal();
 		this.logoutIcon = faRightFromBracket;
-		this.navLinks = this.dataService.getDashboardNavLinks();
+		this.navLinks$ = this.dataService.getDashboardNavLinks();
 
 		this.items = [
 			{

@@ -24,7 +24,7 @@ import { FirebaseError } from '@angular/fire/app';
 	styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-	socialProviders!: ISocialProvider[];
+	socialProviders$!: Observable<ISocialProvider[]>;
 	image!: IImage;
 	hidePassword!: boolean;
 
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = this.dataService.getAuthProviders();
+		this.socialProviders$ = this.dataService.getAuthProviders();
 		this.inputsValidationMessages = registerValidationMessages;
 
 		this.initImage();

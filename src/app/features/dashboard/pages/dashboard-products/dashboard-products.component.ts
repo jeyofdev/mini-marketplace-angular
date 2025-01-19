@@ -25,8 +25,8 @@ export class DashboardProductsComponent implements OnInit {
 	loading$!: Observable<boolean>;
 	products!: IProduct[];
 	totalRecords!: number;
-	rowsPerPageOptions!: IRowsPerPageSelectOptions[];
-	cols!: ITableColumns[];
+	rowsPerPageOptions$!: Observable<IRowsPerPageSelectOptions[]>;
+	cols$!: Observable<ITableColumns[]>;
 
 	sidebarVisible!: boolean;
 
@@ -37,8 +37,8 @@ export class DashboardProductsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iconAdd = 'fa-solid fa-plus';
-		this.cols = this.dataService.getColsProducts();
-		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
+		this.cols$ = this.dataService.getColsProducts();
+		this.rowsPerPageOptions$ = this.dataService.getRowsPerPageSelectOptions();
 		this.sidebarVisible = false;
 
 		this.store.dispatch(DashboardActions.products.loadProducts());

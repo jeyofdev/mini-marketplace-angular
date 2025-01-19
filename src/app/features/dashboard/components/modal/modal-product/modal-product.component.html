@@ -82,7 +82,7 @@
 
 					<div class="form-row">
 						<app-select-multiple
-							[items]="sizes"
+							[items]="(sizes$ | async) || []"
 							label="Size *"
 							name="size"
 							placeholder="Select a size"
@@ -96,7 +96,7 @@
 					<div class="form-row row-checkbox" [formGroup]="colorsForm">
 						<label>Available colors</label>
 						<div class="checkboxes-box">
-							<ng-container *ngFor="let color of colors">
+							<ng-container *ngFor="let color of colors$ | async">
 								<app-checkbox-color-border
 									[name]="color.name"
 									[color]="color.severity"
@@ -113,7 +113,7 @@
 				<div class="form-row row-checkbox" [formGroup]="optionsForm">
 					<label>Available options</label>
 					<div class="checkboxes-box column">
-						<ng-container *ngFor="let option of options">
+						<ng-container *ngFor="let option of options$ | async">
 							<app-checkbox-base
 								[label]="option.label"
 								[name]="option.name"
@@ -159,7 +159,7 @@
 						<label class="label-group">Status *</label>
 
 						<div class="radio-box">
-							<ng-container *ngFor="let item of status">
+							<ng-container *ngFor="let item of status$ | async">
 								<app-radio-base
 									label="Status"
 									name="status"

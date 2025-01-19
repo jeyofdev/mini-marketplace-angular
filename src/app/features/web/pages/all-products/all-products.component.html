@@ -3,7 +3,7 @@
 		<form novalidate [formGroup]="filterForm">
 			<app-panel title="Sizes" [formGroup]="sizesForm">
 				<div class="sizes-box">
-					<ng-container *ngFor="let size of sizes">
+					<ng-container *ngFor="let size of sizes$ | async">
 						<app-checkbox-chip
 							[name]="size.name"
 							[label]="size.label"
@@ -19,7 +19,7 @@
 
 			<app-panel title="Colors" [formGroup]="colorsForm">
 				<div class="colors-box">
-					<ng-container *ngFor="let color of colors">
+					<ng-container *ngFor="let color of colors$ | async">
 						<app-checkbox-color
 							[name]="color.name"
 							[color]="color.severity"

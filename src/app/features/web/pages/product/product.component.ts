@@ -43,8 +43,8 @@ export class ProductComponent implements OnInit {
 	rating = 3.5;
 	messages = [];
 
-	sizes!: ChoiceItemType[];
-	colors!: ColorItemType[];
+	sizes$!: Observable<ChoiceItemType[]>;
+	colors$!: Observable<ColorItemType[]>;
 	price!: string;
 
 	mainForm!: FormGroup;
@@ -87,8 +87,8 @@ export class ProductComponent implements OnInit {
 		this.containerMaxHeight = '740px';
 		this.initImage();
 
-		this.sizes = this.dataService.getAllSizes();
-		this.colors = this.dataService.getAllColors();
+		this.sizes$ = this.dataService.getAllSizes();
+		this.colors$ = this.dataService.getAllColors();
 		this.price = '25';
 
 		this.initFormControls();

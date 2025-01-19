@@ -65,7 +65,7 @@
 				<label class="label-group">Status *</label>
 
 				<div class="radio-box">
-					<ng-container *ngFor="let item of status">
+					<ng-container *ngFor="let item of status$ | async">
 						<app-radio-base
 							label="Status"
 							name="status"

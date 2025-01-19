@@ -14,7 +14,7 @@ import { UserActions } from '@core/state/user/actions/user-index.actions';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FirebaseError } from '@angular/fire/app';
-import { catchError, map, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -22,7 +22,7 @@ import { catchError, map, of } from 'rxjs';
 	styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-	socialProviders!: ISocialProvider[];
+	socialProviders$!: Observable<ISocialProvider[]>;
 	image!: IImage;
 	hidePassword!: boolean;
 	regexEmail!: RegExp;
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.hidePassword = false;
-		this.socialProviders = this.dataService.getAuthProviders();
+		this.socialProviders$ = this.dataService.getAuthProviders();
 		this.inputsValidationMessages = loginValidationMessages;
 
 		this.initImage();

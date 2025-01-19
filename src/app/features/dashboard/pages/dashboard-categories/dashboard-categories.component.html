@@ -30,12 +30,12 @@
 			<ng-container *ngIf="categories.length > 0">
 				<app-table-dashboard-category
 					[items]="categories"
-					[cols]="cols"
+					[cols]="(cols$ | async) || []"
 					[paginator]="true"
 					[rows]="5"
 					[showCurrentPageReport]="true"
 					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-					[rowsPerPageOptions]="rowsPerPageOptions"
+					[rowsPerPageOptions]="(rowsPerPageOptions$ | async) || []"
 					[first]="1"
 					[totalRecords]="totalRecords"
 				></app-table-dashboard-category>

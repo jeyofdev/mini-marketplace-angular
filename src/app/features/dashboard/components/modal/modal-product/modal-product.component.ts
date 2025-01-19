@@ -5,7 +5,7 @@ import {
 	FormGroup,
 	Validators,
 } from '@angular/forms';
-import { Subscription, filter, map, mergeMap, tap } from 'rxjs';
+import { Observable, Subscription, filter, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '@shared/service/category.service';
 import {
 	ChoiceItemType,
@@ -53,10 +53,10 @@ export class ModalProductComponent implements OnInit {
 	statusCtrl!: FormControl<string | null>;
 
 	categories!: ChoiceItemType[];
-	sizes!: ChoiceItemType[];
-	colors!: ColorItemType[];
-	status!: ChoiceItemType[];
-	options!: ChoiceItemType[];
+	sizes$!: Observable<ChoiceItemType[]>;
+	colors$!: Observable<ColorItemType[]>;
+	status$!: Observable<ChoiceItemType[]>;
+	options$!: Observable<ChoiceItemType[]>;
 
 	submitBtnLabel!: string;
 
@@ -78,10 +78,10 @@ export class ModalProductComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.categories = [];
-		this.sizes = this.dataService.getAllSizes();
-		this.colors = this.dataService.getAllColors();
-		this.status = this.dataService.getAllStatus();
-		this.options = this.dataService.getAllOptions();
+		this.sizes$ = this.dataService.getAllSizes();
+		this.colors$ = this.dataService.getAllColors();
+		this.status$ = this.dataService.getAllStatus();
+		this.options$ = this.dataService.getAllOptions();
 
 		this.inputsValidationMessages = addProductValidationMessages;
 

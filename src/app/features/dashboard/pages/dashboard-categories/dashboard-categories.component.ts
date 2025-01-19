@@ -23,11 +23,11 @@ import {
 export class DashboardCategoriesComponent implements OnInit {
 	iconAdd!: string;
 	categories!: ICategory[];
-	cols!: ITableColumns[];
+	cols$!: Observable<ITableColumns[]>;
 	sidebarVisible = false;
 	totalRecords!: number;
 	loading$!: Observable<boolean>;
-	rowsPerPageOptions!: IRowsPerPageSelectOptions[];
+	rowsPerPageOptions$!: Observable<IRowsPerPageSelectOptions[]>;
 
 	constructor(
 		private store: Store,
@@ -36,8 +36,8 @@ export class DashboardCategoriesComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.iconAdd = 'fa-solid fa-plus';
-		this.cols = this.dataService.getColsCategories();
-		this.rowsPerPageOptions = this.dataService.getRowsPerPageSelectOptions();
+		this.cols$ = this.dataService.getColsCategories();
+		this.rowsPerPageOptions$ = this.dataService.getRowsPerPageSelectOptions();
 
 		this.store.dispatch(DashboardActions.categories.loadCategories());
 

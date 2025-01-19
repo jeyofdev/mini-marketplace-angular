@@ -1,7 +1,7 @@
 <app-auth-layout
 	pageTitle="Register"
 	subtitle="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
-	[socialProviders]="socialProviders"
+	[socialProviders]="(socialProviders$ | async) || []"
 	[image]="image"
 >
 	<form
