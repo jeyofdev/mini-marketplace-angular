@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ICategory } from '@shared/model/category.model';
 
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '@shared/model/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
 	FillFormWithCurrentCategoryFnType,

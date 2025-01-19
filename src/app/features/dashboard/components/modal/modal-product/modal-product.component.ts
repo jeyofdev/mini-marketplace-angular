@@ -7,10 +7,7 @@ import {
 } from '@angular/forms';
 import { Observable, Subscription, filter, map, mergeMap, tap } from 'rxjs';
 import { CategoryService } from '@shared/service/category.service';
-import {
-	ChoiceItemType,
-	ColorItemType,
-} from '@shared/interfaces/input.interface';
+import { ChoiceItemType, ColorItemType } from '@shared/model/input.interface';
 import { ICategory } from '@shared/model/category.model';
 import { IProduct } from '@shared/model/product.model';
 import { addProductValidationMessages } from '@dashboard/validations/messages.validation';

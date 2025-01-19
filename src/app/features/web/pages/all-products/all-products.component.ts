@@ -4,10 +4,7 @@ import { Observable, map } from 'rxjs';
 import { IProduct } from '@shared/model/product.model';
 import { WebActions } from '@core/state/web/actions/web-index.actions';
 import { DataService } from '@shared/service/data.service';
-import {
-	ChoiceItemType,
-	ColorItemType,
-} from '@shared/interfaces/input.interface';
+import { ChoiceItemType, ColorItemType } from '@shared/model/input.interface';
 import {
 	getWebProductsActiveLoadingSelector,
 	getWebProductsActiveSelector,

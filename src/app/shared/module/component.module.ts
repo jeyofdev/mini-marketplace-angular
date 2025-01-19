@@ -39,7 +39,6 @@ import { PanelComponent } from '@shared/components/panel/panel.component';
 import { PriceComponent } from '@shared/components/price/price.component';
 import { RatingComponent } from '@shared/components/rating/rating.component';
 import { TagComponent } from '@shared/components/tag/tag.component';
-import { TablePaginatorComponent } from '@shared/paginator/table-paginator/table-paginator.component';
 import { PrimengModule } from '@shared/module/primeng.module';
 import { CommonModule } from '@angular/common';
 
@@ -82,7 +81,6 @@ import { CommonModule } from '@angular/common';
 		ButtonEmptyComponent,
 		ChipSquareComponent,
 		NumberFieldWithButtonComponent,
-		TablePaginatorComponent,
 		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
@@ -129,7 +127,6 @@ import { CommonModule } from '@angular/common';
 		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
-		TablePaginatorComponent,
 	],
 })
 export class ComponentModule {}

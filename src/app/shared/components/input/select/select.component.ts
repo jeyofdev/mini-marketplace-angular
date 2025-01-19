@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DropdownChangeEvent } from 'primeng/dropdown';
-import { ChoiceItemType } from '@shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/model/input.interface';
 import { AbstractFormInput } from '@shared/utils/abstract-form-input';
 
 @Component({

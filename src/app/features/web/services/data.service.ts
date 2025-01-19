@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { INavLink } from '@shared/interfaces/link.interface';
+import { INavLink } from '@shared/model/link.interface';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '@shared/service/auth.service';
 import { Router } from '@angular/router';
-import { ITableColumns } from '@shared/interfaces/table.interface';
+import { ITableColumns } from '@shared/model/table.interface';
 import { map, Observable, of } from 'rxjs';
 
 @Injectable({

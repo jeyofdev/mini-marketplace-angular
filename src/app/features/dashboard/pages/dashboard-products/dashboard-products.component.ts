@@ -6,7 +6,7 @@ import { DataService } from '@shared/service/data.service';
 import {
 	IRowsPerPageSelectOptions,
 	ITableColumns,
-} from '@shared/interfaces/table.interface';
+} from '@shared/model/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DashboardActions } from '@dashboard/state/actions/dashboard-index.actions';
 import {

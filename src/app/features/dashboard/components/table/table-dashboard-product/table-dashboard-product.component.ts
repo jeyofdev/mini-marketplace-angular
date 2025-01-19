@@ -3,7 +3,7 @@ import { PaginatorState } from 'primeng/paginator';
 import {
 	IRowsPerPageSelectOptions,
 	ITableColumns,
-} from '@shared/interfaces/table.interface';
+} from '@shared/model/table.interface';
 import { IProduct } from '@shared/model/product.model';
 import {
 	FillFormWithCurrentProductFnType,

@@ -10,7 +10,7 @@ import { addCategoryValidationMessages } from '@dashboard/validations/messages.v
 import { MessageService } from 'primeng/api';
 import { ICategory, ISaveCategory } from '@shared/model/category.model';
 import { FillFormWithCurrentCategoryFnType } from '@shared/types/index.type';
-import { ChoiceItemType } from '@shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/model/input.interface';
 import { Observable, Subscription } from 'rxjs';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { DashboardActions } from '@dashboard/state/actions/dashboard-index.actions';

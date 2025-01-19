@@ -1,6 +1,6 @@
 import { Directive, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormGroup } from '@angular/forms';
-import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
+import { IValidationMessage } from '@shared/model/validation-message.interface';
 import { getFormControl } from '@shared/utils/form.utils';
 import { CheckboxChangeEvent } from 'primeng/checkbox';
 

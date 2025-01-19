@@ -1,7 +1,7 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MultiSelectChangeEvent } from 'primeng/multiselect';
-import { ChoiceItemType } from '@shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/model/input.interface';
 import { AbstractFormInput } from '@shared/utils/abstract-form-input';
 
 @Component({

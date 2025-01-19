@@ -1,7 +1,7 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { ColorItemType } from '@shared/interfaces/input.interface';
+import { ColorItemType } from '@shared/model/input.interface';
 import { AbstractFormRadio } from '@shared/utils/abstract-form-radio';
 
 @Component({

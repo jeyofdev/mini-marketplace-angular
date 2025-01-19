@@ -9,10 +9,7 @@ import { IImage } from '@shared/model/image.model';
 import { BreakpointEnum } from '@shared/enum/breakpoint.enum';
 import { BreakpointService } from '@shared/service/breakpoint.service';
 import { DataService } from '@shared/service/data.service';
-import {
-	ChoiceItemType,
-	ColorItemType,
-} from '@shared/interfaces/input.interface';
+import { ChoiceItemType, ColorItemType } from '@shared/model/input.interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { addSubscriptionAndShowToast } from '@shared/utils/toast';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { INavLink } from '@shared/interfaces/link.interface';
+import { INavLink } from '@shared/model/link.interface';
 import { DataService } from '@web/services/data.service';
 import { Observable } from 'rxjs';
 

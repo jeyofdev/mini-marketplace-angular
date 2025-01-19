@@ -1,5 +1,5 @@
 import { ProductColorEnum } from '@shared/enum/product.enum';
-import { ChoiceItemType } from '@shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/model/input.interface';
 
 export interface IProduct {
 	id: string;
