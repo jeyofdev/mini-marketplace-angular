@@ -20,6 +20,8 @@ import { TableDashboardProductComponent } from '@dashboard/components/table/tabl
 import { AuthLayoutComponent } from '@dashboard/components/layout/auth-layout/auth-layout.component';
 import { CoreModule } from '@core/core.module';
 import { DashboardLayoutComponent } from '@dashboard/components/layout/dashboard-layout/dashboard-layout.component';
+import { FormCategoryComponent } from './components/form/form-category/form-category.component';
+import { FormProductComponent } from './components/form/form-product/form-product.component';
 
 @NgModule({
 	declarations: [
@@ -33,6 +35,8 @@ import { DashboardLayoutComponent } from '@dashboard/components/layout/dashboard
 		TableDashboardProductComponent,
 		AuthLayoutComponent,
 		DashboardLayoutComponent,
+		FormCategoryComponent,
+		FormProductComponent,
 	],
 	imports: [
 		CommonModule,

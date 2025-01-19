@@ -2,13 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ICategory } from '@shared/model/category.model';
 
 import { PaginatorState } from 'primeng/paginator';
-import { IRowsPerPageSelectOptions } from '@shared/model/table.interface';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
 	FillFormWithCurrentCategoryFnType,
 	ShowConfirmDialogFnType,
 } from '@shared/types/index.type';
 import { DashboardActions } from '@dashboard/state/actions/dashboard-index.actions';
+import { IRowsPerPageSelectOptions } from '@shared/model/table.interface';
 
 @Component({
 	selector: 'app-table-dashboard-category',

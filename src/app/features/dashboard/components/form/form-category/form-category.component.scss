@@ -1,0 +1,39 @@
+.add-category-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	width: 100%;
+}
+
+app-text-field,
+app-textarea {
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+app-radio-base {
+	margin-bottom: 1rem;
+}
+
+.row-radio {
+	gap: 0rem;
+	flex-direction: column;
+}
+
+.radio-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.25rem;
+	width: 100%;
+	padding-left: 0.85rem;
+}
+
+.label-group {
+	margin-bottom: 1rem;
+}

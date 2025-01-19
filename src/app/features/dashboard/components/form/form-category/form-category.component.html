@@ -1,0 +1,54 @@
+<form
+			class="add-category-form"
+			[formGroup]="mainForm"
+			(ngSubmit)="onMainFormSubmit()"
+		>
+			<div class="form-row">
+				<app-text-field
+					type="text"
+					name="name"
+					label="Name *"
+					formControlName="name"
+					[parentForm]="mainForm"
+					[validationMessages]="addCategoryValidationMessages.name"
+				></app-text-field>
+			</div>
+
+			<div class="form-row">
+				<app-textarea
+					name="description"
+					label="Description"
+					[rows]="8"
+					placeholder="Enter a description"
+					formControlName="description"
+					[parentForm]="mainForm"
+					[validationMessages]="addCategoryValidationMessages.description"
+				></app-textarea>
+			</div>
+
+			<div class="form-row row-radio">
+				<label class="label-group">Status *</label>
+
+				<div class="radio-box">
+					<ng-container *ngFor="let item of status$ | async">
+						<app-radio-base
+							label="Status"
+							name="status"
+							[item]="item"
+							formControlName="status"
+							[parentForm]="mainForm"
+						></app-radio-base>
+					</ng-container>
+				</div>
+			</div>
+
+			<app-button
+				type="submit"
+				variant="raised"
+				shape="square"
+				color="primary"
+				size="medium"
+				[disabled]="!mainForm.valid"
+				>{{ submitBtnLabel }}</app-button
+			>
+		</form>

@@ -1,0 +1,82 @@
+
+
+.add-category-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+}
+
+.row-checkbox {
+	gap: 0rem;
+}
+
+.checkboxes-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.25rem;
+	width: 100%;
+	padding-left: 0.85rem;
+	margin-top: 0.5rem;
+
+	&.column {
+		flex-direction: column;
+		gap: 0rem;
+	}
+}
+
+label {
+	margin-bottom: 0.2rem;
+}
+
+app-text-field,
+app-select,
+app-select-multiple,
+app-slider-with-value,
+app-number-field {
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+app-radio-base,
+app-radio-square {
+	margin-bottom: 1rem;
+}
+
+app-checkbox-color-border,
+app-checkbox-base {
+	margin-bottom: 1rem;
+}
+
+:host ::ng-deep .p-scrollpanel-bar {
+	background-color: var(--primary-50);
+	opacity: 1;
+	transition: background-color 0.2s;
+}
+
+:host ::ng-deep .p-scrollpanel-content {
+	overflow-x: hidden;
+}
+
+:host ::ng-deep .p-scrollpanel-bar-x {
+	display: none;
+}
+
+.row-radio {
+	gap: 0rem;
+	flex-direction: column;
+}
+
+:host .radio-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.25rem;
+	width: 100%;
+	padding-left: 0.85rem;
+}
