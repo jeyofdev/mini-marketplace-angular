@@ -1,0 +1,32 @@
+<form class="login-form" [formGroup]="mainForm" (ngSubmit)="onMainFormSubmit()">
+	<div class="form-row">
+		<app-text-field
+			type="text"
+			name="email"
+			label="Email *"
+			formControlName="email"
+			[parentForm]="mainForm"
+			[validationMessages]="inputsValidationMessages.email"
+		></app-text-field>
+	</div>
+
+	<div class="form-row">
+		<app-password-field
+			name="password"
+			label="Password *"
+			[toggleMask]="true"
+			[feedback]="false"
+			formControlName="password"
+			[parentForm]="mainForm"
+			[validationMessages]="inputsValidationMessages.password"
+		></app-password-field>
+	</div>
+
+	<app-button
+		variant="raised"
+		shape="square"
+		color="primary"
+		[disabled]="!mainForm.valid"
+		>Log In</app-button
+	>
+</form>
