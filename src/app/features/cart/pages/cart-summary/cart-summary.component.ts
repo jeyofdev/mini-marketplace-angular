@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '@shared/model/table.interface';
 
 import { Observable, map } from 'rxjs';
 import { DataService } from '@shared/service/data.service';

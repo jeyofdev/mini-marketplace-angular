@@ -10,7 +10,7 @@
 		[placeholder]="placeholder"
 		[(ngModel)]="selectedItem"
 		[showClear]="showClear"
-		(onChange)="selectionChanged($event)"
+		(onChange)="onInputChange($event)"
 		(focus)="markAsTouched()"
 		[class]="control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''"
 	></p-dropdown>

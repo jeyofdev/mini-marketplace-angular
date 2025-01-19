@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
+import { IValidationMessage } from '@shared/model/validation-message.interface';
 
 @Component({
 	selector: 'app-error-field',

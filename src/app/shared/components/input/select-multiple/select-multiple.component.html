@@ -11,7 +11,7 @@
 		[disabled]="disabled"
 		[placeholder]="placeholder"
 		[(ngModel)]="selectedItem"
-		(onChange)="selectionChanged($event)"
+		(onChange)="onInputChange($event)"
 		(focus)="markAsTouched()"
 		[class]="control?.invalid && control?.touched ? 'ng-invalid ng-dirty' : ''"
 	></p-multiSelect>

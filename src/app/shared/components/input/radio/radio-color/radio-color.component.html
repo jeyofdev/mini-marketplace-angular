@@ -25,7 +25,7 @@
 				[inputId]="item.id"
 				[value]="item.value"
 				[disabled]="disabled"
-				(onClick)="selectionChanged($event)"
+				(onClick)="onInputChange($event)"
 				(blur)="onTouched()"
 				[styleClass]="styleClass"
 			>
@@ -41,7 +41,7 @@
 		[inputId]="item.id"
 		[value]="item.value"
 		[disabled]="disabled"
-		(onClick)="selectionChanged($event)"
+		(onClick)="onInputChange($event)"
 		(blur)="onTouched()"
 		[styleClass]="styleClass"
 	>

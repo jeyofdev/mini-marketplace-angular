@@ -6,12 +6,8 @@ import {
 	Output,
 	forwardRef,
 } from '@angular/core';
-import {
-	ControlValueAccessor,
-	FormGroup,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-import { getFormControl } from '@shared/utils/form.utils';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractFormInput } from '@shared/utils/abstract-form-input';
 import { SliderChangeEvent } from 'primeng/slider';
 
 @Component({
@@ -26,57 +22,26 @@ import { SliderChangeEvent } from 'primeng/slider';
 		},
 	],
 })
-export class SliderWithValueComponent implements OnInit, ControlValueAccessor {
-	@Input() name!: string;
-	@Input() label!: string;
+export class SliderWithValueComponent
+	extends AbstractFormInput<number>
+	implements OnInit
+{
 	@Input() min!: number;
 	@Input() max!: number;
 	@Input() step!: number;
 
-	@Input() parentForm!: FormGroup;
-	@Input() groupName!: string;
-
 	@Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
 
-	value!: number;
-	disabled!: boolean;
-
-	onChanged!: (value: number) => void;
-	onTouched!: () => void;
-
-	ngOnInit(): void {
+	override ngOnInit(): void {
+		super.ngOnInit();
 		this.value = 1;
 	}
 
-	selectionChanged(event: SliderChangeEvent) {
+	override onInputChange(event: SliderChangeEvent) {
 		if (event.value) {
 			this.valueChange.emit(event.value);
 			this.onChanged(event.value);
 			this.onTouched();
 		}
-	}
-
-	writeValue(value: number): void {
-		this.value = value;
-	}
-
-	registerOnChange(fn: (value: number) => void): void {
-		this.onChanged = fn;
-	}
-
-	registerOnTouched(fn: () => void): void {
-		this.onTouched = fn;
-	}
-
-	setDisabledState(isDisabled: boolean): void {
-		this.disabled = isDisabled;
-	}
-
-	markAsTouched(): void {
-		this.onTouched();
-	}
-
-	get control() {
-		return getFormControl(this.groupName, this.parentForm, this.name);
 	}
 }

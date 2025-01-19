@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '@web/services/data.service';
 import { CurrencyEnum } from '@shared/enum/properties.enum';
-import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '@shared/model/table.interface';
 import { Store } from '@ngrx/store';
 import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 import { ICartProduct } from '@shared/model/cart/cart-product.model';
