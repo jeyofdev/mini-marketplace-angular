@@ -21,6 +21,7 @@ import { AuthLayoutComponent } from '@dashboard/components/layout/auth-layout/au
 import { CoreModule } from '@core/core.module';
 import { DashboardLayoutComponent } from '@dashboard/components/layout/dashboard-layout/dashboard-layout.component';
 import { FormCategoryComponent } from './components/form/form-category/form-category.component';
+import { FormProductComponent } from './components/form/form-product/form-product.component';
 
 @NgModule({
 	declarations: [
@@ -35,6 +36,7 @@ import { FormCategoryComponent } from './components/form/form-category/form-cate
 		AuthLayoutComponent,
 		DashboardLayoutComponent,
 		FormCategoryComponent,
+		FormProductComponent,
 	],
 	imports: [
 		CommonModule,

@@ -36,7 +36,6 @@ export class ModalCategoryComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.submitBtnLabel = 'Add category';
-
 		this.fillFormCategory.emit(this.fillFormWithCurrentCategory);
 	}
 
