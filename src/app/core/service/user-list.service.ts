@@ -10,7 +10,8 @@ import {
 	getDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IProduct } from '@shared/model/product.model';
+import { IProduct, ISaveProduct } from '@shared/model/product.model';
+import { from, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -22,20 +23,26 @@ export class UserListService {
 		this.collectionInstance = collection(this.firestore, 'users');
 	}
 
-	async getListProductsByUserId(userId: string): Promise<IProduct[]> {
+	getListProductsByUserId(userId: string): Observable<IProduct[]> {
 		const docInstance = doc(this.firestore, 'users', userId);
-		const docRef = await getDoc(docInstance);
-
-		return docRef.data()?.['list'];
+		return from(
+			getDoc(docInstance).then(docRef => docRef.data()?.['list'] || []),
+		);
 	}
 
-	addProductInList = (userId: string, product: IProduct): Promise<void> => {
+	addProductInList = (
+		userId: string,
+		product: ISaveProduct,
+	): Observable<void> => {
 		const docInstance = doc(this.firestore, 'users', userId);
-		return updateDoc(docInstance, { list: arrayUnion(product) });
+		return from(updateDoc(docInstance, { list: arrayUnion(product) }));
 	};
 
-	deleteProductInList = (userId: string, product: IProduct): Promise<void> => {
+	deleteProductInList = (
+		userId: string,
+		product: IProduct,
+	): Observable<void> => {
 		const docInstance = doc(this.firestore, 'users', userId);
-		return updateDoc(docInstance, { list: arrayRemove(product) });
+		return from(updateDoc(docInstance, { list: arrayRemove(product) }));
 	};
 }
