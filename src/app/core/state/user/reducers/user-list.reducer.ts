@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IProduct } from '../../../../shared/model/product.model';
-import { UserActions } from '../actions/user-index.actions';
+import { IProduct } from '@shared/model/product.model';
+import { UserActions } from '@core/state/user/actions/user-index.actions';
 
 export const UserListFeatureKey = 'list';
 

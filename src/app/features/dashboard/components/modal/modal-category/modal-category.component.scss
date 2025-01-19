@@ -1,0 +1,62 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-sidebar-right,
+:host ::ng-deep .p-sidebar-left,
+:host ::ng-deep .p-sidebar-top,
+:host ::ng-deep .p-sidebar-bottom {
+	background-color: $light;
+	width: 100%;
+	max-width: 500px;
+	padding: 1rem 2rem;
+}
+
+:host ::ng-deep .p-sidebar-header,
+:host ::ng-deep .p-sidebar-content {
+	padding: 0;
+}
+
+:host ::ng-deep .p-sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.75rem;
+}
+
+.add-category-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	width: 100%;
+}
+
+app-text-field,
+app-textarea {
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+app-radio-base {
+	margin-bottom: 1rem;
+}
+
+.row-radio {
+	gap: 0rem;
+	flex-direction: column;
+}
+
+.radio-box {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1.25rem;
+	width: 100%;
+	padding-left: 0.85rem;
+}
+
+.label-group {
+	margin-bottom: 1rem;
+}

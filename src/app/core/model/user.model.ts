@@ -1,4 +1,4 @@
-import { IProduct } from '../../shared/model/product.model';
+import { IProduct } from '@shared/model/product.model';
 
 export interface IUser {
 	account: IUserAccount;

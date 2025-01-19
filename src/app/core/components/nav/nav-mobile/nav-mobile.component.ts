@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../web/services/data.service';
-import { INavLink } from '../../../../shared/interfaces/link.interface';
+import { DataService } from '@web/services/data.service';
+import { INavLink } from '@shared/interfaces/link.interface';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-nav-mobile',
@@ -9,12 +10,12 @@ import { INavLink } from '../../../../shared/interfaces/link.interface';
 })
 export class NavMobileComponent implements OnInit {
 	sidebarVisible!: boolean;
-	navLinks!: INavLink[];
+	navLinks$!: Observable<INavLink[]>;
 
 	constructor(private dataService: DataService) {}
 
 	ngOnInit(): void {
 		this.sidebarVisible = false;
-		this.navLinks = this.dataService.getNavigationLinks();
+		this.navLinks$ = this.dataService.getNavigationLinks();
 	}
 }

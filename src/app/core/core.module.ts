@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
-import { CardProductCartComponent } from './components/cart/card-product-cart/card-product-cart.component';
-import { CartComponent } from './components/cart/cart/cart.component';
-import { HeaderUserActionComponent } from './components/header-user-action/header-user-action.component';
-import { LayoutComponent } from './components/layout/layout.component';
-import { NavigationLinkMobileComponent } from './components/link/navigation-link-mobile/navigation-link-mobile.component';
-import { NavMobileComponent } from './components/nav/nav-mobile/nav-mobile.component';
-import { NavigationComponent } from './components/nav/navigation/navigation.component';
+import { SharedModule } from '@shared/shared.module';
+import { CardProductCartComponent } from '@core/components/cart/card-product-cart/card-product-cart.component';
+import { CartComponent } from '@core/components/cart/cart/cart.component';
+import { HeaderUserActionComponent } from '@core/components/header-user-action/header-user-action.component';
+import { LayoutComponent } from '@core/components/layout/layout.component';
+import { NavigationLinkMobileComponent } from '@core/components/link/navigation-link-mobile/navigation-link-mobile.component';
+import { NavMobileComponent } from '@core/components/nav/nav-mobile/nav-mobile.component';
+import { NavigationComponent } from '@core/components/nav/navigation/navigation.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromCart from '../core/state/cart/reducers/cart.reducer';
-import * as fromUser from '../core/state/user/reducers/user.reducer';
-import * as fromWeb from '../core/state/web/reducers/web.reducer';
+import * as fromCart from '@core/state/cart/reducers/cart.reducer';
+import * as fromUser from '@core/state/user/reducers/user.reducer';
+import * as fromWeb from '@core/state/web/reducers/web.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { CartEffects } from '../core/state/cart/effects/cart-product.effects';
-import { NavigationLinkComponent } from './components/link/navigation-link/navigation-link.component';
-import { CartDeliveryEffects } from './state/cart/effects/cart-delivery.effects';
-import { UserListEffects } from './state/user/effects/user-list.effects';
-import { WebCategoryEffects } from './state/web/effects/web-category.effects';
-import { WebProductEffects } from './state/web/effects/web-product.effects';
-import { UserInformationsEffects } from './state/user/effects/user-informations.effects';
-import { NoResultComponent } from './components/no-result/no-result.component';
+import { CartEffects } from '@core/state/cart/effects/cart-product.effects';
+import { NavigationLinkComponent } from '@core/components/link/navigation-link/navigation-link.component';
+import { CartDeliveryEffects } from '@core/state/cart/effects/cart-delivery.effects';
+import { UserListEffects } from '@core/state/user/effects/user-list.effects';
+import { WebCategoryEffects } from '@core/state/web/effects/web-category.effects';
+import { WebProductEffects } from '@core/state/web/effects/web-product.effects';
+import { UserInformationsEffects } from '@core/state/user/effects/user-informations.effects';
+import { NoResultComponent } from '@core/components/no-result/no-result.component';
 
 @NgModule({
 	declarations: [

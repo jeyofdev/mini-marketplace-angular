@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICategory } from '../model/category.model';
+import { ICategory, ISaveCategory } from '@shared/model/category.model';
 import {
 	CollectionReference,
 	DocumentData,
@@ -11,17 +11,24 @@ import {
 	updateDoc,
 	DocumentReference,
 } from '@angular/fire/firestore';
-import { collection } from '@firebase/firestore';
-import { Observable } from 'rxjs';
+import {
+	collection,
+	FirestoreDataConverter,
+	PartialWithFieldValue,
+} from '@firebase/firestore';
+import { from, map, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class CategoryService {
-	private collectionInstance!: CollectionReference<DocumentData>;
+	private collectionInstance!: CollectionReference<ICategory>;
 
 	constructor(private firestore: Firestore) {
-		this.collectionInstance = collection(this.firestore, 'categories');
+		this.collectionInstance = collection(
+			this.firestore,
+			'categories',
+		).withConverter(this.categoryConverter());
 	}
 
 	getAll(): Observable<ICategory[]> {
@@ -30,22 +37,52 @@ export class CategoryService {
 		}) as Observable<ICategory[]>;
 	}
 
-	add(newCategory: ICategory): Promise<DocumentReference<ICategory>> {
-		const docRef = addDoc(this.collectionInstance, newCategory);
+	add(newCategory: ISaveCategory): Observable<DocumentReference<ICategory>> {
+		const docRef: Promise<DocumentReference<DocumentData>> = addDoc(
+			this.collectionInstance,
+			newCategory,
+		);
 
-		return docRef as Promise<DocumentReference<ICategory>>;
+		return from(docRef).pipe(
+			map(ref => {
+				return ref as DocumentReference<ICategory>;
+			}),
+		);
 	}
 
-	deleteById = (categoryId: string): Promise<void> => {
+	deleteById = (categoryId: string): Observable<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
-		return deleteDoc(docInstance);
+		return from(deleteDoc(docInstance));
 	};
 
 	updateById = (
 		categoryId: string,
-		newDatas: Partial<ICategory>,
-	): Promise<void> => {
+		newDatas: Partial<ISaveCategory>,
+	): Observable<void> => {
 		const docInstance = doc(this.firestore, 'categories', categoryId);
-		return updateDoc(docInstance, newDatas);
+		return from(updateDoc(docInstance, newDatas));
 	};
+
+	private categoryConverter(): FirestoreDataConverter<ICategory> {
+		return {
+			toFirestore(
+				category: PartialWithFieldValue<ISaveCategory>,
+			): DocumentData {
+				return {
+					name: category.name,
+					description: category.description,
+					status: category.status,
+				};
+			},
+			fromFirestore(snapshot): ICategory {
+				const data = snapshot.data();
+				return {
+					id: snapshot.id,
+					name: data['name'],
+					description: data['description'],
+					status: data['status'],
+				};
+			},
+		};
+	}
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { getFormControl } from '../../../utils/form.utils';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { getFormControl } from '@shared/utils/form.utils';
+import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
 
 @Component({
 	selector: 'app-password-field',

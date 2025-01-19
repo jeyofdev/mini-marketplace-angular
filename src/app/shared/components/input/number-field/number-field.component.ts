@@ -1,11 +1,11 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
 import {
 	ControlValueAccessor,
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { getFormControl } from '../../../utils/form.utils';
+import { getFormControl } from '@shared/utils/form.utils';
 import { InputNumberInputEvent } from 'primeng/inputnumber';
 
 @Component({

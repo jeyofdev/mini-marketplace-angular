@@ -1,6 +1,6 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ICategory } from '../model/category.model';
-import { IProduct } from '../model/product.model';
+import { ICategory } from '@shared/model/category.model';
+import { IProduct } from '@shared/model/product.model';
 
 export type ShowConfirmDialogFnType = (
 	confirmationService: ConfirmationService,

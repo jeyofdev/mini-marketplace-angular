@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { ActionReducer } from '@ngrx/store';
-import { ICartState } from './cart.reducer';
+import { ICartState } from '@core/state/cart/reducers/cart.reducer';
 
 export const log = (
 	reducer: ActionReducer<ICartState>,

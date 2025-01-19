@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { ICategory } from '../../../../shared/model/category.model';
+import { ICategory } from '@shared/model/category.model';
 
 export const WebCategoryActions = createActionGroup({
 	source: 'Web Category',

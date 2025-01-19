@@ -1,0 +1,25 @@
+<app-layout>
+	<div class="page-title-box">
+		<h1>Your shopping cart</h1>
+	</div>
+
+	<div class="cart-products-list">
+		<app-products-list
+			[products]="cartProducts"
+			[paginator]="true"
+			[rows]="5"
+			[rowsPerPageOptions]="(rowsPerPageOptions$ | async) || []"
+			[first]="1"
+		></app-products-list>
+	</div>
+
+	<div class="cart-order-summary">
+		<app-order-summary
+			[loading]="(loading$ | async) === true"
+			[totalProducts]="cartProducts.length"
+			[totalCart]="totalCart"
+			[totalDelivery]="totalDelivery"
+			[totalPriceProducts]="totalPriceProducts"
+		></app-order-summary>
+	</div>
+</app-layout>

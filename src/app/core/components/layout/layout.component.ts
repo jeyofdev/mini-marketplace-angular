@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ResizeService } from '../../../shared/service/resize.service';
+import { ResizeService } from '@shared/service/resize.service';
 
 @Component({
 	selector: 'app-layout',

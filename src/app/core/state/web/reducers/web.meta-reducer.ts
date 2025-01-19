@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { ActionReducer } from '@ngrx/store';
-import { IWebState } from './web.reducer';
+import { IWebState } from '@core/state/web/reducers/web.reducer';
 
 export const log = (
 	reducer: ActionReducer<IWebState>,

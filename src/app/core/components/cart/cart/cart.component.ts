@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { ICartProduct } from '../../../../shared/model/cart.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { IImage } from '../../../../shared/model/image.model';
+import { IImage } from '@shared/model/image.model';
 import { Router } from '@angular/router';
-import { CartActions } from '../../../state/cart/actions/cart-index.actions';
+import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 import {
 	getCartProductsLoadingSelector,
 	getCartProductsSelector,
-} from '../../../state/cart/selectors/cart-product.selectors';
+} from '@core/state/cart/selectors/cart-product.selectors';
+import { ICartProduct } from '@shared/model/cart/cart-product.model';
 
 @Component({
 	selector: 'app-cart',

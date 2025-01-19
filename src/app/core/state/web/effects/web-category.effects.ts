@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { WebActions } from '../actions/web-index.actions';
-import { CategoryService } from '../../../../shared/service/category.service';
-import { ICategory } from '../../../../shared/model/category.model';
+import { WebActions } from '@core/state/web/actions/web-index.actions';
+import { CategoryService } from '@shared/service/category.service';
+import { ICategory } from '@shared/model/category.model';
 
 @Injectable()
 export class WebCategoryEffects {

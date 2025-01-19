@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap } from 'rxjs';
-import { UserActions } from '../actions/user-index.actions';
-import { UserInformationsService } from '../../../../core/service/user-informations.service';
+import { catchError, map, mergeMap, of } from 'rxjs';
+import { UserActions } from '@core/state/user/actions/user-index.actions';
+import { UserInformationsService } from '@core/service/user-informations.service';
 
 @Injectable()
 export class UserInformationsEffects {
 	addProfile$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(UserActions.informations.addUser),
-			mergeMap(async ({ payload: { userId, data } }) =>
-				this.userInformationsService
-					.addUser(userId, data)
-					.then(() =>
+			mergeMap(({ payload: { userId, data } }) =>
+				this.userInformationsService.addUser(userId, data).pipe(
+					map(() =>
 						UserActions.informations.addUserSuccess({
 							payload: { userId, data },
 						}),
-					)
-					.catch(error =>
-						UserActions.informations.addUserFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							UserActions.informations.addUserFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});
@@ -30,18 +32,20 @@ export class UserInformationsEffects {
 		return this.actions$.pipe(
 			ofType(UserActions.informations.loadUser),
 			mergeMap(({ payload: { userId } }) =>
-				this.userInformationsService
-					.getUserById(userId)
-					.then(data =>
+				this.userInformationsService.getUserById(userId).pipe(
+					map(data =>
 						UserActions.informations.loadUserSuccess({
 							payload: { data },
 						}),
-					)
-					.catch(error =>
-						UserActions.informations.loadUserFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							UserActions.informations.loadUserFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

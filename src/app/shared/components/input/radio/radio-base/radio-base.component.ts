@@ -8,8 +8,8 @@ import { RadioButtonClickEvent } from 'primeng/radiobutton';
 import {
 	ChoiceItemType,
 	ColorItemType,
-} from '../../../../interfaces/input.interface';
-import { getFormControl } from '../../../../utils/form.utils';
+} from '@shared/interfaces/input.interface';
+import { getFormControl } from '@shared/utils/form.utils';
 
 @Component({
 	selector: 'app-radio-base',

@@ -8,7 +8,8 @@ import {
 	getDoc,
 } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
-import { IUser } from '../model/user.model';
+import { IUser } from '@core/model/user.model';
+import { from, Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -20,18 +21,21 @@ export class UserInformationsService {
 		this.collectionInstance = collection(this.firestore, 'users');
 	}
 
-	async getUserById(userId: string): Promise<IUser> {
+	getUserById(userId: string): Observable<IUser> {
 		const docInstance = doc(this.firestore, 'users', userId);
-		const docRef = await getDoc(docInstance);
-
-		if (docRef.exists()) {
-			return docRef.data() as Promise<IUser>;
-		} else {
-			throw new Error('User does not exist');
-		}
+		return from(
+			getDoc(docInstance).then(docRef => {
+				if (docRef.exists()) {
+					return docRef.data() as IUser;
+				} else {
+					throw new Error('User does not exist');
+				}
+			}),
+		);
 	}
 
-	async addUser(userId: string, newUser: IUser): Promise<void> {
-		return setDoc(doc(this.firestore, 'users', userId), newUser);
+	addUser(userId: string, newUser: IUser): Observable<void> {
+		const docInstance = doc(this.firestore, 'users', userId);
+		return from(setDoc(docInstance, newUser));
 	}
 }

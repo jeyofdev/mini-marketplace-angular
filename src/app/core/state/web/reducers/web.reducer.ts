@@ -1,18 +1,18 @@
 import { MetaReducer, combineReducers } from '@ngrx/store';
 import { isDevMode } from '@angular/core';
-import { log } from './web.meta-reducer';
+import { log } from '@core/state/web//reducers/web.meta-reducer';
 import {
 	IWebProductState,
 	webProductFeatureKey,
 	initialProductState,
 	productReducer,
-} from './web-product.reducer';
+} from '@core/state/web//reducers/web-product.reducer';
 import {
 	IWebCategoryState,
 	categoryReducer,
 	webCategoryFeatureKey,
 	initialCategoryState,
-} from './web-category.reducer';
+} from '@core/state/web//reducers/web-category.reducer';
 
 export const webFeatureKey = 'web';
 

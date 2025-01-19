@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { CartService } from '../../../../shared/service/cart.service';
-import { CartActions } from '../actions/cart-index.actions';
+import { CartService } from '@shared/service/cart.service';
+import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 
 @Injectable()
 export class CartEffects {
 	addProductToCart$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(CartActions.products.addProductToCart),
-			mergeMap(async ({ payload: { data } }) =>
-				this.cartService
-					.addProductToCart(data)
-					.then(() =>
+			mergeMap(({ payload: { data } }) =>
+				this.cartService.addProductToCart(data).pipe(
+					map(() =>
 						CartActions.products.addProductToCartSuccess({
 							payload: { data },
 						}),
-					)
-					.catch(error =>
-						CartActions.products.addProductToCartFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							CartActions.products.addProductToCartFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});
@@ -51,19 +53,21 @@ export class CartEffects {
 	deleteProductInCart$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(CartActions.products.deleteProductToCart),
-			mergeMap(async ({ payload: { id } }) =>
-				this.cartService
-					.deleteProductById(id)
-					.then(() =>
+			mergeMap(({ payload: { id } }) =>
+				this.cartService.deleteProductById(id).pipe(
+					map(() =>
 						CartActions.products.deleteProductToCartSuccess({
 							payload: { id },
 						}),
-					)
-					.catch(error =>
-						CartActions.products.deleteProductToCartFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							CartActions.products.deleteProductToCartFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

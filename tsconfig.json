@@ -25,10 +25,12 @@
     ],
     "paths": {
       "@assets/*": ["src/assets/*"],
-      "@env/*": ["src/environments/*"],
-      "@theme/*": ["src/theme/*"],
+      "@environments/*": ["src/environments/*"],
       "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@cart/*": ["src/app/features/cart/*"],
+      "@web/*": ["src/app/features/web/*"],
+      "@dashboard/*": ["src/app/features/dashboard/*"],
     }
   },
   "angularCompilerOptions": {

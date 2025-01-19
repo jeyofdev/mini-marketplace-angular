@@ -5,8 +5,8 @@ import {
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { RadioButtonClickEvent } from 'primeng/radiobutton';
-import { ChoiceItemType } from '../../../../interfaces/input.interface';
-import { getFormControl } from '../../../../utils/form.utils';
+import { ChoiceItemType } from '@shared/interfaces/input.interface';
+import { getFormControl } from '@shared/utils/form.utils';
 
 @Component({
 	selector: 'app-radio-square',

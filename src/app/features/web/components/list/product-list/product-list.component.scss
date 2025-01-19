@@ -1,0 +1,19 @@
+@import '../../../../../../theme/scss/light/theme/theme';
+
+:host ::ng-deep .p-grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 1.5rem;
+}
+
+:host ::ng-deep app-card-product-list {
+	grid-column: 1 / span 12;
+
+	@media (min-width: $sm) {
+		grid-column: auto / span 6;
+	}
+
+	@media (min-width: $md) {
+		grid-column: auto / span 4;
+	}
+}

@@ -4,10 +4,10 @@ import {
 	FormGroup,
 	NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { getFormControl } from '../../../utils/form.utils';
-import { IValidationMessage } from '../../../interfaces/validation-message.interface';
+import { getFormControl } from '@shared/utils/form.utils';
+import { IValidationMessage } from '@shared/interfaces/validation-message.interface';
 import { DropdownChangeEvent } from 'primeng/dropdown';
-import { ChoiceItemType } from '../../../../shared/interfaces/input.interface';
+import { ChoiceItemType } from '@shared/interfaces/input.interface';
 
 @Component({
 	selector: 'app-select',

@@ -1,0 +1,53 @@
+<app-dashboard-layout>
+	<div class="container">
+		<app-header pageTitle="Category">
+			<app-button
+				variant="raised"
+				shape="square"
+				color="primary"
+				size="medium"
+				[iconPrefix]="iconAdd"
+				(click)="openModalAddNewCategory()"
+				>Add new category</app-button
+			>
+		</app-header>
+
+		<app-loader [loading]="loading$ | async"></app-loader>
+
+		<div class="list-container" *ngIf="(loading$ | async) === false">
+			<app-no-result [items]="categories">
+				<app-button
+					variant="raised"
+					shape="square"
+					color="primary"
+					size="medium"
+					[iconPrefix]="iconAdd"
+					(click)="openModalAddNewCategory()"
+					>Add new category</app-button
+				>
+			</app-no-result>
+
+			<ng-container *ngIf="categories.length > 0">
+				<app-table-dashboard-category
+					[items]="categories"
+					[cols]="(cols$ | async) || []"
+					[paginator]="true"
+					[rows]="5"
+					[showCurrentPageReport]="true"
+					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+					[rowsPerPageOptions]="(rowsPerPageOptions$ | async) || []"
+					[first]="1"
+					[totalRecords]="totalRecords"
+				></app-table-dashboard-category>
+			</ng-container>
+		</div>
+	</div>
+</app-dashboard-layout>
+
+<app-modal-category
+	[(visible)]="sidebarVisible"
+	title="New category"
+	position="right"
+></app-modal-category>
+
+<p-toast position="top-right" [preventDuplicates]="true"></p-toast>

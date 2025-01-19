@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap } from 'rxjs';
-import { CartService } from '../../../../shared/service/cart.service';
-import { CartActions } from '../actions/cart-index.actions';
+import { catchError, map, mergeMap, of } from 'rxjs';
+import { CartService } from '@shared/service/cart.service';
+import { CartActions } from '@core/state/cart/actions/cart-index.actions';
 
 @Injectable()
 export class CartDeliveryEffects {
 	addDeliveryToCart$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(CartActions.delivery.addDeliveryToCart),
-			mergeMap(async ({ payload: { data } }) =>
-				this.cartService
-					.addDeliveryToCart(data)
-					.then(() =>
+			mergeMap(({ payload: { data } }) =>
+				this.cartService.addDeliveryToCart(data).pipe(
+					map(() =>
 						CartActions.delivery.addDeliveryToCartSuccess({
 							payload: { data },
 						}),
-					)
-					.catch(error =>
-						CartActions.delivery.addDeliveryToCartFailure({
-							payload: { error: error.body.error },
-						}),
 					),
+					catchError(error =>
+						of(
+							CartActions.delivery.addDeliveryToCartFailure({
+								payload: { error: error.body.error },
+							}),
+						),
+					),
+				),
 			),
 		);
 	});

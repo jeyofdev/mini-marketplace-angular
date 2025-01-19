@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IRowsPerPageSelectOptions } from '../../interfaces/table.interface';
+import { IRowsPerPageSelectOptions } from '@shared/interfaces/table.interface';
 
 @Component({
 	selector: 'app-table-paginator',

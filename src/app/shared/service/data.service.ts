@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { ChoiceItemType, ColorItemType } from '../interfaces/input.interface';
-import { ProductSizeEnum } from '../enum/product.enum';
+import {
+	ChoiceItemType,
+	ColorItemType,
+} from '@shared/interfaces/input.interface';
+import { ProductSizeEnum } from '@shared/enum/product.enum';
 import {
 	ITableColumns,
 	IRowsPerPageSelectOptions,
-} from '../interfaces/table.interface';
-import { ISocialProvider } from '../model/social-provider.model';
-import { ProviderEnum } from '../enum/provider.enum';
-import { INavLink } from '../interfaces/link.interface';
-import { OptionsEnum, StatusEnum } from '../enum/form.enum';
+} from '@shared/interfaces/table.interface';
+import { ISocialProvider } from '@shared/model/social-provider.model';
+import { ProviderEnum } from '@shared/enum/provider.enum';
+import { INavLink } from '@shared/interfaces/link.interface';
+import { OptionsEnum, StatusEnum } from '@shared/enum/form.enum';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class DataService {
-	getAllSizes(): ChoiceItemType[] {
-		return [
+	getAllSizes(): Observable<ChoiceItemType[]> {
+		return of([
 			{
 				name: ProductSizeEnum.XXS,
 				value: ProductSizeEnum.XXS,
@@ -56,11 +60,11 @@ export class DataService {
 				value: ProductSizeEnum.XXXL,
 				label: ProductSizeEnum.XXXL,
 			},
-		];
+		]);
 	}
 
-	getAllStatus(): ChoiceItemType[] {
-		return [
+	getAllStatus(): Observable<ChoiceItemType[]> {
+		return of([
 			{
 				id: StatusEnum.INACTIVE,
 				name: StatusEnum.INACTIVE,
@@ -73,11 +77,11 @@ export class DataService {
 				label: StatusEnum.ACTIVE,
 				value: StatusEnum.ACTIVE,
 			},
-		];
+		]);
 	}
 
-	getAllOptions(): ChoiceItemType[] {
-		return [
+	getAllOptions(): Observable<ChoiceItemType[]> {
+		return of([
 			{
 				id: 'securePayment',
 				name: 'securePayment',
@@ -102,11 +106,11 @@ export class DataService {
 				label: OptionsEnum.FREE_SHIPPING_AND_RETURN,
 				value: 'freeShippingAndReturns',
 			},
-		];
+		]);
 	}
 
-	getAllColors(): ColorItemType[] {
-		return [
+	getAllColors(): Observable<ColorItemType[]> {
+		return of([
 			{
 				color: '#f87575',
 				value: 'red',
@@ -142,11 +146,11 @@ export class DataService {
 				name: 'purple',
 				severity: 'help',
 			},
-		];
+		]);
 	}
 
-	getColsCategories(): ITableColumns[] {
-		return [
+	getColsCategories(): Observable<ITableColumns[]> {
+		return of([
 			{
 				field: 'id',
 				header: 'ID',
@@ -163,11 +167,11 @@ export class DataService {
 				field: 'status',
 				header: 'Status',
 			},
-		];
+		]);
 	}
 
-	getColsProducts(): ITableColumns[] {
-		return [
+	getColsProducts(): Observable<ITableColumns[]> {
+		return of([
 			{
 				field: 'modelName',
 				header: 'Model name',
@@ -200,11 +204,11 @@ export class DataService {
 				field: 'status',
 				header: 'Status',
 			},
-		];
+		]);
 	}
 
-	getDashboardNavLinks(): INavLink[] {
-		return [
+	getDashboardNavLinks(): Observable<INavLink[]> {
+		return of([
 			{
 				label: 'Dashboard',
 				routerLink: '/dashboard/home',
@@ -220,11 +224,11 @@ export class DataService {
 				routerLink: '/dashboard/categories',
 				icon: 'fa-solid fa-tags',
 			},
-		];
+		]);
 	}
 
-	getAuthProviders(): ISocialProvider[] {
-		return [
+	getAuthProviders(): Observable<ISocialProvider[]> {
+		return of([
 			{
 				label: 'Connect with Google',
 				icon: 'fa-brands fa-google',
@@ -241,15 +245,15 @@ export class DataService {
 				outline: false,
 				name: ProviderEnum.GITHUB,
 			},
-		];
+		]);
 	}
 
-	getRowsPerPageSelectOptions(): IRowsPerPageSelectOptions[] {
-		return [
+	getRowsPerPageSelectOptions(): Observable<IRowsPerPageSelectOptions[]> {
+		return of([
 			{ label: 5, value: 5 },
 			{ label: 10, value: 10 },
 			{ label: 25, value: 25 },
 			{ label: 50, value: 50 },
-		];
+		]);
 	}
 }
