@@ -8,7 +8,8 @@ export type ShowConfirmDialogFnType = (
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	action: any,
 	itemId: string,
-	itemName: string,
+	confirmMessage: string,
+	successMessage: string,
 ) => void;
 
 export type FillFormWithCurrentCategoryFnType = (category: ICategory) => void;

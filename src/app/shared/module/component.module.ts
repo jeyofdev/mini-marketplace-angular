@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PrimengModule } from '@shared/module/primeng.module';
 import { AlertComponent } from '@shared/components/alert/alert.component';
 import { BadgeColorComponent } from '@shared/components/badge-color/badge-color.component';
 import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
@@ -15,22 +17,22 @@ import { ConfirmDialogComponent } from '@shared/components/dialog/confirm-dialog
 import { DividerComponent } from '@shared/components/divider/divider.component';
 import { ErrorFieldComponent } from '@shared/components/form/error-field/error-field.component';
 import { ImageFullHeightComponent } from '@shared/components/image/image-full-height/image-full-height.component';
-import { CheckboxBaseComponent } from '@shared/components/input/checkbox/checkbox-base/checkbox-base.component';
-import { CheckboxChipComponent } from '@shared/components/input/checkbox/checkbox-chip/checkbox-chip.component';
-import { CheckboxColorBorderComponent } from '@shared/components/input/checkbox/checkbox-color-border/checkbox-color-border.component';
-import { CheckboxColorComponent } from '@shared/components/input/checkbox/checkbox-color/checkbox-color.component';
-import { MaskFieldComponent } from '@shared/components/input/mask-field/mask-field.component';
-import { NumberFieldWithButtonComponent } from '@shared/components/input/number-field-with-button/number-field-with-button.component';
-import { NumberFieldComponent } from '@shared/components/input/number-field/number-field.component';
-import { PasswordFieldComponent } from '@shared/components/input/password-field/password-field.component';
-import { RadioBaseComponent } from '@shared/components/input/radio/radio-base/radio-base.component';
-import { RadioColorComponent } from '@shared/components/input/radio/radio-color/radio-color.component';
-import { RadioSquareComponent } from '@shared/components/input/radio/radio-square/radio-square.component';
-import { SelectMultipleComponent } from '@shared/components/input/select-multiple/select-multiple.component';
-import { SelectComponent } from '@shared/components/input/select/select.component';
-import { SliderWithValueComponent } from '@shared/components/input/slider-with-value/slider-with-value.component';
-import { TextFieldComponent } from '@shared/components/input/text-field/text-field.component';
-import { TextareaComponent } from '@shared/components/input/textarea/textarea.component';
+import { CheckboxBaseComponent } from '@shared/components/form/checkbox/checkbox-base/checkbox-base.component';
+import { CheckboxChipComponent } from '@shared/components/form/checkbox/checkbox-chip/checkbox-chip.component';
+import { CheckboxColorBorderComponent } from '@shared/components/form/checkbox/checkbox-color-border/checkbox-color-border.component';
+import { CheckboxColorComponent } from '@shared/components/form/checkbox/checkbox-color/checkbox-color.component';
+import { MaskFieldComponent } from '@shared/components/form/mask-field/mask-field.component';
+import { NumberFieldWithButtonComponent } from '@shared/components/form/number-field-with-button/number-field-with-button.component';
+import { NumberFieldComponent } from '@shared/components/form/number-field/number-field.component';
+import { PasswordFieldComponent } from '@shared/components/form/password-field/password-field.component';
+import { RadioBaseComponent } from '@shared/components/form/radio/radio-base/radio-base.component';
+import { RadioColorComponent } from '@shared/components/form/radio/radio-color/radio-color.component';
+import { RadioSquareComponent } from '@shared/components/form/radio/radio-square/radio-square.component';
+import { SelectMultipleComponent } from '@shared/components/form/select-multiple/select-multiple.component';
+import { SelectComponent } from '@shared/components/form/select/select.component';
+import { SliderWithValueComponent } from '@shared/components/form/slider-with-value/slider-with-value.component';
+import { TextFieldComponent } from '@shared/components/form/text-field/text-field.component';
+import { TextareaComponent } from '@shared/components/form/textarea/textarea.component';
 import { NavLinkComponent } from '@shared/components/links/nav-link/nav-link.component';
 import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { LogoComponent } from '@shared/components/logo/logo.component';
@@ -39,8 +41,7 @@ import { PanelComponent } from '@shared/components/panel/panel.component';
 import { PriceComponent } from '@shared/components/price/price.component';
 import { RatingComponent } from '@shared/components/rating/rating.component';
 import { TagComponent } from '@shared/components/tag/tag.component';
-import { PrimengModule } from '@shared/module/primeng.module';
-import { CommonModule } from '@angular/common';
+import { NoResultComponent } from '@shared/components/no-result/no-result.component';
 
 @NgModule({
 	declarations: [
@@ -84,6 +85,7 @@ import { CommonModule } from '@angular/common';
 		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
+		NoResultComponent,
 	],
 	imports: [CommonModule, PrimengModule],
 	exports: [
@@ -127,6 +129,7 @@ import { CommonModule } from '@angular/common';
 		MaskFieldComponent,
 		CheckboxBaseComponent,
 		CheckboxChipComponent,
+		NoResultComponent,
 	],
 })
 export class ComponentModule {}

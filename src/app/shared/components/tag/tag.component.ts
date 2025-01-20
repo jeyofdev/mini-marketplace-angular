@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./tag.component.scss'],
 })
 export class TagComponent implements OnInit {
-	@Input() value!: string;
+	@Input({ required: true }) value!: string;
 	@Input() variant!: 'raised';
 	@Input() rounded!: boolean;
 	@Input() severity!: 'primary' | 'success' | 'info' | 'warning' | 'danger';
