@@ -87,7 +87,8 @@ export class TableDashboardProductComponent implements OnInit {
 			this.messageService,
 			DashboardActions.products.deleteProduct,
 			itemId,
-			itemName,
+			`Are you sure you want to delete the product '${itemName}'?`,
+			`The product '${itemName}' successfully deleted`,
 		);
 	}
 

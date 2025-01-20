@@ -11,15 +11,13 @@ import { Store } from '@ngrx/store';
 export class ConfirmDialogComponent implements OnInit {
 	@Output() showConfirmDialog = new EventEmitter<ShowConfirmDialogFnType>();
 	@Input() title!: string;
-	@Input() itemName!: string;
 	@Input() warningMessage!: string;
 
 	constructor(private store: Store) {}
 
 	ngOnInit(): void {
 		this.showConfirmDialog.emit(this.confirm);
-		this.warningMessage =
-			'this action cannot be undone. this will permanently delete the category.';
+		this.warningMessage = this.warningMessage;
 	}
 
 	confirm = (
@@ -28,10 +26,11 @@ export class ConfirmDialogComponent implements OnInit {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		action: any,
 		itemId: string,
-		itemName: string,
+		confirmMessage: string,
+		successMessage: string,
 	) => {
 		confirmationService.confirm({
-			message: `Are you sure you want to delete the category with name '${itemName}' ?`,
+			message: confirmMessage,
 			accept: () => {
 				this.store.dispatch(
 					action({
@@ -43,7 +42,7 @@ export class ConfirmDialogComponent implements OnInit {
 
 				messageService.add({
 					severity: 'error',
-					summary: `The category '${itemName}' successfully deleted`,
+					summary: successMessage,
 					detail: '',
 				});
 			},

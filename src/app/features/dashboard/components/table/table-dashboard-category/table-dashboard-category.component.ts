@@ -80,7 +80,8 @@ export class TableDashboardCategoryComponent implements OnInit {
 			this.messageService,
 			DashboardActions.categories.deleteCategory,
 			itemId,
-			itemName,
+			`Are you sure you want to delete the category '${itemName}'?`,
+			`The category '${itemName}' successfully deleted`,
 		);
 	}
 
